@@ -12,7 +12,7 @@ class Repository {
      * Get specific value from config repository.
      *
      * @param {String} key
-     * @return {any}
+     * @return {Any}
      */
     get(key, defaultValue = null) {
         const value = key.split(".").reduce((object, item) => {
@@ -29,7 +29,7 @@ class Repository {
     /**
      * Get all config items from repository.
      *
-     * @return  {any}
+     * @return  {Any}
      */
     all() {
         return this.items;
