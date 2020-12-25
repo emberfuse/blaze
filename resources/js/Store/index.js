@@ -4,4 +4,4 @@ import store from "./store";
 
 Vue.use(Vuex);
 
-export default Vuex.Store(store);
+export default new Vuex.Store(store);

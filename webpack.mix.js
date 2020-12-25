@@ -9,5 +9,5 @@ mix.js("resources/js/app.js", "public/js")
     ])
     .sourceMaps()
     .webpackConfig(require("./webpack.config"))
-    .browserSync("cratespace.test")
+    .browserSync("preflight.test")
     .version();
