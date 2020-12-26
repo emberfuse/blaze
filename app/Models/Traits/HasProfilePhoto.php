@@ -62,7 +62,7 @@ trait HasProfilePhoto
      */
     protected function defaultProfilePhotoUrl(): string
     {
-        if (app()->isLocal()) {
+        if (app()->isLocal() && config('app.mode') === 'offline') {
             return asset('img/default.jpg');
         }
 

@@ -46,13 +46,39 @@ class AuthenticatedSessionsController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function __invoke(LoginRequest $request): Response
+    public function store(LoginRequest $request): Response
     {
         return $this->authenticator->authenticate($request)
             ->then(function (Request $request): Response {
+                $token = $request->user()
+                    ->createToken($request->userAgent())
+                    ->plainTextToken;
+
                 return $request->wantsJson()
-                    ? response()->json(['tfa' => false])
+                    ? response()->json(['tfa' => false, 'token' => $token])
                     : redirect()->intended(config('auth.defaults.home'));
             });
+    }
+
+    /**
+     * Destroy an authenticated session.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function destroy(Request $request): Response
+    {
+        $request->user()->tokens()->whereName($request->userAgent())->delete();
+
+        $this->guard->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return $request->wantsJson()
+            ? response()->json('', 204)
+            : redirect('/');
     }
 }

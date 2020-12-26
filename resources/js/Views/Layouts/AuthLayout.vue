@@ -1,6 +1,6 @@
 <template>
     <main-section>
-        <section-content>
+        <section-content class="py-16">
             <div class="md:grid md:grid-cols-3 gap-6">
                 <div class="md:col-span-2 lg:col-span-1">
                     <div>
@@ -33,7 +33,7 @@ export default {
         Dropdown,
         DropdownLink,
         MainSection,
-        SectionContent,
+        SectionContent
     }
 };
 </script>

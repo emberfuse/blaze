@@ -2,9 +2,7 @@ import Welcome from "@/Views/Marketing/Welcome";
 import Login from "@/Views/Auth/Login";
 import Register from "@/Views/Auth/Register";
 import Home from "@/Views/Business/Home";
-
-import auth from "./middleware/auth";
-import guest from "./middleware/guest";
+import Test from "@/Views/Testing/Test";
 
 export default {
     mode: "history",
@@ -19,19 +17,24 @@ export default {
             path: "/login",
             name: "login",
             component: Login,
-            beforeEnter: guest
+            meta: { guest: true }
         },
         {
             path: "/register",
             name: "register",
             component: Register,
-            beforeEnter: guest
+            meta: { guest: true }
         },
         {
             path: "/home",
             name: "home",
             component: Home,
-            beforeEnter: auth
+            meta: { auth: true }
+        },
+        {
+            path: "/test",
+            name: "test",
+            component: Test
         }
     ]
 };

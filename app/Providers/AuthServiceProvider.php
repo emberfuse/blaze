@@ -46,9 +46,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     public static $authenticationMiddleware = [
-        EnsureLoginIsNotThrottled::class,
-        RedirectIfLocked::class,
-        RedirectIfTwoFactorAuthenticatable::class,
+        // EnsureLoginIsNotThrottled::class,
+        // RedirectIfLocked::class,
+        // RedirectIfTwoFactorAuthenticatable::class,
         AttemptToAuthenticate::class,
         PrepareAuthenticatedSession::class,
     ];
