@@ -50,9 +50,7 @@ class AuthenticatedSessionsController extends Controller
     {
         return $this->authenticator->authenticate($request)
             ->then(function (Request $request): Response {
-                $token = $request->user()
-                    ->createToken($request->userAgent())
-                    ->plainTextToken;
+                $token = explode('|', $request->user()->createToken($request->userAgent())->plainTextToken, 2)[1];
 
                 return $request->wantsJson()
                     ? response()->json(['tfa' => false, 'token' => $token])

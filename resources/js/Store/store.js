@@ -41,7 +41,7 @@ export default {
     actions: {
         async fetchUser({ commit, state }) {
             try {
-                const { data } = await axios.get("/api/user", {
+                const { data } = await axios.get(route("current.user"), {
                     headers: { Authorization: `Bearer ${state.token}` }
                 });
 
@@ -53,7 +53,7 @@ export default {
 
         async logout({ commit, state }) {
             try {
-                await axios.post("/api/logout", {}, {
+                await axios.post(route("logout"), {}, {
                     headers: { Authorization: `Bearer ${state.token}` }
                 });
             } catch (error) {}

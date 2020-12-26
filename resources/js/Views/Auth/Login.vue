@@ -91,29 +91,34 @@ export default {
 
     data() {
         return {
-            form: this.$form({
-                email: null,
-                password: null,
-                remember: true
-            },{
-                resetOnSuccess: false
-            })
+            form: this.$form(
+                {
+                    email: null,
+                    password: null,
+                    remember: true
+                },
+                {
+                    resetOnSuccess: false
+                }
+            )
         };
     },
 
     methods: {
         async login() {
-            await this.form.post(this.route("login")).then(response => {
-                if (!this.form.hasErrors()) {
-                    this.$store.commit("saveToken", {
-                        token: response.data.token,
-                        remember: this.form.remember
-                    });
+            await this.$http.get("/sanctum/csrf-cookie").then(async () => {
+                await this.form.post(this.route("login")).then(response => {
+                    if (!this.form.hasErrors()) {
+                        this.$store.commit("saveToken", {
+                            token: response.data.token,
+                            remember: this.form.remember
+                        });
 
-                    this.$store
-                        .dispatch("fetchUser")
-                        .then(() => this.redirectTo(response));
-                }
+                        this.$store
+                            .dispatch("fetchUser")
+                            .then(() => this.redirectTo(response));
+                    }
+                });
             });
         },
 
