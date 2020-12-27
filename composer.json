@@ -1,20 +1,24 @@
 {
-    "name": "laravel/laravel",
+    "name": "thavarshan/preflight",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Web Application Scaffolding",
     "keywords": [
+        "boilerplate",
         "framework",
-        "laravel"
+        "preflight"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.4|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.8",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "pragmarx/google2fa": "^8.0",
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -39,12 +43,18 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "tests/Support/helpers.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
