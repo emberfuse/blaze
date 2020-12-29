@@ -1,5 +1,5 @@
-import Vue from "vue";
-import store from "@/Store";
+import Vue from 'vue';
+import store from '@/Store';
 
 /**
  * Handle route guard.
@@ -12,9 +12,9 @@ import store from "@/Store";
  */
 export default function auth(to, from, next) {
     if (!store.getters.check) {
-        Vue.$cookies.set("intended_url", to.path);
+        Vue.$cookies.set('intended_url', to.path);
 
-        return next({ name: "login" });
+        return next({ name: 'login' });
     }
 
     return next();

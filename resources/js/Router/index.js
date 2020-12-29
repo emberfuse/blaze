@@ -1,10 +1,10 @@
-import Vue from "vue";
-import Router from "vue-router";
-import routes from "./routes";
-import store from "@/Store";
-import auth from "./middleware/auth";
-import guest from "./middleware/guest";
-import { sync } from "vuex-router-sync";
+import Vue from 'vue';
+import Router from 'vue-router';
+import routes from './routes';
+import store from '@/Store';
+import auth from './middleware/auth';
+import guest from './middleware/guest';
+import { sync } from 'vuex-router-sync';
 
 Vue.use(Router);
 
@@ -17,6 +17,9 @@ const router = createRouter();
  */
 function createRouter() {
     const router = new Router(routes);
+
+    patchRouterMethod(router, 'push');
+    patchRouterMethod(router, 'replace');
 
     router.beforeEach(middlewareHandler);
 
@@ -35,7 +38,7 @@ function createRouter() {
 async function middlewareHandler(to, from, next) {
     if (!store.getters.check && store.getters.token) {
         try {
-            await store.dispatch("fetchUser");
+            await store.dispatch('fetchUser');
         } catch (error) {}
     }
 
@@ -59,11 +62,11 @@ async function middlewareHandler(to, from, next) {
  * @return  {void}
  */
 function patchRouterMethod(router, methodName) {
-    router["old" + methodName] = router[methodName];
+    router['old' + methodName] = router[methodName];
 
-    router[methodName] = async function(location) {
-        return router["old" + methodName](location).catch(error => {
-            if (error.name === "NavigationDuplicated") {
+    router[methodName] = async (location) => {
+        return router['old' + methodName](location).catch((error) => {
+            if (error.name === 'NavigationDuplicated') {
                 return this.currentRoute;
             }
 
@@ -71,9 +74,6 @@ function patchRouterMethod(router, methodName) {
         });
     };
 }
-
-patchRouterMethod(router, "push");
-patchRouterMethod(router, "replace");
 
 sync(store, router);
 

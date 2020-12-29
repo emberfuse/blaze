@@ -1,4 +1,4 @@
-import Vue from "vue";
-import Cookies from "vue-cookies";
+import Vue from 'vue';
+import Cookies from 'js-cookie';
 
-Vue.use(Cookies);
+Vue.prototype.$cookies = Cookies;

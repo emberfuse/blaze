@@ -1,24 +1,24 @@
-import Vue from "vue";
-import axios from "axios";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default {
     state: {
         user: null,
-        token: Vue.$cookies.get("token")
+        token: Cookies.get('token'),
     },
 
     getters: {
-        user: state => (state.user ? state.user : []),
-        token: state => state.token,
-        check: state => state.user !== null
+        user: (state) => (state.user ? state.user : []),
+        token: (state) => state.token,
+        check: (state) => state.user !== null,
     },
 
     mutations: {
         saveToken(state, { token, remember }) {
             state.token = token;
 
-            Vue.$cookies.set("token", token, {
-                expires: remember ? 365 : null
+            Cookies.set('token', token, {
+                expires: remember ? 365 : null,
             });
         },
 
@@ -34,31 +34,27 @@ export default {
             state.user = null;
             state.token = null;
 
-            Vue.$cookies.remove("token");
-        }
+            Cookies.remove('token');
+        },
     },
 
     actions: {
-        async fetchUser({ commit, state }) {
+        async fetchUser({ commit }) {
             try {
-                const { data } = await axios.get(route("current.user"), {
-                    headers: { Authorization: `Bearer ${state.token}` }
+                await axios.get(route('current.user')).then((response) => {
+                    commit('fetchUserSuccess', { user: response.data });
                 });
-
-                commit("fetchUserSuccess", { user: data });
             } catch (error) {
-                commit("fetchUserFailure");
+                commit('fetchUserFailure');
             }
         },
 
-        async logout({ commit, state }) {
+        async logout({ commit }) {
             try {
-                await axios.post(route("logout"), {}, {
-                    headers: { Authorization: `Bearer ${state.token}` }
-                });
+                await axios.post(route('logout'));
             } catch (error) {}
 
-            commit("logout");
-        }
-    }
+            commit('logout');
+        },
+    },
 };

@@ -8,11 +8,10 @@
 export default {
     methods: {
         makeRequest() {
-            this.$http.get('/test')
-                .then((response) => {
-                    console.log(response);
-                });
-        }
-    }
-}
+            this.$http.get('/test').then((response) => {
+                console.log(response);
+            });
+        },
+    },
+};
 </script>

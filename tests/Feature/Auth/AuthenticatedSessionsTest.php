@@ -21,12 +21,14 @@ class AuthenticatedSessionsTest extends TestCase
         ]);
 
         $response = $this->withoutExceptionHandling()
-            ->postJson('/login', [
+            ->postJson(route('login'), [
                 'email' => 'cheesey@crackermail.com',
                 'password' => 'cheesedUpCracker',
             ]);
 
         $response->assertStatus(200);
         $this->assertTrue(auth()->user()->is($user));
+        $this->assertTrue(array_key_exists('token', json_decode($response->content(), true)));
+        $this->assertDatabaseHas('personal_access_tokens', ['name' => request()->userAgent()]);
     }
 }

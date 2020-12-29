@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Contracts\AuthenticatesUsers;
+use App\Http\Responses\LoginResponse;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Contracts\Foundation\Application;
 
 class AuthenticatedSessionsController extends Controller
 {
@@ -28,13 +30,16 @@ class AuthenticatedSessionsController extends Controller
     /**
      * Create new controller instance.
      *
-     * @param \App\Contracts\Auth\AuthenticatesUsers   $authenticator
-     * @param \Illuminate\Contracts\Auth\StatefulGuard $guard
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     * @param \App\Contracts\Auth\AuthenticatesUsers       $authenticator
+     * @param \Illuminate\Contracts\Auth\StatefulGuard     $guard
      *
      * @return void
      */
-    public function __construct(AuthenticatesUsers $authenticator, StatefulGuard $guard)
+    public function __construct(Application $app, AuthenticatesUsers $authenticator, StatefulGuard $guard)
     {
+        parent::__construct($app);
+
         $this->authenticator = $authenticator;
         $this->guard = $guard;
     }
@@ -50,11 +55,7 @@ class AuthenticatedSessionsController extends Controller
     {
         return $this->authenticator->authenticate($request)
             ->then(function (Request $request): Response {
-                $token = explode('|', $request->user()->createToken($request->userAgent())->plainTextToken, 2)[1];
-
-                return $request->wantsJson()
-                    ? response()->json(['tfa' => false, 'token' => $token])
-                    : redirect()->intended(config('auth.defaults.home'));
+                return $this->app->make(LoginResponse::class, [$request]);
             });
     }
 

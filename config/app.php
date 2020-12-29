@@ -14,7 +14,7 @@ return [
 
     'name' => env('APP_NAME', 'Preflight'),
 
-    'title' => 'Bolierplate application',
+    'title' => 'Bolierplate Application',
 
     /*
     |--------------------------------------------------------------------------

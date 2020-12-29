@@ -15,7 +15,7 @@ class Repository {
      * @return {Any}
      */
     get(key, defaultValue = null) {
-        const value = key.split(".").reduce((object, item) => {
+        const value = key.split('.').reduce((object, item) => {
             return object[item];
         }, this.items);
 

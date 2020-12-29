@@ -1,4 +1,4 @@
-import store from "@/Store";
+import store from '@/Store';
 
 /**
  * Handle route guard.
@@ -11,7 +11,7 @@ import store from "@/Store";
  */
 export default function guest(to, from, next) {
     if (store.getters.check) {
-        return next({ name: "home" });
+        return next({ name: 'home' });
     }
 
     return next();

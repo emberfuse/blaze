@@ -1,12 +1,12 @@
-import Vue from "vue";
-import axios from "axios";
-import store from "@/Store";
-import router from "@/Router";
+import Vue from 'vue';
+import axios from 'axios';
+import store from '@/Store';
+import router from '@/Router';
 
-axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.withCredentials = true;
 
-axios.interceptors.request.use(request => {
+axios.interceptors.request.use((request) => {
     const token = store.getters.token;
 
     if (token) {
@@ -17,14 +17,14 @@ axios.interceptors.request.use(request => {
 });
 
 axios.interceptors.response.use(
-    response => response,
-    error => {
+    (response) => response,
+    (error) => {
         const { status } = error.response;
 
         if (status === 401 && store.getters.check) {
-            store.commit("logout");
+            store.commit('logout');
 
-            router.push({ name: "login" });
+            router.push({ name: 'login' });
         }
     }
 );

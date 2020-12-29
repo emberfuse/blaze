@@ -1,6 +1,6 @@
-import Vue from "vue";
-import moment from "moment";
+import Vue from 'vue';
+import moment from 'moment';
 
-Vue.prototype.$from = timestamp => {
+Vue.prototype.$from = (timestamp) => {
     return moment(timestamp).fromNow();
 };

@@ -7,24 +7,16 @@
                 </template>
 
                 <template #linksleft>
-                    <navbar-link
-                        class="text-white hover:bg-gray-900 focus:bg-gray-900"
-                        href="#"
+                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
                         >Dashboard</navbar-link
                     >
-                    <navbar-link
-                        class="text-white hover:bg-gray-900 focus:bg-gray-900"
-                        href="#"
+                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
                         >Spaces</navbar-link
                     >
-                    <navbar-link
-                        class="text-white hover:bg-gray-900 focus:bg-gray-900"
-                        href="#"
+                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
                         >Orders</navbar-link
                     >
-                    <navbar-link
-                        class="text-white hover:bg-gray-900 focus:bg-gray-900"
-                        href="#"
+                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
                         >Support</navbar-link
                     >
                 </template>
@@ -33,7 +25,7 @@
                     <dropdown align="right">
                         <template #trigger>
                             <button
-                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition  duration-150 ease-in-out"
+                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
                             >
                                 <img
                                     :src="user.profile_photo_url"
@@ -46,9 +38,7 @@
                         <template #items>
                             <dropdown-link href="#">Profile</dropdown-link>
                             <dropdown-link href="#">API token</dropdown-link>
-                            <dropdown-link href="#" @clicked="logout"
-                                >Sign out</dropdown-link
-                            >
+                            <dropdown-link href="#" @clicked="logout">Sign out</dropdown-link>
                         </template>
                     </dropdown>
                 </template>
@@ -72,16 +62,16 @@
 </template>
 
 <script>
-import Logo from "@/Views/Components/Logos/Logo";
-import Navbar from "@/Views/Components/Navbars/Navbar";
-import NavbarLink from "@/Views/Components/Navbars/NavbarLink";
-import Dropdown from "@/Views/Components/Dropdowns/Dropdown";
-import DropdownLink from "@/Views/Components/Dropdowns/DropdownLink";
-import MainSection from "@/Views/Components/Sections/MainSection";
-import SectionTitle from "@/Views/Components/Sections/SectionTitle";
-import SectionContent from "@/Views/Components/Sections/SectionContent";
-import SectionHeader from "@/Views/Components/Sections/SectionHeader";
-import SectionFooter from "@/Views/Components/Sections/SectionFooter";
+import Logo from '@/Views/Components/Logos/Logo';
+import Navbar from '@/Views/Components/Navbars/Navbar';
+import NavbarLink from '@/Views/Components/Navbars/NavbarLink';
+import Dropdown from '@/Views/Components/Dropdowns/Dropdown';
+import DropdownLink from '@/Views/Components/Dropdowns/DropdownLink';
+import MainSection from '@/Views/Components/Sections/MainSection';
+import SectionTitle from '@/Views/Components/Sections/SectionTitle';
+import SectionContent from '@/Views/Components/Sections/SectionContent';
+import SectionHeader from '@/Views/Components/Sections/SectionHeader';
+import SectionFooter from '@/Views/Components/Sections/SectionFooter';
 
 export default {
     components: {
@@ -94,29 +84,29 @@ export default {
         SectionTitle,
         SectionContent,
         SectionHeader,
-        SectionFooter
+        SectionFooter,
     },
 
     computed: {
         user() {
             return this.$store.getters.user;
-        }
+        },
     },
 
     data() {
         return {
             copyright: `© ${new Date().getFullYear()} ${this.config(
-                "app.name"
-            )}. All rights reserved.`
+                'app.name'
+            )}. All rights reserved.`,
         };
     },
 
     methods: {
         async logout() {
-            await this.$store.dispatch("logout").then(() => {
-                this.$router.push({ name: "login" });
+            await this.$store.dispatch('logout').then(() => {
+                this.$router.push({ name: 'login' });
             });
-        }
-    }
+        },
+    },
 };
 </script>

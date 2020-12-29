@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import LogoLight from "@/Views/Components/Logos/LogoLight";
-import Navbar from "@/Views/Components/Navbars/Navbar";
-import NavbarLink from "@/Views/Components/Navbars/NavbarLink";
-import Dropdown from "@/Views/Components/Dropdowns/Dropdown";
-import DropdownLink from "@/Views/Components/Dropdowns/DropdownLink";
-import MainSection from "@/Views/Components/Sections/MainSection";
-import SectionContent from "@/Views/Components/Sections/SectionContent";
+import LogoLight from '@/Views/Components/Logos/LogoLight';
+import Navbar from '@/Views/Components/Navbars/Navbar';
+import NavbarLink from '@/Views/Components/Navbars/NavbarLink';
+import Dropdown from '@/Views/Components/Dropdowns/Dropdown';
+import DropdownLink from '@/Views/Components/Dropdowns/DropdownLink';
+import MainSection from '@/Views/Components/Sections/MainSection';
+import SectionContent from '@/Views/Components/Sections/SectionContent';
 
 export default {
     components: {
@@ -33,7 +33,7 @@ export default {
         Dropdown,
         DropdownLink,
         MainSection,
-        SectionContent
-    }
+        SectionContent,
+    },
 };
 </script>

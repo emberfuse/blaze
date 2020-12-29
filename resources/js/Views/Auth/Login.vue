@@ -6,9 +6,7 @@
             </div>
 
             <div class="mt-6">
-                <h2 class="font-semibold text-3xl text-gray-800">
-                    Welcome back
-                </h2>
+                <h2 class="font-semibold text-3xl text-gray-800">Welcome back</h2>
 
                 <h6 class="text-base font-normal">
                     Don't have an account yet?
@@ -72,12 +70,12 @@
 </template>
 
 <script>
-import AuthLayout from "@/Views/Layouts/AuthLayout";
-import Logo from "@/Views/Components/Logos/Logo";
-import AppLink from "@/Views/Components/Base/Link";
-import AppInput from "@/Views/Components/Inputs/Input";
-import AppButton from "@/Views/Components/Buttons/Button";
-import Checkbox from "@/Views/Components/Inputs/Checkbox";
+import AuthLayout from '@/Views/Layouts/AuthLayout';
+import Logo from '@/Views/Components/Logos/Logo';
+import AppLink from '@/Views/Components/Base/Link';
+import AppInput from '@/Views/Components/Inputs/Input';
+import AppButton from '@/Views/Components/Buttons/Button';
+import Checkbox from '@/Views/Components/Inputs/Checkbox';
 
 export default {
     components: {
@@ -86,7 +84,7 @@ export default {
         AppLink,
         AppInput,
         AppButton,
-        Checkbox
+        Checkbox,
     },
 
     data() {
@@ -95,44 +93,42 @@ export default {
                 {
                     email: null,
                     password: null,
-                    remember: true
+                    remember: true,
                 },
                 {
-                    resetOnSuccess: false
+                    resetOnSuccess: false,
                 }
-            )
+            ),
         };
     },
 
     methods: {
         async login() {
-            await this.$http.get("/sanctum/csrf-cookie").then(async () => {
-                await this.form.post(this.route("login")).then(response => {
+            await this.$http.get('/sanctum/csrf-cookie').then(async () => {
+                await this.form.post(this.route('login')).then((response) => {
                     if (!this.form.hasErrors()) {
-                        this.$store.commit("saveToken", {
+                        this.$store.commit('saveToken', {
                             token: response.data.token,
-                            remember: this.form.remember
+                            remember: this.form.remember,
                         });
 
-                        this.$store
-                            .dispatch("fetchUser")
-                            .then(() => this.redirectTo(response));
+                        this.$store.dispatch('fetchUser').then(() => this.redirectTo(response));
                     }
                 });
             });
         },
 
         redirectTo(response) {
-            const intendedUrl = this.$cookies.get("intended_url");
+            const intendedUrl = this.$cookies.get('intended_url');
 
             if (intendedUrl) {
                 this.$router.push({ path: intendedUrl });
             } else if (response.data.tfa === true) {
-                this.$router.push({ name: "tfa.login" });
+                this.$router.push({ name: 'tfa.login' });
             }
 
-            this.$router.push({ name: "home" });
-        }
-    }
+            this.$router.push({ name: 'home' });
+        },
+    },
 };
 </script>

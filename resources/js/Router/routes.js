@@ -1,40 +1,40 @@
-import Welcome from "@/Views/Marketing/Welcome";
-import Login from "@/Views/Auth/Login";
-import Register from "@/Views/Auth/Register";
-import Home from "@/Views/Business/Home";
-import Test from "@/Views/Testing/Test";
+import Welcome from '@/Views/Marketing/Welcome';
+import Login from '@/Views/Auth/Login';
+import Register from '@/Views/Auth/Register';
+import Home from '@/Views/Business/Home';
+import Test from '@/Views/Testing/Test';
 
 export default {
-    mode: "history",
+    mode: 'history',
 
     routes: [
         {
-            path: "/",
-            name: "welcome",
-            component: Welcome
+            path: '/',
+            name: 'welcome',
+            component: Welcome,
         },
         {
-            path: "/login",
-            name: "login",
+            path: '/login',
+            name: 'login',
             component: Login,
-            meta: { guest: true }
+            meta: { guest: true },
         },
         {
-            path: "/register",
-            name: "register",
+            path: '/register',
+            name: 'register',
             component: Register,
-            meta: { guest: true }
+            meta: { guest: true },
         },
         {
-            path: "/home",
-            name: "home",
+            path: '/home',
+            name: 'home',
             component: Home,
-            meta: { auth: true }
+            meta: { auth: true },
         },
         {
-            path: "/test",
-            name: "test",
-            component: Test
-        }
-    ]
+            path: '/test',
+            name: 'test',
+            component: Test,
+        },
+    ],
 };
