@@ -3,6 +3,8 @@ name: Run Complete Test Suite
 on:
   push:
   pull_request:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   tests:
@@ -74,7 +76,6 @@ jobs:
           yarn && yarn dev
 
       - name: Run tests
-        env:
         run: ./vendor/bin/phpunit --verbose
 
       - name: Run security checks
