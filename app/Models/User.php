@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Traits\HasProfilePhoto;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Concerns\InteractsWithSessions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
+    use HasFactory;
+    use HasProfilePhoto;
+    use InteractsWithSessions;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +24,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'settings',
+        'profile_photo_path',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
     ];
 
     /**
@@ -39,5 +48,15 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'settings' => 'array',
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'profile_photo_url',
     ];
 }
