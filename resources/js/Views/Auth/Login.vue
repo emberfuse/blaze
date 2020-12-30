@@ -89,16 +89,13 @@ export default {
 
     data() {
         return {
-            form: this.$form(
-                {
-                    email: null,
-                    password: null,
-                    remember: true,
-                },
-                {
-                    resetOnSuccess: false,
-                }
-            ),
+            form: this.$form({
+                email: null,
+                password: null,
+                remember: true,
+            }, {
+                resetOnSuccess: false,
+            }),
         };
     },
 

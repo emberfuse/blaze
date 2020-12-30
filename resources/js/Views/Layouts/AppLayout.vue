@@ -7,31 +7,18 @@
                 </template>
 
                 <template #linksleft>
-                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
-                        >Dashboard</navbar-link
-                    >
-                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
-                        >Spaces</navbar-link
-                    >
-                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
-                        >Orders</navbar-link
-                    >
-                    <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" href="#"
-                        >Support</navbar-link
-                    >
+                    <router-link :to="{ name: 'home' }" v-slot="{ href }">
+                        <navbar-link class="text-white hover:bg-gray-900 focus:bg-gray-900" :href="href">
+                            Dashboard
+                        </navbar-link>
+                    </router-link>
                 </template>
 
                 <template #linksright>
                     <dropdown align="right">
                         <template #trigger>
-                            <button
-                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
-                            >
-                                <img
-                                    :src="user.profile_photo_url"
-                                    class="rounded-full object-cover w-8 h-8"
-                                    :alt="user.name"
-                                />
+                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300  transition duration-150 ease-in-out">
+                                <img :src="user.profile_photo_url" class="rounded-full object-cover w-8 h-8" :alt="user.name"/>
                             </button>
                         </template>
 

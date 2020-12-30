@@ -1,12 +1,12 @@
 import Vue from 'vue';
-import axios from 'axios';
+import http from 'axios';
 import store from '@/Store';
 import router from '@/Router';
 
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.withCredentials = true;
+http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+http.defaults.withCredentials = true;
 
-axios.interceptors.request.use((request) => {
+http.interceptors.request.use((request) => {
     const token = store.getters.token;
 
     if (token) {
@@ -16,7 +16,7 @@ axios.interceptors.request.use((request) => {
     return request;
 });
 
-axios.interceptors.response.use(
+http.interceptors.response.use(
     (response) => response,
     (error) => {
         const { status } = error.response;
@@ -29,4 +29,6 @@ axios.interceptors.response.use(
     }
 );
 
-Vue.prototype.$http = axios;
+Vue.prototype.$http = http;
+
+export default http;
