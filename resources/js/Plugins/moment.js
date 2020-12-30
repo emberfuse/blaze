@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import moment from 'moment';
 
 /**
@@ -8,6 +7,6 @@ import moment from 'moment';
  *
  * @return {String}
  */
-Vue.prototype.$from = timestamp => {
+export default function diffForHumans(timestamp) {
     return moment(timestamp).fromNow();
 };

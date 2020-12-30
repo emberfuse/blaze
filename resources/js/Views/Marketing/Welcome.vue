@@ -1,11 +1,17 @@
 <template>
-    <div>
-        Hello!
-    </div>
+    <app-layout>
+        <div>
+            <span class="font-semibold">Preflight</span> checks complete!
+        </div>
+    </app-layout>
 </template>
 
 <script>
-export default {
+import AppLayout from '@/Views/Layouts/AppLayout';
 
-}
+export default {
+    components: {
+        AppLayout
+    }
+};
 </script>
