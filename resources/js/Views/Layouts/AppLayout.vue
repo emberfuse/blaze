@@ -85,7 +85,7 @@ export default {
         async logout() {
             await this.$http
                 .post(route('login.destroy'))
-                .then(() => this.$inertia.get(route('welcome')))
+                .then(() => this.$inertia.get(route('welcome')));
         }
     }
 }

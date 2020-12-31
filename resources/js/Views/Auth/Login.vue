@@ -1,20 +1,18 @@
 <template>
     <auth-layout>
         <template #title>
-            <div>
-                <div class="mt-6">
-                    <h4 class="font-semibold text-xl text-gray-800">Login to your account</h4>
+            <div class="mt-6">
+                <h4 class="font-semibold text-xl text-gray-800">Login to your account</h4>
 
-                    <h6 class="mt-3 font-normal text-base text-gray-500">
-                        Thank you for getting back to us. Lets access your account and get you started.
-                    </h6>
-                </div>
+                <h6 class="mt-3 font-normal text-base text-gray-500">
+                    Thank you for getting back to us. Let's access your account and get you started.
+                </h6>
             </div>
         </template>
 
         <template #form>
             <form @submit.prevent="login" class="w-full">
-                <div class="mt-6 block">
+                <div class="block">
                     <app-input type="email" v-model="form.email" autofocus :error="form.errors.email" label="Email address" placeholder="john.doe@example.com"></app-input>
                 </div>
 
@@ -28,7 +26,7 @@
                     </div>
 
                     <div class="text-sm leading-5">
-                        Forgot your password?
+                        <app-link href="/">Forgot your password?</app-link>
                     </div>
                 </div>
 
@@ -37,6 +35,12 @@
                         Sign in <span class="ml-1">&rarr;</span>
                     </app-button>
                 </div>
+
+                <div class="mt-6">
+                    <p>
+                        Don't have an account yet? <app-link :href="route('register.create')">Join {{ config('app.name') }}</app-link>
+                    </p>
+                </div>
             </form>
         </template>
     </auth-layout>
@@ -44,6 +48,7 @@
 
 <script>
 import AuthLayout from '@/Views/Layouts/AuthLayout';
+import AppLink from '@/Views/Components/Base/Link';
 import AppInput from '@/Views/Components/Inputs/Input';
 import AppButton from '@/Views/Components/Buttons/Button';
 import Checkbox from '@/Views/Components/Inputs/Checkbox';
@@ -51,6 +56,7 @@ import Checkbox from '@/Views/Components/Inputs/Checkbox';
 export default {
     components: {
         AuthLayout,
+        AppLink,
         AppInput,
         AppButton,
         Checkbox
