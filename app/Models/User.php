@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Traits\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Concerns\InteractsWithSessions;
+use App\Models\Traits\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

@@ -4,7 +4,7 @@ namespace App\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 
-class LoginResponse extends Response implements Responsable
+class LogoutResponse extends Response implements Responsable
 {
     /**
      * Create an HTTP response that represents the object.
@@ -16,7 +16,7 @@ class LoginResponse extends Response implements Responsable
     public function toResponse($request)
     {
         return $request->expectsJson()
-            ? $this->make()->json(['two_factor' => false])
-            : $this->redirectToIntended($this->home());
+            ? $this->make()->json('', 204)
+            : $this->redirectTo('/');
     }
 }

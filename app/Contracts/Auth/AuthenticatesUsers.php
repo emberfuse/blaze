@@ -10,7 +10,8 @@ interface AuthenticatesUsers
     /**
      * Authenticate user into application.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Contracts\Pipeline\Pipeline $pipeline
+     * @param \Illuminate\Http\Request                $request
      *
      * @return mixed
      */

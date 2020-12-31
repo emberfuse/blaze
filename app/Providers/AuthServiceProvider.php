@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Auth\Actions\AuthenticateUser;
+use App\Contracts\Auth\AuthenticatesUsers;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
 use App\Auth\Middleware\EnsureLoginIsNotThrottled;
@@ -19,6 +21,15 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+    ];
+
+    /**
+     * Complete list of all classes neccessary to perform authenticated user actions.
+     *
+     * @var array
+     */
+    public static $authActions = [
+        AuthenticatesUsers::class => AuthenticateUser::class,
     ];
 
     /**
@@ -51,6 +62,19 @@ class AuthServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerAuthGuard();
+        $this->registerAuthActions();
+    }
+
+    /**
+     * Register all auth action classes.
+     *
+     * @return void
+     */
+    protected function registerAuthActions(): void
+    {
+        foreach (static::$authActions as $abstract => $concrete) {
+            $this->app->singleton($abstract, $concrete);
+        }
     }
 
     /**
