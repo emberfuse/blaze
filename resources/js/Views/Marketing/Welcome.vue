@@ -1,17 +1,17 @@
 <template>
-    <app-layout>
+    <guest-layout>
         <div>
             <span class="font-semibold">Preflight</span> checks complete!
         </div>
-    </app-layout>
+    </guest-layout>
 </template>
 
 <script>
-import AppLayout from '@/Views/Layouts/AppLayout';
+import GuestLayout from '@/Views/Layouts/GuestLayout';
 
 export default {
     components: {
-        AppLayout
+        GuestLayout
     }
 };
 </script>

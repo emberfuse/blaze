@@ -13,9 +13,9 @@ trait InteractsWithSessions
     /**
      * Get user sessions details.
      *
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
-    public function getSessionsAttribute(): Collection
+    public function getSessionsAttribute(): array
     {
         return $this->sessions(request())->all();
     }
