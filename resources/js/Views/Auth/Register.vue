@@ -1,8 +1,12 @@
 <template>
     <auth-layout>
         <template #title>
-            <div class="mt-6">
-                <h4 class="font-semibold text-xl text-gray-800">Create new account</h4>
+            <div>
+                <div>
+                    <logo :title="config('app.name')" classes="h-16 w-auto text-blue-500"></logo>
+                </div>
+
+                <h4 class="mt-6 font-semibold text-xl text-gray-800">Create new account</h4>
 
                 <h6 class="mt-3 font-normal text-base text-gray-500">
                     Let's get you all set up so you can verify your personal account and begin setting up your profile.
@@ -42,6 +46,7 @@
 
 <script>
 import AuthLayout from '@/Views/Layouts/AuthLayout';
+import Logo from '@/Views/Components/Logos/Logo';
 import AppLink from '@/Views/Components/Base/Link';
 import AppInput from '@/Views/Components/Inputs/Input';
 import AppButton from '@/Views/Components/Buttons/Button';
@@ -50,6 +55,7 @@ import Checkbox from '@/Views/Components/Inputs/Checkbox';
 export default {
     components: {
         AuthLayout,
+        Logo,
         AppLink,
         AppInput,
         AppButton,

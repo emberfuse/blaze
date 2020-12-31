@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
+use App\Auth\Actions\DeleteUser;
 use App\Auth\Actions\CreateNewUser;
+use App\Contracts\Auth\DeletesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Auth\Actions\AuthenticateUser;
+use App\Auth\Actions\UpdateUserProfile;
 use App\Contracts\Auth\CreatesNewUsers;
 use App\Contracts\Auth\AuthenticatesUsers;
+use App\Contracts\Auth\UpdatesUserProfiles;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
 use App\Auth\Middleware\EnsureLoginIsNotThrottled;
@@ -33,6 +37,8 @@ class AuthServiceProvider extends ServiceProvider
     public static $authActions = [
         AuthenticatesUsers::class => AuthenticateUser::class,
         CreatesNewUsers::class => CreateNewUser::class,
+        UpdatesUserProfiles::class => UpdateUserProfile::class,
+        DeletesUsers::class => DeleteUser::class,
     ];
 
     /**

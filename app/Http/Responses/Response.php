@@ -2,6 +2,7 @@
 
 namespace App\Http\Responses;
 
+use Illuminate\Routing\Redirector;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Routing\ResponseFactory;
 
@@ -23,6 +24,16 @@ abstract class Response extends ResponseFactory
         }
 
         return parent::make($content, $status, $headers);
+    }
+
+    /**
+     * Get instance of route redirector.
+     *
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function redirector(): Redirector
+    {
+        return $this->redirector;
     }
 
     /**

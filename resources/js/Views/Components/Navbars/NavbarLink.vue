@@ -14,8 +14,8 @@
         computed: {
             classes() {
                 return this.active
-                    ? 'opacity-100'
-                    : 'opacity-75'
+                    ? 'opacity-100 bg-opacity-100'
+                    : 'opacity-75 bg-opacity-0'
             }
         }
     }

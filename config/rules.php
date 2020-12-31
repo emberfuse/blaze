@@ -27,4 +27,14 @@ return [
         ],
         'password' => ['required', 'string', new PasswordRule()],
     ],
+
+    /*
+     * Use Profile Information Validation Rules.
+     */
+    'update_profile' => [
+        'photo' => ['sometimes', 'image', 'max:1024'],
+        'name' => ['required', 'string', 'max:255'],
+        'username' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email'],
+    ],
 ];

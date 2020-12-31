@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\Auth\UserProfilePhotoController;
 
 Route::group([
     'middleware' => 'guest',
@@ -18,4 +20,9 @@ Route::group([
     'middleware' => 'auth',
 ], function (): void {
     Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
+
+    Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.show');
+    Route::put('/user/profile', [UserProfileController::class, 'update'])->name('user.update');
+    Route::delete('/user/profile', [UserProfileController::class, 'destroy'])->name('user.destroy');
+    Route::delete('/user/profile-photo', [UserProfilePhotoController::class, 'destroy'])->name('user-photo.destroy');
 });
