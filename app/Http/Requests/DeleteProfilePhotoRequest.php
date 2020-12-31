@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Concerns\AuthorizesRequests;
-use App\Http\Requests\Concerns\ValidatesInput;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Concerns\AuthorizesRequests;
 
 class DeleteProfilePhotoRequest extends FormRequest
 {
@@ -17,7 +16,7 @@ class DeleteProfilePhotoRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->isAuthenticated();
+        return $this->isAllowed('manage', $this->user());
     }
 
     /**
