@@ -19,7 +19,7 @@ Route::group([
 Route::group([
     'middleware' => 'auth',
 ], function (): void {
-    Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.show');
     Route::put('/user/profile', [UserProfileController::class, 'update'])->name('user.update');

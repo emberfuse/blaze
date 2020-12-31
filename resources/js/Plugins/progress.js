@@ -1,16 +1,15 @@
 import { InertiaProgress } from '@inertiajs/progress';
 
-InertiaProgress.init({
-    // The delay after which the progress bar will
-    // appear during navigation, in milliseconds.
-    delay: 250,
-
-    // The color of the progress bar.
-    color: '#3B82F6',
-
-    // Whether to include the default NProgress styles.
-    includeCSS: true,
-
-    // Whether the NProgress spinner will be shown.
-    showSpinner: false,
-});
+/**
+ * Initialize page load indicator progressbar.
+ *
+ * @return  {void}
+ */
+export default function initProgressIndicator() {
+    InertiaProgress.init({
+        delay: 250,
+        color: '#3B82F6',
+        includeCSS: true,
+        showSpinner: false,
+    });
+}

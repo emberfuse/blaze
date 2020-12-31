@@ -83,9 +83,7 @@ export default {
 
     methods: {
         async login() {
-            await this.form.post(route('login.store'), {
-                onSuccess: () => this.$inertia.get(route('home'))
-            });
+            await this.form.post(route('login.store'));
         }
     }
 };

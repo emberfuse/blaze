@@ -33,7 +33,7 @@
                         <template #items>
                             <dropdown-link :href="route('user.show')">Profile</dropdown-link>
                             <dropdown-link href="#">API token</dropdown-link>
-                            <dropdown-link href="#" @clicked="logout">Sign out</dropdown-link>
+                            <dropdown-link href="#" @clicked="logout" :action="true">Sign out</dropdown-link>
                         </template>
                     </dropdown>
                 </template>
@@ -81,17 +81,15 @@ export default {
 
     data() {
         return {
-            copyright: `© ${new Date().getFullYear()} ${this.config(
-                'app.name'
-            )}. All rights reserved.`,
+            copyright: `© ${new Date().getFullYear()} ${this.config('app.name')}. All rights reserved.`,
         };
     },
 
     methods: {
         async logout() {
             await this.$http
-                .post(route('login.destroy'))
-                .then(() => this.$inertia.get(route('welcome')));
+                .post(route('logout'))
+                .then(() => window.location = route('welcome'));
         }
     }
 }

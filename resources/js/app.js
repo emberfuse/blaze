@@ -1,9 +1,10 @@
-import './Plugins';
+import '@/Plugins';
 
 import Vue from 'vue';
 import { App, plugin } from '@inertiajs/inertia-vue';
-import diffForHumans from './Plugins/moment';
-import config from './Config';
+import diffForHumans from '@/Plugins/moment';
+import initProgressIndicator from '@/Plugins/progress';
+import config from '@/Config';
 
 Vue.config.productionTip = false;
 
@@ -16,6 +17,10 @@ const app = document.getElementById('app');
 new Vue({
     metaInfo: {
         titleTemplate: title => title ? `${title} - Preflight` : 'Preflight'
+    },
+
+    created() {
+        initProgressIndicator();
     },
 
     render: h => h(App, {
