@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use TwoFactorAuthenticatable;
+use Laravel\Sanctum\HasApiTokens;
 use App\Models\Traits\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Concerns\InteractsWithSessions;
@@ -12,8 +14,10 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasFactory;
+    use HasApiTokens;
     use HasProfilePhoto;
     use InteractsWithSessions;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -48,6 +52,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'two_factor_enabled' => 'boolean',
         'settings' => 'array',
     ];
 
@@ -58,5 +63,6 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'sessions',
     ];
 }

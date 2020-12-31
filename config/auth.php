@@ -1,7 +1,8 @@
 <?php
 
-return [
+use App\Providers\RouteServiceProvider;
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -114,4 +115,15 @@ return [
 
     'password_timeout' => 10800,
 
+    'home' => RouteServiceProvider::HOME,
+
+    'limiters' => [
+        'login' => null,
+    ],
+
+    'credentials' => [
+        'username' => 'email',
+        'email' => 'email',
+        'password' => 'password',
+    ],
 ];
