@@ -3,9 +3,14 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Concerns\ValidatesInput;
+use App\Http\Requests\Concerns\AuthorizesRequests;
 
 class RegisterRequest extends FormRequest
 {
+    use ValidatesInput;
+    use AuthorizesRequests;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +18,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->isGuest();
     }
 
     /**
@@ -23,8 +28,6 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return $this->getRulesFor('register');
     }
 }

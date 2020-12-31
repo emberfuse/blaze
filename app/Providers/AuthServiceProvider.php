@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Auth\Actions\CreateNewUser;
 use Illuminate\Support\Facades\Auth;
 use App\Auth\Actions\AuthenticateUser;
+use App\Contracts\Auth\CreatesNewUsers;
 use App\Contracts\Auth\AuthenticatesUsers;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
@@ -30,6 +32,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public static $authActions = [
         AuthenticatesUsers::class => AuthenticateUser::class,
+        CreatesNewUsers::class => CreateNewUser::class,
     ];
 
     /**
