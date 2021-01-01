@@ -6,6 +6,6 @@
 
 <script>
 export default {
-    props: ['href', 'action']
+    props: ['href']
 };
 </script>

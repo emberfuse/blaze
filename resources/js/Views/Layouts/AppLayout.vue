@@ -33,7 +33,7 @@
                         <template #items>
                             <dropdown-link :href="route('user.show')">Profile</dropdown-link>
                             <dropdown-link href="#">API token</dropdown-link>
-                            <dropdown-link href="#" @clicked="logout" :action="true">Sign out</dropdown-link>
+                            <dropdown-link href="#" @clicked="logout">Sign out</dropdown-link>
                         </template>
                     </dropdown>
                 </template>
@@ -87,8 +87,7 @@ export default {
 
     methods: {
         async logout() {
-            await this.$http
-                .post(route('logout'))
+            await this.$http.post(route('logout'))
                 .then(() => window.location = route('welcome'));
         }
     }

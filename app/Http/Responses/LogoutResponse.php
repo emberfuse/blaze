@@ -17,6 +17,6 @@ class LogoutResponse extends Response implements Responsable
     {
         return $request->expectsJson()
             ? $this->make()->json('', 204)
-            : $this->redirectTo('/');
+            : $this->redirectTo('/', 303);
     }
 }

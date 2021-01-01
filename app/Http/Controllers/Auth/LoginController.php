@@ -55,7 +55,7 @@ class LoginController extends Controller
     public function store(LoginRequest $request, AuthenticatesUsers $authenticator): Response
     {
         return $authenticator->authenticate(new Pipeline($this->app()), $request)
-            ->then(fn (Request $request): Response => $this->app(LoginResponse::class));
+            ->then(fn (): LoginResponse => $this->app(LoginResponse::class));
     }
 
     /**
@@ -63,15 +63,17 @@ class LoginController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \App\Http\Responses\LogoutResponse
+     * @return \App\Http\Responses\Response
      */
-    public function destroy(Request $request): LogoutResponse
+    public function destroy(Request $request): Response
     {
         $this->guard->logout();
 
-        $request->session()->invalidate();
+        tap($request->session(), function ($session) {
+            $session->invalidate();
 
-        $request->session()->regenerateToken();
+            $session->regenerateToken();
+        });
 
         return app(LogoutResponse::class);
     }

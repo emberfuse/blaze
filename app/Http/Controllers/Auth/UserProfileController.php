@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Jobs\DeleteUserJob;
 use Illuminate\Http\Request;
+use App\Http\Responses\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DeleteUserRequest;
 use Inertia\Response as InertiaResponse;
@@ -33,9 +34,9 @@ class UserProfileController extends Controller
      * @param \App\Http\Requests\UpdateUserProfileRequest $request
      * @param \App\Contracts\Auth\UpdatesUserProfiles     $updator
      *
-     * @return \App\Http\Responses\UpdateProfileResponse
+     * @return \App\Http\Responses\Response
      */
-    public function update(UpdateProfileRequest $request, UpdatesUserProfiles $updator): UpdateProfileResponse
+    public function update(UpdateProfileRequest $request, UpdatesUserProfiles $updator): Response
     {
         $updator->update($request->user(), $request->validated());
 
@@ -49,9 +50,9 @@ class UserProfileController extends Controller
      * @param \App\Auth\Contracts\DeletesUsers         $deletor
      * @param \Illuminate\Contracts\Auth\StatefulGuard $auth
      *
-     * @return \App\Http\Responses\DeleteUserResponse
+     * @return \App\Http\Responses\Response
      */
-    public function destroy(DeleteUserRequest $request, StatefulGuard $auth): DeleteUserResponse
+    public function destroy(DeleteUserRequest $request, StatefulGuard $auth): Response
     {
         DeleteUserJob::dispatch($request->user()->fresh());
 
