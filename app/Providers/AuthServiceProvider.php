@@ -49,8 +49,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     public static $loginPipeline = [
-        EnsureLoginIsNotThrottled::class,
-        RedirectIfTwoFactorAuthenticatable::class,
+        // EnsureLoginIsNotThrottled::class,
+        // RedirectIfTwoFactorAuthenticatable::class,
         AttemptToAuthenticate::class,
         PrepareAuthenticatedSession::class,
     ];

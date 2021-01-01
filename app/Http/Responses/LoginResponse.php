@@ -17,6 +17,6 @@ class LoginResponse extends Response implements Responsable
     {
         return $request->expectsJson()
             ? $this->make()->json(['two_factor' => false])
-            : $this->redirectToIntended($this->home());
+            : $this->redirectToIntended($this->home(), 303);
     }
 }

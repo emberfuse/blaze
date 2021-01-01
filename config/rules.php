@@ -11,6 +11,7 @@ return [
     'login' => [
         'email' => ['required', 'string', 'email'],
         'password' => ['required', 'string'],
+        'remember' => ['sometimes'],
     ],
 
     /*
