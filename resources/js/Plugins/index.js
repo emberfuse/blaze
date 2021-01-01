@@ -7,5 +7,7 @@ import initProgressIndicator from './progress';
 try {
     initProgressIndicator();
 } catch (error) {
-    console.log(error);
+    if (process.env.MIX_APP_ENV) {
+        console.log(error);
+    }
 }
