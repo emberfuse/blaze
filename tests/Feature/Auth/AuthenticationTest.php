@@ -40,7 +40,7 @@ class AuthenticationTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    public function testUsersCanAuthenticateUsingXhrrequest()
+    public function testUsersCanAuthenticateUsingXhrRequest()
     {
         $user = create(User::class, [
             'email' => 'cheesey@crackers.com',

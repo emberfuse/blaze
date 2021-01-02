@@ -12,6 +12,11 @@ class CreateNewUserTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function tearDown(): void
+    {
+        CreateNewUser::afterCreatingUser(null);
+    }
+
     public function testItCanBeInstantiated()
     {
         $creator = new CreateNewUser();

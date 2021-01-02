@@ -17,6 +17,6 @@ class RegisterResponse extends Response implements Responsable
     {
         return $request->expectsJson()
             ? $this->make()->json('', 201)
-            : $this->redirectToRoute('home');
+            : $this->redirectToRoute('home', [], 303);
     }
 }

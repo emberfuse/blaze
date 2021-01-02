@@ -80,11 +80,11 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Register a callback that will be executed after a user has been created.
      *
-     * @param \Closure $callback
+     * @param \Closure|null $callback
      *
      * @return void
      */
-    public static function afterCreatingUser(Closure $callback): void
+    public static function afterCreatingUser(?Closure $callback = null): void
     {
         static::$afterCreatingUserCallback = $callback;
     }
