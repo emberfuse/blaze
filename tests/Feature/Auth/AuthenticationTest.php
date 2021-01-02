@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class LoginControllerTest extends TestCase
+class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
 

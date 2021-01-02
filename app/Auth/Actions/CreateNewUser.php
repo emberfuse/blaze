@@ -2,6 +2,7 @@
 
 namespace App\Auth\Actions;
 
+use Closure;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,8 @@ use App\Contracts\Auth\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
+    protected static $afterCreatingUserCallback;
+
     /**
      * Create a newly registered user.
      *
@@ -20,7 +23,16 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $data)
     {
         return DB::transaction(function () use ($data) {
-            return tap($this->createUser($data), fn (User $user) => $user);
+            return tap($this->createUser($data), function (User $user) use ($data) {
+                if (static::$afterCreatingUserCallback) {
+                    return call_user_func_array(
+                        static::$afterCreatingUserCallback,
+                        [$user, $data]
+                    );
+                }
+
+                return $user;
+            });
         });
     }
 
@@ -63,5 +75,17 @@ class CreateNewUser implements CreatesNewUsers
         }
 
         return $firstName;
+    }
+
+    /**
+     * Register a callback that will be executed after a user has been created.
+     *
+     * @param \Closure $callback
+     *
+     * @return void
+     */
+    public static function afterCreatingUser(Closure $callback): void
+    {
+        static::$afterCreatingUserCallback = $callback;
     }
 }
