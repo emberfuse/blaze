@@ -55,7 +55,7 @@ class LoginController extends Controller
     public function store(LoginRequest $request, AuthenticatesUsers $authenticator): Response
     {
         return $authenticator->authenticate(new Pipeline($this->app()), $request)
-            ->then(fn (): LoginResponse => $this->app(LoginResponse::class));
+            ->then(fn (): Response => $this->app(LoginResponse::class));
     }
 
     /**

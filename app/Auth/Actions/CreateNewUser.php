@@ -11,6 +11,11 @@ use App\Contracts\Auth\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
+    /**
+     * Callback that will be executed after a user has been created.
+     *
+     * @var \Closure|null
+     */
     protected static $afterCreatingUserCallback;
 
     /**

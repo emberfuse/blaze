@@ -2,6 +2,7 @@
 
 namespace App\Auth\Middleware;
 
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
 use App\Auth\Guards\LoginRateLimiter;
@@ -26,6 +27,13 @@ abstract class Authenticator
     protected $limiter;
 
     /**
+     * Callback that will be executed after a user has been authenticated.
+     *
+     * @var \Closure|null
+     */
+    protected static $authenticated;
+
+    /**
      * Create a new controller instance.
      *
      * @param \Illuminate\Contracts\Auth\StatefulGuard $guard
@@ -37,6 +45,18 @@ abstract class Authenticator
     {
         $this->guard = $guard;
         $this->limiter = $limiter;
+    }
+
+    /**
+     * Register a callback that will be executed after a user has been authenticated.
+     *
+     * @param \Closure|null $callback
+     *
+     * @return void
+     */
+    public static function afterAuthentication(?Closure $callback = null): void
+    {
+        static::$authenticated = $callback;
     }
 
     /**

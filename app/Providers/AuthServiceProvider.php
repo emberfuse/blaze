@@ -9,10 +9,12 @@ use App\Auth\Actions\CreateNewUser;
 use App\Contracts\Auth\DeletesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Auth\Actions\AuthenticateUser;
+use App\Auth\Middleware\Authenticator;
 use App\Auth\Actions\UpdateUserProfile;
 use App\Contracts\Auth\CreatesNewUsers;
 use App\Contracts\Auth\AuthenticatesUsers;
 use App\Contracts\Auth\UpdatesUserProfiles;
+use App\Auth\Middleware\AfterAuthenticating;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
 use App\Auth\Middleware\EnsureLoginIsNotThrottled;
@@ -50,9 +52,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public static $loginPipeline = [
         // EnsureLoginIsNotThrottled::class,
-        // RedirectIfTwoFactorAuthenticatable::class,
+        RedirectIfTwoFactorAuthenticatable::class,
         AttemptToAuthenticate::class,
         PrepareAuthenticatedSession::class,
+        AfterAuthenticating::class,
     ];
 
     /**
@@ -63,6 +66,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        $this->registerAuthActionAfterHooks();
     }
 
     /**
@@ -99,5 +104,21 @@ class AuthServiceProvider extends ServiceProvider
             StatefulGuard::class,
             fn () => Auth::guard(config('auth.defaults.guard', 'web'))
         );
+    }
+
+    /**
+     * Register actions to erform after every major authentication events.
+     *
+     * @return void
+     */
+    protected function registerAuthActionAfterHooks(): void
+    {
+        // Actions to perform after new user has been
+        // created and saved to the database.
+        CreateNewUser::afterCreatingUser(fn () => null);
+
+        // Actions to perform after an existing user
+        // has been successfully authenticated.
+        Authenticator::afterAuthentication(fn () => null);
     }
 }
