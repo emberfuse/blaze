@@ -1,17 +1,28 @@
 <template>
     <guest-layout>
         <div>
-            <span class="font-semibold">Preflight</span> checks complete!
+            <p>
+                <span class="font-semibold">Preflight</span> checks complete!
+            </p>
+
+            <div class="mt-6">
+                <div class="space-x-6">
+                    <app-link :href="route('register.create')">Register</app-link>
+                    <app-link :href="route('login.create')">Login</app-link>
+                </div>
+            </div>
         </div>
     </guest-layout>
 </template>
 
 <script>
 import GuestLayout from '@/Views/Layouts/GuestLayout';
+import AppLink from '@/Views/Components/Base/Link';
 
 export default {
     components: {
-        GuestLayout
+        GuestLayout,
+        AppLink
     }
 };
 </script>
