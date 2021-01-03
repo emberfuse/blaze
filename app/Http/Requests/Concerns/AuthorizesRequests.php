@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Concerns;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -42,5 +43,17 @@ trait AuthorizesRequests
         }
 
         return false;
+    }
+
+    /**
+     * Determine if a user with given email address exists in the database.
+     *
+     * @return bool
+     */
+    public function isUser(): bool
+    {
+        $field = config('auth.credentials.email');
+
+        return User::where($field, $this->input($field))->exists();
     }
 }

@@ -17,11 +17,11 @@
         <template #form>
             <form @submit.prevent="login" class="w-full">
                 <div class="block">
-                    <app-input type="email" v-model="form.email" autofocus :error="form.errors.email" label="Email address" placeholder="john.doe@example.com"></app-input>
+                    <app-input type="email" v-model="form.email" autofocus :error="form.errors.email" label="Email address" placeholder="john.doe@example.com" required autofocus></app-input>
                 </div>
 
                 <div class="mt-6 block">
-                    <app-input type="password" v-model="form.password" :error="form.errors.password" label="Password" placeholder="cattleFarmer1576@!"></app-input>
+                    <app-input type="password" v-model="form.password" :error="form.errors.password" label="Password" placeholder="cattleFarmer1576@!" required></app-input>
                 </div>
 
                 <div class="mt-6 flex items-center justify-between">
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="text-sm leading-5">
-                        <app-link href="/">Forgot your password?</app-link>
+                        <app-link :href="route('password.email')">Forgot your password?</app-link>
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
 
                 <div class="mt-6">
                     <p>
-                        Don't have an account yet? <app-link :href="route('register.create')">join {{ config('app.name') }}</app-link>
+                        Don't have an account yet? <app-link :href="route('register')">join {{ config('app.name') }}</app-link>
                     </p>
                 </div>
             </form>
@@ -75,7 +75,6 @@ export default {
                 password: null,
                 remember: true
             }, {
-                bag: 'login',
                 resetOnSuccess: true,
             }),
         }
@@ -83,7 +82,7 @@ export default {
 
     methods: {
         async login() {
-            await this.form.post(route('login.store'));
+            await this.form.post('/login');
         }
     }
 };

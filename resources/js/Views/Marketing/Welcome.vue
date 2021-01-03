@@ -7,8 +7,8 @@
 
             <div class="mt-6">
                 <div class="space-x-6">
-                    <app-link :href="route('register.create')">Register</app-link>
-                    <app-link :href="route('login.create')">Login</app-link>
+                    <app-link :href="route('register')">Register</app-link>
+                    <app-link :href="route('login')">Login</app-link>
                 </div>
             </div>
         </div>

@@ -17,15 +17,15 @@
         <template #form>
             <form @submit.prevent="register" class="w-full">
                 <div class="block">
-                    <app-input type="text" v-model="form.name" autofocus :error="form.errors.name" label="Full name" placeholder="Johnathan Doeford"></app-input>
+                    <app-input type="text" v-model="form.name" :error="form.errors.name" label="Full name" placeholder="Johnathan Doeford" required autofocus></app-input>
                 </div>
 
                 <div class="mt-6 block">
-                    <app-input type="email" v-model="form.email" autofocus :error="form.errors.email" label="Email address" placeholder="john.doe@example.com"></app-input>
+                    <app-input type="email" v-model="form.email" :error="form.errors.email" label="Email address" placeholder="john.doe@example.com" required></app-input>
                 </div>
 
                 <div class="mt-6 block">
-                    <app-input type="password" v-model="form.password" :error="form.errors.password" label="Password" placeholder="cattleFarmer1576@!"></app-input>
+                    <app-input type="password" v-model="form.password" :error="form.errors.password" label="Password" placeholder="cattleFarmer1576@!" required></app-input>
                 </div>
 
                 <div class="mt-6 block">
@@ -36,7 +36,7 @@
 
                 <div class="mt-6">
                     <p>
-                        Already an account? <app-link :href="route('login.create')">Log in</app-link>
+                        Already an account? <app-link :href="route('login')">Log in</app-link>
                     </p>
                 </div>
             </form>
@@ -70,7 +70,6 @@ export default {
                 password: null,
                 remember: true
             }, {
-                bag: 'register',
                 resetOnSuccess: true,
             }),
         }
@@ -78,8 +77,8 @@ export default {
 
     methods: {
         async register() {
-            await this.form.post(route('register.store'), {
-                onSuccess: () => this.$inertia.get(route('home'))
+            await this.form.post('/register', {
+                onSuccess: () => this.$inertia.get(this.route('home'))
             });
         }
     }

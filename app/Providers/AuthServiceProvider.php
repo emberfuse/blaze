@@ -10,9 +10,11 @@ use App\Contracts\Auth\DeletesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Auth\Actions\AuthenticateUser;
 use App\Auth\Middleware\Authenticator;
+use App\Auth\Actions\ResetUserPassword;
 use App\Auth\Actions\UpdateUserProfile;
 use App\Contracts\Auth\CreatesNewUsers;
 use App\Contracts\Auth\AuthenticatesUsers;
+use App\Contracts\Auth\ResetsUserPasswords;
 use App\Contracts\Auth\UpdatesUserProfiles;
 use App\Auth\Middleware\AfterAuthenticating;
 use Illuminate\Contracts\Auth\StatefulGuard;
@@ -41,6 +43,7 @@ class AuthServiceProvider extends ServiceProvider
     public static $authActions = [
         AuthenticatesUsers::class => AuthenticateUser::class,
         CreatesNewUsers::class => CreateNewUser::class,
+        ResetsUserPasswords::class => ResetUserPassword::class,
         UpdatesUserProfiles::class => UpdateUserProfile::class,
         DeletesUsers::class => DeleteUser::class,
     ];

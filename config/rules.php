@@ -6,6 +6,11 @@ use Illuminate\Validation\Rule;
 
 return [
     /*
+     * Password Input Validation Rules.
+     */
+    'password' => ['required', 'string', new PasswordRule(), 'confirmed'],
+
+    /*
      * User Login Validation Rules.
      */
     'login' => [
