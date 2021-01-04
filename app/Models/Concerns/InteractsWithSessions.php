@@ -17,7 +17,7 @@ trait InteractsWithSessions
      */
     public function getSessionsAttribute(): array
     {
-        return $this->sessions(request())->all();
+        return $this->sessions(app('request'))->all();
     }
 
     /**
