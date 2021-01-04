@@ -66,8 +66,6 @@ export default {
 
             form: this.$inertia.form({
                 email: null,
-            }, {
-                resetOnSuccess: true,
             }),
         }
     },
@@ -75,11 +73,8 @@ export default {
     methods: {
         async requestLink() {
             await this.form.post(this.route('password.request'), {
-                onSuccess: () => {
-                    this.disabled = true;
-
-                    setTimeout(() => this.$inertia.get(this.route('login')), 3000);
-                }
+                preserveScroll: true,
+                onSuccess: () => this.disabled = true
             });
         }
     }

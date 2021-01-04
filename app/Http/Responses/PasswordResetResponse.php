@@ -37,7 +37,7 @@ class PasswordResetResponse extends Response implements Responsable
     public function toResponse($request)
     {
         return $request->wantsJson()
-            ? $this->make()->json(['message' => trans($this->status)], 200)
+            ? $this->json(['message' => trans($this->status)], 200)
             : $this->redirectToRoute('login', [], 303)->with('status', trans($this->status));
     }
 }

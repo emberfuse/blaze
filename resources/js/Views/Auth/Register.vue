@@ -78,7 +78,7 @@ export default {
     methods: {
         async register() {
             await this.form.post('/register', {
-                onSuccess: () => this.$inertia.get(this.route('home'))
+                preserveScroll: true
             });
         }
     }

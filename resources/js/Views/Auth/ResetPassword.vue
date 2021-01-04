@@ -74,7 +74,7 @@ export default {
     methods: {
         async updatePassword() {
             await this.form.post(this.route('password.update'), {
-                onSuccess: () => this.$inertia.get(this.route('home'))
+                preserveScroll: true
             });
         }
     }

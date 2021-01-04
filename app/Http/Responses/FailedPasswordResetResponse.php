@@ -41,7 +41,7 @@ class FailedPasswordResetResponse extends Response implements Responsable
             throw ValidationException::withMessages(['email' => [trans($this->status)]]);
         }
 
-        return $this->redirector()->back(303)
+        return $this->back(303)
             ->withInput($request->only('email'))
             ->withErrors(['email' => trans($this->status)]);
     }
