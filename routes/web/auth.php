@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserProfileController;
 use App\Http\Controllers\Auth\ResetPassswordController;
@@ -28,8 +29,11 @@ Route::group([
 ], function (): void {
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
-    Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.show');
-    Route::put('/user/profile', [UserProfileController::class, 'update'])->name('user.update');
-    Route::delete('/user/profile', [UserProfileController::class, 'destroy'])->name('user.destroy');
-    Route::delete('/user/profile-photo', [UserProfilePhotoController::class, 'destroy'])->name('user-photo.destroy');
+    Route::group(['prefix' => 'user'], function (): void {
+        Route::get('/profile', [UserProfileController::class, 'show'])->name('user.show');
+        Route::put('/profile', [UserProfileController::class, 'update'])->name('user.update');
+        Route::delete('/profile', [UserProfileController::class, 'destroy'])->name('user.destroy');
+        Route::delete('/profile-photo', [UserProfilePhotoController::class, 'destroy'])->name('user-photo.destroy');
+        Route::put('/password', [PasswordController::class, 'update'])->name('user-password.update');
+    });
 });
