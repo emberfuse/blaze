@@ -91,17 +91,11 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                '_method': 'PUT',
+                _method: 'PUT',
                 name: this.user.name,
                 username: this.user.username,
                 email: this.user.email,
                 photo: null
-            }, {
-                resetOnSuccess: false,
-            }),
-
-            deletePhotoForm: this.$inertia.form({
-                '_method': 'DELETE',
             }),
 
             photoPreview: null,
@@ -114,8 +108,9 @@ export default {
                 this.form.photo = this.$refs.photo.files[0];
             }
 
-            this.form.post(route('user.update'), {
-                onSuccess: () => this.$emit('updated')
+            this.form.post(this.route('user.update'), {
+                errorBag: 'updateProfileInformation',
+                preserveScroll: true,
             });
         },
 
@@ -132,12 +127,9 @@ export default {
         },
 
         deletePhoto() {
-            this.deletePhotoForm.post(route('user-photo.destroy'), {
-                onSuccess: () => {
-                    this.photoPreview = null;
-
-                    this.$emit('updated');
-                }
+            this.$inertia.delete(this.route('user-photo.destroy'), {
+                preserveScroll: true,
+                onSuccess: () => this.photoPreview = null
             });
         },
     }

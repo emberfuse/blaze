@@ -11,6 +11,23 @@ class UpdateUserPasswordTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function testUsersCanUpdatePassword()
+    {
+        $user = create(User::class, [
+            'password' => Hash::make('bustedCamel!'),
+        ]);
+
+        $response = $this->withExceptionHandling()
+            ->actingAs($user)
+            ->put('/user/password', [
+                'current_password' => 'bustedCamel!',
+                'password' => 'fixedCamel',
+                'password_confirmation' => 'fixedCamel',
+            ]);
+
+        $response->assertStatus(200);
+    }
+
     public function testRequestValidatorUsesCustomErrorBag()
     {
         $user = create(User::class, [
@@ -19,20 +36,18 @@ class UpdateUserPasswordTest extends TestCase
 
         $response = $this->actingAs($user)
             ->put('/user/password', [
-                'current_passsword' => 'bustedAndBrokenCamel',
+                'current_password' => 'bustedAndBrokenCamel',
                 'password' => 'fixedCamel',
                 'password_confirmation' => 'fixedCamel',
             ]);
 
         $response->assertStatus(302);
+
         $this->assertEquals(
             session()->get('errors')
                 ->getBag('updatePassword')
                 ->get('current_password'),
-            [
-                'The current password field is required.',
-                'The provided password does not match your current password.',
-            ]
+            ['The provided password does not match your current password.']
         );
     }
 }

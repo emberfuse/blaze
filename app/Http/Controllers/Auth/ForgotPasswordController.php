@@ -11,7 +11,7 @@ use App\Http\Requests\ResetPasswordLinkRequest;
 use App\Http\Responses\FailedPasswordResetLinkRequestResponse;
 use App\Http\Responses\SuccessfulPasswordResetLinkRequestResponse;
 
-class ResetPassswordLinkController extends Controller
+class ForgotPasswordController extends Controller
 {
     /**
      * The broker to be used during password reset.
@@ -37,7 +37,7 @@ class ResetPassswordLinkController extends Controller
      */
     public function create(): InertiaResponse
     {
-        return inertia('Auth/ResetPasswordRequest');
+        return inertia('Auth/ForgotPassword');
     }
 
     /**

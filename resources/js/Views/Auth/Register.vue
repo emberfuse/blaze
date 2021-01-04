@@ -69,17 +69,16 @@ export default {
                 email: null,
                 password: null,
                 remember: true
-            }, {
-                resetOnSuccess: true,
             }),
         }
     },
 
     methods: {
         async register() {
-            await this.form.post('/register', {
-                preserveScroll: true
-            });
+            await this.form.post(this.route('register'), {
+                preserveScroll: true,
+                onFinish: () => this.form.reset('password', 'password_confirmation'),
+            })
         }
     }
 };

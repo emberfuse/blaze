@@ -5,9 +5,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPassswordController;
 use App\Http\Controllers\Auth\UserProfilePhotoController;
-use App\Http\Controllers\Auth\ResetPassswordLinkController;
 
 Route::group([
     'middleware' => 'guest',
@@ -18,9 +18,9 @@ Route::group([
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
 
-    Route::get('/forgot-password', [ResetPassswordLinkController::class, 'create'])->name('password.request');
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
     Route::get('/reset-password/{token}', [ResetPassswordController::class, 'create'])->name('password.reset');
-    Route::post('/forgot-password', [ResetPassswordLinkController::class, 'store'])->name('password.email');
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email');
     Route::post('/reset-password', [ResetPassswordController::class, 'store'])->name('password.update');
 });
 

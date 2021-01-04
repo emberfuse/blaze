@@ -10,9 +10,9 @@ use App\Http\Requests\DeleteUserRequest;
 use Inertia\Response as InertiaResponse;
 use App\Http\Responses\DeleteUserResponse;
 use App\Contracts\Auth\UpdatesUserProfiles;
-use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Http\Responses\UpdateProfileResponse;
+use App\Http\Requests\UpdateProfileInformationRequest;
 
 class UserProfileController extends Controller
 {
@@ -31,12 +31,12 @@ class UserProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\UpdateUserProfileRequest $request
-     * @param \App\Contracts\Auth\UpdatesUserProfiles     $updator
+     * @param \App\Http\Requests\UpdateProfileInformationRequest $request
+     * @param \App\Contracts\Auth\UpdatesUserProfiles            $updator
      *
      * @return \App\Http\Responses\Response
      */
-    public function update(UpdateProfileRequest $request, UpdatesUserProfiles $updator): Response
+    public function update(UpdateProfileInformationRequest $request, UpdatesUserProfiles $updator): Response
     {
         $updator->update($request->user(), $request->validated());
 

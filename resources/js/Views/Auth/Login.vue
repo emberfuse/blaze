@@ -74,8 +74,6 @@ export default {
                 email: null,
                 password: null,
                 remember: true
-            }, {
-                resetOnSuccess: true,
             }),
         }
     },
@@ -83,7 +81,8 @@ export default {
     methods: {
         async login() {
             await this.form.post('/login', {
-                preserveScroll: true
+                preserveScroll: true,
+                onFinish: () => this.form.reset('password'),
             });
         }
     }

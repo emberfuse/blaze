@@ -47,7 +47,10 @@ import AppButton from '@/Views/Components/Buttons/Button';
 import Checkbox from '@/Views/Components/Inputs/Checkbox';
 
 export default {
-    props: ['token'],
+    props: {
+        email: String,
+        token: String,
+    },
 
     components: {
         AuthLayout,
@@ -62,11 +65,9 @@ export default {
         return {
             form: this.$inertia.form({
                 token: this.token,
-                email: null,
+                email: this.email,
                 password: null,
                 password_confirmation: null,
-            }, {
-                resetOnSuccess: true,
             }),
         }
     },
@@ -74,7 +75,8 @@ export default {
     methods: {
         async updatePassword() {
             await this.form.post(this.route('password.update'), {
-                preserveScroll: true
+                preserveScroll: true,
+                onFinish: () => this.form.reset('password', 'password_confirmation'),
             });
         }
     }

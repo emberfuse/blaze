@@ -5,12 +5,14 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Concerns\ValidatesInput;
+use App\Http\Requests\Traits\HasCustomValidator;
 use App\Http\Requests\Concerns\AuthorizesRequests;
 
-class UpdateProfileRequest extends FormRequest
+class UpdateProfileInformationRequest extends FormRequest
 {
     use ValidatesInput;
     use AuthorizesRequests;
+    use HasCustomValidator;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -37,5 +39,15 @@ class UpdateProfileRequest extends FormRequest
                 Rule::unique('users')->ignore($this->user()->id),
             ],
         ]);
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->setCustomErrorBag('updateProfileInformation');
     }
 }
