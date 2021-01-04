@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Rules\PasswordRule;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Password;
 
 return [
     /*
@@ -42,5 +43,13 @@ return [
         'name' => ['required', 'string', 'max:255'],
         'username' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email'],
+    ],
+
+    /*
+     * Use Account Password Update Validation Rules.
+     */
+    'update_password' => [
+        'current_password' => ['required', 'string'],
+        'password' => ['required', 'string', new PasswordRule(), 'confirmed'],
     ],
 ];

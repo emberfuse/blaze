@@ -13,10 +13,12 @@ use App\Auth\Middleware\Authenticator;
 use App\Auth\Actions\ResetUserPassword;
 use App\Auth\Actions\UpdateUserProfile;
 use App\Contracts\Auth\CreatesNewUsers;
+use App\Auth\Actions\UpdateUserPassword;
 use App\Contracts\Auth\AuthenticatesUsers;
 use App\Contracts\Auth\ResetsUserPasswords;
 use App\Contracts\Auth\UpdatesUserProfiles;
 use App\Auth\Middleware\AfterAuthenticating;
+use App\Contracts\Auth\UpdatesUserPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
 use App\Auth\Middleware\EnsureLoginIsNotThrottled;
@@ -45,6 +47,7 @@ class AuthServiceProvider extends ServiceProvider
         CreatesNewUsers::class => CreateNewUser::class,
         ResetsUserPasswords::class => ResetUserPassword::class,
         UpdatesUserProfiles::class => UpdateUserProfile::class,
+        UpdatesUserPasswords::class => UpdateUserPassword::class,
         DeletesUsers::class => DeleteUser::class,
     ];
 
