@@ -1,13 +1,16 @@
 const mix = require("laravel-mix");
+const path = require('path');
 
-mix.js("resources/js/app.js", "public/js")
-    .sourceMaps()
-    .postCss("resources/css/app.css", "public/css", [
-        require("postcss-import"),
-        require("tailwindcss"),
-        require("autoprefixer")
+mix.js('resources/js/app.js', 'public/js')
+    .vue({ versoin: 2 })
+    .postCss('resources/css/app.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('autoprefixer'),
     ])
-    .sourceMaps()
-    .webpackConfig(require("./webpack.config"))
-    .browserSync("preflight.test")
-    .version();
+    .alias({ '@': path.join(__dirname, 'resources/js') })
+    .browserSync('preflight.test');
+
+if (mix.inProduction()) {
+    mix.version();
+}

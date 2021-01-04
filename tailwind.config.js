@@ -4,8 +4,7 @@ module.exports = {
     purge: [
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/**/*.js',
-        './resources/**/*.vue',
+        './resources/js/**/*.vue',
     ],
 
     darkMode: false, // or 'media' or 'class'
@@ -23,12 +22,13 @@ module.exports = {
     },
 
     variants: {
-        opacity: ['responsive', 'hover', 'focus', 'disabled'],
-
-        extend: {},
+        extend: {
+            opacity: ['disabled'],
+        },
     },
 
     plugins: [
-        require('@tailwindcss/forms')
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography')
     ],
 }
