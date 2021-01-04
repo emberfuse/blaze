@@ -94,9 +94,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function registerAuthActions(): void
     {
-        foreach (static::$authActions as $abstract => $concrete) {
-            $this->app->singleton($abstract, $concrete);
-        }
+        collect(static::$authActions)->map(
+            fn ($concrete, $abstract) => $this->app->singleton($abstract, $concrete)
+        );
     }
 
     /**

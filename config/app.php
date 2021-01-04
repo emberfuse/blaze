@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Preflight'),
 
     /*
     |--------------------------------------------------------------------------
@@ -137,7 +137,7 @@ return [
 
     'providers' => [
         /*
-         * Laravel Framework Service Providers...
+         * Preflight Framework Service Providers...
          */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
