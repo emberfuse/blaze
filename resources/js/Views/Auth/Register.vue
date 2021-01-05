@@ -8,9 +8,9 @@
 
                 <h4 class="mt-6 font-semibold text-xl text-gray-800">Create new account</h4>
 
-                <h6 class="mt-3 font-normal text-base text-gray-500">
+                <p class="mt-3 font-normal text-base text-gray-500">
                     Let's get you all set up so you can verify your personal account and begin setting up your profile.
-                </h6>
+                </p>
             </div>
         </template>
 

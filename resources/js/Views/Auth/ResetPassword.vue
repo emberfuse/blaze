@@ -8,9 +8,9 @@
 
                 <h4 class="mt-6 font-semibold text-xl text-gray-800">Reset password</h4>
 
-                <h6 class="mt-3 font-normal text-base text-gray-500">
+                <p class="mt-3 font-normal text-base text-gray-500">
                     Create a new password for your account using the form below.
-                </h6>
+                </p>
             </div>
         </template>
 

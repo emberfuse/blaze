@@ -8,9 +8,9 @@
 
                 <h4 class="mt-6 font-semibold text-xl text-gray-800">Forgot your password?</h4>
 
-                <h6 class="mt-3 font-normal text-base text-gray-500">
+                <p class="mt-3 font-normal text-base text-gray-500">
                     If you don't remember your password, you can reset it here.
-                </h6>
+                </p>
             </div>
         </template>
 

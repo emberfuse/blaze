@@ -84,6 +84,7 @@ class AuthServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerAuthGuard();
+
         $this->registerAuthActions();
     }
 

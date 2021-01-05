@@ -8,16 +8,16 @@
 
                 <h4 class="mt-6 font-semibold text-xl text-gray-800">Login to your account</h4>
 
-                <h6 class="mt-3 font-normal text-base text-gray-500">
+                <p class="mt-3 font-normal text-base text-gray-500">
                     Thank you for getting back to us. Let's access your account and get you started.
-                </h6>
+                </p>
             </div>
         </template>
 
         <template #form>
             <form @submit.prevent="login" class="w-full">
                 <div class="block">
-                    <app-input type="email" v-model="form.email" autofocus :error="form.errors.email" label="Email address" placeholder="john.doe@example.com" required autofocus></app-input>
+                    <app-input type="email" v-model="form.email" :error="form.errors.email" label="Email address" placeholder="john.doe@example.com" required autofocus></app-input>
                 </div>
 
                 <div class="mt-6 block">
