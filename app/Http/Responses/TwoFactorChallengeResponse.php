@@ -4,7 +4,7 @@ namespace App\Http\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 
-class TwoFactorAuthenticatableResponse extends Response implements Responsable
+class TwoFactorChallengeResponse extends Response implements Responsable
 {
     /**
      * Create an HTTP response that represents the object.
@@ -15,5 +15,8 @@ class TwoFactorAuthenticatableResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
+        return $request->wantsJson()
+            ? $this->json(['two_factor' => true], 200)
+            : $this->redirectToRoute('two-factor.login', [], 303);
     }
 }

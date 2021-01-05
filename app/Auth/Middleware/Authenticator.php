@@ -5,6 +5,7 @@ namespace App\Auth\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
+use Illuminate\Support\Facades\Hash;
 use App\Auth\Guards\LoginRateLimiter;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -48,15 +49,23 @@ abstract class Authenticator
     }
 
     /**
-     * Register a callback that will be executed after a user has been authenticated.
+     * Attempt to validate the incoming credentials.
      *
-     * @param \Closure|null $callback
+     * @param \Illuminate\Http\Request $request
      *
-     * @return void
+     * @return mixed
      */
-    public static function afterAuthentication(?Closure $callback = null): void
+    protected function validateCredentials(Request $request)
     {
-        static::$authenticated = $callback;
+        $model = $this->guard->getProvider()->getModel();
+
+        return tap($model::where($this->username(), $request->{$this->username()})->first(), function ($user) use ($request) {
+            if (! $user || ! Hash::check($request->password, $user->password)) {
+                $this->fireFailedEvent($request, $user);
+
+                $this->throwFailedAuthenticationException($request);
+            }
+        });
     }
 
     /**
@@ -72,9 +81,7 @@ abstract class Authenticator
     {
         $this->limiter->increment($request);
 
-        throw ValidationException::withMessages(
-            [$this->username() => [trans('auth.failed')]]
-        );
+        throw ValidationException::withMessages([$this->username() => [trans('auth.failed')]]);
     }
 
     /**
@@ -101,5 +108,17 @@ abstract class Authenticator
     public function username(): string
     {
         return config('auth.credentials.username', 'email');
+    }
+
+    /**
+     * Register a callback that will be executed after a user has been authenticated.
+     *
+     * @param \Closure|null $callback
+     *
+     * @return void
+     */
+    public static function afterAuthentication(?Closure $callback = null): void
+    {
+        static::$authenticated = $callback;
     }
 }
