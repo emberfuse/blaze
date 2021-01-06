@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <div>
-            <update-profile-information-form :user="$page.props.user"></update-profile-information-form>
+            <update-profile-information-form :user.sync="$page.props.user"></update-profile-information-form>
 
             <section-border></section-border>
 

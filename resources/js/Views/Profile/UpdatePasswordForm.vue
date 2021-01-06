@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="mt-6 lg:mt-0 md:col-span-8">
-                            <app-input type="password" v-model="form.current_password" ref="current_password" :error="form.errors.current_password" label="Current password" placeholder="cattleFarmer1576@!"></app-input>
+                            <app-input type="password" v-model="form.current_password" ref="current_password" :error="form.errors.current_password" label="Current password" placeholder="cattleFarmer1576@!" autocomplete="current-password"></app-input>
 
                             <div class="mt-2">
                                 <p class="font-medium text-xs text-gray-500 leading-normal">
