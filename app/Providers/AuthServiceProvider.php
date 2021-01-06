@@ -13,7 +13,6 @@ use App\Auth\Actions\ResetUserPassword;
 use App\Auth\Actions\UpdateUserProfile;
 use App\Contracts\Auth\CreatesNewUsers;
 use App\Auth\Actions\UpdateUserPassword;
-use App\Auth\Authenticators\Authenticator;
 use App\Contracts\Auth\AuthenticatesUsers;
 use App\Contracts\Auth\ResetsUserPasswords;
 use App\Contracts\Auth\UpdatesUserProfiles;
@@ -123,12 +122,5 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function registerAuthActionAfterHooks(): void
     {
-        // Actions to perform after new user has been
-        // created and saved to the database.
-        CreateNewUser::afterCreatingUser(fn () => null);
-
-        // Actions to perform after an existing user
-        // has been successfully authenticated.
-        Authenticator::afterAuthentication(fn () => null);
     }
 }
