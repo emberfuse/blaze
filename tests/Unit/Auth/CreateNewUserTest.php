@@ -68,6 +68,6 @@ class CreateNewUserTest extends TestCase
             'password' => 'JumpedUpMonster!',
         ]);
 
-        $this->assertEquals('Bernard', $user->fresh()->username);
+        $this->assertEquals('BernardJackson', $user->fresh()->username);
     }
 }

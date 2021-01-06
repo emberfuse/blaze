@@ -16,7 +16,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @var \Closure|null
      */
-    protected static $afterCreatingUserCallback;
+    protected static $afterCreatingUser;
 
     /**
      * Create a newly registered user.
@@ -29,11 +29,8 @@ class CreateNewUser implements CreatesNewUsers
     {
         return DB::transaction(function () use ($data) {
             return tap($this->createUser($data), function (User $user) use ($data) {
-                if (static::$afterCreatingUserCallback) {
-                    return call_user_func_array(
-                        static::$afterCreatingUserCallback,
-                        [$user, $data]
-                    );
+                if (static::$afterCreatingUser) {
+                    return call_user_func_array(static::$afterCreatingUser, [$user, $data]);
                 }
 
                 return $user;
@@ -67,19 +64,13 @@ class CreateNewUser implements CreatesNewUsers
      */
     protected function makeUsername(string $name): string
     {
-        if (Str::contains($name, '.')) {
-            [$title, $name] = explode('.', $name);
+        $name = trim($name);
+
+        if (User::where('username', 'like', '%' . $name . '%')->count() !== 0) {
+            return Str::studly("{$name}-" . Str::random('5'));
         }
 
-        [$firstName, $lastName] = explode(' ', $name);
-
-        $count = User::where('username', 'like', '%' . $firstName . '%')->count();
-
-        if ($count !== 0) {
-            return Str::studly($firstName . $lastName);
-        }
-
-        return $firstName;
+        return Str::studly($name);
     }
 
     /**
@@ -91,6 +82,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public static function afterCreatingUser(?Closure $callback = null): void
     {
-        static::$afterCreatingUserCallback = $callback;
+        static::$afterCreatingUser = $callback;
     }
 }
