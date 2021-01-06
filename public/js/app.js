@@ -32937,17 +32937,17 @@ var render = function() {
     [
       _c("main", { staticClass: "py-16", attrs: { role: "main" } }, [
         _c("div", { staticClass: "container mx-auto px-4 sm:px-6" }, [
-          _c(
-            "div",
-            { staticClass: "md:grid lg:grid-cols-2 xl:grid-cols-3 gap-6" },
-            [
-              _c("div", { staticClass: "md:col-span-1" }, [
+          _c("div", { staticClass: "md:grid md:grid-cols-12 gap-6" }, [
+            _c(
+              "div",
+              { staticClass: "md:col-span-6 lg:col-span-5 xl:col-span-4" },
+              [
                 _c("div", [_vm._t("title")], 2),
                 _vm._v(" "),
                 _c("div", { staticClass: "mt-6" }, [_vm._t("form")], 2)
-              ])
-            ]
-          )
+              ]
+            )
+          ])
         ])
       ])
     ]

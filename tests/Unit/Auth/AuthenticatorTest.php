@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
 use App\Auth\Guards\LoginRateLimiter;
 use Illuminate\Support\Facades\Event;
-use App\Auth\Middleware\Authenticator;
+use App\Auth\Authenticators\Authenticator;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Validation\ValidationException;
 

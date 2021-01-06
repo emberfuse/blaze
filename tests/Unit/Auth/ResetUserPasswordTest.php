@@ -23,7 +23,8 @@ class ResetUserPasswordTest extends TestCase
     public function testItCanBeInstantiated()
     {
         $resetor = new ResetUserPassword(
-            ...$this->mockPasswordResetorDependencies()
+            m::mock(PasswordBroker::class),
+            m::mock(StatefulGuard::class),
         );
 
         $this->assertInstanceOf(ResetsUserPasswords::class, $resetor);
@@ -49,18 +50,5 @@ class ResetUserPasswordTest extends TestCase
         $this->assertEquals($resetor->reset($mockRequest), Password::PASSWORD_RESET);
 
         Event::assertDispatched(PasswordReset::class);
-    }
-
-    /**
-     * Mock all password reset action class dependencies.
-     *
-     * @return array
-     */
-    protected function mockPasswordResetorDependencies(): array
-    {
-        return [
-            m::mock(PasswordBroker::class),
-            m::mock(StatefulGuard::class),
-        ];
     }
 }

@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Lockout;
 use App\Http\Responses\LockoutResponse;
+use App\Auth\Authenticators\Authenticator;
 
 class EnsureLoginIsNotThrottled extends Authenticator
 {

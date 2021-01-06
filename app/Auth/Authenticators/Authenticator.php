@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Auth\Middleware;
+namespace App\Auth\Authenticators;
 
 use Closure;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Support\Facades\Hash;
@@ -54,18 +55,46 @@ abstract class Authenticator
      * @param \Illuminate\Http\Request $request
      *
      * @return mixed
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     protected function validateCredentials(Request $request)
     {
-        $model = $this->guard->getProvider()->getModel();
+        return tap(
+            $this->getAttemptingUser($request),
+            function (?User $user = null) use ($request) {
+                if (! $user || ! Hash::check($request->password, $user->password)) {
+                    $this->fireFailedEvent($request, $user);
 
-        return tap($model::where($this->username(), $request->{$this->username()})->first(), function ($user) use ($request) {
-            if (! $user || ! Hash::check($request->password, $user->password)) {
-                $this->fireFailedEvent($request, $user);
-
-                $this->throwFailedAuthenticationException($request);
+                    $this->throwFailedAuthenticationException($request);
+                }
             }
-        });
+        );
+    }
+
+    /**
+     * Get instance of user model attempting authentication.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \App\Models\User|null
+     */
+    protected function getAttemptingUser(Request $request): ?User
+    {
+        return ($this->getAuthModel())::where(
+            $this->username(),
+            $request->{$this->username()}
+        )->first();
+    }
+
+    /**
+     * Get user model being used for authentication purposes.
+     *
+     * @return string
+     */
+    protected function getAuthModel(): string
+    {
+        return $this->guard->getProvider()->getModel();
     }
 
     /**

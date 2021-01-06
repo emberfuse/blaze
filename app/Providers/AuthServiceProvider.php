@@ -9,11 +9,11 @@ use App\Auth\Actions\CreateNewUser;
 use App\Contracts\Auth\DeletesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Auth\Actions\AuthenticateUser;
-use App\Auth\Middleware\Authenticator;
 use App\Auth\Actions\ResetUserPassword;
 use App\Auth\Actions\UpdateUserProfile;
 use App\Contracts\Auth\CreatesNewUsers;
 use App\Auth\Actions\UpdateUserPassword;
+use App\Auth\Authenticators\Authenticator;
 use App\Contracts\Auth\AuthenticatesUsers;
 use App\Contracts\Auth\ResetsUserPasswords;
 use App\Contracts\Auth\UpdatesUserProfiles;
@@ -22,8 +22,10 @@ use App\Contracts\Auth\UpdatesUserPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
 use App\Auth\Middleware\EnsureLoginIsNotThrottled;
+use App\Auth\Authenticators\TwoFactorAuthenticator;
 use App\Auth\Middleware\PrepareAuthenticatedSession;
 use App\Auth\Middleware\RedirectIfTwoFactorAuthenticatable;
+use App\Contracts\Auth\TwoFactorAuthenticator as TwoFactorAuthenticatorContracts;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -49,6 +51,7 @@ class AuthServiceProvider extends ServiceProvider
         UpdatesUserProfiles::class => UpdateUserProfile::class,
         UpdatesUserPasswords::class => UpdateUserPassword::class,
         DeletesUsers::class => DeleteUser::class,
+        TwoFactorAuthenticatorContracts::class => TwoFactorAuthenticator::class,
     ];
 
     /**

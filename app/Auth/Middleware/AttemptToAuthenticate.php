@@ -4,6 +4,7 @@ namespace App\Auth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Auth\Authenticators\Authenticator;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 class AttemptToAuthenticate extends Authenticator

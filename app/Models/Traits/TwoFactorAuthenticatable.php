@@ -2,6 +2,15 @@
 
 namespace App\Models\Traits;
 
+use BaconQrCode\Writer;
+use App\Codes\RecoveryCode;
+use BaconQrCode\Renderer\Color\Rgb;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\RendererStyle\Fill;
+use App\Contracts\Auth\TwoFactorAuthenticator;
+use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+
 trait TwoFactorAuthenticatable
 {
     /**
@@ -41,7 +50,7 @@ trait TwoFactorAuthenticatable
     {
         $svg = (new Writer(
             new ImageRenderer(
-                new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
+                new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(59, 130, 246))),
                 new SvgImageBackEnd()
             )
         ))->writeString($this->twoFactorQrCodeUrl());
@@ -56,7 +65,7 @@ trait TwoFactorAuthenticatable
      */
     public function twoFactorQrCodeUrl()
     {
-        return app(TwoFactorAuthenticationProvider::class)->qrCodeUrl(
+        return app(TwoFactorAuthenticator::class)->qrCodeUrl(
             config('app.name'),
             $this->email,
             decrypt($this->two_factor_secret)

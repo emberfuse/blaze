@@ -17,7 +17,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasProfilePhoto;
     use InteractsWithSessions;
-    // use TwoFactorAuthenticatable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +30,7 @@ class User extends Authenticatable
         'password',
         'username',
         'settings',
+        'locked',
         'profile_photo_path',
         'two_factor_secret',
         'two_factor_recovery_codes',

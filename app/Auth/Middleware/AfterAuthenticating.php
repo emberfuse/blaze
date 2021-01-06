@@ -4,6 +4,7 @@ namespace App\Auth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Auth\Authenticators\Authenticator;
 
 class AfterAuthenticating extends Authenticator
 {
@@ -19,7 +20,8 @@ class AfterAuthenticating extends Authenticator
     {
         if (static::$authenticated) {
             $response = call_user_func_array(
-                static::$authenticated, [$request, $this->guard->user()]
+                static::$authenticated,
+                [$request, $this->guard->user()]
             );
 
             return ! is_null($response) ? $response : $next($request);

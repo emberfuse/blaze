@@ -12,6 +12,7 @@ return [
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'settings' => [],
+            'locked' => false,
         ],
 
         'permissions' => [
