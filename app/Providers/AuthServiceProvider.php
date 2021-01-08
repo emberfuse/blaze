@@ -85,9 +85,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerAuthGuard();
+        $this->registerDefaultGuard();
 
-        $this->registerAuthActions();
+        $this->registerActions();
     }
 
     /**
@@ -95,7 +95,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerAuthActions(): void
+    protected function registerActions(): void
     {
         collect(static::$authActions)->map(
             fn ($concrete, $abstract) => $this->app->singleton($abstract, $concrete)
@@ -107,11 +107,11 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerAuthGuard(): void
+    protected function registerDefaultGuard(): void
     {
         $this->app->bind(
             StatefulGuard::class,
-            fn () => Auth::guard(config('auth.defaults.guard', 'web'))
+            fn () => Auth::guard($this->authConfig('defaults.guard', 'web'))
         );
     }
 
@@ -122,5 +122,18 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function registerAuthActionAfterHooks(): void
     {
+    }
+
+    /**
+     * Get authentication configurations.
+     *
+     * @param string $key
+     * @param mixed  $default
+     *
+     * @return mixed
+     */
+    protected function authConfig(string $key, $default)
+    {
+        return $this->app['config']->get("auth.{$key}", $default);
     }
 }
