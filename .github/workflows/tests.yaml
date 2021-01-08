@@ -16,8 +16,8 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_DATABASE: preflight
-          MYSQL_USER: root
-          MYSQL_PASSWORD: ''
+          MYSQL_USER: user
+          MYSQL_PASSWORD: secret
           MYSQL_ROOT_PASSWORD: secretroot
         ports:
           - 33306:3306
