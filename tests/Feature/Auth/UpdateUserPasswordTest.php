@@ -25,7 +25,7 @@ class UpdateUserPasswordTest extends TestCase
                 'password_confirmation' => 'fixedCamel',
             ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(303);
     }
 
     public function testRequestValidatorUsesCustomErrorBag()
