@@ -6,32 +6,32 @@ use Mockery as m;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
-use App\Auth\Guards\LoginRateLimiter;
+use App\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Event;
-use App\Auth\Authenticators\Authenticator;
+use App\Auth\Limiters\LoginRateLimiter;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Validation\ValidationException;
 
-class AuthenticatorTest extends TestCase
+class AuthenticateMiddelwareTest extends TestCase
 {
     public function testAuthenticatorCanBeInstantiated()
     {
-        $authenticator = new ConcreteAuthenticator(
+        $authenticatorMiddleware = new ConcreteAuthenticatorMiddleware(
             ...$this->mockAuthenticatorDependencies()
         );
 
-        $this->assertInstanceOf(Authenticator::class, $authenticator);
+        $this->assertInstanceOf(Authenticate::class, $authenticatorMiddleware);
     }
 
     public function testTriggerAuthenticationFailedEvent()
     {
         Event::fake();
 
-        $authenticator = new ConcreteAuthenticator(
+        $authenticatorMiddleware = new ConcreteAuthenticatorMiddleware(
             ...$this->mockAuthenticatorDependencies()
         );
 
-        $authenticator->mockFireFailedEvent(Request::createFromGlobals());
+        $authenticatorMiddleware->mockFireFailedEvent(Request::createFromGlobals());
 
         Event::assertDispatched(Failed::class);
     }
@@ -47,12 +47,12 @@ class AuthenticatorTest extends TestCase
             ->with($mockRequest)
             ->andReturn(null);
 
-        $authenticator = new ConcreteAuthenticator(
+        $authenticatorMiddleware = new ConcreteAuthenticatorMiddleware(
             m::mock(StatefulGuard::class),
             $loginRateLimiter
         );
 
-        $authenticator->mockThrowFailedAuthenticationException($mockRequest);
+        $authenticatorMiddleware->mockThrowFailedAuthenticationException($mockRequest);
 
         Event::assertDispatched(Failed::class);
     }
@@ -71,7 +71,7 @@ class AuthenticatorTest extends TestCase
     }
 }
 
-class ConcreteAuthenticator extends Authenticator
+class ConcreteAuthenticatorMiddleware extends Authenticate
 {
     /**
      * Mock firing the failed login event.

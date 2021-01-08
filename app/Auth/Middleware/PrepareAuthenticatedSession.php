@@ -4,9 +4,8 @@ namespace App\Auth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Auth\Authenticators\Authenticator;
 
-class PrepareAuthenticatedSession extends Authenticator
+class PrepareAuthenticatedSession extends Authenticate
 {
     /**
      * Handle an incoming request.

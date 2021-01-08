@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Auth\Authenticators;
+namespace App\Auth\Middleware;
 
 use Closure;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Support\Facades\Hash;
-use App\Auth\Guards\LoginRateLimiter;
+use App\Auth\Limiters\LoginRateLimiter;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Validation\ValidationException;
 
-abstract class Authenticator
+abstract class Authenticate
 {
     /**
      * The guard implementation.
@@ -24,7 +24,7 @@ abstract class Authenticator
     /**
      * The login rate limiter instance.
      *
-     * @var \Laravel\Fortify\LoginRateLimiter
+     * @var \App\Auth\Guards\LoginRateLimiter
      */
     protected $limiter;
 

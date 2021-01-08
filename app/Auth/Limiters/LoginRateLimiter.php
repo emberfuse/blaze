@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Auth\Guards;
+namespace App\Auth\Limiters;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;

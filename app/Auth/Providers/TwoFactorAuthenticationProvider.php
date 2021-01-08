@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Auth\Authenticators;
+namespace App\Auth\Providers;
 
 use PragmaRX\Google2FA\Google2FA;
-use App\Contracts\Auth\TwoFactorAuthenticator as TwoFactorAuthenticatorContract;
+use App\Contracts\Auth\TwoFactorAuthenticationProvider as TwoFactorAuthenticationProviderContract;
 
-class TwoFactorAuthenticator extends Authenticator implements TwoFactorAuthenticatorContract
+class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProviderContract
 {
     /**
      * The underlying library providing two factor authentication helper services.

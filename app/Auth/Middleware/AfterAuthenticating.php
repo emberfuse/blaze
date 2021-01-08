@@ -4,9 +4,8 @@ namespace App\Auth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Auth\Authenticators\Authenticator;
 
-class AfterAuthenticating extends Authenticator
+class AfterAuthenticating extends Authenticate
 {
     /**
      * Handle an incoming request.

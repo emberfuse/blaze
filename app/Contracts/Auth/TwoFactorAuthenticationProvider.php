@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Auth;
 
-interface TwoFactorAuthenticator
+interface TwoFactorAuthenticationProvider
 {
     /**
      * Generate a new secret key.
