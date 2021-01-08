@@ -35,9 +35,9 @@ class ResetPassswordController extends Controller
      *
      * @return \App\Http\Responses\Response
      */
-    public function store(ResetPasswordRequest $request, ResetsUserPasswords $resetor): Response
+    public function store(ResetPasswordRequest $request, ResetsUserPasswords $resetter): Response
     {
-        $status = $resetor->reset($request);
+        $status = $resetter->reset($request);
 
         return $status == Password::PASSWORD_RESET
             ? $this->app(PasswordResetResponse::class, ['status' => $status])

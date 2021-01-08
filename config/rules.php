@@ -50,6 +50,12 @@ return [
      */
     'update_password' => [
         'current_password' => ['required', 'string'],
-        'password' => ['required', 'string', new PasswordRule(), 'confirmed'],
+        'password' => [
+            'required',
+            'string',
+            new PasswordRule(),
+            'confirmed',
+            'different:current_password',
+        ],
     ],
 ];

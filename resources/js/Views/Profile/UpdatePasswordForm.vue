@@ -65,7 +65,7 @@ export default {
         AppInput,
         AppInputError,
         AppButton,
-        ActionMessage
+        ActionMessage,
     },
 
     data() {
@@ -81,25 +81,25 @@ export default {
     methods: {
         updatePassword() {
             this.form.put(this.route('user-password.update'), {
-                    errorBag: 'updatePassword',
-                    preserveScroll: true,
+                errorBag: 'updatePassword',
+                preserveScroll: true,
 
-                    onSuccess: () => this.form.reset(),
+                onSuccess: () => this.form.reset(),
 
-                    onError: () => {
-                        if (this.form.errors.password) {
-                            this.form.reset('password', 'password_confirmation');
+                onError: () => {
+                    if (this.form.errors.password) {
+                        this.form.reset('password', 'password_confirmation');
 
-                            this.$refs.password.focus();
-                        }
-
-                        if (this.form.errors.current_password) {
-                            this.form.reset('current_password');
-
-                            this.$refs.current_password.focus();
-                        }
+                        this.$refs.password.focus();
                     }
-                });
+
+                    if (this.form.errors.current_password) {
+                        this.form.reset('current_password');
+
+                        this.$refs.current_password.focus();
+                    }
+                }
+            });
         }
     }
 }

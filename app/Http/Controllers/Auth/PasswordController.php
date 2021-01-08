@@ -15,9 +15,9 @@ class PasswordController extends Controller
      * @param \App\Http\Requests\UpdatePasswordRequest $request
      * @param \App\Contracts\Auth\UpdatesUserPasswords $updater
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Responses\UpdatePasswordResponse
      */
-    public function update(UpdatePasswordRequest $request, UpdatesUserPasswords $updater)
+    public function update(UpdatePasswordRequest $request, UpdatesUserPasswords $updater): UpdatePasswordResponse
     {
         $updater->update($request->user(), $request->validated());
 

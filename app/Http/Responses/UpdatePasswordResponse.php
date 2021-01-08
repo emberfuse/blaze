@@ -15,7 +15,7 @@ class UpdatePasswordResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        $request->wantsJson()
+        return $request->wantsJson()
             ? $this->json('', 200)
             : $this->back(303)->with('status', 'password-updated');
     }
