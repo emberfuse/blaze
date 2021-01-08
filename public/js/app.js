@@ -4061,20 +4061,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./moment */ "./resources/js/Plugins/moment.js");
 /* harmony import */ var _inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inertia */ "./resources/js/Plugins/inertia.js");
 /* harmony import */ var _progress__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./progress */ "./resources/js/Plugins/progress.js");
-/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 
 
 
 
 
-
-try {
-  (0,_progress__WEBPACK_IMPORTED_MODULE_4__.default)();
-} catch (error) {
-  if (process.env.MIX_APP_ENV) {
-    console.log(error);
-  }
-}
+(0,_progress__WEBPACK_IMPORTED_MODULE_4__.default)();
 
 /***/ }),
 

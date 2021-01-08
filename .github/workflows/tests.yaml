@@ -15,9 +15,9 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: database_ci
-          MYSQL_USER: user
-          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: preflight
+          MYSQL_USER: root
+          MYSQL_PASSWORD: ''
           MYSQL_ROOT_PASSWORD: secretroot
         ports:
           - 33306:3306
@@ -55,7 +55,7 @@ jobs:
 
       - name: Boot application
         run: |
-          cp .env.github .env
+          cp .env.example .env
           php artisan key:generate
           php artisan --version
 
