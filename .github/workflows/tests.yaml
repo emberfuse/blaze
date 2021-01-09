@@ -96,7 +96,8 @@ jobs:
         run: |
           test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
           cd security-checker
-          composer install
+          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
           php security-checker security:check ../composer.lock
 
       - name: Upload artifacts
