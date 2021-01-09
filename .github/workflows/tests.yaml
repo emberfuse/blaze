@@ -7,8 +7,8 @@ on:
     - cron: '0 0 * * SUN'
 
 jobs:
-  tests:
-    name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
+  linux_tests:
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }} - Linux
     runs-on: ubuntu-latest
 
     services:
@@ -96,6 +96,7 @@ jobs:
           path: ./storage/logs
 
   windows_tests:
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }} - Windows
     runs-on: windows-latest
 
     strategy:
@@ -103,8 +104,6 @@ jobs:
       matrix:
         php: [7.4, 8.0]
         stability: [prefer-stable]
-
-    name: PHP ${{ matrix.php }} - ${{ matrix.stability }} - Windows
 
     steps:
       - name: Set git to use LF
