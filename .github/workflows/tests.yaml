@@ -92,14 +92,6 @@ jobs:
           DB_USERNAME: root
         run: ./vendor/bin/phpunit --verbose
 
-      - name: Run security checks
-        run: |
-          test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
-          cd security-checker
-          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
-          php security-checker security:check ../composer.lock
-
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
