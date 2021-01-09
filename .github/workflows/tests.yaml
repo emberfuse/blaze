@@ -65,6 +65,7 @@ jobs:
         run: |
           php --version
           composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
           npm install
           npm run production
 
@@ -161,6 +162,7 @@ jobs:
         run: |
           php --version
           composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
           npm install
           npm run production
 
