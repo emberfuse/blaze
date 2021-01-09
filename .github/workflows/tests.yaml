@@ -52,7 +52,8 @@ jobs:
         run: |
           mysql --version
           sudo apt-get install -y mysql-client
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -e "SHOW DATABASES"
+          sudo /etc/init.d/mysql start
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -e "SHOW DATABASES"
 
       - name: Cache composer dependencies
         uses: actions/cache@v2.1.1
@@ -73,11 +74,6 @@ jobs:
           php artisan key:generate
           php artisan --version
 
-      - name: Migrate database
-        run: |
-          mysql --version
-          php artisan migrate:fresh --seed
-
       - name: Cache yarn dependencies
         uses: actions/cache@v2.1.1
         with:
@@ -90,6 +86,9 @@ jobs:
           yarn && yarn dev
 
       - name: Run tests
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          DB_USERNAME: root
         run: ./vendor/bin/phpunit --verbose
 
       - name: Run security checks
@@ -184,12 +183,8 @@ jobs:
 
       - name: Run tests
         env:
-          APP_ENV: testing
           DB_CONNECTION: sqlite
           DB_DATABASE: ':memory:'
-          MAIL_MAILER: array
-          QUEUE_CONNECTION: sync
-          SESSION_DRIVER: array
         run: ./vendor/bin/phpunit --verbose
 
       - name: Run security checks
