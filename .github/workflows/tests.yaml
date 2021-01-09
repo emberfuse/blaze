@@ -27,7 +27,8 @@ jobs:
         stability: [prefer-stable]
 
     steps:
-      - uses: actions/checkout@v2.3.3
+      - name: Checkout code
+        uses: actions/checkout@v2.3.3
 
       - name: Setup PHP with pecl extension
         uses: shivammathur/setup-php@v2
@@ -79,6 +80,77 @@ jobs:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
           DB_USERNAME: root
         run: ./vendor/bin/phpunit --verbose
+
+      - name: Run security checks
+        run: |
+          test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
+          cd security-checker
+          composer install && composer update
+          php security-checker security:check ../composer.lock
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: Logs
+          path: ./storage/logs
+
+  windows_tests:
+    runs-on: windows-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4, 8.0]
+        stability: [prefer-stable]
+
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }} - Windows
+
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: Checkout code
+        uses: actions/checkout@v2.3.3
+
+      - name: Setup PHP with pecl extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: pecl, php-cs-fixer, phpunit, composer:v2
+          extensions: swoole, fileinfo, gmp, intl, json, mbstring, openssl, dom, curl, libxml, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, dom, redis, memcached
+          coverage: pcov
+
+      - name: Setup problem matchers
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2.1.1
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install dependencies
+        run: |
+          php --version
+          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
+          npm install
+          npm run production
+
+      - name: Boot application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          php artisan --version
+
+      - name: Run tests
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'
+        run: vendor/bin/phpunit --verbose
 
       - name: Run security checks
         run: |
