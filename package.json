@@ -6,7 +6,8 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "production": "mix --production"
+        "production": "mix --production",
+        "test": "jest --verbose ./resources/js/Tests"
     },
     "devDependencies": {
         "@inertiajs/inertia": "^0.8.2",
@@ -28,6 +29,11 @@
         "vue": "^2.6.12",
         "vue-loader": "^15.9.6",
         "vue-portal": "^1.0.0",
-        "vue-template-compiler": "^2.6.12"
+        "vue-template-compiler": "^2.6.12",
+        "@vue/test-utils": "^1.1.0",
+        "babel-core": "7.0.0-bridge.0",
+        "babel-jest": "^26.5.0",
+        "jest": "^26.5.0",
+        "vue-jest": "^3.0.4"
     }
 }
