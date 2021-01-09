@@ -4,10 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Concerns\ValidatesInput;
+use App\Http\Requests\Concerns\AuthorizesRequests;
 
 class LoginRequest extends FormRequest
 {
     use ValidatesInput;
+    use AuthorizesRequests;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -16,7 +18,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->isGuest();
     }
 
     /**

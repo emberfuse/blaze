@@ -3,34 +3,32 @@
 namespace App\Auth\Actions;
 
 use Illuminate\Http\Request;
-use Illuminate\Pipeline\Pipeline;
-use App\Contracts\AuthenticatesUsers;
 use App\Providers\AuthServiceProvider;
+use App\Contracts\Auth\AuthenticatesUsers;
+use Illuminate\Contracts\Pipeline\Pipeline;
 
 class AuthenticateUser implements AuthenticatesUsers
 {
     /**
-     * Authenticate given login request.
+     * Authenticate user into application.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Contracts\Pipeline\Pipeline $pipeline
+     * @param \Illuminate\Http\Request                $request
      *
      * @return mixed
      */
-    public function authenticate(Request $request)
+    public function authenticate(Pipeline $pipeline, Request $request)
     {
-        return $this->loginPipeline($request);
+        return $pipeline->send($request)->through($this->getLoginPipeline());
     }
 
     /**
-     * Perform neccessary procedures for log in attempt using provided request data.
+     * Get login middleware pipeline.
      *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return mixed
+     * @return array
      */
-    protected function loginPipeline(Request $request)
+    protected function getLoginPipeline(): array
     {
-        return (new Pipeline(app()))->send($request)
-            ->through(array_filter(AuthServiceProvider::$authenticationMiddleware));
+        return array_filter(AuthServiceProvider::$loginPipeline);
     }
 }

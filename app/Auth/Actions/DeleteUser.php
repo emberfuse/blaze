@@ -21,6 +21,7 @@ class DeleteUser implements DeletesUsers
         DB::transaction(function () use ($user) {
             tap($user, function (User $user) {
                 $this->deleteUserResources($user);
+
                 $this->deleteUserProfiles($user);
             })->delete();
         }, 2);

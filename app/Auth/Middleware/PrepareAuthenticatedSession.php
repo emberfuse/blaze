@@ -5,10 +5,10 @@ namespace App\Auth\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class PrepareAuthenticatedSession extends Authenticator
+class PrepareAuthenticatedSession extends Authenticate
 {
     /**
-     * Handle the incoming request.
+     * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure                 $next

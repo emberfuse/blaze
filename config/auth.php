@@ -1,6 +1,5 @@
 <?php
 
-use App\Providers\AuthServiceProvider;
 use App\Providers\RouteServiceProvider;
 
 return [
@@ -18,8 +17,6 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
-        'username' => env('AUTH_USERNAME', AuthServiceProvider::USERNAME),
-        'home' => RouteServiceProvider::HOME,
     ],
 
     /*
@@ -117,4 +114,16 @@ return [
     */
 
     'password_timeout' => 10800,
+
+    'home' => RouteServiceProvider::HOME,
+
+    'limiters' => [
+        'login' => null,
+    ],
+
+    'credentials' => [
+        'username' => 'email',
+        'email' => 'email',
+        'password' => 'password',
+    ],
 ];

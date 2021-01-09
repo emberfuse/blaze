@@ -1,24 +1,24 @@
 <template>
-    <div class="row">
-        <form-section-title>
+    <div class="md:grid md:grid-cols-12 md:gap-6">
+        <action-section-title>
             <template #title><slot name="title"></slot></template>
             <template #description><slot name="description"></slot></template>
-        </form-section-title>
+        </action-section-title>
 
-        <form-section-content>
-            <slot name="content"></slot>
-        </form-section-content>
+        <action-section-content>
+            <template #content><slot name="content"></slot></template>
+        </action-section-content>
     </div>
 </template>
 
 <script>
-    import FormSectionTitle from './FormSectionTitle';
-    import FormSectionContent from './FormSectionContent';
+import ActionSectionTitle from './ActionSectionTitle';
+import ActionSectionContent from './ActionSectionContent';
 
-    export default {
-        components: {
-            FormSectionTitle,
-            FormSectionContent,
-        }
+export default {
+    components: {
+        ActionSectionTitle,
+        ActionSectionContent,
     }
+}
 </script>

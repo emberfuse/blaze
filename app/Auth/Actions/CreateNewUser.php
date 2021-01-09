@@ -2,6 +2,7 @@
 
 namespace App\Auth\Actions;
 
+use Closure;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -11,16 +12,27 @@ use App\Contracts\Auth\CreatesNewUsers;
 class CreateNewUser implements CreatesNewUsers
 {
     /**
-     * Validate and create a newly registered user.
+     * Callback that will be executed after a user has been created.
+     *
+     * @var \Closure|null
+     */
+    protected static $afterCreatingUser;
+
+    /**
+     * Create a newly registered user.
      *
      * @param array $data
      *
-     * @return \App\Models\User
+     * @return mixed
      */
-    public function create(array $data): User
+    public function create(array $data)
     {
         return DB::transaction(function () use ($data) {
             return tap($this->createUser($data), function (User $user) use ($data) {
+                if (static::$afterCreatingUser) {
+                    return call_user_func_array(static::$afterCreatingUser, [$user, $data]);
+                }
+
                 return $user;
             });
         });
@@ -38,11 +50,11 @@ class CreateNewUser implements CreatesNewUsers
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
             'username' => $this->makeUsername($data['name']),
             'password' => Hash::make($data['password']),
         ]);
     }
+
     /**
      * Generate unique username from first name.
      *
@@ -52,18 +64,24 @@ class CreateNewUser implements CreatesNewUsers
      */
     protected function makeUsername(string $name): string
     {
-        if (Str::contains($name, '.')) {
-            [$title, $name] = explode('.', $name);
+        $name = trim($name);
+
+        if (User::where('username', 'like', '%' . $name . '%')->count() !== 0) {
+            return Str::studly("{$name}-" . Str::random('5'));
         }
 
-        [$firstName, $lastName] = explode(' ', $name);
+        return Str::studly($name);
+    }
 
-        $count = User::where('username', 'like', '%' . $firstName . '%')->count();
-
-        if ($count !== 0) {
-            return Str::studly($firstName . $lastName);
-        }
-
-        return $firstName;
+    /**
+     * Register a callback that will be executed after a user has been created.
+     *
+     * @param \Closure|null $callback
+     *
+     * @return void
+     */
+    public static function afterCreatingUser(?Closure $callback = null): void
+    {
+        static::$afterCreatingUser = $callback;
     }
 }

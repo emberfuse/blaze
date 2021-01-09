@@ -2,15 +2,29 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Policies\UserPolicy;
+use App\Auth\Actions\DeleteUser;
+use App\Auth\Actions\CreateNewUser;
+use App\Contracts\Auth\DeletesUsers;
 use Illuminate\Support\Facades\Auth;
-use App\Contracts\AuthenticatesUsers;
 use App\Auth\Actions\AuthenticateUser;
-use App\Auth\Middleware\RedirectIfLocked;
+use App\Auth\Actions\ResetUserPassword;
+use App\Auth\Actions\UpdateUserProfile;
+use App\Contracts\Auth\CreatesNewUsers;
+use App\Auth\Actions\UpdateUserPassword;
+use App\Contracts\Auth\AuthenticatesUsers;
+use App\Contracts\Auth\ResetsUserPasswords;
+use App\Contracts\Auth\UpdatesUserProfiles;
+use App\Auth\Middleware\AfterAuthenticating;
+use App\Contracts\Auth\UpdatesUserPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
 use App\Auth\Middleware\EnsureLoginIsNotThrottled;
+use App\Auth\Authenticators\TwoFactorAuthenticator;
 use App\Auth\Middleware\PrepareAuthenticatedSession;
 use App\Auth\Middleware\RedirectIfTwoFactorAuthenticatable;
+use App\Contracts\Auth\TwoFactorAuthenticator as TwoFactorAuthenticatorContracts;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -21,48 +35,36 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        User::class => UserPolicy::class,
     ];
 
     /**
-     * Default user attribute to use as username.
-     *
-     * @var string
-     */
-    public const USERNAME = 'email';
-
-    /**
-     * Authenticated user action classes.
+     * Complete list of all classes neccessary to perform authenticated user actions.
      *
      * @var array
      */
-    public static array $authUserActions = [
+    public static $authActions = [
         AuthenticatesUsers::class => AuthenticateUser::class,
+        CreatesNewUsers::class => CreateNewUser::class,
+        ResetsUserPasswords::class => ResetUserPassword::class,
+        UpdatesUserProfiles::class => UpdateUserProfile::class,
+        UpdatesUserPasswords::class => UpdateUserPassword::class,
+        DeletesUsers::class => DeleteUser::class,
+        TwoFactorAuthenticatorContracts::class => TwoFactorAuthenticator::class,
     ];
 
-    /*
-     * Middleware classes used to authenticate a user into the app.
+    /**
+     * Login middleware pipeline.
      *
      * @var array
      */
-    public static $authenticationMiddleware = [
+    public static $loginPipeline = [
         // EnsureLoginIsNotThrottled::class,
-        // RedirectIfLocked::class,
-        // RedirectIfTwoFactorAuthenticatable::class,
+        RedirectIfTwoFactorAuthenticatable::class,
         AttemptToAuthenticate::class,
         PrepareAuthenticatedSession::class,
+        AfterAuthenticating::class,
     ];
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->registerAuthGuards();
-        $this->registerAuthenticators();
-    }
 
     /**
      * Register any authentication / authorization services.
@@ -72,29 +74,66 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        $this->registerAuthActionAfterHooks();
     }
 
     /**
-     * Register authentication guard to be used for application authentication.
+     * Register any application services.
      *
      * @return void
      */
-    protected function registerAuthGuards(): void
+    public function register()
     {
-        $this->app->bind(StatefulGuard::class, function () {
-            return Auth::guard('web');
-        });
+        $this->registerDefaultGuard();
+
+        $this->registerActions();
     }
 
     /**
-     * Register session authenticator.
+     * Register all auth action classes.
      *
      * @return void
      */
-    protected function registerAuthenticators(): void
+    protected function registerActions(): void
     {
-        foreach (static::$authUserActions as $abstract => $concrete) {
-            $this->app->singleton($abstract, $concrete);
-        }
+        collect(static::$authActions)->map(
+            fn ($concrete, $abstract) => $this->app->singleton($abstract, $concrete)
+        );
+    }
+
+    /**
+     * Register appropriate guard used for user authentication.
+     *
+     * @return void
+     */
+    protected function registerDefaultGuard(): void
+    {
+        $this->app->bind(
+            StatefulGuard::class,
+            fn () => Auth::guard($this->authConfig('defaults.guard', 'web'))
+        );
+    }
+
+    /**
+     * Register actions to erform after every major authentication events.
+     *
+     * @return void
+     */
+    protected function registerAuthActionAfterHooks(): void
+    {
+    }
+
+    /**
+     * Get authentication configurations.
+     *
+     * @param string $key
+     * @param mixed  $default
+     *
+     * @return mixed
+     */
+    protected function authConfig(string $key, $default)
+    {
+        return $this->app['config']->get("auth.{$key}", $default);
     }
 }

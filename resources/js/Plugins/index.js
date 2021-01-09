@@ -1,6 +1,7 @@
-import "./http";
-import "./portal";
-import "./formlink";
-import "./cookies";
-import "./lodash";
-import "./moment";
+import './http';
+import './portal';
+import './moment';
+import './inertia';
+import initProgressIndicator from './progress';
+
+initProgressIndicator();

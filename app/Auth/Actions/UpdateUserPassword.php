@@ -3,15 +3,15 @@
 namespace App\Auth\Actions;
 
 use App\Contracts\Auth\UpdatesUserPasswords;
-use App\Auth\Actions\Concerns\UpdatesPassword;
 use Illuminate\Contracts\Auth\Authenticatable;
+use App\Auth\Actions\Traits\UpdatesUserPasswords as PasswordUpdator;
 
 class UpdateUserPassword implements UpdatesUserPasswords
 {
-    use UpdatesPassword;
+    use PasswordUpdator;
 
     /**
-     * update the user's password.
+     * Update the user's password.
      *
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param array                                      $data
@@ -20,6 +20,6 @@ class UpdateUserPassword implements UpdatesUserPasswords
      */
     public function update(Authenticatable $user, array $data): void
     {
-        $this->updatePassword($user, $data['password']);
+        $this->updatePassword($user, $data['password'], true);
     }
 }

@@ -1,4 +1,4 @@
-import Repository from "./Repository";
+import Repository from './Repository';
 
 /**
  * Get the specified configuration value.
@@ -8,13 +8,13 @@ import Repository from "./Repository";
  *
  * @return  {Any}
  */
-export function config(key, defaultValue = null) {
+export default function config(key, defaultValue = null) {
     try {
-        const repository = new Repository(require("./items.json"));
+        const repository = new Repository(require('./items.json'));
 
         return repository.get(key, defaultValue);
     } catch (error) {
-        if (process.env.APP_ENV === "local") {
+        if (process.env.MIX_APP_ENV === 'local') {
             console.log(error);
         }
     }

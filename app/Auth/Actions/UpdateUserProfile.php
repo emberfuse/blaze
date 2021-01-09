@@ -2,7 +2,6 @@
 
 namespace App\Auth\Actions;
 
-use App\Features\AppFeatures;
 use App\Contracts\Auth\UpdatesUserProfiles;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -19,12 +18,11 @@ class UpdateUserProfile implements UpdatesUserProfiles
      */
     public function update(Authenticatable $user, array $data): void
     {
-        if (AppFeatures::hasProfilePhoto() && isset($data['photo'])) {
+        if (isset($data['photo'])) {
             $user->updateProfilePhoto($data['photo']);
         }
 
-        if ($data['email'] !== $user->email &&
-            $user instanceof MustVerifyEmail) {
+        if ($data['email'] !== $user->email && $user instanceof MustVerifyEmail) {
             $this->updateInformation($user, $data, true);
 
             $user->sendEmailVerificationNotification();
@@ -47,7 +45,6 @@ class UpdateUserProfile implements UpdatesUserProfiles
         $user->forceFill(array_merge([
             'name' => $data['name'],
             'username' => $data['username'],
-            'phone' => $data['phone'],
             'email' => $data['email'],
         ], $verified ? ['email_verified_at' => null] : []))->save();
     }

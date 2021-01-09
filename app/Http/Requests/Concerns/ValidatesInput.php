@@ -7,15 +7,18 @@ use Illuminate\Support\Facades\Config;
 trait ValidatesInput
 {
     /**
-     * Get the validation rules that apply to the resource.
+     * Get validation rules for specified validation category.
      *
-     * @param string $key
+     * @param string $validationCategory
      * @param array  $additionalRules
      *
      * @return array
      */
-    protected function getRulesFor(string $key, array $additionalRules = []): array
+    protected function getRulesFor(string $validationCategory, array $additionalRules = []): array
     {
-        return array_merge(Config::get("rules.{$key}"), $additionalRules);
+        return array_merge(
+            Config::get("rules.{$validationCategory}", []),
+            $additionalRules
+        );
     }
 }

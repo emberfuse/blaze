@@ -14,12 +14,13 @@ trait HasProfilePhoto
      *
      * @return void
      */
-    public function updateProfilePhoto(UploadedFile $photo): void
+    public function updateProfilePhoto(UploadedFile $photo)
     {
         tap($this->profile_photo_path, function ($previous) use ($photo) {
             $this->forceFill([
                 'profile_photo_path' => $photo->storePublicly(
-                    'profile-photos', ['disk' => $this->profilePhotoDisk()]
+                    'profile-photos',
+                    ['disk' => $this->profilePhotoDisk()]
                 ),
             ])->save();
 
@@ -34,13 +35,11 @@ trait HasProfilePhoto
      *
      * @return void
      */
-    public function deleteProfilePhoto(): void
+    public function deleteProfilePhoto()
     {
         Storage::disk($this->profilePhotoDisk())->delete($this->profile_photo_path);
 
-        $this->forceFill([
-            'profile_photo_path' => null,
-        ])->save();
+        $this->forceFill(['profile_photo_path' => null])->save();
     }
 
     /**
@@ -48,7 +47,7 @@ trait HasProfilePhoto
      *
      * @return string
      */
-    public function getProfilePhotoUrlAttribute(): string
+    public function getProfilePhotoUrlAttribute()
     {
         return $this->profile_photo_path
             ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
@@ -60,12 +59,8 @@ trait HasProfilePhoto
      *
      * @return string
      */
-    protected function defaultProfilePhotoUrl(): string
+    protected function defaultProfilePhotoUrl()
     {
-        if (app()->isLocal() && config('app.mode') === 'offline') {
-            return asset('img/default.jpg');
-        }
-
         return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF';
     }
 
@@ -74,8 +69,8 @@ trait HasProfilePhoto
      *
      * @return string
      */
-    protected function profilePhotoDisk(): string
+    protected function profilePhotoDisk()
     {
-        return config('defaults.user.profile_photo_disk', 'public');
+        return isset($_ENV['CLOUD_ARTIFACT_NAME']) ? 's3' : 'public';
     }
 }

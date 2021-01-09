@@ -3,6 +3,7 @@
 namespace App\Auth\Actions;
 
 use App\Models\User;
+use App\Events\TwoFactorAuthenticationDisabled;
 
 class DisableTwoFactorAuthentication
 {
@@ -13,12 +14,13 @@ class DisableTwoFactorAuthentication
      *
      * @return void
      */
-    public function __invoke(User $user)
+    public function __invoke(User $user): void
     {
         $user->forceFill([
-            'two_factor_enabled' => false,
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
         ])->save();
+
+        TwoFactorAuthenticationDisabled::dispatch($user);
     }
 }

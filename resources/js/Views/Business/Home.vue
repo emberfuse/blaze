@@ -1,25 +1,19 @@
 <template>
     <app-layout>
-        <template #title>
-            <div>
-                Title goes here.
-            </div>
-        </template>
-
-        <template #content>
-            <div>
-                Main content goes here.
-            </div>
-        </template>
+        <div>
+            <p>
+                <span class="font-semibold">You</span> are now logged in.
+            </p>
+        </div>
     </app-layout>
 </template>
 
 <script>
-import AppLayout from "@/Views/Layouts/AppLayout";
+import AppLayout from '@/Views/Layouts/AppLayout';
 
 export default {
     components: {
-        AppLayout,
+        AppLayout
     }
-}
+};
 </script>

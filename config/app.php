@@ -14,8 +14,6 @@ return [
 
     'name' => env('APP_NAME', 'Preflight'),
 
-    'title' => 'Bolierplate application',
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -28,17 +26,6 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Context
-    |--------------------------------------------------------------------------
-    |
-    | This value determines the "context" your application is currently
-    | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
-    |
-    */
 
     'mode' => env('APP_MODE', 'offline'),
 
@@ -187,6 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TwoFactorAuthenticationServiceProvider::class,
     ],
 
     /*

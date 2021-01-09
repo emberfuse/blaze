@@ -7,9 +7,9 @@ use App\Codes\RecoveryCode;
 use BaconQrCode\Renderer\Color\Rgb;
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\RendererStyle\Fill;
-use App\Contracts\Auth\TwoFactorAuthenticator;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use App\Contracts\Auth\TwoFactorAuthenticationProvider;
 
 trait TwoFactorAuthenticatable
 {
@@ -18,7 +18,7 @@ trait TwoFactorAuthenticatable
      *
      * @return array
      */
-    public function recoveryCodes(): array
+    public function recoveryCodes()
     {
         return json_decode(decrypt($this->two_factor_recovery_codes), true);
     }
@@ -30,7 +30,7 @@ trait TwoFactorAuthenticatable
      *
      * @return void
      */
-    public function replaceRecoveryCode(string $code): void
+    public function replaceRecoveryCode($code)
     {
         $this->forceFill([
             'two_factor_recovery_codes' => encrypt(str_replace(
@@ -46,11 +46,11 @@ trait TwoFactorAuthenticatable
      *
      * @return string
      */
-    public function twoFactorQrCodeSvg(): string
+    public function twoFactorQrCodeSvg()
     {
         $svg = (new Writer(
             new ImageRenderer(
-                new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
+                new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(59, 130, 246))),
                 new SvgImageBackEnd()
             )
         ))->writeString($this->twoFactorQrCodeUrl());
@@ -63,9 +63,9 @@ trait TwoFactorAuthenticatable
      *
      * @return string
      */
-    public function twoFactorQrCodeUrl(): string
+    public function twoFactorQrCodeUrl()
     {
-        return app(TwoFactorAuthenticator::class)->qrCodeUrl(
+        return app(TwoFactorAuthenticationProvider::class)->qrCodeUrl(
             config('app.name'),
             $this->email,
             decrypt($this->two_factor_secret)

@@ -1,7 +1,7 @@
 {
     "name": "thavarshan/preflight",
     "type": "project",
-    "description": "Web Application Scaffolding",
+    "description": "Web Application Scaffolding.",
     "keywords": [
         "boilerplate",
         "framework",
@@ -10,9 +10,11 @@
     "license": "MIT",
     "require": {
         "php": "^7.4|^8.0",
+        "bacon/bacon-qr-code": "^2.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^0.3.5",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.8",
@@ -26,7 +28,7 @@
         "laravel/sail": "^0.0.5",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.4"
     },
     "config": {
         "optimize-autoloader": true,
@@ -43,10 +45,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": [
-            "app/Support/helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -59,6 +58,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "compile": [
+            "npm run prod",
+            "@php artisan migrate:fresh --seed"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

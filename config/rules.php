@@ -1,63 +1,61 @@
 <?php
 
 use App\Models\User;
-use App\Rules\Password;
+use App\Rules\PasswordRule;
 use Illuminate\Validation\Rule;
-use App\Providers\AuthServiceProvider;
-
-$username = AuthServiceProvider::USERNAME;
+use Illuminate\Support\Facades\Password;
 
 return [
+    /*
+     * Password Input Validation Rules.
+     */
+    'password' => ['required', 'string', new PasswordRule(), 'confirmed'],
+
+    /*
+     * User Login Validation Rules.
+     */
+    'login' => [
+        'email' => ['required', 'string', 'email'],
+        'password' => ['required', 'string'],
+        'remember' => ['sometimes'],
+    ],
+
+    /*
+     * Use Registration Validation Rules.
+     */
     'register' => [
         'name' => ['required', 'string', 'max:255'],
         'email' => [
             'required',
-            'email',
             'string',
+            'email',
             'max:255',
             Rule::unique(User::class),
         ],
-        'phone' => ['required', 'string'],
-        'business' => ['sometimes', 'required', 'string', 'max:255'],
-        'password' => ['required', 'string', new Password(), 'confirmed'],
+        'password' => ['required', 'string', new PasswordRule()],
     ],
 
-    'login' => [
-        $username => ['required', 'string', $username === 'email' ? 'email' : null],
-        'password' => ['required', 'string'],
-    ],
-
-    'tfa_login' => [
-        'code' => ['nullable', 'string'],
-        'recovery_code' => ['nullable', 'string'],
-    ],
-
-    'update_password' => [
-        'current_password' => ['required', 'string', 'password'],
-        'password' => ['required', 'string', new Password(), 'confirmed'],
-    ],
-
-    'new_password' => [
-        'token' => 'required',
-        'email' => ['required', 'email', 'string'],
-        'password' => ['required', 'string', new Password(), 'confirmed'],
-    ],
-
-    'user_profile' => [
+    /*
+     * Use Profile Information Validation Rules.
+     */
+    'update_profile' => [
+        'photo' => ['sometimes', 'image', 'max:1024'],
         'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'email', 'string'],
         'username' => ['required', 'string', 'max:255'],
-        'phone' => ['required', 'string', 'min:9'],
-        'settings' => ['nullable', 'array'],
-        'photo' => ['nullable', 'image', 'max:1024'],
+        'email' => ['required', 'string', 'email'],
     ],
 
-    'new_api_token' => [
-        'name' => [
+    /*
+     * Use Account Password Update Validation Rules.
+     */
+    'update_password' => [
+        'current_password' => ['required', 'string'],
+        'password' => [
             'required',
             'string',
-            'max:255',
-            'unique:personal_access_tokens,name',
+            new PasswordRule(),
+            'confirmed',
+            'different:current_password',
         ],
     ],
 ];
