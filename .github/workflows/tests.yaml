@@ -9,7 +9,7 @@ on:
 jobs:
   tests:
     name: Run Preflight Checks
-    runs-on: ${{ matrix.operating-systems }}
+    runs-on: ${{ matrix.os }}
 
     services:
       mysql:
