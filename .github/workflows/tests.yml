@@ -27,7 +27,7 @@ jobs:
         stability: [prefer-stable]
 
     steps:
-      - name: Checkout code 🕶
+      - name: Checkout code 🧐
         uses: actions/checkout@v2.3.3
 
       - name: Setup PHP with pecl extension 🔥
@@ -93,7 +93,7 @@ jobs:
           composer install && composer update
           php security-checker security:check ../composer.lock
 
-      - name: Upload artifacts 📤
+      - name: Upload artifacts 📚
         uses: actions/upload-artifact@master
         if: failure()
         with:
@@ -116,7 +116,7 @@ jobs:
           git config --global core.autocrlf false
           git config --global core.eol lf
 
-      - name: Checkout code 🕶
+      - name: Checkout code 🧐
         uses: actions/checkout@v2.3.3
 
       - name: Setup PHP with pecl extension 🔥
@@ -161,14 +161,14 @@ jobs:
           npm install
           npm run test
 
-      - name: Run security checks
+      - name: Run security checks 🦺
         run: |
           test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
           cd security-checker
           composer install && composer update
           php security-checker security:check ../composer.lock
 
-      - name: Upload artifacts 📤
+      - name: Upload artifacts 📚
         uses: actions/upload-artifact@master
         if: failure()
         with:
