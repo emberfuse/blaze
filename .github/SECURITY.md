@@ -4,13 +4,13 @@
 
 ## Supported Versions
 
-Version | Security Fixes Until
---- | ---
-6 (LTS) | September 3rd, 2022
-5.8	| February 26th, 2020
-5.7	| September 4th, 2019
-5.6	| February 7th, 2019
-5.5 (LTS) | August 30th, 2020
+| Version   | Security Fixes Until |
+| --------- | -------------------- |
+| 6 (LTS)   | September 3rd, 2022  |
+| 5.8       | February 26th, 2020  |
+| 5.7       | September 4th, 2019  |
+| 5.6       | February 7th, 2019   |
+| 5.5 (LTS) | August 30th, 2020    |
 
 ## Reporting a Vulnerability
 
