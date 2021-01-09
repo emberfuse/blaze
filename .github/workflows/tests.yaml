@@ -8,7 +8,7 @@ on:
 
 jobs:
   tests:
-    name: Run Preflight Test Suite
+    name: Run Preflight Checks
     runs-on: ubuntu-latest
 
     services:
@@ -55,7 +55,7 @@ jobs:
 
       - name: Boot application
         run: |
-          cp .env.github .env
+          cp .env.example .env
           php artisan key:generate
           php artisan --version
 
