@@ -18,4 +18,10 @@ describe('Configurations Repository Tests', () => {
 
         expect(config.get('foo')).toEqual('bar');
     });
+
+    test('it will return default value if given specific key was not found', () => {
+        let config = new Repository({ foo: 'bar' });
+
+        expect(config.get('fuz', 'baz')).toEqual('baz');
+    });
 });
