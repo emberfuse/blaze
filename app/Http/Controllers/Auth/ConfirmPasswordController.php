@@ -40,7 +40,9 @@ class ConfirmPasswordController extends Controller
     public function __invoke(ConfirmPasswordRequest $request, ConfirmsPasswords $confirmable)
     {
         $confirmed = $confirmable->confirm(
-            $this->guard, $request->user(), $request->password
+            $this->guard,
+            $request->user(),
+            $request->password
         );
 
         if ($confirmed) {
