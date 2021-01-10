@@ -42,7 +42,7 @@ class DeleteUserRequest extends FormRequest
         $this->setAfterValidationHook(function ($validator) {
             if (! Hash::check($this->password, $this->user()->password)) {
                 $validator->errors()->add(
-                    'current_password',
+                    'password',
                     __('The provided password does not match your current password.')
                 );
             }
