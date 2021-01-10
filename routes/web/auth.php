@@ -7,7 +7,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPassswordController;
+use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\UserProfilePhotoController;
+use App\Http\Controllers\Auth\ConfirmedPasswordStatusController;
 
 Route::group([
     'middleware' => 'guest',
@@ -57,5 +59,11 @@ Route::group([
          * User Password Routes...
          */
         Route::put('/password', [PasswordController::class, 'update'])->name('user-password.update');
+
+        /*
+         * User Password Confirmation...
+         */
+        Route::get('/user/confirmed-password-status', [ConfirmedPasswordStatusController::class, '__invoke'])->name('password.confirmation');
+        Route::post('/user/confirm-password', [ConfirmPasswordController::class, '__invoke']);
     });
 });
