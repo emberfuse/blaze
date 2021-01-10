@@ -64,6 +64,6 @@ Route::group([
          * User Password Confirmation Routes...
          */
         Route::get('/confirmed-password-status', [ConfirmedPasswordStatusController::class, '__invoke'])->name('password.confirmation');
-        Route::post('/confirm-password', [ConfirmPasswordController::class, '__invoke']);
+        Route::post('/confirm-password', [ConfirmPasswordController::class, '__invoke'])->name('password.confirm');
     });
 });

@@ -23,17 +23,31 @@
                         When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
                     </p>
                 </div>
+
+                <div class="mt-5">
+                    <div v-if="! twoFactorEnabled">
+                        <confirm-password-modal @confirmed="enableTwoFactorAuthentication">
+                            <app-button type="button" mode="primary" :class="{ 'opacity-25': enabling }" :loading="enabling">
+                                Enable
+                            </app-button>
+                        </confirm-password-modal>
+                    </div>
+                </div>
             </template>
         </action-section>
     </div>
 </template>
 
 <script>
+import ConfirmPasswordModal from '@/Views/Components/Modals/ConfirmPasswordModal';
 import ActionSection from '@/Views/Components/Sections/ActionSection';
+import AppButton from '@/Views/Components/Buttons/Button';
 
 export default {
     components: {
-        ActionSection
+        ActionSection,
+        AppButton,
+        ConfirmPasswordModal
     },
 
     computed: {
@@ -67,17 +81,17 @@ export default {
         },
 
         showQrCode() {
-            return axios.get('/user/two-factor-qr-code')
+            return this.$http.get('/user/two-factor-qr-code')
                 .then(response => this.qrCode = response.data.svg);
         },
 
         showRecoveryCodes() {
-            return axios.get('/user/two-factor-recovery-codes')
+            return this.$http.get('/user/two-factor-recovery-codes')
                 .then(response => this.recoveryCodes = response.data);
         },
 
         regenerateRecoveryCodes() {
-            axios.post('/user/two-factor-recovery-codes')
+            this.$http.post('/user/two-factor-recovery-codes')
                 .then(response => this.showRecoveryCodes());
         },
 
