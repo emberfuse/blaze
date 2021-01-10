@@ -3752,11 +3752,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Components/Sections/ActionSection */ "./resources/js/Views/Components/Sections/ActionSection.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
+/* harmony import */ var _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Modals/DialogModal */ "./resources/js/Views/Components/Modals/DialogModal.vue");
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ActionSection: _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_2__.default,
+    DialogModal: _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_3__.default
+  },
   data: function data() {
     return {
       confirmingUserDeletion: false,
@@ -3874,6 +3939,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpdateProfileInformationForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateProfileInformationForm */ "./resources/js/Views/Profile/UpdateProfileInformationForm.vue");
 /* harmony import */ var _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdatePasswordForm */ "./resources/js/Views/Profile/UpdatePasswordForm.vue");
 /* harmony import */ var _TwoFactorAuthenticationForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TwoFactorAuthenticationForm */ "./resources/js/Views/Profile/TwoFactorAuthenticationForm.vue");
+/* harmony import */ var _DeleteUserForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DeleteUserForm */ "./resources/js/Views/Profile/DeleteUserForm.vue");
 //
 //
 //
@@ -3892,6 +3958,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 
 
 
@@ -3903,7 +3972,8 @@ __webpack_require__.r(__webpack_exports__);
     SectionBorder: _Views_Components_Sections_ActionSectionBorder__WEBPACK_IMPORTED_MODULE_1__.default,
     UpdateProfileInformationForm: _UpdateProfileInformationForm__WEBPACK_IMPORTED_MODULE_2__.default,
     UpdatePasswordForm: _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__.default,
-    TwoFactorAuthenticationForm: _TwoFactorAuthenticationForm__WEBPACK_IMPORTED_MODULE_4__.default
+    TwoFactorAuthenticationForm: _TwoFactorAuthenticationForm__WEBPACK_IMPORTED_MODULE_4__.default,
+    DeleteUserForm: _DeleteUserForm__WEBPACK_IMPORTED_MODULE_5__.default
   }
 });
 
@@ -33770,7 +33840,7 @@ var render = function() {
                     _c("div", { staticClass: "mt-3 p-0" }, [
                       _c("div", [
                         _c("p", {
-                          staticClass: "text-gray-600",
+                          staticClass: "text-sm text-gray-600",
                           domProps: { textContent: _vm._s(_vm.content) }
                         })
                       ]),
@@ -34671,7 +34741,179 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    [
+      _c("action-section", {
+        scopedSlots: _vm._u([
+          {
+            key: "title",
+            fn: function() {
+              return [_vm._v("\n            Delete Account\n        ")]
+            },
+            proxy: true
+          },
+          {
+            key: "description",
+            fn: function() {
+              return [
+                _vm._v(
+                  "\n            Permanently delete your account.\n        "
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _c("div", { staticClass: "max-w-xl" }, [
+                  _c("p", { staticClass: "text-sm text-gray-600" }, [
+                    _vm._v(
+                      "\n                    Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.\n                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "mt-5" },
+                  [
+                    _c(
+                      "app-button",
+                      {
+                        attrs: { mode: "danger" },
+                        on: { clicked: _vm.confirmUserDeletion }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Delete Account\n                "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("dialog-modal", {
+                  attrs: { show: _vm.confirmingUserDeletion, hasActions: true },
+                  on: { close: _vm.closeModal },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "title",
+                      fn: function() {
+                        return [
+                          _vm._v(
+                            "\n                    Delete Account\n                "
+                          )
+                        ]
+                      },
+                      proxy: true
+                    },
+                    {
+                      key: "content",
+                      fn: function() {
+                        return [
+                          _c("p", { staticClass: "text-sm text-gray-600" }, [
+                            _vm._v(
+                              "\n                        Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mt-4" },
+                            [
+                              _c("app-input", {
+                                ref: "password",
+                                attrs: {
+                                  type: "password",
+                                  error: _vm.form.errors.password,
+                                  label: "Password",
+                                  placeholder: "cattleFarmer1576@!"
+                                },
+                                nativeOn: {
+                                  keyup: function($event) {
+                                    if (
+                                      !$event.type.indexOf("key") &&
+                                      _vm._k(
+                                        $event.keyCode,
+                                        "enter",
+                                        13,
+                                        $event.key,
+                                        "Enter"
+                                      )
+                                    ) {
+                                      return null
+                                    }
+                                    return _vm.deleteUser($event)
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.password,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "password", $$v)
+                                  },
+                                  expression: "form.password"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ]
+                      },
+                      proxy: true
+                    },
+                    {
+                      key: "actions",
+                      fn: function() {
+                        return [
+                          _c(
+                            "app-button",
+                            {
+                              attrs: { mode: "secondary" },
+                              on: { clicked: _vm.closeModal }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Cancel\n                    "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "app-button",
+                            {
+                              staticClass: "ml-2",
+                              class: { "opacity-25": _vm.form.processing },
+                              attrs: {
+                                mode: "danger",
+                                disabled: _vm.form.processing
+                              },
+                              on: { clicked: _vm.deleteUser }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Delete Account\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      },
+                      proxy: true
+                    }
+                  ])
+                })
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -34742,7 +34984,9 @@ var render = function() {
         _vm._v(" "),
         _c("two-factor-authentication-form"),
         _vm._v(" "),
-        _c("section-border")
+        _c("section-border"),
+        _vm._v(" "),
+        _c("delete-user-form")
       ],
       1
     )

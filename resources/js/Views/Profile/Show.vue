@@ -12,6 +12,8 @@
             <two-factor-authentication-form></two-factor-authentication-form>
 
             <section-border></section-border>
+
+            <delete-user-form></delete-user-form>
         </div>
     </app-layout>
 </template>
@@ -22,6 +24,7 @@ import SectionBorder from '@/Views/Components/Sections/ActionSectionBorder';
 import UpdateProfileInformationForm from './UpdateProfileInformationForm';
 import UpdatePasswordForm from './UpdatePasswordForm';
 import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm';
+import DeleteUserForm from './DeleteUserForm';
 
 export default {
     components: {
@@ -29,7 +32,8 @@ export default {
         SectionBorder,
         UpdateProfileInformationForm,
         UpdatePasswordForm,
-        TwoFactorAuthenticationForm
+        TwoFactorAuthenticationForm,
+        DeleteUserForm,
     },
 }
 </script>

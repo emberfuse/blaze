@@ -13,7 +13,7 @@
 
                     <div class="mt-3 p-0">
                         <div>
-                            <p class="text-gray-600" v-text="content"></p>
+                            <p class="text-sm text-gray-600" v-text="content"></p>
                         </div>
 
                         <div class="mt-6">
