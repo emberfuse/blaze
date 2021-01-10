@@ -54,4 +54,14 @@ class DeleteUserJob implements ShouldQueue
             throw $e;
         }
     }
+
+    /**
+     * Get instance of user given to be deleted.
+     *
+     * @return \App\Models\User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
 }
