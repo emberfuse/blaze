@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Auth\ConfirmsPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use App\Http\Responses\PasswordConfirmedResponse;
+use App\Http\Responses\FailedPasswordConfirmationResponse;
 
 class ConfirmPasswordController extends Controller
 {
