@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Auth\ConfirmsPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use App\Http\Requests\ConfirmPasswordRequest;
 use App\Http\Responses\PasswordConfirmedResponse;
 use App\Http\Responses\FailedPasswordConfirmationResponse;
 
@@ -31,30 +31,16 @@ class ConfirmPasswordController extends Controller
     }
 
     /**
-     * Show the confirm password view.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse
-     */
-    public function show(Request $request)
-    {
-        return app(ConfirmPasswordViewResponse::class);
-    }
-
-    /**
      * Confirm the user's password.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\ConfirmPasswordRequest $request
      *
      * @return \Illuminate\Contracts\Support\Responsable
      */
-    public function store(Request $request, ConfirmsPasswords $confirmable)
+    public function __invoke(ConfirmPasswordRequest $request, ConfirmsPasswords $confirmable)
     {
         $confirmed = $confirmable->confirm(
-            $this->guard,
-            $request->user(),
-            $request->input('password')
+            $this->guard, $request->user(), $request->password
         );
 
         if ($confirmed) {

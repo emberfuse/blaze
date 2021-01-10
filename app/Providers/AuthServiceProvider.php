@@ -8,11 +8,13 @@ use App\Auth\Actions\DeleteUser;
 use App\Auth\Actions\CreateNewUser;
 use App\Contracts\Auth\DeletesUsers;
 use Illuminate\Support\Facades\Auth;
+use App\Auth\Actions\ConfirmPassword;
 use App\Auth\Actions\AuthenticateUser;
 use App\Auth\Actions\ResetUserPassword;
 use App\Auth\Actions\UpdateUserProfile;
 use App\Contracts\Auth\CreatesNewUsers;
 use App\Auth\Actions\UpdateUserPassword;
+use App\Contracts\Auth\ConfirmsPasswords;
 use App\Contracts\Auth\AuthenticatesUsers;
 use App\Contracts\Auth\ResetsUserPasswords;
 use App\Contracts\Auth\UpdatesUserProfiles;
@@ -49,6 +51,7 @@ class AuthServiceProvider extends ServiceProvider
         ResetsUserPasswords::class => ResetUserPassword::class,
         UpdatesUserProfiles::class => UpdateUserProfile::class,
         UpdatesUserPasswords::class => UpdateUserPassword::class,
+        ConfirmsPasswords::class => ConfirmPassword::class,
         DeletesUsers::class => DeleteUser::class,
         TwoFactorAuthenticatorContracts::class => TwoFactorAuthenticator::class,
     ];

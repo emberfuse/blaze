@@ -26,21 +26,4 @@ class ConfirmPassword implements ConfirmsPasswords
             'password' => $password,
         ]);
     }
-
-    /**
-     * Confirm the user's password using a custom callback.
-     *
-     * @param mixed       $user
-     * @param string|null $password
-     *
-     * @return bool
-     */
-    protected function confirmPasswordUsingCustomCallback($user, ?string $password = null)
-    {
-        return call_user_func(
-            Fortify::$confirmPasswordsUsingCallback,
-            $user,
-            $password
-        );
-    }
 }
