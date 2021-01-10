@@ -1,9 +1,47 @@
 <template>
+    <div>
+        <action-section>
+            <template #title>
+                Two Factor Authentication
+            </template>
 
+            <template #description>
+                Add additional security to your account using two factor authentication.
+            </template>
+
+            <template #content>
+                <h6 class="text-base font-semibold text-gray-900" v-if="twoFactorEnabled">
+                    You have enabled two factor authentication.
+                </h6>
+
+                <h6 class="text-base font-semibold text-gray-900" v-else>
+                    You have not enabled two factor authentication.
+                </h6>
+
+                <div class="mt-3 max-w-xl">
+                    <p class="text-sm text-gray-600">
+                        When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
+                    </p>
+                </div>
+            </template>
+        </action-section>
+    </div>
 </template>
 
 <script>
+import ActionSection from '@/Views/Components/Sections/ActionSection';
+
 export default {
+    components: {
+        ActionSection
+    },
+
+    computed: {
+        twoFactorEnabled() {
+            return ! this.enabling && this.$page.props.user.two_factor_enabled
+        }
+    },
+
     data() {
         return {
             enabling: false,

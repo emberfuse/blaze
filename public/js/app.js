@@ -3534,6 +3534,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Views_Components_Sections_ActionSectionBorder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Sections/ActionSectionBorder */ "./resources/js/Views/Components/Sections/ActionSectionBorder.vue");
 /* harmony import */ var _UpdateProfileInformationForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateProfileInformationForm */ "./resources/js/Views/Profile/UpdateProfileInformationForm.vue");
 /* harmony import */ var _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdatePasswordForm */ "./resources/js/Views/Profile/UpdatePasswordForm.vue");
+/* harmony import */ var _TwoFactorAuthenticationForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TwoFactorAuthenticationForm */ "./resources/js/Views/Profile/TwoFactorAuthenticationForm.vue");
 //
 //
 //
@@ -3548,6 +3549,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -3557,7 +3563,8 @@ __webpack_require__.r(__webpack_exports__);
     AppLayout: _Views_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     SectionBorder: _Views_Components_Sections_ActionSectionBorder__WEBPACK_IMPORTED_MODULE_1__.default,
     UpdateProfileInformationForm: _UpdateProfileInformationForm__WEBPACK_IMPORTED_MODULE_2__.default,
-    UpdatePasswordForm: _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__.default
+    UpdatePasswordForm: _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__.default,
+    TwoFactorAuthenticationForm: _TwoFactorAuthenticationForm__WEBPACK_IMPORTED_MODULE_4__.default
   }
 });
 
@@ -3574,11 +3581,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Components/Sections/ActionSection */ "./resources/js/Views/Components/Sections/ActionSection.vue");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
+  components: {
+    ActionSection: _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  computed: {
+    twoFactorEnabled: function twoFactorEnabled() {
+      return !this.enabling && this.$page.props.user.two_factor_enabled;
+    }
+  },
   data: function data() {
     return {
       enabling: false,
@@ -3634,13 +3679,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
-  },
-  computed: {
-    twoFactorEnabled: function twoFactorEnabled() {
-      return !this.enabling && this.$page.props.user.two_factor_enabled;
-    }
   }
-});
+}, "computed", {
+  twoFactorEnabled: function twoFactorEnabled() {
+    return !this.enabling && this.$page.props.user.two_factor_enabled;
+  }
+}));
 
 /***/ }),
 
@@ -33530,6 +33574,10 @@ var render = function() {
         _vm._v(" "),
         _c("update-password-form"),
         _vm._v(" "),
+        _c("section-border"),
+        _vm._v(" "),
+        _c("two-factor-authentication-form"),
+        _vm._v(" "),
         _c("section-border")
       ],
       1
@@ -33559,7 +33607,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    [
+      _c("action-section", {
+        scopedSlots: _vm._u([
+          {
+            key: "title",
+            fn: function() {
+              return [
+                _vm._v("\n            Two Factor Authentication\n        ")
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "description",
+            fn: function() {
+              return [
+                _vm._v(
+                  "\n            Add additional security to your account using two factor authentication.\n        "
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _vm.twoFactorEnabled
+                  ? _c(
+                      "h6",
+                      { staticClass: "text-base font-semibold text-gray-900" },
+                      [
+                        _vm._v(
+                          "\n                You have enabled two factor authentication.\n            "
+                        )
+                      ]
+                    )
+                  : _c(
+                      "h6",
+                      { staticClass: "text-base font-semibold text-gray-900" },
+                      [
+                        _vm._v(
+                          "\n                You have not enabled two factor authentication.\n            "
+                        )
+                      ]
+                    ),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-3 max-w-xl" }, [
+                  _c("p", { staticClass: "text-sm text-gray-600" }, [
+                    _vm._v(
+                      "\n                    When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.\n                "
+                    )
+                  ])
+                ])
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
