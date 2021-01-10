@@ -33062,7 +33062,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "mt-6 md:mt-0 lg:col-start-6 md:col-span-8 lg:col-span-7" },
+    { staticClass: "mt-6 md:mt-0 lg:col-start-6 md:col-span-8 lg:col-span-8" },
     [_vm._t("content")],
     2
   )
