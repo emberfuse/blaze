@@ -1,13 +1,21 @@
 import Repository from '@/Config/Repository';
 
-let config;
-
-beforeEach(() => {
-    config = new Repository({ foo: 'bar' });
-});
-
 describe('Configurations Repository Tests', () => {
-    test('Instantiates the repository', () => {
+    test('it can be instantiated', () => {
+        let config = new Repository({});
+
+        expect(config).toBeInstanceOf(Repository);
+    });
+
+    test('it can get all config items from repository', () => {
+        let config = new Repository({ foo: 'bar' });
+
         expect(config.all()).toEqual({ foo: 'bar' });
+    });
+
+    test('it can get value of specific key', () => {
+        let config = new Repository({ foo: 'bar' });
+
+        expect(config.get('foo')).toEqual('bar');
     });
 });
