@@ -4,11 +4,12 @@ namespace Tests\Feature\Auth;
 
 use Tests\TestCase;
 use App\Models\User;
+use Tests\Contracts\Postable;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AuthenticationTest extends TestCase
+class AuthenticationTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
@@ -30,10 +31,10 @@ class AuthenticationTest extends TestCase
 
         $response = $this->withoutExceptionHandling()
             ->from('/login')
-            ->post('/login', [
+            ->post('/login', $this->validParameters([
                 'email' => $user->email,
                 'password' => 'CheesedUpCrackers!',
-            ]);
+            ]));
 
         $response->assertStatus(303);
         $response->assertRedirect(RouteServiceProvider::HOME);
@@ -51,10 +52,10 @@ class AuthenticationTest extends TestCase
 
         $response = $this->withoutExceptionHandling()
             ->from('/login')
-            ->postJson('/login', [
+            ->postJson('/login', $this->validParameters([
                 'email' => $user->email,
                 'password' => 'CheesedUpCrackers!',
-            ]);
+            ]));
 
         $response->assertStatus(200);
         $this->assertAuthenticated();
@@ -67,10 +68,10 @@ class AuthenticationTest extends TestCase
             'password' => 'CheesedUpCrackers!',
         ]);
 
-        $response = $this->post('/login', [
-            'email' => 'plain@crackers.com',
+        $response = $this->post('/login', $this->validParameters([
+            'email' => '',
             'password' => 'CheesedUpCrackers!',
-        ]);
+        ]));
 
         $this->assertGuest();
         $response->assertSessionHasErrors('email');
@@ -80,12 +81,27 @@ class AuthenticationTest extends TestCase
     {
         $user = create(User::class);
 
-        $response = $this->post('/login', [
+        $response = $this->post('/login', $this->validParameters([
             'email' => $user->email,
-            'password' => 'PlainCrackers!',
-        ]);
+            'password' => 'CheesedUpCrackers!',
+        ]));
 
         $this->assertGuest();
         $response->assertSessionHasErrors('email');
+    }
+
+    /**
+     * Provide only the necessary paramertes for a POST-able type request.
+     *
+     * @param array $overrides
+     *
+     * @return array
+     */
+    public function validParameters(array $overrides = []): array
+    {
+        return array_merge([
+            'email' => $this->faker->email,
+            'password' => Hash::make($this->faker->word(10)),
+        ], $overrides);
     }
 }

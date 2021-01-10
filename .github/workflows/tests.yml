@@ -1,4 +1,4 @@
-name: Preflight Checks 🛫
+name: Preflight Checks ✈️
 
 on:
   push:
@@ -27,10 +27,10 @@ jobs:
         stability: [prefer-stable]
 
     steps:
-      - name: Checkout code 🧐
+      - name: 🧐 Checkout code
         uses: actions/checkout@v2.3.3
 
-      - name: Setup PHP with pecl extension 🔥
+      - name: 🔥 Setup PHP with pecl extension
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
@@ -38,22 +38,22 @@ jobs:
           extensions: swoole, fileinfo, gmp, intl, json, mbstring, openssl, dom, curl, libxml, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, dom, redis, memcached
           coverage: pcov
 
-      - name: Setup problem matchers ⛑
+      - name: ⛑ Setup problem matchers
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-      - name: Verify MySQL connection 👍🏼
+      - name: 👍🏼 Verify MySQL connection
         run: |
           mysql --version
           sudo apt-get install -y mysql-client
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -e "SHOW DATABASES"
 
-      - name: Cache composer dependencies 📖
+      - name: 📖 Cache composer dependencies
         uses: actions/cache@v2.1.1
         with:
           path: vendor
           key: composer-${{ hashFiles('composer.lock') }}
 
-      - name: Install dependencies 📦
+      - name: 📦 Install dependencies
         run: |
           php --version
           composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
@@ -61,13 +61,13 @@ jobs:
           npm install
           npm run production
 
-      - name: Boot application 🛫
+      - name: 🛫 Boot application
         run: |
           cp .env.example .env
           php artisan key:generate
           php artisan --version
 
-      - name: Migrate database 🦅
+      - name: 🦅 Migrate database
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
           DB_USERNAME: root
@@ -75,25 +75,25 @@ jobs:
           mysql --version
           php artisan migrate:fresh --seed
 
-      - name: Run tests 🧪
+      - name: 🧪 Run PHP tests
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
           DB_USERNAME: root
         run: ./vendor/bin/phpunit --verbose
 
-      - name: Run JavaScript tests ⚗️
+      - name: ⚗️ Run JavaScript tests
         run: |
           npm install
           npm run test
 
-      - name: Run security checks 🦺
+      - name: 🦺 Run security checks
         run: |
           test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
           cd security-checker
           composer install && composer update
           php security-checker security:check ../composer.lock
 
-      - name: Upload artifacts 📚
+      - name: 📚 Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
         with:
@@ -111,15 +111,15 @@ jobs:
         stability: [prefer-stable]
 
     steps:
-      - name: Set git to use LF ✅
+      - name: ✅ Set git to use LF
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
 
-      - name: Checkout code 🧐
+      - name: 🧐 Checkout code
         uses: actions/checkout@v2.3.3
 
-      - name: Setup PHP with pecl extension 🔥
+      - name: 🔥 Setup PHP with pecl extension
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
@@ -127,7 +127,7 @@ jobs:
           extensions: swoole, fileinfo, gmp, intl, json, mbstring, openssl, dom, curl, libxml, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, dom, redis, memcached
           coverage: pcov
 
-      - name: Setup problem matchers ⛑
+      - name: ⛑ Setup problem matchers
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: Cache composer dependencies 📖
@@ -136,7 +136,7 @@ jobs:
           path: vendor
           key: composer-${{ hashFiles('composer.lock') }}
 
-      - name: Install dependencies 📦
+      - name: 📦 Install dependencies
         run: |
           php --version
           composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
@@ -144,31 +144,31 @@ jobs:
           npm install
           npm run production
 
-      - name: Boot application 🛫
+      - name: 🛫 Boot application
         run: |
           cp .env.example .env
           php artisan key:generate
           php artisan --version
 
-      - name: Run PHP tests 🧪
+      - name: 🧪 Run PHP tests
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: ':memory:'
         run: vendor/bin/phpunit --verbose
 
-      - name: Run JavaScript tests ⚗️
+      - name: ⚗️ Run JavaScript tests
         run: |
           npm install
           npm run test
 
-      - name: Run security checks 🦺
+      - name: 🦺 Run security checks
         run: |
           test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
           cd security-checker
           composer install && composer update
           php security-checker security:check ../composer.lock
 
-      - name: Upload artifacts 📚
+      - name: 📚 Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
         with:
