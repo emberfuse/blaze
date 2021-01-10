@@ -2,6 +2,7 @@
 
 namespace Tests\Concerns;
 
+use Closure;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -30,5 +31,17 @@ trait CreatesNewUser
         }
 
         return $this->actingAs($user);
+    }
+
+    /**
+     * Set actions to run after creating fake user.
+     *
+     * @param \Closure $callback
+     *
+     * @return void
+     */
+    public static function afterCreatingUser(Closure $callback): void
+    {
+        static::$afterCreatingUser = $callback;
     }
 }
