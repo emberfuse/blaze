@@ -18,13 +18,25 @@ class UpdateUserProfileInformationTest extends TestCase
 
         $response = $this->withExceptionHandling()
             ->actingAs($user)
-            ->put('/user/profile', [
-                'name' => 'Fred Fred Burger',
-                'username' => 'FrenchFriedFred',
-                'email' => 'fred.fburger@underworld.com',
-            ]);
+            ->put('/user/profile', $this->validParameters());
 
         $response->assertStatus(303);
         $this->assertNotEquals('Mikey Mitchel', $user->fresh()->name);
+    }
+
+    /**
+     * Provide only the necessary paramertes for a POST-able type request.
+     *
+     * @param array $overrides
+     *
+     * @return array
+     */
+    public function validParameters(array $overrides = []): array
+    {
+        return array_merge([
+            'name' => $this->faker->name,
+            'username' => $this->faker->userName,
+            'email' => $this->faker->email,
+        ], $overrides);
     }
 }

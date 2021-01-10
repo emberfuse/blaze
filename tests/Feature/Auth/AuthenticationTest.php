@@ -101,7 +101,7 @@ class AuthenticationTest extends TestCase implements Postable
     {
         return array_merge([
             'email' => $this->faker->email,
-            'password' => Hash::make($this->faker->word(10)),
+            'password' => $this->faker->word(10),
         ], $overrides);
     }
 }

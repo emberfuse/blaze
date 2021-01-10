@@ -4,10 +4,11 @@ namespace Tests\Feature\Auth;
 
 use Tests\TestCase;
 use App\Models\User;
+use Tests\Contracts\Postable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UpdateUserPasswordTest extends TestCase
+class UpdateUserPasswordTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
@@ -19,11 +20,9 @@ class UpdateUserPasswordTest extends TestCase
 
         $response = $this->withExceptionHandling()
             ->actingAs($user)
-            ->put('/user/password', [
+            ->put('/user/password', $this->validParameters([
                 'current_password' => 'bustedCamel!',
-                'password' => 'fixedCamel',
-                'password_confirmation' => 'fixedCamel',
-            ]);
+            ]));
 
         $response->assertStatus(303);
     }
@@ -35,11 +34,9 @@ class UpdateUserPasswordTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/user/password', [
+            ->put('/user/password', $this->validParameters([
                 'current_password' => 'bustedAndBrokenCamel',
-                'password' => 'fixedCamel',
-                'password_confirmation' => 'fixedCamel',
-            ]);
+            ]));
 
         $response->assertStatus(302);
 
@@ -58,11 +55,9 @@ class UpdateUserPasswordTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/user/password', [
+            ->put('/user/password', $this->validParameters([
                 'current_password' => 'bustedAndBrokenCamel',
-                'password' => 'fixedCamel',
-                'password_confirmation' => 'fixedCamel',
-            ]);
+            ]));
 
         $response->assertSessionHasErrorsIn('updatePassword', 'current_password');
     }
@@ -74,11 +69,10 @@ class UpdateUserPasswordTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/user/password', [
+            ->put('/user/password', $this->validParameters([
                 'current_password' => 'bustedCamel',
                 'password' => '',
-                'password_confirmation' => 'fixedCamel',
-            ]);
+            ]));
 
         $response->assertSessionHasErrorsIn('updatePassword', 'password');
     }
@@ -90,12 +84,29 @@ class UpdateUserPasswordTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->put('/user/password', [
+            ->put('/user/password', $this->validParameters([
                 'current_password' => 'bustedCamel',
-                'password' => 'fixedCamel',
                 'password_confirmation' => '',
-            ]);
+            ]));
 
         $response->assertSessionHasErrorsIn('updatePassword', 'password');
+    }
+
+    /**
+     * Provide only the necessary paramertes for a POST-able type request.
+     *
+     * @param array $overrides
+     *
+     * @return array
+     */
+    public function validParameters(array $overrides = []): array
+    {
+        $password = uniqid();
+
+        return array_merge([
+            'current_password' => '',
+            'password' => $password,
+            'password_confirmation' => $password,
+        ], $overrides);
     }
 }

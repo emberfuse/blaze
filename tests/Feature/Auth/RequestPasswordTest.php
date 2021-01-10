@@ -5,13 +5,14 @@ namespace Tests\Feature\Auth;
 use Mockery as m;
 use Tests\TestCase;
 use App\Models\User;
+use Tests\Contracts\Postable;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class RequestPasswordTest extends TestCase
+class RequestPasswordTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
@@ -36,13 +37,10 @@ class RequestPasswordTest extends TestCase
                 return Password::PASSWORD_RESET;
             });
 
-        $response = $this->withoutExceptionHandling()
-            ->post('/reset-password', [
-                'token' => 'token',
-                'email' => 'lord@tumbledor.com',
-                'password' => 'password',
-                'password_confirmation' => 'password',
-            ]);
+        $response = $this->withoutExceptionHandling()->post(
+            '/reset-password',
+            $this->validParameters()
+        );
 
         $response->assertStatus(303);
         $response->assertRedirect('/login');
@@ -62,13 +60,10 @@ class RequestPasswordTest extends TestCase
                 return Password::INVALID_TOKEN;
             });
 
-        $response = $this->withoutExceptionHandling()
-            ->post('/reset-password', [
-                'token' => 'token',
-                'email' => 'lord@tumbledor.com',
-                'password' => 'password',
-                'password_confirmation' => 'password',
-            ]);
+        $response = $this->withoutExceptionHandling()->post(
+            '/reset-password',
+            $this->validParameters()
+        );
 
         $response->assertStatus(303);
         $response->assertSessionHasErrors('email');
@@ -84,12 +79,7 @@ class RequestPasswordTest extends TestCase
                 return Password::INVALID_TOKEN;
             });
 
-        $response = $this->postJson('/reset-password', [
-            'token' => 'token',
-            'email' => 'lord@tumbledor.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-        ]);
+        $response = $this->postJson('/reset-password', $this->validParameters());
 
         $response->assertStatus(422);
         $response->assertJsonValidationErrors('email');
@@ -115,14 +105,30 @@ class RequestPasswordTest extends TestCase
             });
 
         $response = $this->withoutExceptionHandling()
-            ->post('/reset-password', [
-                'token' => 'token',
+            ->post('/reset-password', $this->validParameters([
                 'emailAddress' => 'lord@tumbledor.com',
-                'password' => 'password',
-                'password_confirmation' => 'password',
-            ]);
+            ]));
 
         $response->assertStatus(303);
         $response->assertRedirect('/login');
+    }
+
+    /**
+     * Provide only the necessary paramertes for a POST-able type request.
+     *
+     * @param array $overrides
+     *
+     * @return array
+     */
+    public function validParameters(array $overrides = []): array
+    {
+        $password = uniqid();
+
+        return array_merge([
+            'token' => uniqid(),
+            'email' => $this->faker->email,
+            'password' => $password,
+            'password_confirmation' => $password,
+        ], $overrides);
     }
 }

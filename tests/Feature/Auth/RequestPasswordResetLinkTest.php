@@ -4,12 +4,13 @@ namespace Tests\Feature\Auth;
 
 use Tests\TestCase;
 use App\Models\User;
+use Tests\Contracts\Postable;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 
-class RequestPasswordResetLinkTest extends TestCase
+class RequestPasswordResetLinkTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
@@ -28,9 +29,9 @@ class RequestPasswordResetLinkTest extends TestCase
 
         $response = $this->withoutExceptionHandling()
             ->from('/forgot-password')
-            ->post('/forgot-password', [
+            ->post('/forgot-password', $this->validParameters([
                 'email' => $user->email,
-            ]);
+            ]));
 
         Notification::assertSentTo([$user], ResetPasswordNotification::class);
 
@@ -46,9 +47,9 @@ class RequestPasswordResetLinkTest extends TestCase
 
         $response = $this->withoutExceptionHandling()
             ->from('/forgot-password')
-            ->postJson('/forgot-password', [
+            ->postJson('/forgot-password', $this->validParameters([
                 'email' => $user->email,
-            ]);
+            ]));
 
         Notification::assertSentTo([$user], ResetPasswordNotification::class);
 
@@ -58,9 +59,7 @@ class RequestPasswordResetLinkTest extends TestCase
     public function testResetLinkRequestCanFail()
     {
         $response = $this->from('/forgot-password')
-            ->post('/forgot-password', [
-                'email' => 'non.existant@user.com',
-            ]);
+            ->post('/forgot-password', $this->validParameters());
 
         $response->assertStatus(403);
     }
@@ -68,9 +67,7 @@ class RequestPasswordResetLinkTest extends TestCase
     public function testResetLinkRequestCanFailWithXhr()
     {
         $response = $this->from('/forgot-password')
-            ->postJson('/forgot-password', [
-                'email' => 'non.existant@user.com',
-            ]);
+            ->postJson('/forgot-password', $this->validParameters());
 
         $response->assertStatus(403);
     }
@@ -84,13 +81,27 @@ class RequestPasswordResetLinkTest extends TestCase
         ]);
 
         $response = $this->from('/forgot-password')
-            ->post('/forgot-password', [
+            ->post('/forgot-password', $this->validParameters([
                 'email' => 'james@theredengine.com',
-            ]);
+            ]));
 
         $response->assertStatus(303);
         $response->assertRedirect('/forgot-password');
         $response->assertSessionHasNoErrors();
         $response->assertSessionHas('status', trans(Password::RESET_LINK_SENT));
+    }
+
+    /**
+     * Provide only the necessary paramertes for a POST-able type request.
+     *
+     * @param array $overrides
+     *
+     * @return array
+     */
+    public function validParameters(array $overrides = []): array
+    {
+        return array_merge([
+            'email' => $this->faker->email,
+        ], $overrides);
     }
 }

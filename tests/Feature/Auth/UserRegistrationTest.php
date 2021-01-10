@@ -21,11 +21,7 @@ class UserRegistrationTest extends TestCase
     {
         $response = $this->withoutExceptionHandling()
             ->from('/register')
-            ->post('/register', [
-                'name' => 'Bernard Jackson',
-                'email' => 'cheesey.sleezy@bum.com',
-                'password' => 'JumpedUpMonster!',
-            ]);
+            ->post('/register', $this->validParameters());
 
         $this->assertAuthenticated();
         $response->assertStatus(303);
@@ -36,11 +32,7 @@ class UserRegistrationTest extends TestCase
     {
         $response = $this->withoutExceptionHandling()
             ->from('/register')
-            ->postJson('/register', [
-                'name' => 'Bernard Jackson',
-                'email' => 'cheesey.sleezy@bum.com',
-                'password' => 'JumpedUpMonster!',
-            ]);
+            ->postJson('/register', $this->validParameters());
 
         $this->assertAuthenticated();
         $response->assertStatus(201);
@@ -48,11 +40,9 @@ class UserRegistrationTest extends TestCase
 
     public function testUsersCanNotRegisterWithInvalidEmail()
     {
-        $response = $this->post('/register', [
-            'name' => 'Bernard Jackson',
+        $response = $this->post('/register', $this->validParameters([
             'email' => 'plaincrackers.com',
-            'password' => 'CheesedUpCrackers!',
-        ]);
+        ]));
 
         $this->assertGuest();
         $response->assertSessionHasErrors('email');
@@ -60,11 +50,7 @@ class UserRegistrationTest extends TestCase
 
     public function testUsersCanNotRegisterWithInvalidName()
     {
-        $response = $this->post('/register', [
-            'name' => '',
-            'email' => 'plain@crackers.com',
-            'password' => 'CheesedUpCrackers!',
-        ]);
+        $response = $this->post('/register', $this->validParameters(['name' => '']));
 
         $this->assertGuest();
         $response->assertSessionHasErrors('name');
@@ -72,13 +58,28 @@ class UserRegistrationTest extends TestCase
 
     public function testUsersCanNotRegisterWithInvalidPassword()
     {
-        $response = $this->post('/register', [
-            'name' => 'Bernard Jackson',
-            'email' => 'plain@crackers.com',
+        $response = $this->post('/register', $this->validParameters([
             'password' => '!',
-        ]);
+        ]));
 
         $this->assertGuest();
         $response->assertSessionHasErrors('password');
+    }
+
+    /**
+     * Provide only the necessary paramertes for a POST-able type request.
+     *
+     * @param array $overrides
+     *
+     * @return array
+     */
+    public function validParameters(array $overrides = []): array
+    {
+        return array_merge([
+            'name' => $this->faker->name,
+            'username' => $this->faker->userName,
+            'email' => $this->faker->email,
+            'password' => uniqid(),
+        ], $overrides);
     }
 }
