@@ -12,12 +12,21 @@ use App\Http\Controllers\Auth\UserProfilePhotoController;
 Route::group([
     'middleware' => 'guest',
 ], function (): void {
+    /*
+     * Login Routes...
+     */
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store']);
 
+    /*
+     * Register Routes...
+     */
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
 
+    /*
+     * Reset Password Routes...
+     */
     Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
     Route::get('/reset-password/{token}', [ResetPassswordController::class, 'create'])->name('password.reset');
     Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email');
@@ -27,13 +36,26 @@ Route::group([
 Route::group([
     'middleware' => 'auth',
 ], function (): void {
+    /*
+     * Logout Routes...
+     */
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
+    /*
+     * Authenticated Routes...
+     */
     Route::group(['prefix' => 'user'], function (): void {
+        /*
+         * User Profile Routes...
+         */
         Route::get('/profile', [UserProfileController::class, 'show'])->name('user.show');
         Route::put('/profile', [UserProfileController::class, 'update'])->name('user.update');
         Route::delete('/profile', [UserProfileController::class, 'destroy'])->name('user.destroy');
         Route::delete('/profile-photo', [UserProfilePhotoController::class, 'destroy'])->name('user-photo.destroy');
+
+        /*
+         * User Password Routes...
+         */
         Route::put('/password', [PasswordController::class, 'update'])->name('user-password.update');
     });
 });
