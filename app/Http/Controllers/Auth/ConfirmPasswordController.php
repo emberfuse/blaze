@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\Auth\ConfirmsPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
 
 class ConfirmPasswordController extends Controller
@@ -46,9 +47,9 @@ class ConfirmPasswordController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Responsable
      */
-    public function store(Request $request, ConfirmPassword $confirmable)
+    public function store(Request $request, ConfirmsPasswords $confirmable)
     {
-        $confirmed = app(ConfirmPassword::class)(
+        $confirmed = $confirmable->confirm(
             $this->guard,
             $request->user(),
             $request->input('password')
@@ -59,7 +60,7 @@ class ConfirmPasswordController extends Controller
         }
 
         return $confirmed
-                    ? app(PasswordConfirmedResponse::class)
-                    : app(FailedPasswordConfirmationResponse::class);
+            ? $this->app(PasswordConfirmedResponse::class)
+            : $this->app(FailedPasswordConfirmationResponse::class);
     }
 }
