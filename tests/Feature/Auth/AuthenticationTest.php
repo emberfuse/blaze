@@ -91,7 +91,7 @@ class AuthenticationTest extends TestCase implements Postable
     }
 
     /**
-     * Provide only the necessary paramertes for a POST-able type request.
+     * Provide only the necessary paramertes for a POST-able type requests.
      *
      * @param array $overrides
      *
