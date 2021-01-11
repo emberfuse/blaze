@@ -118,7 +118,8 @@ return [
     'home' => RouteServiceProvider::HOME,
 
     'limiters' => [
-        'login' => null,
+        'login' => 'login',
+        'two-factor' => 'two-factor',
     ],
 
     'credentials' => [

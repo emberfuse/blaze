@@ -13,7 +13,7 @@ use Inertia\Response as InertiaResponse;
 use App\Contracts\Auth\AuthenticatesUsers;
 use Illuminate\Contracts\Auth\StatefulGuard;
 
-class LoginController extends Controller
+class AuthenticationController extends Controller
 {
     /**
      * The guard implementation.

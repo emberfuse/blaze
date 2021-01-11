@@ -1,24 +1,37 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\Auth\RecoveryCodeController;
+use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPassswordController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\UserProfilePhotoController;
 use App\Http\Controllers\Auth\ConfirmedPasswordStatusController;
+use App\Http\Controllers\Auth\TwoFactorAuthenticationController;
 
 Route::group([
     'middleware' => 'guest',
 ], function (): void {
+    $limiter = config('auth.limiters.login');
+
     /*
      * Login Routes...
      */
-    Route::get('/login', [LoginController::class, 'create'])->name('login');
-    Route::post('/login', [LoginController::class, 'store']);
+    Route::get('/login', [AuthenticationController::class, 'create'])
+        ->middleware(array_filter([
+            'guest', $limiter ? 'throttle:' . $limiter : null,
+        ]))
+        ->name('login');
+    Route::post('/login', [AuthenticationController::class, 'store']);
+
+    /*
+     * Two Factor Authentication Challenge Route...
+     */
+    Route::get('/two-factor-challenge', [TwoFactorAuthenticationController::class, 'create'])->name('two-factor.login');
 
     /*
      * Register Routes...
@@ -41,7 +54,7 @@ Route::group([
     /*
      * Logout Routes...
      */
-    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::post('/logout', [AuthenticationController::class, 'destroy'])->name('logout');
 
     /*
      * Authenticated Routes...
@@ -65,5 +78,25 @@ Route::group([
          */
         Route::get('/confirmed-password-status', [ConfirmedPasswordStatusController::class, '__invoke'])->name('password.confirmation');
         Route::post('/confirm-password', [ConfirmPasswordController::class, '__invoke'])->name('password.confirm');
+
+        /*
+         * Two Factro Authentication Routes...
+         */
+        $twoFactorLimiter = config('auth.limiters.two-factor');
+
+        Route::post('/two-factor-challenge', [TwoFactorAuthenticatedSessionController::class, 'store'])
+            ->middleware(array_filter([
+                'guest', $twoFactorLimiter ? 'throttle:' . $twoFactorLimiter : null,
+            ]));
+
+        Route::group([
+            'middleware' => ['auth', 'password.confirm'],
+        ], function () {
+            Route::post('/two-factor-authentication', [TwoFactorAuthenticationController::class, 'store']);
+            Route::delete('/two-factor-authentication', [TwoFactorAuthenticationController::class, 'destroy']);
+            Route::get('/two-factor-qr-code', [TwoFactorQrCodeController::class, 'show']);
+            Route::get('/two-factor-recovery-codes', [RecoveryCodeController::class, 'index']);
+            Route::post('/two-factor-recovery-codes', [RecoveryCodeController::class, 'store']);
+        });
     });
 });

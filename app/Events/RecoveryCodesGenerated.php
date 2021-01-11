@@ -9,9 +9,9 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 
 class RecoveryCodesGenerated
 {
-    use Dispatchable;
-    use InteractsWithSockets;
-    use SerializesModels;
+    use Dispatchable,
+        InteractsWithSockets,
+        SerializesModels;
 
     /**
      * The user instance.

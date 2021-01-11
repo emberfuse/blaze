@@ -23,11 +23,11 @@ use App\Contracts\Auth\UpdatesUserPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Auth\Middleware\AttemptToAuthenticate;
 use App\Auth\Middleware\EnsureLoginIsNotThrottled;
-use App\Auth\Authenticators\TwoFactorAuthenticator;
 use App\Auth\Middleware\PrepareAuthenticatedSession;
+use App\Auth\Providers\TwoFactorAuthenticationProvider;
 use App\Auth\Middleware\RedirectIfTwoFactorAuthenticatable;
-use App\Contracts\Auth\TwoFactorAuthenticator as TwoFactorAuthenticatorContracts;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Contracts\Auth\TwoFactorAuthenticationProvider as TwoFactorAuthenticationProviderContract;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -53,7 +53,7 @@ class AuthServiceProvider extends ServiceProvider
         UpdatesUserPasswords::class => UpdateUserPassword::class,
         ConfirmsPasswords::class => ConfirmPassword::class,
         DeletesUsers::class => DeleteUser::class,
-        TwoFactorAuthenticatorContracts::class => TwoFactorAuthenticator::class,
+        TwoFactorAuthenticationProviderContract::class => TwoFactorAuthenticationProvider::class,
     ];
 
     /**

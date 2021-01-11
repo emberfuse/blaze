@@ -5,8 +5,8 @@ namespace App\Auth\Actions;
 use App\Models\User;
 use App\Codes\RecoveryCode;
 use Illuminate\Support\Collection;
-use App\Contracts\Auth\TwoFactorAuthenticator;
 use App\Events\TwoFactorAuthenticationEnabled;
+use App\Contracts\Auth\TwoFactorAuthenticationProvider;
 
 class EnableTwoFactorAuthentication
 {
@@ -27,11 +27,11 @@ class EnableTwoFactorAuthentication
     /**
      * Create a new action instance.
      *
-     * @param \App\Contracts\Auth\TwoFactorAuthenticator $authenticator
+     * @param \App\Contracts\Auth\TwoFactorAuthenticationProvider $authenticator
      * @param int                                        $recoveryCodeCount
      * @return void
      */
-    public function __construct(TwoFactorAuthenticator $authenticator, ?int $recoveryCodeCount = null)
+    public function __construct(TwoFactorAuthenticationProvider $authenticator, ?int $recoveryCodeCount = null)
     {
         $this->authenticator = $authenticator;
 
