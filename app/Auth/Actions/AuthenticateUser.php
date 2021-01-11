@@ -14,7 +14,6 @@ class AuthenticateUser implements AuthenticatesUsers
      *
      * @param \Illuminate\Contracts\Pipeline\Pipeline $pipeline
      * @param \Illuminate\Http\Request                $request
-     *
      * @return mixed
      */
     public function authenticate(Pipeline $pipeline, Request $request)

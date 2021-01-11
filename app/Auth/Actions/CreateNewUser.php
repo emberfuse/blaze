@@ -22,7 +22,6 @@ class CreateNewUser implements CreatesNewUsers
      * Create a newly registered user.
      *
      * @param array $data
-     *
      * @return mixed
      */
     public function create(array $data)
@@ -42,7 +41,6 @@ class CreateNewUser implements CreatesNewUsers
      * Create new user profile.
      *
      * @param array $data
-     *
      * @return \App\Models\User
      */
     protected function createUser(array $data): User
@@ -59,7 +57,6 @@ class CreateNewUser implements CreatesNewUsers
      * Generate unique username from first name.
      *
      * @param string $name
-     *
      * @return string
      */
     protected function makeUsername(string $name): string
@@ -77,7 +74,6 @@ class CreateNewUser implements CreatesNewUsers
      * Register a callback that will be executed after a user has been created.
      *
      * @param \Closure|null $callback
-     *
      * @return void
      */
     public static function afterCreatingUser(?Closure $callback = null): void

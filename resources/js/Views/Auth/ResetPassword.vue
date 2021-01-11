@@ -73,8 +73,8 @@ export default {
     },
 
     methods: {
-        async updatePassword() {
-            await this.form.post(this.route('password.update'), {
+        updatePassword() {
+            this.form.post(this.route('password.update'), {
                 preserveScroll: true,
                 onFinish: () => this.form.reset('password', 'password_confirmation'),
             });

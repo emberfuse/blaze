@@ -13,7 +13,6 @@ class UpdateUserProfile implements UpdatesUserProfiles
      *
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param array                                      $data
-     *
      * @return void
      */
     public function update(Authenticatable $user, array $data): void
@@ -37,7 +36,6 @@ class UpdateUserProfile implements UpdatesUserProfiles
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param array                                      $data
      * @param bool                                       $verified
-     *
      * @return void
      */
     protected function updateInformation(Authenticatable $user, array $data, bool $verified = true): void

@@ -14,7 +14,6 @@ class ConfirmPassword implements ConfirmsPasswords
      * @param \Illuminate\Contracts\Auth\StatefulGuard   $guard
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param string|null                                $password
-     *
      * @return bool
      */
     public function confirm(StatefulGuard $guard, Authenticatable $user, ?string $password = null): bool

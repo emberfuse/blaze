@@ -13,7 +13,6 @@ class DeleteUser implements DeletesUsers
      * Delete the given user.
      *
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
-     *
      * @return void
      */
     public function delete(Authenticatable $user): void
@@ -31,7 +30,6 @@ class DeleteUser implements DeletesUsers
      * Delete all resources that belong to the user.
      *
      * @param \App\Models\User $user
-     *
      * @return void
      */
     protected function deleteUserResources(User $user): void
@@ -42,7 +40,6 @@ class DeleteUser implements DeletesUsers
      * Delete user profile details.
      *
      * @param \App\Models\User $user
-     *
      * @return void
      */
     protected function deleteUserProfiles(User $user): void

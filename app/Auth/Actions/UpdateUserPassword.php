@@ -15,7 +15,6 @@ class UpdateUserPassword implements UpdatesUserPasswords
      *
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param array                                      $data
-     *
      * @return void
      */
     public function update(Authenticatable $user, array $data): void

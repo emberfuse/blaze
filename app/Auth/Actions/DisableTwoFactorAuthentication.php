@@ -11,7 +11,6 @@ class DisableTwoFactorAuthentication
      * Disable two factor authentication for the user.
      *
      * @param \App\Models\User $user
-     *
      * @return void
      */
     public function __invoke(User $user): void

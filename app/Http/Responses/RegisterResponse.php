@@ -15,6 +15,6 @@ class RegisterResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        return $request->expectsJson() ? $this->json('', 201) : $this->toHome(303);
+        return $request->wantsJson() ? $this->json('', 201) : $this->toHome(303);
     }
 }

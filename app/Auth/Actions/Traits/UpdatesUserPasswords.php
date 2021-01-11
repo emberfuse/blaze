@@ -15,7 +15,6 @@ trait UpdatesUserPasswords
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param string                                     $password
      * @param bool                                       $withoutRemember
-     *
      * @return void
      */
     protected function updatePassword(Authenticatable $user, string $password, bool $withoutRemember = false): void

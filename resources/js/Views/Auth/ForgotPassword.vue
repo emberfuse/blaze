@@ -71,8 +71,8 @@ export default {
     },
 
     methods: {
-        async requestLink() {
-            await this.form.post(this.route('password.request'), {
+        requestLink() {
+            this.form.post(this.route('password.request'), {
                 preserveScroll: true,
                 onSuccess: () => this.disabled = true
             });

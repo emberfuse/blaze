@@ -18,7 +18,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
      * Create a new two factor authentication provider instance.
      *
      * @param \PragmaRX\Google2FA\Google2FA $engine
-     *
      * @return void
      */
     public function __construct(Google2FA $engine)
@@ -28,7 +27,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
 
     /**
      * Generate a new secret key.
-     *
      * @return string
      */
     public function generateSecretKey(): string
@@ -42,7 +40,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
      * @param string $companyName
      * @param string $companyEmail
      * @param string $secret
-     *
      * @return string
      */
     public function qrCodeUrl(string $companyName, string $companyEmail, string $secret): string
@@ -55,7 +52,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
      *
      * @param string $secret
      * @param string $code
-     *
      * @return bool
      */
     public function verify(string $secret, string $code): bool

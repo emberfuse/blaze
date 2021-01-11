@@ -97,8 +97,8 @@ export default {
             })
         },
 
-        async login() {
-            await this.form.post(this.route('two-factor.login'));
+        login() {
+            this.form.post(this.route('two-factor.login'));
         }
     }
 }

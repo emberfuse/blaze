@@ -8,7 +8,7 @@ $finder = PhpCsFixer\Finder::create()
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
-        '@Symfony' => true,
+        '@PSR2' => true,
         'phpdoc_no_empty_return' => false,
         'array_syntax' => ['syntax' => 'short'],
         'yoda_style' => false,

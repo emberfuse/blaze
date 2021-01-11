@@ -79,8 +79,8 @@ export default {
     },
 
     methods: {
-        async login() {
-            await this.form.post('/login', {
+        login() {
+            this.form.post('/login', {
                 preserveScroll: true,
                 onFinish: () => this.form.reset('password'),
             });

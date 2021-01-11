@@ -74,8 +74,8 @@ export default {
     },
 
     methods: {
-        async register() {
-            await this.form.post(this.route('register'), {
+        register() {
+            this.form.post(this.route('register'), {
                 preserveScroll: true,
                 onFinish: () => this.form.reset('password', 'password_confirmation'),
             })

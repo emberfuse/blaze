@@ -1892,21 +1892,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
-/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
-/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
-/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
-/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
-/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
-/* harmony import */ var _Components_Alerts_ActionMessage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Components/Alerts/ActionMessage */ "./resources/js/Views/Components/Alerts/ActionMessage.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
+/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
+/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
+/* harmony import */ var _Components_Alerts_ActionMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/Alerts/ActionMessage */ "./resources/js/Views/Components/Alerts/ActionMessage.vue");
 //
 //
 //
@@ -1958,13 +1950,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__.default,
-    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__.default,
-    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__.default,
-    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__.default,
-    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__.default,
-    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__.default,
-    ActionMessage: _Components_Alerts_ActionMessage__WEBPACK_IMPORTED_MODULE_7__.default
+    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__.default,
+    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__.default,
+    ActionMessage: _Components_Alerts_ActionMessage__WEBPACK_IMPORTED_MODULE_6__.default
   },
   data: function data() {
     return {
@@ -1978,26 +1970,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     requestLink: function requestLink() {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _this.form.post(_this.route('password.request'), {
-                  preserveScroll: true,
-                  onSuccess: function onSuccess() {
-                    return _this.disabled = true;
-                  }
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.form.post(this.route('password.request'), {
+        preserveScroll: true,
+        onSuccess: function onSuccess() {
+          return _this.disabled = true;
+        }
+      });
     }
   }
 });
@@ -2015,20 +1993,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
-/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
-/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
-/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
-/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
-/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
+/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
+/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
 //
 //
 //
@@ -2089,12 +2059,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__.default,
-    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__.default,
-    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__.default,
-    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__.default,
-    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__.default,
-    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__.default
+    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__.default,
+    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
@@ -2109,26 +2079,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     login: function login() {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _this.form.post('/login', {
-                  preserveScroll: true,
-                  onFinish: function onFinish() {
-                    return _this.form.reset('password');
-                  }
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.form.post('/login', {
+        preserveScroll: true,
+        onFinish: function onFinish() {
+          return _this.form.reset('password');
+        }
+      });
     }
   }
 });
@@ -2146,20 +2102,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
-/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
-/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
-/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
-/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
-/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
+/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
+/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
 //
 //
 //
@@ -2214,12 +2162,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__.default,
-    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__.default,
-    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__.default,
-    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__.default,
-    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__.default,
-    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__.default
+    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__.default,
+    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
@@ -2235,26 +2183,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     register: function register() {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _this.form.post(_this.route('register'), {
-                  preserveScroll: true,
-                  onFinish: function onFinish() {
-                    return _this.form.reset('password', 'password_confirmation');
-                  }
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.form.post(this.route('register'), {
+        preserveScroll: true,
+        onFinish: function onFinish() {
+          return _this.form.reset('password', 'password_confirmation');
+        }
+      });
     }
   }
 });
@@ -2272,20 +2206,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
-/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
-/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
-/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
-/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
-/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
+/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
+/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+/* harmony import */ var _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Inputs/Checkbox */ "./resources/js/Views/Components/Inputs/Checkbox.vue");
 //
 //
 //
@@ -2338,12 +2264,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     token: String
   },
   components: {
-    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__.default,
-    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__.default,
-    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__.default,
-    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__.default,
-    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__.default,
-    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_6__.default
+    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__.default,
+    Checkbox: _Views_Components_Inputs_Checkbox__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
@@ -2359,26 +2285,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updatePassword: function updatePassword() {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _this.form.post(_this.route('password.update'), {
-                  preserveScroll: true,
-                  onFinish: function onFinish() {
-                    return _this.form.reset('password', 'password_confirmation');
-                  }
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.form.post(this.route('password.update'), {
+        preserveScroll: true,
+        onFinish: function onFinish() {
+          return _this.form.reset('password', 'password_confirmation');
+        }
+      });
     }
   }
 });
@@ -2396,19 +2308,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
-/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
-/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
-/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
-/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Layouts/AuthLayout */ "./resources/js/Views/Layouts/AuthLayout.vue");
+/* harmony import */ var _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Logos/Logo */ "./resources/js/Views/Components/Logos/Logo.vue");
+/* harmony import */ var _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Base/Link */ "./resources/js/Views/Components/Base/Link.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
 //
 //
 //
@@ -2470,11 +2374,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__.default,
-    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_2__.default,
-    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_3__.default,
-    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__.default,
-    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_5__.default,
+    AuthLayout: _Views_Layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    Logo: _Views_Components_Logos_Logo__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppLink: _Views_Components_Base_Link__WEBPACK_IMPORTED_MODULE_2__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_4__.default,
     Checkbox: Checkbox
   },
   data: function data() {
@@ -2504,23 +2408,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     login: function login() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _this2.form.post(_this2.route('two-factor.login'));
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+      this.form.post(this.route('two-factor.login'));
     }
   }
 });

@@ -56,9 +56,7 @@ class HandleInertiaRequests extends Middleware
 
             'errorBags' => function () {
                 return collect(optional(Session::get('errors'))->getBags() ?: [])
-                    ->mapWithKeys(function ($bag, $key) {
-                        return [$key => $bag->messages()];
-                    })
+                    ->mapWithKeys(fn ($bag, $key) => [$key => $bag->messages()])
                     ->all();
             },
 

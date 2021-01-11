@@ -33,7 +33,6 @@ class ResetUserPassword implements ResetsUserPasswords
      *
      * @param \Illuminate\Contracts\Auth\PasswordBroker $broker
      * @param \Illuminate\Contracts\Auth\StatefulGuard  $guard
-     *
      * @return void
      */
     public function __construct(PasswordBroker $broker, StatefulGuard $guard)
@@ -46,7 +45,6 @@ class ResetUserPassword implements ResetsUserPasswords
      * Validate and reset the user's forgotten password.
      *
      * @param \Illuminate\Http\Request $request
-     *
      * @return mixed
      */
     public function reset(Request $request)
@@ -61,7 +59,6 @@ class ResetUserPassword implements ResetsUserPasswords
      * Get only the neccessary input values.
      *
      * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
     protected function getInput(Request $request): array
@@ -78,7 +75,6 @@ class ResetUserPassword implements ResetsUserPasswords
      * Get callback used to actually reset the given user's password.
      *
      * @param \Illuminate\Http\Request $request
-     *
      * @return \Closure
      */
     protected function resetPasswordCallback(Request $request): Closure

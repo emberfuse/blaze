@@ -29,7 +29,6 @@ class EnableTwoFactorAuthentication
      *
      * @param \App\Contracts\Auth\TwoFactorAuthenticator $authenticator
      * @param int                                        $recoveryCodeCount
-     *
      * @return void
      */
     public function __construct(TwoFactorAuthenticator $authenticator, ?int $recoveryCodeCount = null)
@@ -45,7 +44,6 @@ class EnableTwoFactorAuthentication
      * Enable two factor authentication for the user.
      *
      * @param \App\Models\User $user
-     *
      * @return void
      */
     public function __invoke(User $user): void
