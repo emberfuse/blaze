@@ -3,6 +3,9 @@
 namespace Tests\Feature\Auth;
 
 use Tests\TestCase;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -36,6 +39,22 @@ class UserRegistrationTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertStatus(201);
+    }
+
+    public function testFiresEventsAfterSuccessfulRegistrationAndLogin()
+    {
+        Event::fake();
+
+        $response = $this->withoutExceptionHandling()
+            ->from('/register')
+            ->post('/register', $this->validParameters());
+
+        Event::assertDispatched(Registered::class);
+        Event::assertDispatched(Login::class);
+
+        $this->assertAuthenticated();
+        $response->assertStatus(303);
+        $response->assertRedirect(RouteServiceProvider::HOME);
     }
 
     public function testUsersCanNotRegisterWithInvalidEmail()

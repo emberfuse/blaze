@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Responses\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
@@ -48,9 +47,9 @@ class RegisterController extends Controller
      * @param \App\Http\Requests\RegisterRequest  $request
      * @param \App\Contracts\Auth\CreatesNewUsers $authenticator
      *
-     * @return \App\Http\Responses\Response
+     * @return \App\Http\Responses\RegisterResponse
      */
-    public function store(RegisterRequest $request, CreatesNewUsers $creator): Response
+    public function store(RegisterRequest $request, CreatesNewUsers $creator): RegisterResponse
     {
         event(new Registered($user = $creator->create($request->validated())));
 
