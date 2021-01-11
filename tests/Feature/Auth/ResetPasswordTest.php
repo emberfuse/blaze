@@ -12,7 +12,7 @@ use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class RequestPasswordTest extends TestCase implements Postable
+class ResetPasswordTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
@@ -56,9 +56,7 @@ class RequestPasswordTest extends TestCase implements Postable
         $user = m::mock(Authenticatable::class);
 
         $broker->shouldReceive('reset')
-            ->andReturnUsing(function ($input, $callback) {
-                return Password::INVALID_TOKEN;
-            });
+            ->andReturnUsing(fn ($input, $callback) => Password::INVALID_TOKEN);
 
         $response = $this->withoutExceptionHandling()->post(
             '/reset-password',
@@ -75,9 +73,7 @@ class RequestPasswordTest extends TestCase implements Postable
             $broker = m::mock(PasswordBroker::class)
         );
         $broker->shouldReceive('reset')
-            ->andReturnUsing(function ($input, $callback) {
-                return Password::INVALID_TOKEN;
-            });
+            ->andReturnUsing(fn ($input, $callback) => Password::INVALID_TOKEN);
 
         $response = $this->postJson('/reset-password', $this->validParameters());
 
