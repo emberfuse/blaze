@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Contracts\Auth\UpdatesUserPasswords;
 use App\Http\Requests\UpdatePasswordRequest;
-use App\Http\Responses\UpdatePasswordResponse;
+use App\Http\Responses\Auth\UpdatePasswordResponse;
 
 class PasswordController extends Controller
 {

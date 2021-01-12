@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use App\Contracts\Auth\CreatesNewUsers;
-use App\Http\Responses\RegisterResponse;
 use Inertia\Response as InertiaResponse;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use App\Http\Responses\Auth\RegisterResponse;
 
 class RegisterController extends Controller
 {

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Auth;
 
+use App\Http\Responses\Response;
 use Illuminate\Contracts\Support\Responsable;
 
-class DeleteUserResponse extends Response implements Responsable
+class GenerateRecoveryCodesResponse extends Response implements Responsable
 {
     /**
      * Create an HTTP response that represents the object.
@@ -15,8 +16,8 @@ class DeleteUserResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        return $request->expectsJson()
-            ? $this->noContent()
-            : $this->redirectToRoute('welcome', [], 303);
+        return $request->wantsJson()
+            ? $this->json('', 200)
+            : $this->back(303)->with('status', 'recovery-codes-generated');
     }
 }

@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Password;
 use Inertia\Response as InertiaResponse;
 use App\Contracts\Auth\ResetsUserPasswords;
 use App\Http\Requests\ResetPasswordRequest;
-use App\Http\Responses\PasswordResetResponse;
-use App\Http\Responses\FailedPasswordResetResponse;
+use App\Http\Responses\Auth\PasswordResetResponse;
+use App\Http\Responses\Auth\FailedPasswordResetResponse;
 
 class ResetPassswordController extends Controller
 {

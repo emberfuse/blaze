@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DeleteProfilePhotoRequest;
-use App\Http\Responses\DeleteProfilePhotoResponse;
+use App\Http\Responses\Auth\DeleteProfilePhotoResponse;
 
 class UserProfilePhotoController extends Controller
 {

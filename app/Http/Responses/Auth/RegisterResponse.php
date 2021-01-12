@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Auth;
 
+use App\Http\Responses\Response;
 use Illuminate\Contracts\Support\Responsable;
 
-class LogoutResponse extends Response implements Responsable
+class RegisterResponse extends Response implements Responsable
 {
     /**
      * Create an HTTP response that represents the object.
@@ -15,6 +16,6 @@ class LogoutResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        return $request->expectsJson() ? $this->noContent() : $this->redirectTo('/', 303);
+        return $request->wantsJson() ? $this->json('', 201) : $this->toHome(303);
     }
 }

@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Password;
 use Inertia\Response as InertiaResponse;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use App\Http\Requests\ResetPasswordLinkRequest;
-use App\Http\Responses\FailedPasswordResetLinkRequestResponse;
-use App\Http\Responses\SuccessfulPasswordResetLinkRequestResponse;
+use App\Http\Responses\Auth\FailedPasswordResetLinkRequestResponse;
+use App\Http\Responses\Auth\SuccessfulPasswordResetLinkRequestResponse;
 
 class ForgotPasswordController extends Controller
 {

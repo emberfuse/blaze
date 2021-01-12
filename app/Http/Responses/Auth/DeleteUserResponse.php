@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Auth;
 
+use App\Http\Responses\Response;
 use Illuminate\Contracts\Support\Responsable;
 
-class UpdateProfileResponse extends Response implements Responsable
+class DeleteUserResponse extends Response implements Responsable
 {
     /**
      * Create an HTTP response that represents the object.
@@ -15,6 +16,8 @@ class UpdateProfileResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        return $request->expectsJson() ? $this->noContent() : $this->back(303);
+        return $request->expectsJson()
+            ? $this->noContent()
+            : $this->redirectToRoute('welcome', [], 303);
     }
 }

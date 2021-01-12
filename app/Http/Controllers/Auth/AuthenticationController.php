@@ -7,10 +7,10 @@ use App\Http\Responses\Response;
 use Illuminate\Pipeline\Pipeline;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Responses\LoginResponse;
-use App\Http\Responses\LogoutResponse;
 use Inertia\Response as InertiaResponse;
 use App\Contracts\Auth\AuthenticatesUsers;
+use App\Http\Responses\Auth\LoginResponse;
+use App\Http\Responses\Auth\LogoutResponse;
 use Illuminate\Contracts\Auth\StatefulGuard;
 
 class AuthenticationController extends Controller
@@ -50,9 +50,9 @@ class AuthenticationController extends Controller
      * @param \App\Http\Requests\LoginRequest        $request
      * @param \App\Contracts\Auth\AuthenticatesUsers $authenticator
      *
-     * @return \App\Http\Responses\Response
+     * @return \App\Http\Responses\Auth\LoginResponse
      */
-    public function store(LoginRequest $request, AuthenticatesUsers $authenticator): Response
+    public function store(LoginRequest $request, AuthenticatesUsers $authenticator): LoginResponse
     {
         return $authenticator->authenticate(new Pipeline($this->app()), $request)
             ->then(fn (): Response => $this->app(LoginResponse::class));
@@ -63,9 +63,9 @@ class AuthenticationController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \App\Http\Responses\Response
+     * @return \App\Http\Responses\Auth\LogoutResponse
      */
-    public function destroy(Request $request): Response
+    public function destroy(Request $request): LogoutResponse
     {
         $this->guard->logout();
 
@@ -75,6 +75,6 @@ class AuthenticationController extends Controller
             $session->regenerateToken();
         });
 
-        return app(LogoutResponse::class);
+        return $this->app(LogoutResponse::class);
     }
 }

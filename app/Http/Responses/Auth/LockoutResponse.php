@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Auth;
 
+use App\Http\Responses\Response;
 use App\Auth\Guards\LoginRateLimiter;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Validation\ValidationException;
@@ -43,9 +44,9 @@ class LockoutResponse extends Response implements Responsable
                     config('auth.credentials.username') => [
                         trans('auth.throttle', [
                             'seconds' => $seconds,
-                            'minutes' => ceil($seconds / 60)
-                        ])
-                    ]
+                            'minutes' => ceil($seconds / 60),
+                        ]),
+                    ],
                 ]
             )->status(SymfonyResponse::HTTP_TOO_MANY_REQUESTS);
         });

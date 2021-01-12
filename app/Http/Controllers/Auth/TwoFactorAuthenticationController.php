@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Auth\Actions\EnableTwoFactorAuthentication;
 use App\Auth\Actions\DisableTwoFactorAuthentication;
+use App\Http\Responses\Auth\EnableTwoFactorAuthenticationResponse;
+use App\Http\Responses\Auth\DisableTwoFactorAuthenticationResponse;
 
 class TwoFactorAuthenticationController extends Controller
 {
@@ -15,15 +16,13 @@ class TwoFactorAuthenticationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Auth\Actions\EnableTwoFactorAuthentication  $enable
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \App\Http\Responses\EnableTwoFactorAuthenticationResponse
      */
-    public function store(Request $request, EnableTwoFactorAuthentication $enable)
+    public function store(Request $request, EnableTwoFactorAuthentication $enable): EnableTwoFactorAuthenticationResponse
     {
         $enable($request->user());
 
-        return $request->wantsJson()
-            ? new JsonResponse('', 200)
-            : back()->with('status', 'two-factor-authentication-enabled');
+        return $this->app(EnableTwoFactorAuthenticationResponse::class);
     }
 
     /**
@@ -31,14 +30,12 @@ class TwoFactorAuthenticationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Auth\Actions\DisableTwoFactorAuthentication  $disable
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \App\Http\Responses\DisableTwoFactorAuthenticationResponse
      */
-    public function destroy(Request $request, DisableTwoFactorAuthentication $disable)
+    public function destroy(Request $request, DisableTwoFactorAuthentication $disable): DisableTwoFactorAuthenticationResponse
     {
         $disable($request->user());
 
-        return $request->wantsJson()
-            ? new JsonResponse('', 200)
-            : back(303)->with('status', 'two-factor-authentication-disabled');
+        return $this->app(DisableTwoFactorAuthenticationResponse::class);
     }
 }

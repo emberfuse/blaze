@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Auth;
 
+use App\Http\Responses\Response;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Validation\ValidationException;
 

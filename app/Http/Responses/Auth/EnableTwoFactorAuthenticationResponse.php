@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Auth;
 
+use App\Http\Responses\Response;
 use Illuminate\Contracts\Support\Responsable;
 
-class PasswordConfirmedResponse extends Response implements Responsable
+class EnableTwoFactorAuthenticationResponse extends Response implements Responsable
 {
     /**
      * Create an HTTP response that represents the object.
@@ -16,7 +17,7 @@ class PasswordConfirmedResponse extends Response implements Responsable
     public function toResponse($request)
     {
         return $request->wantsJson()
-            ? $this->json('', 201)
-            : $this->redirectToIntended(config('auth.home'));
+            ? $this->json('', 200)
+            : $this->back()->with('status', 'two-factor-authentication-enabled');
     }
 }

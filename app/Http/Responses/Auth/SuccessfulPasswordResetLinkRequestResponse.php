@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\Http\Responses\Auth;
 
+use App\Http\Responses\Response;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Validation\ValidationException;
 
-class FailedPasswordResetResponse extends Response implements Responsable
+class SuccessfulPasswordResetLinkRequestResponse extends Response implements Responsable
 {
     /**
      * The response status language key.
@@ -37,12 +37,8 @@ class FailedPasswordResetResponse extends Response implements Responsable
      */
     public function toResponse($request)
     {
-        if ($request->wantsJson()) {
-            throw ValidationException::withMessages(['email' => [trans($this->status)]]);
-        }
-
-        return $this->back(303)
-            ->withInput($request->only('email'))
-            ->withErrors(['email' => trans($this->status)]);
+        return $request->wantsJson()
+            ? $this->json(['message' => trans($this->status)], 200)
+            : $this->back(303)->with('status', trans($this->status));
     }
 }
