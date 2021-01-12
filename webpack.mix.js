@@ -1,4 +1,4 @@
-const mix = require("laravel-mix");
+const mix = require('laravel-mix');
 const path = require('path');
 
 mix.js('resources/js/app.js', 'public/js')
@@ -9,7 +9,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('autoprefixer'),
     ])
     .alias({ '@': path.join(__dirname, 'resources/js') })
-    .browserSync('preflight.test');
+    .browserSync();
 
 if (mix.inProduction()) {
     mix.version();
