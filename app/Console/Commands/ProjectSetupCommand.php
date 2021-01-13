@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Throwable;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Question\Question;
 
@@ -52,11 +53,7 @@ class ProjectSetupCommand extends Command
 
         $this->updateEnvironmentFile($credentials);
 
-        if ($this->confirm('Do you want to migrate the database?', false)) {
-            $this->migrateDatabaseWithFreshCredentials($credentials);
-
-            $this->line('~ Database successfully migrated.');
-        }
+        $this->migrateDatabase($credentials);
 
         $this->call('storage:link');
 
@@ -67,6 +64,9 @@ class ProjectSetupCommand extends Command
 
     /**
      * Update the .env file from an array of $key => $value pairs.
+     *
+     * @param array $updatedValues
+     * @return void
      */
     protected function updateEnvironmentFile(array $updatedValues): void
     {
@@ -82,17 +82,36 @@ class ProjectSetupCommand extends Command
     }
 
     /**
-     * Display the welcome message.
+     * Migrate application database.
+     *
+     * @param array $credentials
+     * @return void
      */
-    protected function welcome()
+    protected function migrateDatabase(array $credentials): void
     {
-        $this->info('>> Welcome to the Cratespace automated installation process! <<');
+        if ($this->confirm('Do you want to migrate the database?', false)) {
+            $this->migrateDatabaseWithFreshCredentials($credentials);
+
+            $this->line('~ Database successfully migrated.');
+        }
+    }
+
+    /**
+     * Display the welcome message.
+     *
+     * @return void
+     */
+    protected function welcome(): void
+    {
+        $this->info('>> Welcome to the Preflight automated installation process! <<');
     }
 
     /**
      * Display the completion message.
+     *
+     * @return void
      */
-    protected function goodbye()
+    protected function goodbye(): void
     {
         $this->info('>> The installation process has successfully completed. <<');
     }
@@ -102,7 +121,7 @@ class ProjectSetupCommand extends Command
      *
      * @return array
      */
-    protected function requestDatabaseCredentials()
+    protected function requestDatabaseCredentials(): array
     {
         return [
             'DB_DATABASE' => $this->ask('Database name'),
@@ -114,13 +133,21 @@ class ProjectSetupCommand extends Command
 
     /**
      * Create the initial .env file.
+     *
+     * @return void
      */
-    protected function createEnvFile()
+    protected function createEnvFile(): void
     {
-        if (! file_exists('.env')) {
-            copy('.env.example', '.env');
+        $envFile = $this->laravel->environmentFilePath();
 
-            $this->line('.env file successfully created');
+        if (! file_exists($envFile)) {
+            try {
+                copy('.env.example', $envFile);
+            } catch (Throwable $e) {
+                touch($envFile);
+            }
+
+            $this->line("'.env' file successfully created");
         }
     }
 
@@ -131,7 +158,7 @@ class ProjectSetupCommand extends Command
      *
      * @return void
      */
-    protected function migrateDatabaseWithFreshCredentials($credentials)
+    protected function migrateDatabaseWithFreshCredentials(array $credentials): void
     {
         $seed = $this->confirm('Do you want to seed the database with default user and dummy data?', false);
 
@@ -158,7 +185,7 @@ class ProjectSetupCommand extends Command
      *
      * @return string
      */
-    public function askHiddenWithDefault($question, $fallback = true)
+    public function askHiddenWithDefault(string $question, bool $fallback = true): string
     {
         $question = new Question($question, 'null');
 
