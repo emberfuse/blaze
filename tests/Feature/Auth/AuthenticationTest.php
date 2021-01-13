@@ -13,14 +13,14 @@ class AuthenticationTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
-    public function testLoginScreenCanBeRendered()
+    public function test_login_screen_can_be_rendered()
     {
         $response = $this->get('/login');
 
         $response->assertStatus(200);
     }
 
-    public function testUsersCanAuthenticateUsingTheLoginScreen()
+    public function test_users_can_authenticate_using_the_login_screen()
     {
         $user = create(User::class, [
             'email' => 'cheesey@crackers.com',
@@ -41,7 +41,7 @@ class AuthenticationTest extends TestCase implements Postable
         $this->assertAuthenticated();
     }
 
-    public function testUsersCanAuthenticateUsingXhrRequest()
+    public function test_users_can_authenticate_using_xhr_request()
     {
         $user = create(User::class, [
             'email' => 'cheesey@crackers.com',
@@ -61,7 +61,7 @@ class AuthenticationTest extends TestCase implements Postable
         $this->assertAuthenticated();
     }
 
-    public function testUsersCanNotAuthenticateWithInvalidEmail()
+    public function test_users_can_not_authenticate_with_invalid_email()
     {
         $user = create(User::class, [
             'email' => 'cheesey@crackers.com',
@@ -77,7 +77,7 @@ class AuthenticationTest extends TestCase implements Postable
         $response->assertSessionHasErrors('email');
     }
 
-    public function testUsersCanNotAuthenticateWithInvalidPassword()
+    public function test_users_can_not_authenticate_with_invalid_password()
     {
         $user = create(User::class);
 

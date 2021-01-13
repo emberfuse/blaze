@@ -20,7 +20,7 @@ class ResetUserPasswordTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testItCanBeInstantiated()
+    public function test_it_can_be_instantiated()
     {
         $resetor = new ResetUserPassword(
             m::mock(PasswordBroker::class),
@@ -30,7 +30,7 @@ class ResetUserPasswordTest extends TestCase
         $this->assertInstanceOf(ResetsUserPasswords::class, $resetor);
     }
 
-    public function testItCanResetGivenUsersPassword()
+    public function test_it_can_reset_given_users_password()
     {
         Event::fake();
 

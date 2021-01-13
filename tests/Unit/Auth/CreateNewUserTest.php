@@ -17,14 +17,14 @@ class CreateNewUserTest extends TestCase
         CreateNewUser::afterCreatingUser(null);
     }
 
-    public function testItCanBeInstantiated()
+    public function test_it_can_be_instantiated()
     {
         $creator = new CreateNewUser();
 
         $this->assertInstanceOf(CreatesNewUsers::class, $creator);
     }
 
-    public function testCanCreateNewUsers()
+    public function test_can_create_new_users()
     {
         $creator = new CreateNewUser();
 
@@ -37,7 +37,7 @@ class CreateNewUserTest extends TestCase
         $this->assertInstanceOf(User::class, $user);
     }
 
-    public function testCanAssignAfterHooks()
+    public function test_can_assign_after_hooks()
     {
         $creator = new CreateNewUser();
 
@@ -58,7 +58,7 @@ class CreateNewUserTest extends TestCase
         $this->assertInstanceOf(User::class, $user);
     }
 
-    public function testCanAssignUsernameToNewUsers()
+    public function test_can_assign_username_to_new_users()
     {
         $creator = new CreateNewUser();
 

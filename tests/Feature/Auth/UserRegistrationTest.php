@@ -13,14 +13,14 @@ class UserRegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testUserCanAccessRegistrationPage()
+    public function test_user_can_access_registration_page()
     {
         $response = $this->get('/register');
 
         $response->assertStatus(200);
     }
 
-    public function testNewUsersCanRegister()
+    public function test_new_users_can_register()
     {
         $response = $this->withoutExceptionHandling()
             ->from('/register')
@@ -31,7 +31,7 @@ class UserRegistrationTest extends TestCase
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
 
-    public function testNewUsersCanRegisterWithXhrRequest()
+    public function test_new_users_can_register_with_xhr_request()
     {
         $response = $this->withoutExceptionHandling()
             ->from('/register')
@@ -41,7 +41,7 @@ class UserRegistrationTest extends TestCase
         $response->assertStatus(201);
     }
 
-    public function testFiresEventsAfterSuccessfulRegistrationAndLogin()
+    public function test_fires_events_after_successful_registration_and_login()
     {
         Event::fake();
 
@@ -57,7 +57,7 @@ class UserRegistrationTest extends TestCase
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
 
-    public function testUsersCanNotRegisterWithInvalidEmail()
+    public function test_users_can_not_register_with_invalid_email()
     {
         $response = $this->post('/register', $this->validParameters([
             'email' => 'plaincrackers.com',
@@ -67,7 +67,7 @@ class UserRegistrationTest extends TestCase
         $response->assertSessionHasErrors('email');
     }
 
-    public function testUsersCanNotRegisterWithInvalidName()
+    public function test_users_can_not_register_with_invalid_name()
     {
         $response = $this->post('/register', $this->validParameters(['name' => '']));
 
@@ -75,7 +75,7 @@ class UserRegistrationTest extends TestCase
         $response->assertSessionHasErrors('name');
     }
 
-    public function testUsersCanNotRegisterWithInvalidPassword()
+    public function test_users_can_not_register_with_invalid_password()
     {
         $response = $this->post('/register', $this->validParameters([
             'password' => '!',

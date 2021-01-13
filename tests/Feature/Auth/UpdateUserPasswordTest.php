@@ -12,7 +12,7 @@ class UpdateUserPasswordTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
-    public function testUsersCanUpdatePassword()
+    public function test_users_can_update_password()
     {
         $user = create(User::class, [
             'password' => Hash::make('bustedCamel!'),
@@ -27,7 +27,7 @@ class UpdateUserPasswordTest extends TestCase implements Postable
         $response->assertStatus(303);
     }
 
-    public function testRequestValidatorUsesCustomErrorBag()
+    public function test_request_validator_uses_custom_error_bag()
     {
         $user = create(User::class, [
             'password' => Hash::make('bustedCamel!'),
@@ -48,7 +48,7 @@ class UpdateUserPasswordTest extends TestCase implements Postable
         );
     }
 
-    public function testUsersCanNotResetPasswordWithInvalidCurrentPassword()
+    public function test_users_can_not_reset_password_with_invalid_current_password()
     {
         $user = create(User::class, [
             'password' => Hash::make('bustedCamel!'),
@@ -62,7 +62,7 @@ class UpdateUserPasswordTest extends TestCase implements Postable
         $response->assertSessionHasErrorsIn('updatePassword', 'current_password');
     }
 
-    public function testUsersCanNotResetPasswordWithInvalidPassword()
+    public function test_users_can_not_reset_password_with_invalid_password()
     {
         $user = create(User::class, [
             'password' => Hash::make('bustedCamel!'),
@@ -77,7 +77,7 @@ class UpdateUserPasswordTest extends TestCase implements Postable
         $response->assertSessionHasErrorsIn('updatePassword', 'password');
     }
 
-    public function testUsersCanNotResetPasswordWithInvalidPasswordConfirmation()
+    public function test_users_can_not_reset_password_with_invalid_password_confirmation()
     {
         $user = create(User::class, [
             'password' => Hash::make('bustedCamel!'),

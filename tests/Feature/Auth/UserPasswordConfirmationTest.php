@@ -29,7 +29,7 @@ class UserPasswordConfirmationTest extends TestCase
         ]);
     }
 
-    public function testPasswordCanBeConfirmed()
+    public function test_password_can_be_confirmed()
     {
         $response = $this->withoutExceptionHandling()
             ->actingAs($this->user)
@@ -40,7 +40,7 @@ class UserPasswordConfirmationTest extends TestCase
         $response->assertRedirect('http://foo.com/bar');
     }
 
-    public function testPasswordConfirmationCanFailWithAnInvalidPassword()
+    public function test_password_confirmation_can_fail_with_an_invalid_password()
     {
         $response = $this->actingAs($this->user)
             ->withSession(['url.intended' => 'http://foo.com/bar'])
@@ -52,7 +52,7 @@ class UserPasswordConfirmationTest extends TestCase
         $this->assertNotEquals($response->getTargetUrl(), 'http://foo.com/bar');
     }
 
-    public function testPasswordConfirmationCanFailWithoutAPassword()
+    public function test_password_confirmation_can_fail_without_apassword()
     {
         $response = $this->actingAs($this->user)
             ->withSession(['url.intended' => 'http://foo.com/bar'])
@@ -64,7 +64,7 @@ class UserPasswordConfirmationTest extends TestCase
         $this->assertNotEquals($response->getTargetUrl(), 'http://foo.com/bar');
     }
 
-    public function testPasswordCanBeConfirmedWithJson()
+    public function test_password_can_be_confirmed_with_json()
     {
         $response = $this->actingAs($this->user)
             ->postJson('/user/confirm-password', ['password' => 'MyNameIsFredFredBurgerYes!']);
@@ -72,7 +72,7 @@ class UserPasswordConfirmationTest extends TestCase
         $response->assertStatus(201);
     }
 
-    public function testPasswordConfirmationCanFailWithJson()
+    public function test_password_confirmation_can_fail_with_json()
     {
         $response = $this->actingAs($this->user)
             ->postJson('/user/confirm-password', ['password' => 'invalid']);

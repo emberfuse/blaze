@@ -16,14 +16,14 @@ class ResetPasswordTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
-    public function testTheNewPasswordViewIsReturned()
+    public function test_the_new_password_view_is_returned()
     {
         $response = $this->get('/reset-password/token');
 
         $response->assertStatus(200);
     }
 
-    public function testUserCanResetPassword()
+    public function test_user_can_reset_password()
     {
         $user = create(User::class, ['email' => 'lord@tumbledor.com']);
 
@@ -46,7 +46,7 @@ class ResetPasswordTest extends TestCase implements Postable
         $response->assertRedirect('/login');
     }
 
-    public function testPasswordResetCanFail()
+    public function test_password_reset_can_fail()
     {
         Password::shouldReceive('broker')->andReturn(
             $broker = m::mock(PasswordBroker::class)
@@ -67,7 +67,7 @@ class ResetPasswordTest extends TestCase implements Postable
         $response->assertSessionHasErrors('email');
     }
 
-    public function testPasswordResetCanFailWithXhr()
+    public function test_password_reset_can_fail_with_xhr()
     {
         Password::shouldReceive('broker')->andReturn(
             $broker = m::mock(PasswordBroker::class)
@@ -81,7 +81,7 @@ class ResetPasswordTest extends TestCase implements Postable
         $response->assertJsonValidationErrors('email');
     }
 
-    public function testPasswordCanBeResetWithCustomizedEmailAddressField()
+    public function test_password_can_be_reset_with_customized_email_address_field()
     {
         $user = create(User::class, ['email' => 'lord@tumbledor.com']);
 

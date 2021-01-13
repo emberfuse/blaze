@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class PasswordRuleTest extends TestCase
 {
-    public function testPasswordRule()
+    public function test_password_rule()
     {
         $rule = new PasswordRule();
 
@@ -40,7 +40,7 @@ class PasswordRuleTest extends TestCase
         $this->assertTrue(Str::contains($rule->message(), 'characters and contain at least one uppercase character and one number'));
     }
 
-    public function testPasswordRuleCanRequireSpecialCharacters()
+    public function test_password_rule_can_require_special_characters()
     {
         $rule = new PasswordRule();
 

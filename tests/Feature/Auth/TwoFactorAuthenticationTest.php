@@ -12,8 +12,7 @@ class TwoFactorAuthenticationTest extends TestCase
     use RefreshDatabase;
     use WithoutMiddleware;
 
-    /** @test */
-    public function two_factor_authentication_can_be_enabled()
+    public function test_two_factor_authentication_can_be_enabled()
     {
         $user = create(User::class, [
             'email' => 'james@silverman.com',

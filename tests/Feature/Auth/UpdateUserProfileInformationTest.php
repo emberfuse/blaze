@@ -10,7 +10,7 @@ class UpdateUserProfileInformationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testUsersCanUpdateProfleInformation()
+    public function test_users_can_update_profle_information()
     {
         $user = create(User::class, [
             'name' => 'Mikey Mitchel',

@@ -2,6 +2,7 @@
 
 namespace App\Auth\Actions;
 
+use Closure;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Contracts\Auth\DeletesUsers;
@@ -9,6 +10,13 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class DeleteUser implements DeletesUsers
 {
+    /**
+     * Callback to run to delete all resources associated with the user being deleted.
+     *
+     * @var \Closure
+     */
+    protected static $deleteUserResources;
+
     /**
      * Delete the given user.
      *
@@ -34,6 +42,22 @@ class DeleteUser implements DeletesUsers
      */
     protected function deleteUserResources(User $user): void
     {
+        if (is_null(static::$deleteUserResources)) {
+            return;
+        }
+
+        call_user_func(static::$deleteUserResources, $user);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param \Closure $callback
+     * @return void
+     */
+    public static function duringUserResourcesConcern(Closure $callback): void
+    {
+        static::$deleteUserResources = $callback;
     }
 
     /**

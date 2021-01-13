@@ -14,14 +14,14 @@ class RequestPasswordResetLinkTest extends TestCase implements Postable
 {
     use RefreshDatabase;
 
-    public function testResetPasswordLinkRequestScreenCanBeRendered()
+    public function test_reset_password_link_request_screen_can_be_rendered()
     {
         $response = $this->get('/forgot-password');
 
         $response->assertStatus(200);
     }
 
-    public function testUsersCanRequestPasswordResetLink()
+    public function test_users_can_request_password_reset_link()
     {
         Notification::fake();
 
@@ -39,7 +39,7 @@ class RequestPasswordResetLinkTest extends TestCase implements Postable
         $response->assertRedirect('/forgot-password');
     }
 
-    public function testUsersCanRequestPasswordResetLinkThroughXhrRequest()
+    public function test_users_can_request_password_reset_link_through_xhr_request()
     {
         Notification::fake();
 
@@ -56,7 +56,7 @@ class RequestPasswordResetLinkTest extends TestCase implements Postable
         $response->assertStatus(200);
     }
 
-    public function testResetLinkRequestCanFail()
+    public function test_reset_link_request_can_fail()
     {
         $response = $this->from('/forgot-password')
             ->post('/forgot-password', $this->validParameters());
@@ -64,7 +64,7 @@ class RequestPasswordResetLinkTest extends TestCase implements Postable
         $response->assertStatus(403);
     }
 
-    public function testResetLinkRequestCanFailWithXhr()
+    public function test_reset_link_request_can_fail_with_xhr()
     {
         $response = $this->from('/forgot-password')
             ->postJson('/forgot-password', $this->validParameters());
@@ -72,7 +72,7 @@ class RequestPasswordResetLinkTest extends TestCase implements Postable
         $response->assertStatus(403);
     }
 
-    public function testResetLinkCanBeSuccessfullyRequestedWithCustomizedEmailField()
+    public function test_reset_link_can_be_successfully_requested_with_customized_email_field()
     {
         config()->set('auth.credentials.email', 'email');
 

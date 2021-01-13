@@ -14,7 +14,7 @@ use Illuminate\Validation\ValidationException;
 
 class AuthenticateMiddelwareTest extends TestCase
 {
-    public function testAuthenticatorCanBeInstantiated()
+    public function test_authenticator_can_be_instantiated()
     {
         $authenticatorMiddleware = new ConcreteAuthenticatorMiddleware(
             ...$this->mockAuthenticatorDependencies()
@@ -23,7 +23,7 @@ class AuthenticateMiddelwareTest extends TestCase
         $this->assertInstanceOf(Authenticate::class, $authenticatorMiddleware);
     }
 
-    public function testTriggerAuthenticationFailedEvent()
+    public function test_trigger_authentication_failed_event()
     {
         Event::fake();
 
@@ -36,7 +36,7 @@ class AuthenticateMiddelwareTest extends TestCase
         Event::assertDispatched(Failed::class);
     }
 
-    public function testThrowFailedAuthenticationException()
+    public function test_throw_failed_authentication_exception()
     {
         $this->expectException(ValidationException::class);
 
