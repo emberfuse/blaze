@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use App\Contracts\Auth\CreatesNewUsers;
 use Inertia\Response as InertiaResponse;
+use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Http\Responses\Auth\RegisterResponse;
 

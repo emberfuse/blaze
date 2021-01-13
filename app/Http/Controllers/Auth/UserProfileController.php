@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Jobs\DeleteUserJob;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DeleteUserRequest;
 use Inertia\Response as InertiaResponse;
 use App\Contracts\Auth\UpdatesUserProfiles;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use App\Http\Requests\Auth\DeleteUserRequest;
 use App\Http\Responses\Auth\DeleteUserResponse;
 use App\Http\Responses\Auth\UpdateProfileResponse;
-use App\Http\Requests\UpdateProfileInformationRequest;
+use App\Http\Requests\Auth\UpdateProfileInformationRequest;
 
 class UserProfileController extends Controller
 {

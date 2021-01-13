@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Traits;
 
 use Closure;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Factory;
@@ -84,7 +85,7 @@ trait HasCustomValidator
      *
      * @return \Illuminate\Foundation\Http\FormRequest
      */
-    public function setAfterValidationHook(Closure $callback): FormRequest
+    public function afterValidation(Closure $callback): FormRequest
     {
         $this->afterValidationHook = $callback;
 
@@ -112,10 +113,28 @@ trait HasCustomValidator
      *
      * @return \Illuminate\Foundation\Http\FormRequest
      */
-    public function setCustomErrorBag(string $bag): FormRequest
+    public function setErrorBag(string $bag): FormRequest
     {
         $this->customErrorBag = $bag;
 
         return $this;
+    }
+
+    /**
+     * Set custom validator function to validate user input password.
+     *
+     * @param string $inputName
+     * @return \Closure
+     */
+    protected function validatePassword(string $inputName = 'password'): Closure
+    {
+        return function (ValidatorContract $validator) use ($inputName) {
+            if (! Hash::check($this->{$inputName}, $this->user()->password)) {
+                $validator->errors()->add(
+                    $inputName,
+                    __('The provided password does not match your current password.')
+                );
+            }
+        };
     }
 }

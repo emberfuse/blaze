@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Contracts\Auth\ConfirmsPasswords;
 use Illuminate\Contracts\Auth\StatefulGuard;
-use App\Http\Requests\ConfirmPasswordRequest;
+use App\Http\Requests\Auth\ConfirmPasswordRequest;
 use App\Http\Responses\Auth\PasswordConfirmedResponse;
 use App\Http\Responses\Auth\FailedPasswordConfirmationResponse;
 

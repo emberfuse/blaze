@@ -13,7 +13,7 @@ class DeleteUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testUserAccountsCanBeDeleted()
+    public function test_user_accounts_can_be_deleted()
     {
         Queue::fake();
 
@@ -30,7 +30,7 @@ class DeleteUserTest extends TestCase
         );
     }
 
-    public function testCorrectPasswordMustBeProvidedBeforeAccountCanBeDeleted()
+    public function test_correct_password_must_be_provided_before_account_can_be_deleted()
     {
         Queue::fake();
 

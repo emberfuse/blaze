@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Concerns\AuthorizesRequests;
+use App\Http\Requests\Concerns\InputValidationRules;
 
-class ConfirmPasswordRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
+    use InputValidationRules;
     use AuthorizesRequests;
 
     /**
@@ -16,7 +18,7 @@ class ConfirmPasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->isAuthenticated();
+        return $this->isGuest();
     }
 
     /**
@@ -26,6 +28,6 @@ class ConfirmPasswordRequest extends FormRequest
      */
     public function rules()
     {
-        return ['password' => ['required', 'string']];
+        return $this->getRulesFor('register');
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\Concerns\ValidatesInput;
 use App\Http\Requests\Traits\HasCustomValidator;
 use App\Http\Requests\Concerns\AuthorizesRequests;
+use App\Http\Requests\Concerns\InputValidationRules;
 
 class UpdateProfileInformationRequest extends FormRequest
 {
-    use ValidatesInput;
+    use InputValidationRules;
     use AuthorizesRequests;
     use HasCustomValidator;
 
@@ -48,6 +48,6 @@ class UpdateProfileInformationRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        $this->setCustomErrorBag('updateProfileInformation');
+        $this->setErrorBag('updateProfileInformation');
     }
 }

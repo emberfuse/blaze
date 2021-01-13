@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\Concerns\ValidatesInput;
 use App\Http\Requests\Concerns\AuthorizesRequests;
 
-class RegisterRequest extends FormRequest
+class ResetPasswordRequest extends FormRequest
 {
-    use ValidatesInput;
     use AuthorizesRequests;
 
     /**
@@ -18,7 +16,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->isGuest();
+        return $this->isGuest() && $this->has('token');
     }
 
     /**
@@ -28,6 +26,9 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
-        return $this->getRulesFor('register');
+        return [
+            'token' => ['required'],
+            config('auth.credentials.email') => ['required', 'email'],
+        ];
     }
 }

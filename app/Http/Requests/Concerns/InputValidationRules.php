@@ -4,7 +4,7 @@ namespace App\Http\Requests\Concerns;
 
 use Illuminate\Support\Facades\Config;
 
-trait ValidatesInput
+trait InputValidationRules
 {
     /**
      * Get validation rules for specified validation category.

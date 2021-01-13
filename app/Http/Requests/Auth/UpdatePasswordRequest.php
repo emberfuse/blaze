@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Traits\HasCustomValidator;
 use App\Http\Requests\Concerns\AuthorizesRequests;
+use App\Http\Requests\Concerns\InputValidationRules;
 
-class DeleteUserRequest extends FormRequest
+class UpdatePasswordRequest extends FormRequest
 {
     use AuthorizesRequests;
+    use InputValidationRules;
     use HasCustomValidator;
 
     /**
@@ -29,7 +30,7 @@ class DeleteUserRequest extends FormRequest
      */
     public function rules()
     {
-        return ['password' => ['password', 'required', 'string']];
+        return $this->getRulesFor('update_password');
     }
 
     /**
@@ -39,15 +40,8 @@ class DeleteUserRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        $this->setAfterValidationHook(function ($validator) {
-            if (! Hash::check($this->password, $this->user()->password)) {
-                $validator->errors()->add(
-                    'password',
-                    __('The provided password does not match your current password.')
-                );
-            }
-        });
+        $this->afterValidation($this->validatePassword('current_password'));
 
-        $this->setCustomErrorBag('deleteUser');
+        $this->setErrorBag('updatePassword');
     }
 }

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Concerns\AuthorizesRequests;
+use App\Http\Requests\Concerns\InputValidationRules;
 
-class DeleteProfilePhotoRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
+    use InputValidationRules;
     use AuthorizesRequests;
 
     /**
@@ -16,7 +18,7 @@ class DeleteProfilePhotoRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->isAllowed('manage', $this->user());
+        return $this->isGuest();
     }
 
     /**
@@ -26,6 +28,6 @@ class DeleteProfilePhotoRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return $this->getRulesFor('login');
     }
 }
