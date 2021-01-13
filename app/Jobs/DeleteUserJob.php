@@ -49,7 +49,7 @@ class DeleteUserJob implements ShouldQueue
         try {
             $deletor->delete($this->user);
         } catch (Throwable $e) {
-            app('log')->error($e->getMessage(), ['user' => $this->user]);
+            logger()->error($e->getMessage(), ['user' => $this->user]);
 
             throw $e;
         }

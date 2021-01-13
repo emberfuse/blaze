@@ -18,7 +18,7 @@ class ConfirmPassword implements ConfirmsPasswords
      */
     public function confirm(StatefulGuard $guard, Authenticatable $user, ?string $password = null): bool
     {
-        $username = config('auth.credentials.username');
+        $username = config('auth.credentials.username', 'email');
 
         return $guard->validate([
             $username => $user->{$username},
