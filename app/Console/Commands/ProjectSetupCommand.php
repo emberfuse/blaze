@@ -35,7 +35,7 @@ class ProjectSetupCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
     public function handle()
     {
@@ -60,6 +60,8 @@ class ProjectSetupCommand extends Command
         $this->call('cache:clear');
 
         $this->goodbye();
+
+        return 0;
     }
 
     /**
@@ -73,10 +75,10 @@ class ProjectSetupCommand extends Command
         $envFile = $this->laravel->environmentFilePath();
 
         foreach ($updatedValues as $key => $value) {
-            file_put_contents($envFile, preg_replace(
+            @file_put_contents($envFile, preg_replace(
                 "/{$key}=(.*)/",
                 "{$key}={$value}",
-                file_get_contents($envFile)
+                @file_get_contents($envFile)
             ));
         }
     }
@@ -140,11 +142,11 @@ class ProjectSetupCommand extends Command
     {
         $envFile = $this->laravel->environmentFilePath();
 
-        if (! file_exists($envFile)) {
+        if (! @file_exists($envFile)) {
             try {
-                copy('.env.example', $envFile);
+                @copy('.env.example', $envFile);
             } catch (Throwable $e) {
-                touch($envFile);
+                @touch($envFile);
             }
 
             $this->line("'.env' file successfully created");

@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Contracts\Auth\CreatesNewUsers;
-use App\Models\User;
-use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 use Throwable;
+use Illuminate\Support\Str;
+use Illuminate\Console\Command;
+use App\Contracts\Auth\CreatesNewUsers;
 
 class SeedDefaultUserCommand extends Command
 {
@@ -43,17 +42,15 @@ class SeedDefaultUserCommand extends Command
      */
     public function handle()
     {
+        $credentials = null;
+
         if ($this->confirm('Do you want to create a default user from preset data?', false)) {
-            $defaults = config('defaults.users.credentials');
-
-            User::create($defaults);
-
-            $this->line('Default user created.');
-
-            return 0;
+            $credentials = config('defaults.users.credentials');
         }
 
-        $credentials = $this->requestUserCredentials();
+        if (is_null($credentials)) {
+            $credentials = $this->requestUserCredentials();
+        }
 
         try {
             $this->creator->create($credentials);
@@ -76,7 +73,6 @@ class SeedDefaultUserCommand extends Command
         return [
             'name' => $this->ask('User full name'),
             'email' => $this->ask('Email address'),
-            'phone' => $this->ask('Phone number'),
             'password' => $this->ask('Password'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

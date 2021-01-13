@@ -53,7 +53,7 @@ class PublishConfigJsCommand extends Command
     {
         $configItems = resource_path('js/Config/items.json');
 
-        if (! file_exists($configItems)) {
+        if (! @file_exists($configItems)) {
             @touch($configItems);
         }
 
