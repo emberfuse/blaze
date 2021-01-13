@@ -2,21 +2,15 @@
 
 namespace Tests\Console;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class PublishConfigJsCommandTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    public function test_it_published_a_json_file_with_all_application_configurations()
     {
-        $response = $this->get('/');
+        $this->artisan('configjs:publish')
+            ->expectsOutput('Config items published to json file [items.json].');
 
-        $response->assertStatus(200);
+        $this->assertTrue(file_exists(resource_path('js/Config/items.json')));
     }
 }

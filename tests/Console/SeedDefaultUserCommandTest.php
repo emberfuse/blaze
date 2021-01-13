@@ -19,6 +19,7 @@ class SeedDefaultUserCommandTest extends TestCase
 
         $this->artisan('user:create')
             ->expectsConfirmation('Do you want to create a default user from preset data?', 'yes')
+            ->expectsOutput('Default user created.')
             ->assertExitCode(0);
 
         $this->assertDatabaseHas('users', ['email' => $user['email']]);
@@ -31,6 +32,7 @@ class SeedDefaultUserCommandTest extends TestCase
             ->expectsQuestion('Full name', 'Thavarshan Thayananthajothy')
             ->expectsQuestion('Email address', 'tjthavarshan@gmail.com')
             ->expectsQuestion('Password', 'ComeGetMe!')
+            ->expectsOutput('Default user created.')
             ->assertExitCode(0);
 
         $this->assertDatabaseHas('users', ['email' => 'tjthavarshan@gmail.com']);
