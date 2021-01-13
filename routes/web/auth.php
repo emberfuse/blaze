@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPassswordController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\UserProfilePhotoController;
+use App\Http\Controllers\Auth\OtherBrowserSessionsController;
 use App\Http\Controllers\Auth\ConfirmedPasswordStatusController;
 use App\Http\Controllers\Auth\TwoFactorAuthenticationController;
 
@@ -78,6 +79,11 @@ Route::group([
          */
         Route::get('/confirmed-password-status', [ConfirmedPasswordStatusController::class, '__invoke'])->name('password.confirmation');
         Route::post('/confirm-password', [ConfirmPasswordController::class, '__invoke'])->name('password.confirm');
+
+        /*
+         * Logout Other Browser Sessions Routes...
+         */
+        Route::delete('/other-browser-sessions', [OtherBrowserSessionsController::class, 'destroy'])->name('other-browser-sessions.destroy');
 
         /*
          * Two Factro Authentication Routes...
