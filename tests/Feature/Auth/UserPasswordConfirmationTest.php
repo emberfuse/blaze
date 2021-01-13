@@ -42,8 +42,7 @@ class UserPasswordConfirmationTest extends TestCase
 
     public function testPasswordConfirmationCanFailWithAnInvalidPassword()
     {
-        $response = $this->withoutExceptionHandling()
-            ->actingAs($this->user)
+        $response = $this->actingAs($this->user)
             ->withSession(['url.intended' => 'http://foo.com/bar'])
             ->post('/user/confirm-password', ['password' => 'invalid']);
 

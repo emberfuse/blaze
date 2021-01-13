@@ -21,4 +21,15 @@ trait InputValidationRules
             $additionalRules
         );
     }
+
+    /**
+     * Rules to validate password input.
+     *
+     * @param array $overrides
+     * @return array
+     */
+    protected function passwordRules(array $overrides = []): array
+    {
+        return array_merge(['password' => ['password', 'required', 'string']], $overrides);
+    }
 }
