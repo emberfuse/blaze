@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Support;
 
-interface Generator
+interface CodeGenerator
 {
     /**
      * Generate new code.

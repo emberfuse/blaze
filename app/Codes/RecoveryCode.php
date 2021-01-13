@@ -3,9 +3,9 @@
 namespace App\Codes;
 
 use Illuminate\Support\Str;
-use App\Contracts\Support\Generator;
+use App\Contracts\Support\CodeGenerator;
 
-class RecoveryCode implements Generator
+class RecoveryCode implements CodeGenerator
 {
     /**
      * Generate new code.

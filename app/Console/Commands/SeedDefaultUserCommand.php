@@ -45,7 +45,10 @@ class SeedDefaultUserCommand extends Command
         $credentials = null;
 
         if ($this->confirm('Do you want to create a default user from preset data?', false)) {
-            $credentials = config('defaults.users.credentials');
+            $credentials = array_merge(
+                config('defaults.users.credentials'),
+                ['password' => 'MyTopSecretPassword']
+            );
         }
 
         if (is_null($credentials)) {
@@ -71,7 +74,7 @@ class SeedDefaultUserCommand extends Command
     protected function requestUserCredentials(): array
     {
         return [
-            'name' => $this->ask('User full name'),
+            'name' => $this->ask('Full name'),
             'email' => $this->ask('Email address'),
             'password' => $this->ask('Password'),
             'email_verified_at' => now(),
