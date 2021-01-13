@@ -14,6 +14,11 @@ use Illuminate\Validation\ValidationException;
 
 class AuthenticateMiddelwareTest extends TestCase
 {
+    protected function tearDown(): void
+    {
+        m::close();
+    }
+
     public function test_authenticator_can_be_instantiated()
     {
         $authenticatorMiddleware = new ConcreteAuthenticatorMiddleware(

@@ -20,6 +20,11 @@ class ResetUserPasswordTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function tearDown(): void
+    {
+        m::close();
+    }
+
     public function test_it_can_be_instantiated()
     {
         $resetor = new ResetUserPassword(
