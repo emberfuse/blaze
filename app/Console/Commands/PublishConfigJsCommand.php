@@ -51,7 +51,9 @@ class PublishConfigJsCommand extends Command
      */
     protected function publishConfigJs(): void
     {
-        $configItems = resource_path('js/Config/items.json');
+        $configItems = resource_path(
+            $this->ask("Path to publish to ('js/Config/items.json')", 'js/Config/items.json')
+        );
 
         if (! @file_exists($configItems)) {
             @touch($configItems);
