@@ -2591,7 +2591,7 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.mode === 'danger') {
         return 'text-white hover:text-white focus:text-white active:text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 active:bg-red-600';
       } else {
-        return 'text-gray-600 hover:text-gray-600 focus:text-gray-600 active:text-gray-600 bg-white hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100 border border-gray-100';
+        return 'text-gray-500 hover:text-gray-600 focus:text-gray-600 active:text-gray-600 bg-white hover:bg-white focus:bg-white active:bg-white border border-gray-100';
       }
     }
   }
@@ -3641,9 +3641,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Components/Sections/ActionSection */ "./resources/js/Views/Components/Sections/ActionSection.vue");
-/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
-/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
-/* harmony import */ var _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Modals/DialogModal */ "./resources/js/Views/Components/Modals/DialogModal.vue");
+/* harmony import */ var _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Modals/DialogModal */ "./resources/js/Views/Components/Modals/DialogModal.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
 //
 //
 //
@@ -3706,9 +3706,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     ActionSection: _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
-    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_1__.default,
-    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_2__.default,
-    DialogModal: _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_3__.default
+    DialogModal: _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_2__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
@@ -3763,12 +3763,112 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Components/Sections/ActionSection */ "./resources/js/Views/Components/Sections/ActionSection.vue");
+/* harmony import */ var _Views_Components_Alerts_ActionMessage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Alerts/ActionMessage */ "./resources/js/Views/Components/Alerts/ActionMessage.vue");
+/* harmony import */ var _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Modals/DialogModal */ "./resources/js/Views/Components/Modals/DialogModal.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+/* harmony import */ var _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Views/Components/Inputs/Input */ "./resources/js/Views/Components/Inputs/Input.vue");
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sessions'],
+  components: {
+    ActionSection: _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_0__.default,
+    ActionMessage: _Views_Components_Alerts_ActionMessage__WEBPACK_IMPORTED_MODULE_1__.default,
+    DialogModal: _Views_Components_Modals_DialogModal__WEBPACK_IMPORTED_MODULE_2__.default,
+    AppInput: _Views_Components_Inputs_Input__WEBPACK_IMPORTED_MODULE_4__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_3__.default
+  },
   data: function data() {
     return {
       confirmingLogout: false,
@@ -3826,6 +3926,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Views_Components_Sections_ActionSectionBorder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Sections/ActionSectionBorder */ "./resources/js/Views/Components/Sections/ActionSectionBorder.vue");
 /* harmony import */ var _UpdateProfileInformationForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateProfileInformationForm */ "./resources/js/Views/Profile/UpdateProfileInformationForm.vue");
 /* harmony import */ var _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdatePasswordForm */ "./resources/js/Views/Profile/UpdatePasswordForm.vue");
+/* harmony import */ var _TwoFactorAuthenticationForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TwoFactorAuthenticationForm */ "./resources/js/Views/Profile/TwoFactorAuthenticationForm.vue");
+/* harmony import */ var _DeleteUserForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DeleteUserForm */ "./resources/js/Views/Profile/DeleteUserForm.vue");
+/* harmony import */ var _LogoutOtherBrowserSessionsForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LogoutOtherBrowserSessionsForm */ "./resources/js/Views/Profile/LogoutOtherBrowserSessionsForm.vue");
 //
 //
 //
@@ -3840,6 +3943,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 
 
 
@@ -3849,7 +3965,10 @@ __webpack_require__.r(__webpack_exports__);
     AppLayout: _Views_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     SectionBorder: _Views_Components_Sections_ActionSectionBorder__WEBPACK_IMPORTED_MODULE_1__.default,
     UpdateProfileInformationForm: _UpdateProfileInformationForm__WEBPACK_IMPORTED_MODULE_2__.default,
-    UpdatePasswordForm: _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__.default
+    UpdatePasswordForm: _UpdatePasswordForm__WEBPACK_IMPORTED_MODULE_3__.default,
+    TwoFactorAuthenticationForm: _TwoFactorAuthenticationForm__WEBPACK_IMPORTED_MODULE_4__.default,
+    DeleteUserForm: _DeleteUserForm__WEBPACK_IMPORTED_MODULE_5__.default,
+    LogoutOtherBrowserSessionsForm: _LogoutOtherBrowserSessionsForm__WEBPACK_IMPORTED_MODULE_6__.default
   }
 });
 
@@ -3866,11 +3985,65 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var _Views_Components_Modals_ConfirmPasswordModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Views/Components/Modals/ConfirmPasswordModal */ "./resources/js/Views/Components/Modals/ConfirmPasswordModal.vue");
+/* harmony import */ var _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Views/Components/Sections/ActionSection */ "./resources/js/Views/Components/Sections/ActionSection.vue");
+/* harmony import */ var _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Views/Components/Buttons/Button */ "./resources/js/Views/Components/Buttons/Button.vue");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
+  components: {
+    ActionSection: _Views_Components_Sections_ActionSection__WEBPACK_IMPORTED_MODULE_1__.default,
+    AppButton: _Views_Components_Buttons_Button__WEBPACK_IMPORTED_MODULE_2__.default,
+    ConfirmPasswordModal: _Views_Components_Modals_ConfirmPasswordModal__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  computed: {
+    twoFactorEnabled: function twoFactorEnabled() {
+      return !this.enabling && this.$page.props.user.two_factor_enabled;
+    }
+  },
   data: function data() {
     return {
       enabling: false,
@@ -3897,21 +4070,21 @@ __webpack_require__.r(__webpack_exports__);
     showQrCode: function showQrCode() {
       var _this2 = this;
 
-      return axios.get('/user/two-factor-qr-code').then(function (response) {
+      return this.$http.get('/user/two-factor-qr-code').then(function (response) {
         return _this2.qrCode = response.data.svg;
       });
     },
     showRecoveryCodes: function showRecoveryCodes() {
       var _this3 = this;
 
-      return axios.get('/user/two-factor-recovery-codes').then(function (response) {
+      return this.$http.get('/user/two-factor-recovery-codes').then(function (response) {
         return _this3.recoveryCodes = response.data;
       });
     },
     regenerateRecoveryCodes: function regenerateRecoveryCodes() {
       var _this4 = this;
 
-      axios.post('/user/two-factor-recovery-codes').then(function (response) {
+      this.$http.post('/user/two-factor-recovery-codes').then(function (response) {
         return _this4.showRecoveryCodes();
       });
     },
@@ -3926,13 +4099,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
-  },
-  computed: {
-    twoFactorEnabled: function twoFactorEnabled() {
-      return !this.enabling && this.$page.props.user.two_factor_enabled;
-    }
   }
-});
+}, "computed", {
+  twoFactorEnabled: function twoFactorEnabled() {
+    return !this.enabling && this.$page.props.user.two_factor_enabled;
+  }
+}));
 
 /***/ }),
 
@@ -34708,7 +34880,7 @@ var render = function() {
                           _c(
                             "app-button",
                             {
-                              staticClass: "ml-2",
+                              staticClass: "ml-3",
                               class: { "opacity-25": _vm.form.processing },
                               attrs: {
                                 mode: "danger",
@@ -34761,7 +34933,311 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("action-section", {
+    scopedSlots: _vm._u([
+      {
+        key: "title",
+        fn: function() {
+          return [_vm._v("\n        Browser Sessions\n    ")]
+        },
+        proxy: true
+      },
+      {
+        key: "description",
+        fn: function() {
+          return [
+            _vm._v(
+              "\n        Manage and logout your active sessions on other browsers and devices.\n    "
+            )
+          ]
+        },
+        proxy: true
+      },
+      {
+        key: "content",
+        fn: function() {
+          return [
+            _c("div", { staticClass: "max-w-xl" }, [
+              _c("p", { staticClass: "text-sm text-gray-600" }, [
+                _vm._v(
+                  "\n                If necessary, you may logout of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.\n            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.sessions.length > 0
+              ? _c(
+                  "div",
+                  { staticClass: "mt-6 space-y-8" },
+                  _vm._l(_vm.sessions, function(session, i) {
+                    return _c(
+                      "div",
+                      { key: i, staticClass: "flex items-center" },
+                      [
+                        _c("div", [
+                          session.agent.is_desktop
+                            ? _c(
+                                "svg",
+                                {
+                                  staticClass: "w-8 h-8 text-gray-500",
+                                  attrs: {
+                                    fill: "none",
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                    }
+                                  })
+                                ]
+                              )
+                            : _c(
+                                "svg",
+                                {
+                                  staticClass: "w-8 h-8 text-gray-500",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 24 24",
+                                    "stroke-width": "2",
+                                    stroke: "currentColor",
+                                    fill: "none",
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M0 0h24v24H0z",
+                                      stroke: "none"
+                                    }
+                                  }),
+                                  _c("rect", {
+                                    attrs: {
+                                      x: "7",
+                                      y: "4",
+                                      width: "10",
+                                      height: "16",
+                                      rx: "1"
+                                    }
+                                  }),
+                                  _c("path", {
+                                    attrs: { d: "M11 5h2M12 17v.01" }
+                                  })
+                                ]
+                              )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "ml-3" }, [
+                          _c("div", { staticClass: "text-sm text-gray-600" }, [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(session.agent.platform) +
+                                " - " +
+                                _vm._s(session.agent.browser) +
+                                "\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "div",
+                              { staticClass: "text-xs text-gray-500" },
+                              [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(session.ip_address) +
+                                    ",\n\n                            "
+                                ),
+                                session.is_current_device
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "text-green-500 font-semibold"
+                                      },
+                                      [_vm._v("This device")]
+                                    )
+                                  : _c("span", [
+                                      _vm._v(
+                                        "Last active " +
+                                          _vm._s(session.last_active)
+                                      )
+                                    ])
+                              ]
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "flex items-center mt-6" },
+              [
+                _c(
+                  "app-button",
+                  {
+                    attrs: { mode: "primary" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.confirmLogout($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                Logout Other Browser Sessions\n            "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "action-message",
+                  {
+                    staticClass: "ml-4",
+                    attrs: { on: _vm.form.recentlySuccessful }
+                  },
+                  [_vm._v("\n                Done.\n            ")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("dialog-modal", {
+              attrs: { hasActions: true, show: _vm.confirmingLogout },
+              on: { close: _vm.closeModal },
+              scopedSlots: _vm._u([
+                {
+                  key: "title",
+                  fn: function() {
+                    return [
+                      _vm._v(
+                        "\n                Logout Other Browser Sessions\n            "
+                      )
+                    ]
+                  },
+                  proxy: true
+                },
+                {
+                  key: "content",
+                  fn: function() {
+                    return [
+                      _c("p", { staticClass: "text-sm text-gray-600" }, [
+                        _vm._v(
+                          "\n                    Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mt-4" },
+                        [
+                          _c("app-input", {
+                            ref: "password",
+                            attrs: {
+                              type: "password",
+                              error: _vm.form.errors.password,
+                              label: "Password",
+                              placeholder: "cattleFarmer1576@!"
+                            },
+                            nativeOn: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.logoutOtherBrowserSessions($event)
+                              }
+                            },
+                            model: {
+                              value: _vm.form.password,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "password", $$v)
+                              },
+                              expression: "form.password"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  },
+                  proxy: true
+                },
+                {
+                  key: "actions",
+                  fn: function() {
+                    return [
+                      _c(
+                        "app-button",
+                        {
+                          attrs: { mode: "secondary" },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.closeModal($event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Cancel\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "app-button",
+                        {
+                          staticClass: "ml-3",
+                          class: { "opacity-25": _vm.form.processing },
+                          attrs: {
+                            mode: "primary",
+                            disabled: _vm.form.processing
+                          },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.logoutOtherBrowserSessions($event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Logout Other Browser Sessions\n                "
+                          )
+                        ]
+                      )
+                    ]
+                  },
+                  proxy: true
+                }
+              ])
+            })
+          ]
+        },
+        proxy: true
+      }
+    ])
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -34803,7 +35279,19 @@ var render = function() {
         _vm._v(" "),
         _c("update-password-form"),
         _vm._v(" "),
-        _c("section-border")
+        _c("section-border"),
+        _vm._v(" "),
+        _c("two-factor-authentication-form"),
+        _vm._v(" "),
+        _c("section-border"),
+        _vm._v(" "),
+        _c("logout-other-browser-sessions-form", {
+          attrs: { sessions: _vm.$page.props.user.sessions }
+        }),
+        _vm._v(" "),
+        _c("section-border"),
+        _vm._v(" "),
+        _c("delete-user-form")
       ],
       1
     )
@@ -34832,7 +35320,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    [
+      _c("action-section", {
+        scopedSlots: _vm._u([
+          {
+            key: "title",
+            fn: function() {
+              return [
+                _vm._v("\n            Two Factor Authentication\n        ")
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "description",
+            fn: function() {
+              return [
+                _vm._v(
+                  "\n            Add additional security to your account using two factor authentication.\n        "
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "content",
+            fn: function() {
+              return [
+                _vm.twoFactorEnabled
+                  ? _c(
+                      "h6",
+                      { staticClass: "text-base font-semibold text-gray-900" },
+                      [
+                        _vm._v(
+                          "\n                You have enabled two factor authentication.\n            "
+                        )
+                      ]
+                    )
+                  : _c(
+                      "h6",
+                      { staticClass: "text-base font-semibold text-gray-900" },
+                      [
+                        _vm._v(
+                          "\n                You have not enabled two factor authentication.\n            "
+                        )
+                      ]
+                    ),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-3 max-w-xl" }, [
+                  _c("p", { staticClass: "text-sm text-gray-600" }, [
+                    _vm._v(
+                      "\n                    When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.\n                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-5" }, [
+                  !_vm.twoFactorEnabled
+                    ? _c(
+                        "div",
+                        [
+                          _c(
+                            "confirm-password-modal",
+                            {
+                              on: {
+                                confirmed: _vm.enableTwoFactorAuthentication
+                              }
+                            },
+                            [
+                              _c(
+                                "app-button",
+                                {
+                                  class: { "opacity-25": _vm.enabling },
+                                  attrs: {
+                                    type: "button",
+                                    mode: "primary",
+                                    loading: _vm.enabling
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            Enable\n                        "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ])
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -47481,7 +48071,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"app\":{\"name\":\"Preflight\",\"env\":\"local\",\"mode\":\"online\",\"debug\":true,\"url\":\"http://preflight.test\",\"asset_url\":null,\"timezone\":\"UTC\",\"locale\":\"en\",\"fallback_locale\":\"en\",\"faker_locale\":\"en_US\",\"key\":\"base64:sci1JL4nb40zDBhCJ2u37hmSBi7lLNa1DrhBNZzaRTs=\",\"cipher\":\"AES-256-CBC\",\"providers\":[\"Illuminate\\\\Auth\\\\AuthServiceProvider\",\"Illuminate\\\\Broadcasting\\\\BroadcastServiceProvider\",\"Illuminate\\\\Bus\\\\BusServiceProvider\",\"Illuminate\\\\Cache\\\\CacheServiceProvider\",\"Illuminate\\\\Foundation\\\\Providers\\\\ConsoleSupportServiceProvider\",\"Illuminate\\\\Cookie\\\\CookieServiceProvider\",\"Illuminate\\\\Database\\\\DatabaseServiceProvider\",\"Illuminate\\\\Encryption\\\\EncryptionServiceProvider\",\"Illuminate\\\\Filesystem\\\\FilesystemServiceProvider\",\"Illuminate\\\\Foundation\\\\Providers\\\\FoundationServiceProvider\",\"Illuminate\\\\Hashing\\\\HashServiceProvider\",\"Illuminate\\\\Mail\\\\MailServiceProvider\",\"Illuminate\\\\Notifications\\\\NotificationServiceProvider\",\"Illuminate\\\\Pagination\\\\PaginationServiceProvider\",\"Illuminate\\\\Pipeline\\\\PipelineServiceProvider\",\"Illuminate\\\\Queue\\\\QueueServiceProvider\",\"Illuminate\\\\Redis\\\\RedisServiceProvider\",\"Illuminate\\\\Auth\\\\Passwords\\\\PasswordResetServiceProvider\",\"Illuminate\\\\Session\\\\SessionServiceProvider\",\"Illuminate\\\\Translation\\\\TranslationServiceProvider\",\"Illuminate\\\\Validation\\\\ValidationServiceProvider\",\"Illuminate\\\\View\\\\ViewServiceProvider\",\"App\\\\Providers\\\\AppServiceProvider\",\"App\\\\Providers\\\\AuthServiceProvider\",\"App\\\\Providers\\\\EventServiceProvider\",\"App\\\\Providers\\\\RouteServiceProvider\"],\"aliases\":{\"App\":\"Illuminate\\\\Support\\\\Facades\\\\App\",\"Arr\":\"Illuminate\\\\Support\\\\Arr\",\"Artisan\":\"Illuminate\\\\Support\\\\Facades\\\\Artisan\",\"Auth\":\"Illuminate\\\\Support\\\\Facades\\\\Auth\",\"Blade\":\"Illuminate\\\\Support\\\\Facades\\\\Blade\",\"Broadcast\":\"Illuminate\\\\Support\\\\Facades\\\\Broadcast\",\"Bus\":\"Illuminate\\\\Support\\\\Facades\\\\Bus\",\"Cache\":\"Illuminate\\\\Support\\\\Facades\\\\Cache\",\"Config\":\"Illuminate\\\\Support\\\\Facades\\\\Config\",\"Cookie\":\"Illuminate\\\\Support\\\\Facades\\\\Cookie\",\"Crypt\":\"Illuminate\\\\Support\\\\Facades\\\\Crypt\",\"DB\":\"Illuminate\\\\Support\\\\Facades\\\\DB\",\"Eloquent\":\"Illuminate\\\\Database\\\\Eloquent\\\\Model\",\"Event\":\"Illuminate\\\\Support\\\\Facades\\\\Event\",\"File\":\"Illuminate\\\\Support\\\\Facades\\\\File\",\"Gate\":\"Illuminate\\\\Support\\\\Facades\\\\Gate\",\"Hash\":\"Illuminate\\\\Support\\\\Facades\\\\Hash\",\"Http\":\"Illuminate\\\\Support\\\\Facades\\\\Http\",\"Lang\":\"Illuminate\\\\Support\\\\Facades\\\\Lang\",\"Log\":\"Illuminate\\\\Support\\\\Facades\\\\Log\",\"Mail\":\"Illuminate\\\\Support\\\\Facades\\\\Mail\",\"Notification\":\"Illuminate\\\\Support\\\\Facades\\\\Notification\",\"Password\":\"Illuminate\\\\Support\\\\Facades\\\\Password\",\"Queue\":\"Illuminate\\\\Support\\\\Facades\\\\Queue\",\"Redirect\":\"Illuminate\\\\Support\\\\Facades\\\\Redirect\",\"Request\":\"Illuminate\\\\Support\\\\Facades\\\\Request\",\"Response\":\"Illuminate\\\\Support\\\\Facades\\\\Response\",\"Route\":\"Illuminate\\\\Support\\\\Facades\\\\Route\",\"Schema\":\"Illuminate\\\\Support\\\\Facades\\\\Schema\",\"Session\":\"Illuminate\\\\Support\\\\Facades\\\\Session\",\"Storage\":\"Illuminate\\\\Support\\\\Facades\\\\Storage\",\"Str\":\"Illuminate\\\\Support\\\\Str\",\"URL\":\"Illuminate\\\\Support\\\\Facades\\\\URL\",\"Validator\":\"Illuminate\\\\Support\\\\Facades\\\\Validator\",\"View\":\"Illuminate\\\\Support\\\\Facades\\\\View\"}},\"auth\":{\"defaults\":{\"guard\":\"web\",\"passwords\":\"users\"},\"guards\":{\"web\":{\"driver\":\"session\",\"provider\":\"users\"},\"api\":{\"driver\":\"token\",\"provider\":\"users\",\"hash\":false},\"sanctum\":{\"driver\":\"sanctum\",\"provider\":null}},\"providers\":{\"users\":{\"driver\":\"eloquent\",\"model\":\"App\\\\Models\\\\User\"}},\"passwords\":{\"users\":{\"provider\":\"users\",\"table\":\"password_resets\",\"expire\":60,\"throttle\":60}},\"password_timeout\":10800,\"home\":\"/home\",\"limiters\":{\"login\":null},\"credentials\":{\"username\":\"email\",\"email\":\"email\",\"password\":\"password\"}},\"broadcasting\":{\"default\":\"log\",\"connections\":{\"pusher\":{\"driver\":\"pusher\",\"key\":\"\",\"secret\":\"\",\"app_id\":\"\",\"options\":{\"cluster\":\"mt1\",\"useTLS\":true}},\"ably\":{\"driver\":\"ably\",\"key\":null},\"redis\":{\"driver\":\"redis\",\"connection\":\"default\"},\"log\":{\"driver\":\"log\"},\"null\":{\"driver\":\"null\"}}},\"cache\":{\"default\":\"file\",\"stores\":{\"apc\":{\"driver\":\"apc\"},\"array\":{\"driver\":\"array\",\"serialize\":false},\"database\":{\"driver\":\"database\",\"table\":\"cache\",\"connection\":null,\"lock_connection\":null},\"file\":{\"driver\":\"file\",\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/framework/cache/data\"},\"memcached\":{\"driver\":\"memcached\",\"persistent_id\":null,\"sasl\":[null,null],\"options\":[],\"servers\":[{\"host\":\"127.0.0.1\",\"port\":11211,\"weight\":100}]},\"redis\":{\"driver\":\"redis\",\"connection\":\"cache\",\"lock_connection\":\"default\"},\"dynamodb\":{\"driver\":\"dynamodb\",\"key\":\"\",\"secret\":\"\",\"region\":\"us-east-1\",\"table\":\"cache\",\"endpoint\":null}},\"prefix\":\"preflight_cache\"},\"cors\":{\"paths\":[\"api/*\",\"sanctum/csrf-cookie\"],\"allowed_methods\":[\"*\"],\"allowed_origins\":[\"*\"],\"allowed_origins_patterns\":[],\"allowed_headers\":[\"*\"],\"exposed_headers\":[],\"max_age\":0,\"supports_credentials\":true},\"database\":{\"default\":\"mysql\",\"connections\":{\"sqlite\":{\"driver\":\"sqlite\",\"url\":null,\"database\":\"preflight\",\"prefix\":\"\",\"foreign_key_constraints\":true},\"mysql\":{\"driver\":\"mysql\",\"url\":null,\"host\":\"127.0.0.1\",\"port\":\"3306\",\"database\":\"preflight\",\"username\":\"root\",\"password\":\"\",\"unix_socket\":\"\",\"charset\":\"utf8mb4\",\"collation\":\"utf8mb4_unicode_ci\",\"prefix\":\"\",\"prefix_indexes\":true,\"strict\":true,\"engine\":null,\"options\":[]},\"pgsql\":{\"driver\":\"pgsql\",\"url\":null,\"host\":\"127.0.0.1\",\"port\":\"3306\",\"database\":\"preflight\",\"username\":\"root\",\"password\":\"\",\"charset\":\"utf8\",\"prefix\":\"\",\"prefix_indexes\":true,\"schema\":\"public\",\"sslmode\":\"prefer\"},\"sqlsrv\":{\"driver\":\"sqlsrv\",\"url\":null,\"host\":\"127.0.0.1\",\"port\":\"3306\",\"database\":\"preflight\",\"username\":\"root\",\"password\":\"\",\"charset\":\"utf8\",\"prefix\":\"\",\"prefix_indexes\":true}},\"migrations\":\"migrations\",\"redis\":{\"client\":\"phpredis\",\"options\":{\"cluster\":\"redis\",\"prefix\":\"preflight_database_\"},\"default\":{\"url\":null,\"host\":\"127.0.0.1\",\"password\":null,\"port\":\"6379\",\"database\":\"0\"},\"cache\":{\"url\":null,\"host\":\"127.0.0.1\",\"password\":null,\"port\":\"6379\",\"database\":\"1\"}}},\"defaults\":{\"users\":{\"credentials\":{\"name\":\"Thavarshan Thayananthajothy\",\"username\":\"Thavarshan\",\"email\":\"tjthavarshan@gmail.com\",\"phone\":\"0775018795\",\"password\":\"$2y$04$uitMi8kxfAHXz.aAWujG/.SeRuXwkVMuLJP/xLpLeWgyhZ5OUDzf6\",\"email_verified_at\":\"2020-12-31T18:08:40.527430Z\",\"remember_token\":\"X6wapBscSz\",\"settings\":{\"notifications_mobile\":\"everything\",\"notifications_email\":[]}},\"permissions\":[\"create\",\"read\",\"update\",\"delete\"]}},\"filesystems\":{\"default\":\"local\",\"disks\":{\"local\":{\"driver\":\"local\",\"root\":\"/Users/thavarshan/Codebase/web/preflight/storage/app\"},\"public\":{\"driver\":\"local\",\"root\":\"/Users/thavarshan/Codebase/web/preflight/storage/app/public\",\"url\":\"http://preflight.test/storage\",\"visibility\":\"public\"},\"s3\":{\"driver\":\"s3\",\"key\":\"\",\"secret\":\"\",\"region\":\"us-east-1\",\"bucket\":\"\",\"url\":null,\"endpoint\":null}},\"links\":{\"/Users/thavarshan/Codebase/web/preflight/public/storage\":\"/Users/thavarshan/Codebase/web/preflight/storage/app/public\"}},\"hashing\":{\"driver\":\"bcrypt\",\"bcrypt\":{\"rounds\":10},\"argon\":{\"memory\":1024,\"threads\":2,\"time\":2}},\"logging\":{\"default\":\"stack\",\"channels\":{\"stack\":{\"driver\":\"stack\",\"channels\":[\"single\"],\"ignore_exceptions\":false},\"single\":{\"driver\":\"single\",\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/logs/laravel.log\",\"level\":\"debug\"},\"daily\":{\"driver\":\"daily\",\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/logs/laravel.log\",\"level\":\"debug\",\"days\":14},\"slack\":{\"driver\":\"slack\",\"url\":null,\"username\":\"Laravel Log\",\"emoji\":\":boom:\",\"level\":\"debug\"},\"papertrail\":{\"driver\":\"monolog\",\"level\":\"debug\",\"handler\":\"Monolog\\\\Handler\\\\SyslogUdpHandler\",\"handler_with\":{\"host\":null,\"port\":null}},\"stderr\":{\"driver\":\"monolog\",\"handler\":\"Monolog\\\\Handler\\\\StreamHandler\",\"formatter\":null,\"with\":{\"stream\":\"php://stderr\"}},\"syslog\":{\"driver\":\"syslog\",\"level\":\"debug\"},\"errorlog\":{\"driver\":\"errorlog\",\"level\":\"debug\"},\"null\":{\"driver\":\"monolog\",\"handler\":\"Monolog\\\\Handler\\\\NullHandler\"},\"emergency\":{\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/logs/laravel.log\"}}},\"mail\":{\"default\":\"smtp\",\"mailers\":{\"smtp\":{\"transport\":\"smtp\",\"host\":\"mailhog\",\"port\":\"1025\",\"encryption\":null,\"username\":null,\"password\":null,\"timeout\":null,\"auth_mode\":null},\"ses\":{\"transport\":\"ses\"},\"mailgun\":{\"transport\":\"mailgun\"},\"postmark\":{\"transport\":\"postmark\"},\"sendmail\":{\"transport\":\"sendmail\",\"path\":\"/usr/sbin/sendmail -bs\"},\"log\":{\"transport\":\"log\",\"channel\":null},\"array\":{\"transport\":\"array\"}},\"from\":{\"address\":null,\"name\":\"Preflight\"},\"markdown\":{\"theme\":\"default\",\"paths\":[\"/Users/thavarshan/Codebase/web/preflight/resources/views/vendor/mail\"]}},\"queue\":{\"default\":\"sync\",\"connections\":{\"sync\":{\"driver\":\"sync\"},\"database\":{\"driver\":\"database\",\"table\":\"jobs\",\"queue\":\"default\",\"retry_after\":90},\"beanstalkd\":{\"driver\":\"beanstalkd\",\"host\":\"localhost\",\"queue\":\"default\",\"retry_after\":90,\"block_for\":0},\"sqs\":{\"driver\":\"sqs\",\"key\":\"\",\"secret\":\"\",\"prefix\":\"https://sqs.us-east-1.amazonaws.com/your-account-id\",\"queue\":\"your-queue-name\",\"suffix\":null,\"region\":\"us-east-1\"},\"redis\":{\"driver\":\"redis\",\"connection\":\"default\",\"queue\":\"default\",\"retry_after\":90,\"block_for\":null}},\"failed\":{\"driver\":\"database-uuids\",\"database\":\"mysql\",\"table\":\"failed_jobs\"}},\"rules\":{\"login\":{\"email\":[\"required\",\"string\",\"email\"],\"password\":[\"required\",\"string\"]},\"register\":{\"name\":[\"required\",\"string\",\"max:255\"],\"email\":[\"required\",\"string\",\"email\",\"max:255\",{}],\"password\":[\"required\",\"string\",{}]},\"update_profile\":{\"photo\":[\"sometimes\",\"image\",\"max:1024\"],\"name\":[\"required\",\"string\",\"max:255\"],\"username\":[\"required\",\"string\",\"max:255\"],\"email\":[\"required\",\"string\",\"email\"]}},\"services\":{\"mailgun\":{\"domain\":null,\"secret\":null,\"endpoint\":\"api.mailgun.net\"},\"postmark\":{\"token\":null},\"ses\":{\"key\":\"\",\"secret\":\"\",\"region\":\"us-east-1\"}},\"session\":{\"driver\":\"database\",\"lifetime\":\"120\",\"expire_on_close\":false,\"encrypt\":false,\"files\":\"/Users/thavarshan/Codebase/web/preflight/storage/framework/sessions\",\"connection\":null,\"table\":\"sessions\",\"store\":null,\"lottery\":[2,100],\"cookie\":\"preflight_session\",\"path\":\"/\",\"domain\":null,\"secure\":null,\"http_only\":true,\"same_site\":\"lax\"},\"view\":{\"paths\":[\"/Users/thavarshan/Codebase/web/preflight/resources/views\"],\"compiled\":\"/Users/thavarshan/Codebase/web/preflight/storage/framework/views\"},\"flare\":{\"key\":null,\"reporting\":{\"anonymize_ips\":true,\"collect_git_information\":false,\"report_queries\":true,\"maximum_number_of_collected_queries\":200,\"report_query_bindings\":true,\"report_view_data\":true,\"grouping_type\":null},\"send_logs_as_events\":true},\"ignition\":{\"editor\":\"phpstorm\",\"theme\":\"light\",\"enable_share_button\":true,\"register_commands\":false,\"ignored_solution_providers\":[\"Facade\\\\Ignition\\\\SolutionProviders\\\\MissingPackageSolutionProvider\"],\"enable_runnable_solutions\":null,\"remote_sites_path\":\"\",\"local_sites_path\":\"\",\"housekeeping_endpoint_prefix\":\"_ignition\"},\"sanctum\":{\"stateful\":[\"preflight.test\",\"localhost\",\"localhost:3000\",\"127.0.0.1\",\"127.0.0.1:8000\",\"::1\"],\"expiration\":null,\"middleware\":{\"verify_csrf_token\":\"App\\\\Http\\\\Middleware\\\\VerifyCsrfToken\",\"encrypt_cookies\":\"App\\\\Http\\\\Middleware\\\\EncryptCookies\"}},\"trustedproxy\":{\"proxies\":null,\"headers\":94},\"tinker\":{\"commands\":[],\"alias\":[],\"dont_alias\":[\"App\\\\Nova\"]}}");
+module.exports = JSON.parse("{\"app\":{\"name\":\"Preflight\",\"env\":\"testing\",\"mode\":\"online\",\"debug\":true,\"url\":\"http://preflight.test\",\"asset_url\":null,\"timezone\":\"UTC\",\"locale\":\"en\",\"fallback_locale\":\"en\",\"faker_locale\":\"en_US\",\"key\":\"base64:sci1JL4nb40zDBhCJ2u37hmSBi7lLNa1DrhBNZzaRTs=\",\"cipher\":\"AES-256-CBC\",\"providers\":[\"Illuminate\\\\Auth\\\\AuthServiceProvider\",\"Illuminate\\\\Broadcasting\\\\BroadcastServiceProvider\",\"Illuminate\\\\Bus\\\\BusServiceProvider\",\"Illuminate\\\\Cache\\\\CacheServiceProvider\",\"Illuminate\\\\Foundation\\\\Providers\\\\ConsoleSupportServiceProvider\",\"Illuminate\\\\Cookie\\\\CookieServiceProvider\",\"Illuminate\\\\Database\\\\DatabaseServiceProvider\",\"Illuminate\\\\Encryption\\\\EncryptionServiceProvider\",\"Illuminate\\\\Filesystem\\\\FilesystemServiceProvider\",\"Illuminate\\\\Foundation\\\\Providers\\\\FoundationServiceProvider\",\"Illuminate\\\\Hashing\\\\HashServiceProvider\",\"Illuminate\\\\Mail\\\\MailServiceProvider\",\"Illuminate\\\\Notifications\\\\NotificationServiceProvider\",\"Illuminate\\\\Pagination\\\\PaginationServiceProvider\",\"Illuminate\\\\Pipeline\\\\PipelineServiceProvider\",\"Illuminate\\\\Queue\\\\QueueServiceProvider\",\"Illuminate\\\\Redis\\\\RedisServiceProvider\",\"Illuminate\\\\Auth\\\\Passwords\\\\PasswordResetServiceProvider\",\"Illuminate\\\\Session\\\\SessionServiceProvider\",\"Illuminate\\\\Translation\\\\TranslationServiceProvider\",\"Illuminate\\\\Validation\\\\ValidationServiceProvider\",\"Illuminate\\\\View\\\\ViewServiceProvider\",\"App\\\\Providers\\\\AppServiceProvider\",\"App\\\\Providers\\\\AuthServiceProvider\",\"App\\\\Providers\\\\EventServiceProvider\",\"App\\\\Providers\\\\RouteServiceProvider\",\"App\\\\Providers\\\\TwoFactorAuthenticationServiceProvider\"],\"aliases\":{\"App\":\"Illuminate\\\\Support\\\\Facades\\\\App\",\"Arr\":\"Illuminate\\\\Support\\\\Arr\",\"Artisan\":\"Illuminate\\\\Support\\\\Facades\\\\Artisan\",\"Auth\":\"Illuminate\\\\Support\\\\Facades\\\\Auth\",\"Blade\":\"Illuminate\\\\Support\\\\Facades\\\\Blade\",\"Broadcast\":\"Illuminate\\\\Support\\\\Facades\\\\Broadcast\",\"Bus\":\"Illuminate\\\\Support\\\\Facades\\\\Bus\",\"Cache\":\"Illuminate\\\\Support\\\\Facades\\\\Cache\",\"Config\":\"Illuminate\\\\Support\\\\Facades\\\\Config\",\"Cookie\":\"Illuminate\\\\Support\\\\Facades\\\\Cookie\",\"Crypt\":\"Illuminate\\\\Support\\\\Facades\\\\Crypt\",\"DB\":\"Illuminate\\\\Support\\\\Facades\\\\DB\",\"Eloquent\":\"Illuminate\\\\Database\\\\Eloquent\\\\Model\",\"Event\":\"Illuminate\\\\Support\\\\Facades\\\\Event\",\"File\":\"Illuminate\\\\Support\\\\Facades\\\\File\",\"Gate\":\"Illuminate\\\\Support\\\\Facades\\\\Gate\",\"Hash\":\"Illuminate\\\\Support\\\\Facades\\\\Hash\",\"Http\":\"Illuminate\\\\Support\\\\Facades\\\\Http\",\"Lang\":\"Illuminate\\\\Support\\\\Facades\\\\Lang\",\"Log\":\"Illuminate\\\\Support\\\\Facades\\\\Log\",\"Mail\":\"Illuminate\\\\Support\\\\Facades\\\\Mail\",\"Notification\":\"Illuminate\\\\Support\\\\Facades\\\\Notification\",\"Password\":\"Illuminate\\\\Support\\\\Facades\\\\Password\",\"Queue\":\"Illuminate\\\\Support\\\\Facades\\\\Queue\",\"Redirect\":\"Illuminate\\\\Support\\\\Facades\\\\Redirect\",\"Request\":\"Illuminate\\\\Support\\\\Facades\\\\Request\",\"Response\":\"Illuminate\\\\Support\\\\Facades\\\\Response\",\"Route\":\"Illuminate\\\\Support\\\\Facades\\\\Route\",\"Schema\":\"Illuminate\\\\Support\\\\Facades\\\\Schema\",\"Session\":\"Illuminate\\\\Support\\\\Facades\\\\Session\",\"Storage\":\"Illuminate\\\\Support\\\\Facades\\\\Storage\",\"Str\":\"Illuminate\\\\Support\\\\Str\",\"URL\":\"Illuminate\\\\Support\\\\Facades\\\\URL\",\"Validator\":\"Illuminate\\\\Support\\\\Facades\\\\Validator\",\"View\":\"Illuminate\\\\Support\\\\Facades\\\\View\"}},\"auth\":{\"defaults\":{\"guard\":\"web\",\"passwords\":\"users\"},\"guards\":{\"web\":{\"driver\":\"session\",\"provider\":\"users\"},\"api\":{\"driver\":\"token\",\"provider\":\"users\",\"hash\":false},\"sanctum\":{\"driver\":\"sanctum\",\"provider\":null}},\"providers\":{\"users\":{\"driver\":\"eloquent\",\"model\":\"App\\\\Models\\\\User\"}},\"passwords\":{\"users\":{\"provider\":\"users\",\"table\":\"password_resets\",\"expire\":60,\"throttle\":60}},\"password_timeout\":10800,\"home\":\"/home\",\"limiters\":{\"login\":\"login\",\"two-factor\":\"two-factor\"},\"credentials\":{\"username\":\"email\",\"email\":\"email\",\"password\":\"password\"}},\"broadcasting\":{\"default\":\"log\",\"connections\":{\"pusher\":{\"driver\":\"pusher\",\"key\":\"\",\"secret\":\"\",\"app_id\":\"\",\"options\":{\"cluster\":\"mt1\",\"useTLS\":true}},\"ably\":{\"driver\":\"ably\",\"key\":null},\"redis\":{\"driver\":\"redis\",\"connection\":\"default\"},\"log\":{\"driver\":\"log\"},\"null\":{\"driver\":\"null\"}}},\"cache\":{\"default\":\"array\",\"stores\":{\"apc\":{\"driver\":\"apc\"},\"array\":{\"driver\":\"array\",\"serialize\":false},\"database\":{\"driver\":\"database\",\"table\":\"cache\",\"connection\":null,\"lock_connection\":null},\"file\":{\"driver\":\"file\",\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/framework/cache/data\"},\"memcached\":{\"driver\":\"memcached\",\"persistent_id\":null,\"sasl\":[null,null],\"options\":[],\"servers\":[{\"host\":\"127.0.0.1\",\"port\":11211,\"weight\":100}]},\"redis\":{\"driver\":\"redis\",\"connection\":\"cache\",\"lock_connection\":\"default\"},\"dynamodb\":{\"driver\":\"dynamodb\",\"key\":\"\",\"secret\":\"\",\"region\":\"us-east-1\",\"table\":\"cache\",\"endpoint\":null}},\"prefix\":\"preflight_cache\"},\"cors\":{\"paths\":[\"api/*\",\"sanctum/csrf-cookie\"],\"allowed_methods\":[\"*\"],\"allowed_origins\":[\"*\"],\"allowed_origins_patterns\":[],\"allowed_headers\":[\"*\"],\"exposed_headers\":[],\"max_age\":0,\"supports_credentials\":true},\"database\":{\"default\":\"sqlite\",\"connections\":{\"sqlite\":{\"driver\":\"sqlite\",\"url\":null,\"database\":\":memory:\",\"prefix\":\"\",\"foreign_key_constraints\":true},\"mysql\":{\"driver\":\"mysql\",\"url\":null,\"host\":\"127.0.0.1\",\"port\":\"3306\",\"database\":\":memory:\",\"username\":\"root\",\"password\":\"\",\"unix_socket\":\"\",\"charset\":\"utf8mb4\",\"collation\":\"utf8mb4_unicode_ci\",\"prefix\":\"\",\"prefix_indexes\":true,\"strict\":true,\"engine\":null,\"options\":[]},\"pgsql\":{\"driver\":\"pgsql\",\"url\":null,\"host\":\"127.0.0.1\",\"port\":\"3306\",\"database\":\":memory:\",\"username\":\"root\",\"password\":\"\",\"charset\":\"utf8\",\"prefix\":\"\",\"prefix_indexes\":true,\"schema\":\"public\",\"sslmode\":\"prefer\"},\"sqlsrv\":{\"driver\":\"sqlsrv\",\"url\":null,\"host\":\"127.0.0.1\",\"port\":\"3306\",\"database\":\":memory:\",\"username\":\"root\",\"password\":\"\",\"charset\":\"utf8\",\"prefix\":\"\",\"prefix_indexes\":true}},\"migrations\":\"migrations\",\"redis\":{\"client\":\"phpredis\",\"options\":{\"cluster\":\"redis\",\"prefix\":\"preflight_database_\"},\"default\":{\"url\":null,\"host\":\"127.0.0.1\",\"password\":null,\"port\":\"6379\",\"database\":\"0\"},\"cache\":{\"url\":null,\"host\":\"127.0.0.1\",\"password\":null,\"port\":\"6379\",\"database\":\"1\"}}},\"defaults\":{\"users\":{\"credentials\":{\"name\":\"Thavarshan Thayananthajothy\",\"username\":\"Thavarshan\",\"email\":\"tjthavarshan@gmail.com\",\"password\":\"$2y$10$8pDzMlxQjpSLTTdHlyXE6e8oEpg3TWtEu7qIXbERgtcAbK1.zZUI6\",\"email_verified_at\":\"2021-01-13T16:19:15.768076Z\",\"remember_token\":\"ecPT9O6HyV\",\"settings\":[],\"locked\":false},\"permissions\":[\"create\",\"read\",\"update\",\"delete\"]}},\"filesystems\":{\"default\":\"local\",\"disks\":{\"local\":{\"driver\":\"local\",\"root\":\"/Users/thavarshan/Codebase/web/preflight/storage/app\"},\"public\":{\"driver\":\"local\",\"root\":\"/Users/thavarshan/Codebase/web/preflight/storage/app/public\",\"url\":\"http://preflight.test/storage\",\"visibility\":\"public\"},\"s3\":{\"driver\":\"s3\",\"key\":\"\",\"secret\":\"\",\"region\":\"us-east-1\",\"bucket\":\"\",\"url\":null,\"endpoint\":null}},\"links\":{\"/Users/thavarshan/Codebase/web/preflight/public/storage\":\"/Users/thavarshan/Codebase/web/preflight/storage/app/public\"}},\"hashing\":{\"driver\":\"bcrypt\",\"bcrypt\":{\"rounds\":\"4\"},\"argon\":{\"memory\":1024,\"threads\":2,\"time\":2}},\"logging\":{\"default\":\"stack\",\"channels\":{\"stack\":{\"driver\":\"stack\",\"channels\":[\"single\"],\"ignore_exceptions\":false},\"single\":{\"driver\":\"single\",\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/logs/laravel.log\",\"level\":\"debug\"},\"daily\":{\"driver\":\"daily\",\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/logs/laravel.log\",\"level\":\"debug\",\"days\":14},\"slack\":{\"driver\":\"slack\",\"url\":null,\"username\":\"Laravel Log\",\"emoji\":\":boom:\",\"level\":\"debug\"},\"papertrail\":{\"driver\":\"monolog\",\"level\":\"debug\",\"handler\":\"Monolog\\\\Handler\\\\SyslogUdpHandler\",\"handler_with\":{\"host\":null,\"port\":null}},\"stderr\":{\"driver\":\"monolog\",\"handler\":\"Monolog\\\\Handler\\\\StreamHandler\",\"formatter\":null,\"with\":{\"stream\":\"php://stderr\"}},\"syslog\":{\"driver\":\"syslog\",\"level\":\"debug\"},\"errorlog\":{\"driver\":\"errorlog\",\"level\":\"debug\"},\"null\":{\"driver\":\"monolog\",\"handler\":\"Monolog\\\\Handler\\\\NullHandler\"},\"emergency\":{\"path\":\"/Users/thavarshan/Codebase/web/preflight/storage/logs/laravel.log\"}}},\"mail\":{\"default\":\"array\",\"mailers\":{\"smtp\":{\"transport\":\"smtp\",\"host\":\"mailhog\",\"port\":\"1025\",\"encryption\":null,\"username\":null,\"password\":null,\"timeout\":null,\"auth_mode\":null},\"ses\":{\"transport\":\"ses\"},\"mailgun\":{\"transport\":\"mailgun\"},\"postmark\":{\"transport\":\"postmark\"},\"sendmail\":{\"transport\":\"sendmail\",\"path\":\"/usr/sbin/sendmail -bs\"},\"log\":{\"transport\":\"log\",\"channel\":null},\"array\":{\"transport\":\"array\"}},\"from\":{\"address\":null,\"name\":\"Preflight\"},\"markdown\":{\"theme\":\"default\",\"paths\":[\"/Users/thavarshan/Codebase/web/preflight/resources/views/vendor/mail\"]}},\"queue\":{\"default\":\"sync\",\"connections\":{\"sync\":{\"driver\":\"sync\"},\"database\":{\"driver\":\"database\",\"table\":\"jobs\",\"queue\":\"default\",\"retry_after\":90},\"beanstalkd\":{\"driver\":\"beanstalkd\",\"host\":\"localhost\",\"queue\":\"default\",\"retry_after\":90,\"block_for\":0},\"sqs\":{\"driver\":\"sqs\",\"key\":\"\",\"secret\":\"\",\"prefix\":\"https://sqs.us-east-1.amazonaws.com/your-account-id\",\"queue\":\"your-queue-name\",\"suffix\":null,\"region\":\"us-east-1\"},\"redis\":{\"driver\":\"redis\",\"connection\":\"default\",\"queue\":\"default\",\"retry_after\":90,\"block_for\":null}},\"failed\":{\"driver\":\"database-uuids\",\"database\":\"sqlite\",\"table\":\"failed_jobs\"}},\"rules\":{\"password\":[\"required\",\"string\",{},\"confirmed\"],\"login\":{\"email\":[\"required\",\"string\",\"email\"],\"password\":[\"required\",\"string\"],\"remember\":[\"sometimes\"]},\"register\":{\"name\":[\"required\",\"string\",\"max:255\"],\"email\":[\"required\",\"string\",\"email\",\"max:255\",{}],\"password\":[\"required\",\"string\",{}]},\"update_profile\":{\"photo\":[\"sometimes\",\"image\",\"max:1024\"],\"name\":[\"required\",\"string\",\"max:255\"],\"username\":[\"required\",\"string\",\"max:255\"],\"email\":[\"required\",\"string\",\"email\"]},\"update_password\":{\"current_password\":[\"required\",\"string\"],\"password\":[\"required\",\"string\",{},\"confirmed\",\"different:current_password\"]}},\"sanctum\":{\"stateful\":[\"preflight.test\",\"localhost\",\"localhost:3000\",\"127.0.0.1\",\"127.0.0.1:8000\",\"::1\"],\"expiration\":null,\"middleware\":{\"verify_csrf_token\":\"App\\\\Http\\\\Middleware\\\\VerifyCsrfToken\",\"encrypt_cookies\":\"App\\\\Http\\\\Middleware\\\\EncryptCookies\"}},\"services\":{\"mailgun\":{\"domain\":null,\"secret\":null,\"endpoint\":\"api.mailgun.net\"},\"postmark\":{\"token\":null},\"ses\":{\"key\":\"\",\"secret\":\"\",\"region\":\"us-east-1\"}},\"session\":{\"driver\":\"array\",\"lifetime\":\"120\",\"expire_on_close\":false,\"encrypt\":false,\"files\":\"/Users/thavarshan/Codebase/web/preflight/storage/framework/sessions\",\"connection\":null,\"table\":\"sessions\",\"store\":null,\"lottery\":[2,100],\"cookie\":\"preflight_session\",\"path\":\"/\",\"domain\":null,\"secure\":null,\"http_only\":true,\"same_site\":\"lax\"},\"view\":{\"paths\":[\"/Users/thavarshan/Codebase/web/preflight/resources/views\"],\"compiled\":\"/Users/thavarshan/Codebase/web/preflight/storage/framework/views\"},\"flare\":{\"key\":null,\"reporting\":{\"anonymize_ips\":true,\"collect_git_information\":false,\"report_queries\":true,\"maximum_number_of_collected_queries\":200,\"report_query_bindings\":true,\"report_view_data\":true,\"grouping_type\":null},\"send_logs_as_events\":true},\"ignition\":{\"editor\":\"phpstorm\",\"theme\":\"light\",\"enable_share_button\":true,\"register_commands\":false,\"ignored_solution_providers\":[\"Facade\\\\Ignition\\\\SolutionProviders\\\\MissingPackageSolutionProvider\"],\"enable_runnable_solutions\":null,\"remote_sites_path\":\"\",\"local_sites_path\":\"\",\"housekeeping_endpoint_prefix\":\"_ignition\"},\"trustedproxy\":{\"proxies\":null,\"headers\":94},\"tinker\":{\"commands\":[],\"alias\":[],\"dont_alias\":[\"App\\\\Nova\"]}}");
 
 /***/ }),
 

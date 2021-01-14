@@ -22,7 +22,7 @@
                 } else if (this.mode === 'danger') {
                     return 'text-white hover:text-white focus:text-white active:text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 active:bg-red-600';
                 } else {
-                    return 'text-gray-600 hover:text-gray-600 focus:text-gray-600 active:text-gray-600 bg-white hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100 border border-gray-100';
+                    return 'text-gray-500 hover:text-gray-600 focus:text-gray-600 active:text-gray-600 bg-white hover:bg-white focus:bg-white active:bg-white border border-gray-100';
                 }
             }
         }

@@ -13,6 +13,10 @@
 
             <section-border></section-border>
 
+            <logout-other-browser-sessions-form :sessions="$page.props.user.sessions"></logout-other-browser-sessions-form>
+
+            <section-border></section-border>
+
             <delete-user-form></delete-user-form>
         </div>
     </app-layout>
@@ -25,6 +29,7 @@ import UpdateProfileInformationForm from './UpdateProfileInformationForm';
 import UpdatePasswordForm from './UpdatePasswordForm';
 import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm';
 import DeleteUserForm from './DeleteUserForm';
+import LogoutOtherBrowserSessionsForm from './LogoutOtherBrowserSessionsForm';
 
 export default {
     components: {
@@ -34,6 +39,7 @@ export default {
         UpdatePasswordForm,
         TwoFactorAuthenticationForm,
         DeleteUserForm,
+        LogoutOtherBrowserSessionsForm,
     },
 }
 </script>

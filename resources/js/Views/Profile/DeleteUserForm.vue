@@ -43,7 +43,7 @@
                             Cancel
                         </app-button>
 
-                        <app-button mode="danger" class="ml-2" @clicked="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        <app-button mode="danger" class="ml-3" @clicked="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Delete Account
                         </app-button>
                     </template>
@@ -55,16 +55,16 @@
 
 <script>
 import ActionSection from '@/Views/Components/Sections/ActionSection';
+import DialogModal from '@/Views/Components/Modals/DialogModal';
 import AppButton from '@/Views/Components/Buttons/Button';
 import AppInput from '@/Views/Components/Inputs/Input';
-import DialogModal from '@/Views/Components/Modals/DialogModal';
 
 export default {
     components: {
         ActionSection,
+        DialogModal,
         AppButton,
         AppInput,
-        DialogModal,
     },
 
     data() {

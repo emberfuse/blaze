@@ -20,6 +20,7 @@
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.5",
         "pragmarx/google2fa": "^8.0",
+        "psr/http-server-middleware": "^1.0",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
@@ -59,7 +60,7 @@
     "prefer-stable": true,
     "scripts": {
         "compile": [
-            "npm run prod",
+            "npm run production",
             "@php artisan migrate:fresh --seed"
         ],
         "post-autoload-dump": [

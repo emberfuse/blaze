@@ -6,6 +6,7 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
+        "prod": "npm run production",
         "production": "mix --production",
         "test": "jest --verbose ./resources/js/Tests",
         "update": "npx npm-check-updates -u && npm i"
