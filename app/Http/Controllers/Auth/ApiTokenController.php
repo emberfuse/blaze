@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Auth;
 
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response as InertiaResponse;
-use App\Http\Requests\API\NewApiTokenRequest;
-use App\Http\Requests\API\UpdateApiTokenRequest;
+use App\Http\Requests\Auth\NewApiTokenRequest;
+use App\Http\Requests\Auth\UpdateApiTokenRequest;
 
 class ApiTokenController extends Controller
 {
@@ -26,8 +27,8 @@ class ApiTokenController extends Controller
                     'last_used_ago' => optional($token->last_used_at)->diffForHumans(),
                 ];
             }),
-            'availablePermissions' => Jetstream::$permissions,
-            'defaultPermissions' => Jetstream::$defaultPermissions,
+            'availablePermissions' => Permission::$permissions,
+            'defaultPermissions' => Permission::$defaultPermissions,
         ]);
     }
 
@@ -41,7 +42,7 @@ class ApiTokenController extends Controller
     {
         $token = $request->user()->createToken(
             $request->name,
-            Jetstream::validPermissions($request->input('permissions', []))
+            Permission::validPermissions($request->input('permissions', []))
         );
 
         return $redirector->back(303)->with('flash', [
@@ -62,7 +63,7 @@ class ApiTokenController extends Controller
         $token = $request->user()->tokens()->whereId($tokenId)->firstOrFail();
 
         $token->forceFill([
-            'abilities' => Jetstream::validPermissions($request->input('permissions', [])),
+            'abilities' => Permission::validPermissions($request->input('permissions', [])),
         ])->save();
 
         return $redirector->back(303);
