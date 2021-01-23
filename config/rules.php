@@ -3,7 +3,6 @@
 use App\Models\User;
 use App\Rules\PasswordRule;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Password;
 
 return [
     /*

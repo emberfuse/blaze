@@ -28,7 +28,7 @@ class EnableTwoFactorAuthentication
      * Create a new action instance.
      *
      * @param \App\Contracts\Auth\TwoFactorAuthenticationProvider $authenticator
-     * @param int                                        $recoveryCodeCount
+     * @param int $recoveryCodeCount
      * @return void
      */
     public function __construct(TwoFactorAuthenticationProvider $authenticator, ?int $recoveryCodeCount = null)

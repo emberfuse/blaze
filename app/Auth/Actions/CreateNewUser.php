@@ -29,7 +29,7 @@ class CreateNewUser implements CreatesNewUsers
         return DB::transaction(function () use ($data) {
             return tap($this->createUser($data), function (User $user) use ($data) {
                 if (static::$afterCreatingUser) {
-                    return call_user_func_array(static::$afterCreatingUser, [$user, $data]);
+                    call_user_func_array(static::$afterCreatingUser, [$user, $data]);
                 }
 
                 return $user;
