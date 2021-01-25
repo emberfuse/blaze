@@ -151,16 +151,26 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/.eslintrc.js', base_path('.eslintrc.js'));
 
         // App Configurations...
-        if (file_exists(base_path('phpunit.xml'))) {
-            unlink(base_path('phpunit.xml'));
+        if (file_exists($phpunit = base_path('phpunit.xml'))) {
+            unlink($phpunit);
 
-            copy(__DIR__ . '/../../stubs/phpunit.xml', base_path('phpunit.xml'));
+            copy(__DIR__ . '/../../stubs/phpunit.xml', $phpunit);
         }
 
-        if (file_exists(base_path('.env.example'))) {
-            unlink(base_path('.env.example'));
+        if (file_exists($envExample = base_path('.env.example'))) {
+            unlink($envExample);
 
-            copy(__DIR__ . '/../../stubs/.env.example', base_path('.env.example'));
+            copy(__DIR__ . '/../../stubs/.env.example', $envExample);
+        }
+
+        if (file_exists($envFile = base_path('.env'))) {
+            unlink($envFile);
+
+            copy($envExample, $envFile);
+
+            (new Process(['php', 'artisan', 'key:generate', '--force'], base_path()))
+                ->setTimeout(null)
+                ->run(fn ($type, $output) => $this->output->write($output));
         }
 
         // Directories...
@@ -322,10 +332,6 @@ class InstallCommand extends Command
         );
 
         (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
-            ->setTimeout(null)
-            ->run(fn ($type, $output) => $this->output->write($output));
-
-        (new Process(['php', $composer, 'post-root-package-install'], base_path()))
             ->setTimeout(null)
             ->run(fn ($type, $output) => $this->output->write($output));
     }
