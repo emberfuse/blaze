@@ -35,7 +35,10 @@
     "autoload": {
         "psr-4": {
             "Cratespace\\Preflight\\": "src/"
-        }
+        },
+        "files": [
+            "src/Testing/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

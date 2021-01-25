@@ -3,9 +3,11 @@
 namespace Cratespace\Preflight\Http\Middleware;
 
 use Inertia\Inertia;
+use Inertia\Middleware;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
-class ShareInertiaData
+class ShareInertiaData extends Middleware
 {
     /**
      * Handle the incoming request.
@@ -19,9 +21,7 @@ class ShareInertiaData
     {
         Inertia::share(array_filter([
             'preflight' => function () use ($request) {
-                return [
-                    'flash' => $request->session()->get('flash', []),
-                ];
+                return ['flash' => $request->session()->get('flash', [])];
             },
 
             'user' => function () use ($request) {
@@ -35,10 +35,12 @@ class ShareInertiaData
             },
 
             'errorBags' => function () {
-                return collect(optional(Session::get('errors'))->getBags() ?: [])->mapWithKeys(function ($bag, $key) {
-                    return [$key => $bag->messages()];
-                })->all();
+                return collect(optional(Session::get('errors'))->getBags() ?: [])
+                    ->mapWithKeys(fn ($bag, $key) => [$key => $bag->messages()])
+                    ->all();
             },
+
+            'currentRouteName' => Route::currentRouteName(),
         ]));
 
         return $next($request);
