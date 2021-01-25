@@ -1,5 +1,6 @@
 {
     "name": "cratespace/preflight",
+    "type": "library",
     "description": "Tailwind and Inertia scaffolding for the Cratespace framework.",
     "keywords": [
         "cratespace",
