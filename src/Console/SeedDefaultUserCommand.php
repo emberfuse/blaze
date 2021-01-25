@@ -6,7 +6,7 @@ use Throwable;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Auth\User;
-use Cratespace\Citadel\Contracts\Actions\CreatesNewUsers;
+use App\Actions\Citadel\CreateNewUser;
 
 class SeedDefaultUserCommand extends Command
 {
@@ -29,11 +29,11 @@ class SeedDefaultUserCommand extends Command
      *
      * @return void
      */
-    public function __construct(CreatesNewUsers $creator)
+    public function __construct()
     {
         parent::__construct();
 
-        $this->creator = $creator;
+        $this->creator = new CreateNewUser();
     }
 
     /**
