@@ -151,8 +151,8 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/.eslintrc', base_path('.eslintrc.js'));
 
         // App Configurations...
-        copy(__DIR__ . '/../../stubs/phpunit.xml', base_path('phpunit.xml'));
-        copy(__DIR__ . '/../../stubs/.env.example', base_path('.env.example'));
+        rename(__DIR__ . '/../../stubs/phpunit.xml', base_path('phpunit.xml'));
+        rename(__DIR__ . '/../../stubs/.env.example', base_path('.env.example'));
 
         // Directories...
         (new Filesystem())->ensureDirectoryExists(app_path('Actions/Citadel'));
@@ -180,7 +180,7 @@ class InstallCommand extends Command
 
         // Service Providers...
         copy(__DIR__ . '/../../stubs/app/Providers/PreflightServiceProvider.php', app_path('Providers/PreflightServiceProvider.php'));
-
+        $this->installServiceProviderAfter('RouteServiceProvider', 'CitadelServiceProvider');
         $this->installServiceProviderAfter('CitadelServiceProvider', 'PreflightServiceProvider');
 
         // Middleware...
