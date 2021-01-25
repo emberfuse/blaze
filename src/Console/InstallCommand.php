@@ -167,11 +167,11 @@ class InstallCommand extends Command
             unlink($envFile);
 
             copy($envExample, $envFile);
-
-            (new Process(['php', 'artisan', 'key:generate', '--force'], base_path()))
-                ->setTimeout(null)
-                ->run(fn ($type, $output) => $this->output->write($output));
         }
+
+        (new Process(['php', 'artisan', 'key:generate', '--force'], base_path()))
+            ->setTimeout(null)
+            ->run(fn ($type, $output) => $this->output->write($output));
 
         // Directories...
         (new Filesystem())->ensureDirectoryExists(app_path('Actions/Citadel'));
