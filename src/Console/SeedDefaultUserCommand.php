@@ -3,10 +3,10 @@
 namespace Cratespace\Preflight\Console;
 
 use Throwable;
-use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
-use App\Contracts\Auth\CreatesNewUsers;
+use Illuminate\Foundation\Auth\User;
+use Cratespace\Citadel\Contracts\Actions\CreatesNewUsers;
 
 class SeedDefaultUserCommand extends Command
 {
