@@ -164,7 +164,7 @@ class PreflightServiceProvider extends ServiceProvider
             ]);
         });
 
-        View::twoFactorAuthenticationChallenge(function () {
+        View::twoFactorChallenge(function () {
             return Inertia::render('Auth/VerifyEmail', [
                 'status' => session('status'),
             ]);
