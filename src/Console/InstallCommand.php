@@ -203,7 +203,9 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
 
         if (file_exists(resource_path('views/welcome.blade.php'))) {
-            @unlink(resource_path('views/welcome.blade.php'));
+            chmod(resource_path('views/welcome.blade.php'), 0644);
+
+            unlink(resource_path('views/welcome.blade.php'));
         }
 
         // Inertia Pages...
