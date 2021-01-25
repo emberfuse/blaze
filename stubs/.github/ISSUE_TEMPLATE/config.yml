@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature request
+    url: https://github.com/Thavarshan/preflight/issues
+    about: 'For ideas or feature requests, open up an issue on the Preflight repository'
+  - name: Support Questions & Other
+    url: https://preflight.io/docs/contributions#support-questions
+    about: 'This repository is only for reporting bugs. If you have a question or need help using the library, click:'
