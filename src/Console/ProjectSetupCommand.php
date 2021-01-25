@@ -12,7 +12,7 @@ class ProjectSetupCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'project:setup';
+    protected $signature = 'preflight:project';
 
     /**
      * The console command description.

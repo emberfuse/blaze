@@ -15,7 +15,7 @@ class SeedDefaultUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'user:create';
+    protected $signature = 'preflight:user';
 
     /**
      * The console command description.

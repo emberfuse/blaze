@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Cratespace\Citadel\Citadel\Config;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\HandleInertiaRequests;
+use Cratespace\Preflight\Console\InstallCommand;
 use Cratespace\Preflight\Console\ProjectSetupCommand;
 use Cratespace\Preflight\Console\PublishConfigJsCommand;
 use Cratespace\Preflight\Console\SeedDefaultUserCommand;
