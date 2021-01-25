@@ -15,7 +15,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'preflight:install';
+    protected $signature = 'preflight:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
      * The console command description.
@@ -151,8 +151,17 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/.eslintrc', base_path('.eslintrc.js'));
 
         // App Configurations...
-        rename(__DIR__ . '/../../stubs/phpunit.xml', base_path('phpunit.xml'));
-        rename(__DIR__ . '/../../stubs/.env.example', base_path('.env.example'));
+        if (file_exists(base_path('phpunit.xml'))) {
+            unlink(base_path('phpunit.xml'));
+
+            copy(__DIR__ . '/../../stubs/phpunit.xml', base_path('phpunit.xml'));
+        }
+
+        if (file_exists(base_path('.env.example'))) {
+            unlink(base_path('.env.example'));
+
+            copy(__DIR__ . '/../../stubs/.env.example', base_path('.env.example'));
+        }
 
         // Directories...
         (new Filesystem())->ensureDirectoryExists(app_path('Actions/Citadel'));
@@ -290,7 +299,7 @@ class InstallCommand extends Command
      */
     protected function requireComposerPackages($packages): void
     {
-        $composer = $this->findComposer();
+        $composer = $this->option('composer');
 
         if ($composer !== 'global') {
             $command = ['php', $composer, 'require'];
@@ -304,22 +313,6 @@ class InstallCommand extends Command
         (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
             ->setTimeout(null)
             ->run(fn ($type, $output) => $this->output->write($output));
-    }
-
-    /**
-     * Get the composer command for the environment.
-     *
-     * @return string
-     */
-    protected function findComposer()
-    {
-        $composerPath = getcwd() . '/composer.phar';
-
-        if (file_exists($composerPath)) {
-            return '"' . \PHP_BINARY . '" ' . $composerPath;
-        }
-
-        return 'composer';
     }
 
     /**
