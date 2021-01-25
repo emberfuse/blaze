@@ -51,7 +51,7 @@
         "branch-alias": {
             "dev-main": "1.x-dev"
         },
-        "cratespace": {
+        "laravel": {
             "providers": [
                 "Cratespace\\Preflight\\Providers\\PreflightServiceProvider"
             ]
