@@ -199,9 +199,6 @@ class InstallCommand extends Command
 
         $this->installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
 
-        // Models...
-        copy(__DIR__ . '/../../stubs/app/Models/User.php', app_path('Models/User.php'));
-
         // Blade Views...
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
 
