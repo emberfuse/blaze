@@ -227,7 +227,6 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/routes/web.php', base_path('routes/web.php'));
 
         // Assets...
-        copy(__DIR__ . '/../../stubs/public/css/app.css', public_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/resources/js/app.js', resource_path('js/app.js'));
 
