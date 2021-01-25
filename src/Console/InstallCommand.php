@@ -230,6 +230,19 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/resources/js/app.js', resource_path('js/app.js'));
 
+        // Remove README...
+        if (file_exists(base_path('README.md'))) {
+            unlink(base_path('README.md'));
+        }
+
+        (new Process(['chmod', '+x', 'bin/setup.sh'], base_path()))
+            ->setTimeout(null)
+            ->run(fn ($type, $output) => $this->output->write($output));
+
+        (new Process(['bin/setup.sh'], base_path()))
+            ->setTimeout(null)
+            ->run(fn ($type, $output) => $this->output->write($output));
+
         // Flush node_modules...
         // static::flushNodeModules();
 
@@ -309,6 +322,10 @@ class InstallCommand extends Command
         );
 
         (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
+            ->setTimeout(null)
+            ->run(fn ($type, $output) => $this->output->write($output));
+
+        (new Process(['php', $composer, 'post-root-package-install'], base_path()))
             ->setTimeout(null)
             ->run(fn ($type, $output) => $this->output->write($output));
     }
