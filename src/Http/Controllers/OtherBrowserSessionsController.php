@@ -5,24 +5,22 @@ namespace Cratespace\Preflight\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use Cratespace\Preflight\Http\Requests\LogoutOtherBrowserSessionsRequest;
 
 class OtherBrowserSessionsController extends Controller
 {
     /**
      * Logout from other browser sessions.
      *
-     * @param \Illuminate\Http\Request                 $request
-     * @param \Illuminate\Contracts\Auth\StatefulGuard $guard
+     * @param \Cratespace\Preflight\Http\Requests\LogoutOtherBrowserSessionsRequest $request
+     * @param \Illuminate\Contracts\Auth\StatefulGuard                              $guard
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function __invoke(Request $request, StatefulGuard $guard)
+    public function __invoke(LogoutOtherBrowserSessionsRequest $request, StatefulGuard $guard): RedirectResponse
     {
-        $request->validate([
-            'password' => 'password',
-        ]);
-
         $guard->logoutOtherDevices($request->password);
 
         $this->deleteOtherSessionRecords($request);
@@ -37,7 +35,7 @@ class OtherBrowserSessionsController extends Controller
      *
      * @return void
      */
-    protected function deleteOtherSessionRecords(Request $request)
+    protected function deleteOtherSessionRecords(Request $request): void
     {
         if (config('session.driver') !== 'database') {
             return;
