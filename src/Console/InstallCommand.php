@@ -148,7 +148,7 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/jsconfig.json', base_path('jsconfig.json'));
         copy(__DIR__ . '/../../stubs/.babelrc', base_path('.babelrc'));
         copy(__DIR__ . '/../../stubs/.npmignore', base_path('.npmignore'));
-        copy(__DIR__ . '/../../stubs/.eslintrc', base_path('.eslintrc'));
+        copy(__DIR__ . '/../../stubs/.eslintrc', base_path('.eslintrc.js'));
 
         // App Configurations...
         copy(__DIR__ . '/../../stubs/phpunit.xml', base_path('phpunit.xml'));
