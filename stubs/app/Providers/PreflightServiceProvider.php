@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Cratespace\Preflight\API\Permission;
 
 class PreflightServiceProvider extends ServiceProvider
 {
