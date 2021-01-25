@@ -46,7 +46,7 @@ class InstallCommand extends Command
         );
 
         // Inertia Stack...
-        $this->installLivewireStack();
+        $this->installInertiaStack();
     }
 
     /**
