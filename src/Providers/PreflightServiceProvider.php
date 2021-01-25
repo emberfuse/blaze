@@ -5,6 +5,7 @@ namespace Cratespace\Preflight\Providers;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Cratespace\Citadel\Citadel\View;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Cratespace\Citadel\Citadel\Config;
@@ -106,7 +107,7 @@ class PreflightServiceProvider extends ServiceProvider
             'domain' => Config::domain(),
             'prefix' => Config::prefix(),
         ], function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
+            $this->loadRoutesFrom(__DIR__ . '/../../routes/routes.php');
         });
     }
 
