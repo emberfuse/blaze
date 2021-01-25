@@ -3,7 +3,7 @@
 function main() {
     installProject
     if [ $? -eq 0 ]; then
-        php artisan project:setup
+        php artisan preflight:project
     fi
 }
 
