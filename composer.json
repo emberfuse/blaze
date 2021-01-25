@@ -1,0 +1,61 @@
+{
+    "name": "cratespace/preflight",
+    "description": "Tailwind and Inertia scaffolding for the Cratespace framework.",
+    "keywords": [
+        "cratespace",
+        "tailwind",
+        "auth"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/cratespace/preflight/issues",
+        "source": "https://github.com/cratespace/preflight"
+    },
+    "authors": [
+        {
+            "name": "Thavarshan Thayananthajothy",
+            "email": "tjthavarshan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "illuminate/support": "^8.0",
+        "jenssegers/agent": "^2.6",
+        "league/commonmark": "^1.3",
+        "cratespace/citadel": "^1.6.1"
+    },
+    "require-dev": {
+        "inertiajs/inertia-laravel": "^0.3.5",
+        "laravel/sanctum": "^2.8",
+        "mockery/mockery": "^1.4.2",
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cratespace\\Preflight\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cratespace\\Preflight\\Tests\\": "tests/",
+            "App\\": "stubs/app/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        },
+        "cratespace": {
+            "providers": [
+                "Cratespace\\Preflight\\Providers\\PreflightServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
