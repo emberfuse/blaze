@@ -123,14 +123,12 @@ class InstallCommand extends Command
                 'tailwindcss' => '^2.0.1',
                 '@vue/test-utils' => '^1.1.0',
                 'autoprefixer' => '^10.0.2',
-                'axios' => '^0.21.1',
                 'moment' => '^2.29.1',
                 'babel-core' => '7.0.0-bridge.0',
                 'babel-jest' => '^26.5.0',
                 'browser-sync' => '^2.23.7',
                 'browser-sync-webpack-plugin' => '^2.0.1',
                 'jest' => '^26.5.0',
-                'postcss' => '^8.2.2',
                 'vue' => '^2.6.12',
                 'vue-loader' => '^15.9.6',
                 'vue-template-compiler' => '^2.6.10',
@@ -292,7 +290,7 @@ class InstallCommand extends Command
      */
     protected function requireComposerPackages($packages): void
     {
-        $composer = $this->option('composer');
+        $composer = $this->findComposer();
 
         if ($composer !== 'global') {
             $command = ['php', $composer, 'require'];
@@ -305,9 +303,23 @@ class InstallCommand extends Command
 
         (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
             ->setTimeout(null)
-            ->run(function ($type, $output) {
-                $this->output->write($output);
-            });
+            ->run(fn ($type, $output) => $this->output->write($output));
+    }
+
+    /**
+     * Get the composer command for the environment.
+     *
+     * @return string
+     */
+    protected function findComposer()
+    {
+        $composerPath = getcwd() . '/composer.phar';
+
+        if (file_exists($composerPath)) {
+            return '"' . \PHP_BINARY . '" ' . $composerPath;
+        }
+
+        return 'composer';
     }
 
     /**
