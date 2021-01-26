@@ -3,10 +3,10 @@
 namespace Cratespace\Preflight\Console;
 
 use Throwable;
-use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
-use App\Contracts\Auth\CreatesNewUsers;
+use Illuminate\Foundation\Auth\User;
+use App\Actions\Citadel\CreateNewUser;
 
 class SeedDefaultUserCommand extends Command
 {
@@ -15,7 +15,7 @@ class SeedDefaultUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'user:create';
+    protected $signature = 'preflight:user';
 
     /**
      * The console command description.
@@ -29,11 +29,11 @@ class SeedDefaultUserCommand extends Command
      *
      * @return void
      */
-    public function __construct(CreatesNewUsers $creator)
+    public function __construct()
     {
         parent::__construct();
 
-        $this->creator = $creator;
+        $this->creator = new CreateNewUser();
     }
 
     /**

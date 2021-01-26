@@ -5,7 +5,12 @@ namespace Cratespace\Preflight\Http\Controllers;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\RedirectResponse;
 use Cratespace\Preflight\API\Permission;
+use Inertia\Response as InertiaResponse;
+use Cratespace\Preflight\Http\Requests\CreateApiTokenRequest;
+use Cratespace\Preflight\Http\Requests\DeleteApiTokenRequest;
+use Cratespace\Preflight\Http\Requests\UpdateApiTokenRequest;
 
 class ApiTokenController extends Controller
 {
@@ -16,7 +21,7 @@ class ApiTokenController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): InertiaResponse
     {
         return Inertia::render($request, 'API/Index', [
             'tokens' => $request->user()->tokens->map(function ($token) {
@@ -32,22 +37,18 @@ class ApiTokenController extends Controller
     /**
      * Create a new API token.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Cratespace\Preflight\Http\Requests\CreateApiTokenRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CreateApiTokenRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-        ]);
-
         $token = $request->user()->createToken(
             $request->name,
             Permission::validPermissions($request->input('permissions', []))
         );
 
-        return back()->with('flash', [
+        return back(303)->with('flash', [
             'token' => explode('|', $token->plainTextToken, 2)[1],
         ]);
     }
@@ -55,18 +56,13 @@ class ApiTokenController extends Controller
     /**
      * Update the given API token's permissions.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param string                   $tokenId
+     * @param \Cratespace\Preflight\Http\Requests\UpdateApiTokenRequest $request
+     * @param string                                                    $tokenId
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $tokenId)
+    public function update(UpdateApiTokenRequest $request, string $tokenId): RedirectResponse
     {
-        $request->validate([
-            'permissions' => 'array',
-            'permissions.*' => 'string',
-        ]);
-
         $token = $request->user()->tokens()->where('id', $tokenId)->firstOrFail();
 
         $token->forceFill([
@@ -79,12 +75,12 @@ class ApiTokenController extends Controller
     /**
      * Delete the given API token.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param string                   $tokenId
+     * @param \Cratespace\Preflight\Http\Requests\DeleteApiTokenRequest $request
+     * @param string                                                    $tokenId
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request, $tokenId)
+    public function destroy(DeleteApiTokenRequest $request, string $tokenId): RedirectResponse
     {
         $request->user()->tokens()->where('id', $tokenId)->delete();
 

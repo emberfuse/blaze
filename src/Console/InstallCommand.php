@@ -15,7 +15,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'preflight:install';
+    protected $signature = 'preflight:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
      * The console command description.
@@ -46,7 +46,7 @@ class InstallCommand extends Command
         );
 
         // Inertia Stack...
-        $this->installLivewireStack();
+        $this->installInertiaStack();
     }
 
     /**
@@ -123,14 +123,12 @@ class InstallCommand extends Command
                 'tailwindcss' => '^2.0.1',
                 '@vue/test-utils' => '^1.1.0',
                 'autoprefixer' => '^10.0.2',
-                'axios' => '^0.21.1',
                 'moment' => '^2.29.1',
                 'babel-core' => '7.0.0-bridge.0',
                 'babel-jest' => '^26.5.0',
                 'browser-sync' => '^2.23.7',
                 'browser-sync-webpack-plugin' => '^2.0.1',
                 'jest' => '^26.5.0',
-                'postcss' => '^8.2.2',
                 'vue' => '^2.6.12',
                 'vue-loader' => '^15.9.6',
                 'vue-template-compiler' => '^2.6.10',
@@ -150,11 +148,30 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/jsconfig.json', base_path('jsconfig.json'));
         copy(__DIR__ . '/../../stubs/.babelrc', base_path('.babelrc'));
         copy(__DIR__ . '/../../stubs/.npmignore', base_path('.npmignore'));
-        copy(__DIR__ . '/../../stubs/.eslintrc', base_path('.eslintrc'));
+        copy(__DIR__ . '/../../stubs/.eslintrc.js', base_path('.eslintrc.js'));
 
         // App Configurations...
-        copy(__DIR__ . '/../../stubs/phpunit.xml', base_path('phpunit.xml'));
-        copy(__DIR__ . '/../../stubs/.env.example', base_path('.env.example'));
+        if (file_exists($phpunit = base_path('phpunit.xml'))) {
+            unlink($phpunit);
+
+            copy(__DIR__ . '/../../stubs/phpunit.xml', $phpunit);
+        }
+
+        if (file_exists($envExample = base_path('.env.example'))) {
+            unlink($envExample);
+
+            copy(__DIR__ . '/../../stubs/.env.example', $envExample);
+        }
+
+        if (file_exists($envFile = base_path('.env'))) {
+            unlink($envFile);
+
+            copy($envExample, $envFile);
+        }
+
+        (new Process(['php', 'artisan', 'key:generate', '--force'], base_path()))
+            ->setTimeout(null)
+            ->run(fn ($type, $output) => $this->output->write($output));
 
         // Directories...
         (new Filesystem())->ensureDirectoryExists(app_path('Actions/Citadel'));
@@ -182,7 +199,7 @@ class InstallCommand extends Command
 
         // Service Providers...
         copy(__DIR__ . '/../../stubs/app/Providers/PreflightServiceProvider.php', app_path('Providers/PreflightServiceProvider.php'));
-
+        $this->installServiceProviderAfter('RouteServiceProvider', 'CitadelServiceProvider');
         $this->installServiceProviderAfter('CitadelServiceProvider', 'PreflightServiceProvider');
 
         // Middleware...
@@ -192,14 +209,13 @@ class InstallCommand extends Command
 
         $this->installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
 
-        // Models...
-        copy(__DIR__ . '/../../stubs/app/Models/User.php', app_path('Models/User.php'));
-
         // Blade Views...
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
 
         if (file_exists(resource_path('views/welcome.blade.php'))) {
-            @unlink(resource_path('views/welcome.blade.php'));
+            chmod(resource_path('views/welcome.blade.php'), 0644);
+
+            unlink(resource_path('views/welcome.blade.php'));
         }
 
         // Inertia Pages...
@@ -221,9 +237,21 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/routes/web.php', base_path('routes/web.php'));
 
         // Assets...
-        copy(__DIR__ . '/../../stubs/public/css/app.css', public_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/resources/js/app.js', resource_path('js/app.js'));
+
+        // Remove README...
+        if (file_exists(base_path('README.md'))) {
+            unlink(base_path('README.md'));
+        }
+
+        (new Process(['chmod', '+x', 'bin/setup.sh'], base_path()))
+            ->setTimeout(null)
+            ->run(fn ($type, $output) => $this->output->write($output));
+
+        (new Process(['bin/setup.sh'], base_path()))
+            ->setTimeout(null)
+            ->run(fn ($type, $output) => $this->output->write($output));
 
         // Flush node_modules...
         // static::flushNodeModules();
@@ -305,9 +333,7 @@ class InstallCommand extends Command
 
         (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
             ->setTimeout(null)
-            ->run(function ($type, $output) {
-                $this->output->write($output);
-            });
+            ->run(fn ($type, $output) => $this->output->write($output));
     }
 
     /**
