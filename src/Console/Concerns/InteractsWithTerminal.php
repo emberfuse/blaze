@@ -22,7 +22,9 @@ trait InteractsWithTerminal
         (new Process($command, $cwd, $env))
             ->setTimeout($timeout)
             ->run(function ($type, $output) {
-                $this->output->write($output);
+                $this->output
+                    ? $this->output->write($output)
+                    : $this->addOutput($output);
             });
     }
 }
