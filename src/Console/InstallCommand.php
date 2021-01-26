@@ -154,7 +154,7 @@ class InstallCommand extends Command
         if (file_exists($phpunit = base_path('phpunit.xml'))) {
             unlink($phpunit);
 
-            copy(__DIR__ . '/../../stubs/phpunit.xml', $phpunit);
+            rename(__DIR__ . '/../../stubs/phpunitconfig.xml', $phpunit);
         }
 
         if (file_exists($envExample = base_path('.env.example'))) {
