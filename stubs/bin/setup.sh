@@ -23,6 +23,8 @@ function prepareProjectFiles() {
         printf "Copying environment variables\n"
         cp .env.example .env
     fi
+    printf "Generate new application key\n"
+    php artisan key:generate
     printf "Setting permissions\n"
     chmod +x artisan
 }
