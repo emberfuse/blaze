@@ -89,7 +89,7 @@ class PreflightServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../../database/factories' => database_path('factories'),
-        ], 'preflight-database');
+        ], 'preflight-factories');
 
         $this->publishes([
             __DIR__ . '/../../database/seeders' => database_path('seeders'),
