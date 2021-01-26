@@ -22,9 +22,11 @@ trait InteractsWithTerminal
         (new Process($command, $cwd, $env))
             ->setTimeout($timeout)
             ->run(function ($type, $output) {
-                $this->output
-                    ? $this->output->write($output)
-                    : $this->addOutput($output);
+                if (property_exists($this, 'output')) {
+                    $this->output->write($output);
+                } else {
+                    $this->addOutput($output);
+                }
             });
     }
 }
