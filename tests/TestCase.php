@@ -22,7 +22,10 @@ abstract class TestCase extends BaseTestCase
 
     protected function getPackageProviders($app)
     {
-        return [PreflightServiceProvider::class, CitadelServiceProvider::class];
+        return [
+            PreflightServiceProvider::class,
+            CitadelServiceProvider::class,
+        ];
     }
 
     protected function getEnvironmentSetUp($app)
@@ -40,7 +43,12 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
 
-    protected function migrate()
+    /**
+     * Load migrations and create database.
+     *
+     * @return void
+     */
+    protected function migrate(): void
     {
         $this->loadLaravelMigrations(['--database' => 'testbench']);
 

@@ -19,7 +19,7 @@ class DeleteApiTokenRequest extends FormRequest
         return $this->isAuthenticated() &&
             $this->user()
                 ->tokens()
-                ->where('id', $this->tokenId)
+                ->where('id', $this->token)
                 ->exists();
     }
 

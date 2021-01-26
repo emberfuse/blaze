@@ -48,7 +48,7 @@ class ApiTokenController extends Controller
             Permission::validPermissions($request->input('permissions', []))
         );
 
-        return back()->with('flash', [
+        return back(303)->with('flash', [
             'token' => explode('|', $token->plainTextToken, 2)[1],
         ]);
     }

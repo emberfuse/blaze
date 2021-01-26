@@ -1,12 +1,14 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Tests\Feature;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Cratespace\Preflight\API\Permission;
+use Cratespace\Preflight\Tests\TestCase;
 use Cratespace\Preflight\Tests\Fixtures\User;
 
-class CreateApiTokenTest extends TestCase
+class DeleteApiTokenTest extends TestCase
 {
     public function setUp(): void
     {
@@ -20,7 +22,7 @@ class CreateApiTokenTest extends TestCase
         ]);
     }
 
-    public function testApiTokensCanBeCreated()
+    public function testApiTokensCanBeDeleted()
     {
         $this->migrate();
 
@@ -30,15 +32,14 @@ class CreateApiTokenTest extends TestCase
             'password' => Hash::make('secret-password'),
         ]));
 
-        $response = $this->post('/user/api-tokens', [
+        $token = $user->tokens()->create([
             'name' => 'Test Token',
-            'permissions' => ['read', 'update'],
+            'token' => Str::random(40),
+            'abilities' => ['create', 'read'],
         ]);
 
-        $this->assertCount(1, $user->fresh()->tokens);
-        $this->assertEquals('Test Token', $user->fresh()->tokens->first()->name);
-        $this->assertTrue($user->fresh()->tokens->first()->can('read'));
-        $this->assertFalse($user->fresh()->tokens->first()->can('delete'));
-        $response->assertStatus(303);
+        $response = $this->delete('/user/api-tokens/' . $token->id);
+
+        $this->assertCount(0, $user->fresh()->tokens);
     }
 }
