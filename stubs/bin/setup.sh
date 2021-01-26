@@ -2,9 +2,9 @@
 
 function main() {
     installProject
-    if [ $? -eq 0 ]; then
-        php artisan preflight:project
-    fi
+    # if [ $? -eq 0 ]; then
+    #     php artisan preflight:project
+    # fi
 }
 
 function installProject() {
