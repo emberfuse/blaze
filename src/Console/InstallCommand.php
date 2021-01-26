@@ -169,6 +169,10 @@ class InstallCommand extends Command
             copy($envExample, $envFile);
         }
 
+        if (file_exists($styleCi = base_path('.styleci.yml'))) {
+            unlink($styleCi);
+        }
+
         (new Process(['php', 'artisan', 'key:generate', '--force'], base_path()))
             ->setTimeout(null)
             ->run(fn ($type, $output) => $this->output->write($output));
