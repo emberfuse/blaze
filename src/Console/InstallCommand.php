@@ -37,6 +37,8 @@ class InstallCommand extends Command
     {
         // Publish...
         $this->publishVendor();
+
+        // Install Citadel...
         $this->installCitadel();
 
         // Inertia Stack...
@@ -82,7 +84,7 @@ class InstallCommand extends Command
     {
         if (! class_exists('CreateSessionsTable')) {
             try {
-                $this->call('session:table');
+                $this->callSilent('session:table');
             } catch (Throwable $e) {
                 $this->error($e->getMessage());
             }
@@ -103,9 +105,6 @@ class InstallCommand extends Command
         // Install Composer and NPM packages...
         (new ComposerPackages($this))->installPackages();
         (new NpmPackages($this))->installPackages();
-
-        // Sanctum...
-        $this->callSilent('vendor:publish', ['--provider' => 'Laravel\Sanctum\SanctumServiceProvider', '--force' => true]);
 
         // Tailwind and JS Configuration...
         Stubs::copyAppConfigurations();

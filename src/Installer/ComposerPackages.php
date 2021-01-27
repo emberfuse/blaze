@@ -40,5 +40,6 @@ class ComposerPackages extends Packages
         );
 
         $this->runProcess($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']);
+        $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
     }
 }
