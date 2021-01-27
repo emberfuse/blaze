@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+class {{ class }} implements {{ class }}
+{
+    /**
+     * Preform certain action using the gievn data.
+     *
+     * @param array[] $data
+     *
+     * @return void
+     */
+    public function performAction(array $data = []): void
+    {
+        return $data;
+    }
+}
