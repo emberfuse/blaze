@@ -13,8 +13,10 @@ trait InteractsWithNetwork
      */
     protected function isConnected(int $port = 80): bool
     {
-        if (@fsockopen('http://example.com/', $port)) {
-            @fclose();
+        $connected = fsockopen('www.example.com', $port);
+
+        if ($connected) {
+            fclose($connected);
 
             return true;
         }
