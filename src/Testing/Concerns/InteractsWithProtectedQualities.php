@@ -14,7 +14,7 @@ trait InteractsWithProtectedQualities
      *
      * @return mixed
      */
-    protected function setAccessibleProperty(object $object, string $property)
+    protected function accessProperty(object $object, string $property)
     {
         $objectReflection = new ReflectionClass($object);
         $property = $objectReflection->getProperty($property);
@@ -32,7 +32,7 @@ trait InteractsWithProtectedQualities
      *
      * @return mixed
      */
-    protected function setAccessibleMethod(object $object, string $method, array $parameters = [])
+    protected function accessMethod(object $object, string $method, array $parameters = [])
     {
         $objectReflection = new ReflectionClass($object);
         $method = $objectReflection->getMethod($method);

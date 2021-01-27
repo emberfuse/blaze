@@ -66,13 +66,13 @@ class NpmPackages extends Packages
      *
      * @return void
      */
-    public static function updateNodePackages(Closure $callback, string $configurationKey): void
+    public function updateNodePackages(Closure $callback, string $configurationKey): void
     {
         if (! file_exists(base_path('package.json'))) {
             return;
         }
 
-        $packages = static::getPackageConfig();
+        $packages = $this->getPackageConfig();
 
         $packages[$configurationKey] = $callback(
             array_key_exists($configurationKey, $packages) ? $packages[$configurationKey] : [],
@@ -81,9 +81,9 @@ class NpmPackages extends Packages
 
         ksort($packages[$configurationKey]);
 
-        static::setPackageConfig($packages);
+        $this->setPackageConfig($packages);
 
-        static::flushNodeModules();
+        $this->flushNodeModules();
     }
 
     /**
@@ -91,7 +91,7 @@ class NpmPackages extends Packages
      *
      * @return array
      */
-    protected static function getPackageConfig(): array
+    protected function getPackageConfig(): array
     {
         return json_decode(file_get_contents(base_path('package.json')), true);
     }
@@ -103,7 +103,7 @@ class NpmPackages extends Packages
      *
      * @return void
      */
-    protected static function setPackageConfig(array $content): void
+    protected function setPackageConfig(array $content): void
     {
         file_put_contents(
             base_path('package.json'),
@@ -116,7 +116,7 @@ class NpmPackages extends Packages
      *
      * @return void
      */
-    public static function flushNodeModules(): void
+    public function flushNodeModules(): void
     {
         tap(new Filesystem(), function ($files) {
             $files->deleteDirectory(base_path('node_modules'));

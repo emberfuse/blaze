@@ -131,5 +131,6 @@ class InstallCommand extends Command
         // Completion Message...
         $this->line('');
         $this->info('Preflight scaffolding installed successfully.');
+        $this->comment('Please execute "npm install && npm run dev" to build your assets.');
     }
 }

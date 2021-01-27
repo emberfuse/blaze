@@ -3,8 +3,8 @@
 namespace Cratespace\Preflight\Testing\Concerns;
 
 use Closure;
-use Tests\TestCase;
-use App\Models\User;
+use PHPUnit\Framework\TestCase;
+use Illuminate\Foundation\Auth\User;
 
 trait CreatesNewUser
 {
@@ -20,7 +20,7 @@ trait CreatesNewUser
      *
      * @param \Illuminate\Contracts\Auth\Authenticatable|null $user
      *
-     * @return \Tests\TestCase
+     * @return \PHPUnit\Framework\TestCase
      */
     public function signIn(?User $user = null): TestCase
     {

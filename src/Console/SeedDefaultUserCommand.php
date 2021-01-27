@@ -3,10 +3,9 @@
 namespace Cratespace\Preflight\Console;
 
 use Throwable;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Auth\User;
-use App\Actions\Citadel\CreateNewUser;
 
 class SeedDefaultUserCommand extends Command
 {
@@ -25,47 +24,25 @@ class SeedDefaultUserCommand extends Command
     protected $description = 'Create or seed default user account.';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->creator = new CreateNewUser();
-    }
-
-    /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
         if ($this->confirm('Do you want to create a default user from preset data?', false)) {
-            $defaults = config('defaults.users.credentials');
-
-            User::create($defaults);
-
-            $this->line('Default user created.');
-
-            return 0;
+            $credentials = config('defaults.users.credentials');
+        } else {
+            $credentials = $this->requestUserCredentials();
         }
 
-        $credentials = $this->requestUserCredentials();
-
         try {
-            $this->creator->create($credentials);
+            User::create($credentials);
         } catch (Throwable $e) {
             $this->error($e->getMessage());
-
-            return 0;
         }
 
         $this->line('Default user created.');
-
-        return 0;
     }
 
     /**
@@ -74,9 +51,8 @@ class SeedDefaultUserCommand extends Command
     protected function requestUserCredentials(): array
     {
         return [
-            'name' => $this->ask('User full name'),
+            'name' => $this->ask('Full name'),
             'email' => $this->ask('Email address'),
-            'phone' => $this->ask('Phone number'),
             'password' => $this->ask('Password'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

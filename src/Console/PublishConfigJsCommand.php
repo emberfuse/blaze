@@ -3,6 +3,7 @@
 namespace Cratespace\Preflight\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 
 class PublishConfigJsCommand extends Command
 {
@@ -21,13 +22,30 @@ class PublishConfigJsCommand extends Command
     protected $description = 'Publish application configuration to json file for usage with JavaScript.';
 
     /**
+     * The filesystem instance.
+     *
+     * @var \Illuminate\Filesystem\Filesystem
+     */
+    protected $files;
+
+    /**
+     * Path to where config 'items' file should be located.
+     *
+     * @var string
+     */
+    protected $configPath;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Filesystem $files)
     {
         parent::__construct();
+
+        $this->files = $files;
+        $this->configPath = resource_path('js/Config');
     }
 
     /**
@@ -51,12 +69,16 @@ class PublishConfigJsCommand extends Command
      */
     protected function publishConfigJs(): void
     {
-        $configItems = resource_path('js/Config/items.json');
-
-        if (! file_exists($configItems)) {
-            @touch($configItems);
+        if (! $this->files->isDirectory($this->configPath)) {
+            $this->files->makeDirectory($this->configPath, 0777, true);
         }
 
-        @file_put_contents($configItems, json_encode(config()->all()));
+        $configItems = $this->configPath . \DIRECTORY_SEPARATOR . 'items.json';
+
+        if (! $this->files->exists($configItems)) {
+            \touch($configItems);
+        }
+
+        $this->files->put($configItems, json_encode(config()->all()));
     }
 }
