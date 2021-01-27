@@ -41,11 +41,11 @@ class InstallCommand extends Command
         // Install Citadel...
         $this->installCitadel();
 
-        // Inertia Stack...
-        $this->installInertiaStack();
-
         // Configure Session...
         $this->configureSession();
+
+        // Inertia Stack...
+        $this->installInertiaStack();
     }
 
     /**
@@ -123,7 +123,7 @@ class InstallCommand extends Command
 
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
-        $this->runProcess(['bin/setup.sh'], base_path());
+        // $this->runProcess(['bin/setup.sh'], base_path());
 
         // Generate Application Key.
         $this->callSilent('key:generate');
