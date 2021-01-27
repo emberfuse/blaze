@@ -105,7 +105,7 @@ class InstallCommand extends Command
         (new NpmPackages($this))->installPackages();
 
         // Sanctum...
-        $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
+        $this->callSilent('vendor:publish', ['--provider' => 'Laravel\Sanctum\SanctumServiceProvider', '--force' => true]);
 
         // Tailwind and JS Configuration...
         Stubs::copyAppConfigurations();
@@ -127,7 +127,7 @@ class InstallCommand extends Command
         $this->runProcess(['bin/setup.sh'], base_path());
 
         // Generate Application Key.
-        $this->call('key:generate');
+        $this->callSilent('key:generate');
 
         // Completion Message...
         $this->line('');
