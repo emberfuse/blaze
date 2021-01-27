@@ -2,9 +2,9 @@
 
 function main() {
     installProject
-    if [ $? -eq 0 ]; then
-        php artisan preflight:project
-    fi
+    # if [ $? -eq 0 ]; then
+    #     php artisan preflight:project
+    # fi
 }
 
 function installProject() {
@@ -22,6 +22,8 @@ function prepareProjectFiles() {
     if [[ ! -f .env && -f .env.example ]]; then
         printf "Copying environment variables\n"
         cp .env.example .env
+        printf "Generate new application key\n"
+        php artisan key:generate
     fi
     printf "Setting permissions\n"
     chmod +x artisan

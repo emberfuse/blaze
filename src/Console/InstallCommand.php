@@ -37,6 +37,8 @@ class InstallCommand extends Command
     {
         // Publish...
         $this->publishVendor();
+
+        // Install Citadel...
         $this->installCitadel();
 
         // Configure Session...
@@ -82,7 +84,7 @@ class InstallCommand extends Command
     {
         if (! class_exists('CreateSessionsTable')) {
             try {
-                $this->call('session:table');
+                $this->callSilent('session:table');
             } catch (Throwable $e) {
                 $this->error($e->getMessage());
             }
@@ -104,9 +106,6 @@ class InstallCommand extends Command
         (new ComposerPackages($this))->installPackages();
         (new NpmPackages($this))->installPackages();
 
-        // Sanctum...
-        $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
-
         // Tailwind and JS Configuration...
         Stubs::copyAppConfigurations();
 
@@ -122,13 +121,14 @@ class InstallCommand extends Command
         // Restructure Project Directory...
         ProjectStructure::restructureProjectDirectory();
 
+        // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
-        $this->runProcess(['bin/setup.sh'], base_path());
+        // $this->runProcess(['bin/setup.sh'], base_path());
 
-        // Flush node_modules...
-        static::flushNodeModules();
+        // Generate Application Key.
+        $this->callSilent('key:generate');
 
-        // Completion message...
+        // Completion Message...
         $this->line('');
         $this->info('Preflight scaffolding installed successfully.');
     }

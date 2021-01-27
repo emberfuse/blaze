@@ -2,10 +2,12 @@
 
 namespace Cratespace\Preflight\Installer;
 
-use Symfony\Component\Process\Process;
+use Cratespace\Preflight\Console\Concerns\InteractsWithTerminal;
 
 class ComposerPackages extends Packages
 {
+    use InteractsWithTerminal;
+
     /**
      * List of preflight specific composer packages.
      *
@@ -37,10 +39,7 @@ class ComposerPackages extends Packages
             is_array($packages) ? $packages : $this->packages
         );
 
-        (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
-            ->setTimeout(null)
-            ->run(function ($type, $output) {
-                $this->output->write($output);
-            });
+        $this->runProcess($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']);
+        $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
     }
 }

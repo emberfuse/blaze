@@ -19,12 +19,15 @@ trait InteractsWithTerminal
      */
     public function runProcess(array $command, ?string $cwd = null, ?array $env = null, $input = null, ?float $timeout = null)
     {
-        (new Process($command, $cwd, $env))
-            ->setTimeout($timeout)
-            ->run(function ($type, $output) {
-                $this->output
-                    ? $this->output->write($output)
-                    : $this->addOutput($output);
+        $process = new Process($command, $cwd, $env);
+
+        $process->setTimeout($timeout)
+            ->run(function ($type, $output) use ($process) {
+                if (property_exists($this, 'output')) {
+                    $this->output->write($output);
+                } else {
+                    $process->addOutput($output);
+                }
             });
     }
 }

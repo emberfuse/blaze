@@ -2,6 +2,7 @@
 
 namespace Cratespace\Preflight\Installer;
 
+use Closure;
 use Illuminate\Filesystem\Filesystem;
 
 class NpmPackages extends Packages
@@ -29,6 +30,7 @@ class NpmPackages extends Packages
         'browser-sync-webpack-plugin' => '^2.0.1',
         'jest' => '^26.5.0',
         'vue' => '^2.6.12',
+        'vue-jest' => '^3.0.4',
         'vue-loader' => '^15.9.6',
         'vue-template-compiler' => '^2.6.10',
     ];
@@ -42,28 +44,35 @@ class NpmPackages extends Packages
      */
     public function installPackages($packages = null): void
     {
-        $this->updateNodePackages(function ($packages) {
-            return $this->nodeModules + $packages;
-        });
+        $this->updateNodePackages(function ($nativePackages) use ($packages) {
+            $packages = is_null($packages) ? $this->nodeModules : $packages;
+
+            return $packages + $nativePackages;
+        }, 'devDependencies');
+
+        $this->updateNodePackages(function ($nativeScripts) {
+            return [
+                'test' => 'jest --verbose ./resources/js/Tests',
+            ] + $nativeScripts;
+        }, 'scripts');
     }
 
     /**
      * Update the "package.json" file.
      *
-     * @param callable $callback
+     * @param \Closure $callback
+     * @param string   $configurationKey
      * @param bool     $dev
      *
      * @return void
      */
-    protected static function updateNodePackages(callable $callback, bool $dev = true): void
+    public static function updateNodePackages(Closure $callback, string $configurationKey): void
     {
         if (! file_exists(base_path('package.json'))) {
             return;
         }
 
-        $configurationKey = $dev ? 'devDependencies' : 'dependencies';
-
-        $packages = json_decode(file_get_contents(base_path('package.json')), true);
+        $packages = static::getPackageConfig();
 
         $packages[$configurationKey] = $callback(
             array_key_exists($configurationKey, $packages) ? $packages[$configurationKey] : [],
@@ -72,9 +81,33 @@ class NpmPackages extends Packages
 
         ksort($packages[$configurationKey]);
 
+        static::setPackageConfig($packages);
+
+        static::flushNodeModules();
+    }
+
+    /**
+     * Get package.json contents.
+     *
+     * @return array
+     */
+    protected static function getPackageConfig(): array
+    {
+        return json_decode(file_get_contents(base_path('package.json')), true);
+    }
+
+    /**
+     * Write to package.json file.
+     *
+     * @param array $content
+     *
+     * @return void
+     */
+    protected static function setPackageConfig(array $content): void
+    {
         file_put_contents(
             base_path('package.json'),
-            json_encode($packages, \JSON_UNESCAPED_SLASHES | \JSON_PRETTY_PRINT) . \PHP_EOL
+            json_encode($content, \JSON_UNESCAPED_SLASHES | \JSON_PRETTY_PRINT) . \PHP_EOL
         );
     }
 
