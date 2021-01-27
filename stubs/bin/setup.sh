@@ -22,9 +22,9 @@ function prepareProjectFiles() {
     if [[ ! -f .env && -f .env.example ]]; then
         printf "Copying environment variables\n"
         cp .env.example .env
+        printf "Generate new application key\n"
+        php artisan key:generate
     fi
-    printf "Generate new application key\n"
-    php artisan key:generate
     printf "Setting permissions\n"
     chmod +x artisan
 }
