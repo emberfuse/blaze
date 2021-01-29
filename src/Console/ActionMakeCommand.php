@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Foundation\Console;
+namespace Cratespace\Preflight\Console;
 
 use Illuminate\Console\GeneratorCommand;
 

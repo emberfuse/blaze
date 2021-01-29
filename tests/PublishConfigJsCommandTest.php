@@ -4,7 +4,7 @@ namespace Cratespace\Preflight;
 
 use Cratespace\Preflight\Tests\TestCase;
 
-class PublishConfigJsCommand extends TestCase
+class PublishConfigJsCommandTest extends TestCase
 {
     /**
      * JS config items file.
