@@ -29,7 +29,7 @@ class ShareInertiaData extends Middleware
                     return;
                 }
 
-                $request->user()->toArray();
+                return $request->user()->toArray();
             },
 
             'errorBags' => function () {
