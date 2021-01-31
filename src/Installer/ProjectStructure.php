@@ -46,28 +46,14 @@ class ProjectStructure
             unlink(base_path('README.md'));
         }
 
-        static::replaceInFile(
+        Util::replaceInFile(
             '// \Illuminate\Session\Middleware\AuthenticateSession::class',
             '\Cratespace\Preflight\Http\Middleware\AuthenticateSession::class',
             app_path('Http/Kernel.php')
         );
 
-        static::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
+        Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
 
         (new Filesystem())->deleteDirectory(resource_path('sass'));
-    }
-
-    /**
-     * Replace a given string within a given file.
-     *
-     * @param string $search
-     * @param string $replace
-     * @param string $path
-     *
-     * @return void
-     */
-    public static function replaceInFile(string $search, string $replace, string $path): void
-    {
-        file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
     }
 }

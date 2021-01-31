@@ -1,41 +1,39 @@
 <template>
-    <div>
-        <action-section>
-            <template #title>
-                Two Factor Authentication
-            </template>
+    <action-section>
+        <template #title>
+            Two Factor Authentication
+        </template>
 
-            <template #description>
-                Add additional security to your account using two factor authentication.
-            </template>
+        <template #description>
+            Add additional security to your account using two factor authentication.
+        </template>
 
-            <template #content>
-                <h6 class="text-base font-semibold text-gray-900" v-if="twoFactorEnabled">
-                    You have enabled two factor authentication.
-                </h6>
+        <template #content>
+            <h6 class="text-base font-semibold text-gray-900" v-if="twoFactorEnabled">
+                You have enabled two factor authentication.
+            </h6>
 
-                <h6 class="text-base font-semibold text-gray-900" v-else>
-                    You have not enabled two factor authentication.
-                </h6>
+            <h6 class="text-base font-semibold text-gray-900" v-else>
+                You have not enabled two factor authentication.
+            </h6>
 
-                <div class="mt-3 max-w-xl">
-                    <p class="text-sm text-gray-600">
-                        When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
-                    </p>
+            <div class="mt-3 max-w-xl">
+                <p class="text-sm text-gray-600">
+                    When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
+                </p>
+            </div>
+
+            <div class="mt-5">
+                <div v-if="! twoFactorEnabled">
+                    <confirm-password-modal @confirmed="enableTwoFactorAuthentication">
+                        <app-button type="button" mode="primary" :class="{ 'opacity-25': enabling }" :loading="enabling">
+                            Enable
+                        </app-button>
+                    </confirm-password-modal>
                 </div>
-
-                <div class="mt-5">
-                    <div v-if="! twoFactorEnabled">
-                        <confirm-password-modal @confirmed="enableTwoFactorAuthentication">
-                            <app-button type="button" mode="primary" :class="{ 'opacity-25': enabling }" :loading="enabling">
-                                Enable
-                            </app-button>
-                        </confirm-password-modal>
-                    </div>
-                </div>
-            </template>
-        </action-section>
-    </div>
+            </div>
+        </template>
+    </action-section>
 </template>
 
 <script>

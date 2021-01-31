@@ -11,15 +11,6 @@
                     <navbar-link :href="route('home')" :active="route().current('home')" class="text-white bg-blue-900 hover:bg-blue-900 focus:bg-blue-900">
                         Dashboard
                     </navbar-link>
-                    <navbar-link :href="route('home')" :active="false" class="text-white bg-blue-900 hover:bg-blue-900 focus:bg-blue-900">
-                        Projects
-                    </navbar-link>
-                    <navbar-link :href="route('home')" :active="false" class="text-white bg-blue-900 hover:bg-blue-900 focus:bg-blue-900">
-                        Issues
-                    </navbar-link>
-                    <navbar-link :href="route('home')" :active="false" class="text-white bg-blue-900 hover:bg-blue-900 focus:bg-blue-900">
-                        Support
-                    </navbar-link>
                 </template>
 
                 <template #linksright>
@@ -32,7 +23,7 @@
 
                         <template #items>
                             <dropdown-link :href="route('user.show')">Profile</dropdown-link>
-                            <dropdown-link href="#">API token</dropdown-link>
+                            <dropdown-link :href="route('api-tokens.index')">API token</dropdown-link>
                             <dropdown-link href="#" @clicked="logout">Sign out</dropdown-link>
                         </template>
                     </dropdown>
@@ -41,9 +32,17 @@
         </header>
 
         <!-- Main Content Area -->
-        <main class="py-4" role="main">
+        <main class="py-8" role="main">
             <div class="container mx-auto px-4 sm:px-6">
-                <slot></slot>
+                <h4 class="font-semibold text-xl text-gray-800">
+                    <slot name="title"></slot>
+                </h4>
+
+                <section-border></section-border>
+
+                <section>
+                    <slot name="content"></slot>
+                </section>
             </div>
         </main>
 
@@ -69,6 +68,7 @@ import Navbar from '@/Views/Components/Navbars/Navbar';
 import NavbarLink from '@/Views/Components/Navbars/NavbarLink';
 import Dropdown from '@/Views/Components/Dropdowns/Dropdown';
 import DropdownLink from '@/Views/Components/Dropdowns/DropdownLink';
+import SectionBorder from '@/Views/Components/Sections/ActionSectionBorder';
 
 export default {
     components: {
@@ -77,6 +77,7 @@ export default {
         NavbarLink,
         Dropdown,
         DropdownLink,
+        SectionBorder,
     },
 
     data() {

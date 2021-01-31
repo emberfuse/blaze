@@ -23,7 +23,7 @@ class ApiTokenController extends Controller
      */
     public function index(Request $request): InertiaResponse
     {
-        return Inertia::render($request, 'API/Index', [
+        return Inertia::render('API/Index', [
             'tokens' => $request->user()->tokens->map(function ($token) {
                 return $token->toArray() + [
                     'last_used_ago' => optional($token->last_used_at)->diffForHumans(),

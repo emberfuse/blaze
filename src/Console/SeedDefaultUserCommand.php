@@ -26,7 +26,7 @@ class SeedDefaultUserCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
     public function handle()
     {
@@ -43,6 +43,8 @@ class SeedDefaultUserCommand extends Command
         }
 
         $this->line('Default user created.');
+
+        return 0;
     }
 
     /**
