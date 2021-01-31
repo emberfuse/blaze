@@ -98,8 +98,10 @@
                     Please copy your new API token. For your security, it won't be shown again.
                 </p>
 
-                <div class="mt-4 bg-gray-100 px-4 py-2 rounded-lg font-mono text-sm text-gray-500" v-if="$page.props.preflight.flash.token">
-                    {{ $page.props.preflight.flash.token }}
+                <div class="mt-4 bg-gray-100 px-4 py-2 rounded-lg" v-if="$page.props.preflight.flash.token">
+                    <span class="font-mono font-medium text-sm text-gray-500">
+                        {{ $page.props.preflight.flash.token }}
+                    </span>
                 </div>
             </template>
 
@@ -119,7 +121,7 @@
             <template #content>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div v-for="permission in availablePermissions" :key="permission">
-                        <checkbox :label="permission" :value="permission" :id="permission" v-model="updateApiTokenForm.permissions"/>
+                        <checkbox :label="permission" :value="permission" :id="permission + 'Update'" v-model="updateApiTokenForm.permissions"/>
                     </div>
                 </div>
             </template>

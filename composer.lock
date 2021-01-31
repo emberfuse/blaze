@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5647a1c05aa4e67543c1fff86e389cd",
+    "content-hash": "dc9cd52dcb7779a01702478aef11811e",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -117,16 +117,16 @@
         },
         {
             "name": "cratespace/citadel",
-            "version": "v1.2.3",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cratespace/citadel.git",
-                "reference": "5413594cf05ed068c4bd76c322ad9f5813d575bf"
+                "reference": "28c00252a7c9f173698fd4cb58303444dec86bc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cratespace/citadel/zipball/5413594cf05ed068c4bd76c322ad9f5813d575bf",
-                "reference": "5413594cf05ed068c4bd76c322ad9f5813d575bf",
+                "url": "https://api.github.com/repos/cratespace/citadel/zipball/28c00252a7c9f173698fd4cb58303444dec86bc0",
+                "reference": "28c00252a7c9f173698fd4cb58303444dec86bc0",
                 "shasum": ""
             },
             "require": {
@@ -145,6 +145,7 @@
                 "phpunit/phpunit": "^9.5",
                 "symfony/var-dumper": "^5.2.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -181,9 +182,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cratespace/citadel/issues",
-                "source": "https://github.com/cratespace/citadel/tree/v1.2.3"
+                "source": "https://github.com/cratespace/citadel/tree/main"
             },
-            "time": "2021-01-27T16:01:53+00:00"
+            "time": "2021-01-31T16:02:57+00:00"
         },
         {
             "name": "dasprid/enum",
