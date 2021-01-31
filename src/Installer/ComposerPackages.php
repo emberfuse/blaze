@@ -40,7 +40,7 @@ class ComposerPackages extends Packages
         (new Process($command, base_path(), ['COMPOSER_MEMORY_LIMIT' => '-1']))
             ->setTimeout(null)
             ->run(function ($type, $output) {
-                $this->command->output->write($output);
+                $this->command->getOutput()->write($output);
             });
     }
 }

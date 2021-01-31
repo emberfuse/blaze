@@ -55,17 +55,17 @@ class InstallCommand extends Command
      * Publish preflight replacements.
      *
      * @return void
-     */
+     */ 
     protected function publishVendor(): void
     {
-        $this->call('vendor:publish', ['--tag' => 'preflight-config', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'preflight-resources', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'preflight-routes', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'preflight-tests', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'preflight-shell', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'preflight-ci', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'preflight-seeders', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'preflight-factories', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-config', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-resources', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-routes', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-tests', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-shell', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-ci', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-seeders', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-factories', '--force' => true]);
     }
 
     /**
@@ -75,7 +75,7 @@ class InstallCommand extends Command
      */
     protected function installCitadel(): void
     {
-        $this->call('citadel:install');
+        $this->callSilent('citadel:install');
     }
 
     /**
@@ -87,7 +87,7 @@ class InstallCommand extends Command
     {
         if (! class_exists('CreateSessionsTable')) {
             try {
-                $this->call('session:table');
+                $this->callSilent('session:table');
             } catch (Throwable $e) {
                 $this->error($e->getMessage());
             }
@@ -136,7 +136,7 @@ class InstallCommand extends Command
         // $this->runProcess(['bin/setup.sh'], base_path());
 
         // Generate Application Key.
-        $this->call('key:generate');
+        $this->callSilent('key:generate');
 
         // Completion Message...
         $this->line('');
