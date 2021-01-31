@@ -121,12 +121,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cratespace/citadel.git",
-                "reference": "00e5fda4ea225ee0db9acb9fff0783f334ceb456"
+                "reference": "bc9751cddbf383da7880907188ab53ffe6843b3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cratespace/citadel/zipball/00e5fda4ea225ee0db9acb9fff0783f334ceb456",
-                "reference": "00e5fda4ea225ee0db9acb9fff0783f334ceb456",
+                "url": "https://api.github.com/repos/cratespace/citadel/zipball/bc9751cddbf383da7880907188ab53ffe6843b3a",
+                "reference": "bc9751cddbf383da7880907188ab53ffe6843b3a",
                 "shasum": ""
             },
             "require": {
@@ -192,7 +192,7 @@
                 "source": "https://github.com/cratespace/citadel/tree/development",
                 "issues": "https://github.com/cratespace/citadel/issues"
             },
-            "time": "2021-01-31T20:24:38+00:00"
+            "time": "2021-01-31T20:54:54+00:00"
         },
         {
             "name": "dasprid/enum",

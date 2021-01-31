@@ -23,11 +23,11 @@
         <template #form>
             <form @submit.prevent="login" class="w-full">
                 <div v-if="! recovery" class="block">
-                    <app-input type="text" v-model="form.code" inputmode="numeric" :error="form.errors.code" label="Code" required autofocus autocomplete="one-time-code"></app-input>
+                    <app-input type="text" v-model="form.code" ref="code" id="code" inputmode="numeric" :error="form.errors.code" label="Code" required autofocus autocomplete="one-time-code"></app-input>
                 </div>
 
                 <div v-else class="block">
-                    <app-input type="text" v-model="form.recovery_code" inputmode="numeric" :error="form.errors.recovery_code" label="Recovery code" required autocomplete="one-time-code"></app-input>
+                    <app-input type="text" v-model="form.recovery_code" inputmode="numeric" :error="form.errors.recovery_code" label="Recovery code" ref="recovery_code" id="recovery_code" required autocomplete="one-time-code"></app-input>
                 </div>
 
                 <div class="mt-6 flex items-center justify-between">
