@@ -1,73 +1,71 @@
 <template>
-    <div>
-        <action-section>
-            <template #title>
-                Profile Information
-            </template>
+    <action-section>
+        <template #title>
+            Profile Information
+        </template>
 
-            <template #description>
-                Update your account's profile information and email address.
-            </template>
+        <template #description>
+            Update your account's profile information and email address.
+        </template>
 
-            <template #content>
-                <form @submit.prevent="updateProfileInformation">
-                    <div class="lg:grid lg:grid-cols-12 gap-6">
-                        <div class="col-span-12">
-                            <input type="file" class="hidden" ref="photo" @change="updatePhotoPreview">
+        <template #content>
+            <form @submit.prevent="updateProfileInformation">
+                <div class="lg:grid lg:grid-cols-12 gap-6">
+                    <div class="col-span-12">
+                        <input type="file" class="hidden" ref="photo" @change="updatePhotoPreview">
 
-                            <div class="flex items-center">
-                                <div v-show="! photoPreview">
-                                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
+                        <div class="flex items-center">
+                            <div v-show="! photoPreview">
+                                <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
+                            </div>
+
+                            <div class="mt-2" v-show="photoPreview">
+                                <span class="block rounded-full w-20 h-20"
+                                    :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
+                                </span>
+                            </div>
+
+                            <div class="ml-4">
+                                <div class="flex items-center">
+                                    <app-button type="button" mode="secondary" @click.native.prevent="selectNewPhoto">
+                                        Change
+                                    </app-button>
+
+                                    <app-button class="ml-4" type="button" mode="secondary" @click.native.prevent="deletePhoto" v-if="user.profile_photo_path">
+                                        Remove
+                                    </app-button>
                                 </div>
 
-                                <div class="mt-2" v-show="photoPreview">
-                                    <span class="block rounded-full w-20 h-20"
-                                        :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
-                                    </span>
-                                </div>
-
-                                <div class="ml-4">
-                                    <div class="flex items-center">
-                                        <app-button type="button" mode="secondary" @click.native.prevent="selectNewPhoto">
-                                            Change
-                                        </app-button>
-
-                                        <app-button class="ml-4" type="button" mode="secondary" @click.native.prevent="deletePhoto" v-if="user.profile_photo_path">
-                                            Remove
-                                        </app-button>
-                                    </div>
-
-                                    <app-input-error :message="form.errors.photo" class="mt-2"></app-input-error>
-                                </div>
+                                <app-input-error :message="form.errors.photo" class="mt-2"></app-input-error>
                             </div>
                         </div>
-
-                        <div class="mt-6 lg:mt-0 md:col-span-8">
-                            <app-input type="text" v-model="form.name" :error="form.errors.name" label="Full name" placeholder="Johnathan Doeford"></app-input>
-                        </div>
-
-                        <div class="mt-6 lg:mt-0 md:col-span-6">
-                            <app-input type="text" v-model="form.username" :error="form.errors.username" label="Username" placeholder="JohnDoe"></app-input>
-                        </div>
-
-                        <div class="mt-6 lg:mt-0 md:col-span-6">
-                            <app-input type="email" v-model="form.email" :error="form.errors.email" label="Email address" placeholder="john.doe@example.com"></app-input>
-                        </div>
                     </div>
 
-                    <div class="flex items-center justify-end mt-6">
-                        <action-message :on="form.recentlySuccessful" class="mr-4">
-                            Changes saved. <span class="ml-1">&check;</span>
-                        </action-message>
-
-                        <app-button type="submit" mode="primary" :class="{ 'opacity-25': form.processing }" :loading="form.processing">
-                            Save changes <span class="ml-1">&rarr;</span>
-                        </app-button>
+                    <div class="mt-6 lg:mt-0 md:col-span-8">
+                        <app-input type="text" v-model="form.name" :error="form.errors.name" label="Full name" placeholder="Johnathan Doeford"></app-input>
                     </div>
-                </form>
-            </template>
-        </action-section>
-    </div>
+
+                    <div class="mt-6 lg:mt-0 md:col-span-6">
+                        <app-input type="text" v-model="form.username" :error="form.errors.username" label="Username" placeholder="JohnDoe"></app-input>
+                    </div>
+
+                    <div class="mt-6 lg:mt-0 md:col-span-6">
+                        <app-input type="email" v-model="form.email" :error="form.errors.email" label="Email address" placeholder="john.doe@example.com"></app-input>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end mt-6">
+                    <action-message :on="form.recentlySuccessful" class="mr-4">
+                        Changes saved. <span class="ml-1">&check;</span>
+                    </action-message>
+
+                    <app-button type="submit" mode="primary" :class="{ 'opacity-25': form.processing }" :loading="form.processing">
+                        Save changes <span class="ml-1">&rarr;</span>
+                    </app-button>
+                </div>
+            </form>
+        </template>
+    </action-section>
 </template>
 
 <script>
@@ -86,6 +84,10 @@ export default {
         AppInputError,
         AppButton,
         ActionMessage
+    },
+
+    created() {
+        console.log(this.sessions);
     },
 
     data() {

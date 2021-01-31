@@ -1,20 +1,30 @@
 <template>
     <app-layout>
-        <div>
-            <update-profile-information-form :user.sync="$page.props.user"></update-profile-information-form>
+        <template #title>
+            Profile
+        </template>
 
-            <section-border></section-border>
+        <template #content>
+            <div>
+                <update-profile-information-form :user.sync="$page.props.user"></update-profile-information-form>
 
-            <update-password-form></update-password-form>
+                <section-border></section-border>
 
-            <section-border></section-border>
+                <update-password-form></update-password-form>
 
-            <two-factor-authentication-form></two-factor-authentication-form>
+                <section-border></section-border>
 
-            <section-border></section-border>
+                <two-factor-authentication-form></two-factor-authentication-form>
 
-            <delete-user-form></delete-user-form>
-        </div>
+                <section-border></section-border>
+
+                <logout-other-browser-sessions-form :sessions.sync="$page.props.user.sessions"></logout-other-browser-sessions-form>
+
+                <section-border></section-border>
+
+                <delete-user-form></delete-user-form>
+            </div>
+        </template>
     </app-layout>
 </template>
 
@@ -25,6 +35,7 @@ import UpdateProfileInformationForm from './UpdateProfileInformationForm';
 import UpdatePasswordForm from './UpdatePasswordForm';
 import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm';
 import DeleteUserForm from './DeleteUserForm';
+import LogoutOtherBrowserSessionsForm from './LogoutOtherBrowserSessionsForm';
 
 export default {
     components: {
@@ -34,6 +45,7 @@ export default {
         UpdatePasswordForm,
         TwoFactorAuthenticationForm,
         DeleteUserForm,
+        LogoutOtherBrowserSessionsForm,
     },
 }
 </script>

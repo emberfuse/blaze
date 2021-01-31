@@ -1,6 +1,6 @@
 <template>
     <label :for="id" class="flex items-center cursor-pointer">
-        <input :id="id" class="form-checkbox rounded text-blue-500 bg-white border border-gray-100 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out" v-model="value" @input="$emit('input', ! value)" ref="checkbox" type="checkbox"/>
+        <input :id="id" class="form-checkbox rounded border-gray-300 text-blue-500 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out" :value="value" v-model="proxyChecked" type="checkbox"/>
 
         <span class="ml-2 text-sm font-medium leading-5">
             <span v-text="label"></span>
@@ -10,10 +10,35 @@
 
 <script>
     export default {
+        model: {
+            prop: 'checked',
+            event: 'change',
+        },
+
         props: {
+            id: String,
             label: String,
-            value: Boolean,
-            id: String
+
+            value: {
+                default: null,
+            },
+
+            checked: {
+                type: [Array, Boolean],
+                default: false,
+            },
+        },
+
+        computed: {
+            proxyChecked: {
+                get() {
+                    return this.checked;
+                },
+
+                set(value) {
+                    this.$emit('change', value);
+                },
+            },
         },
     }
 </script>

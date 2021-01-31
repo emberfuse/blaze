@@ -34,7 +34,7 @@ class ProjectSetupCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
     public function handle()
     {
@@ -63,6 +63,8 @@ class ProjectSetupCommand extends Command
         $this->call('cache:clear');
 
         $this->goodbye();
+
+        return 0;
     }
 
     /**

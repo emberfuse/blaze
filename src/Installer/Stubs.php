@@ -2,14 +2,10 @@
 
 namespace Cratespace\Preflight\Installer;
 
-use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
-use Cratespace\Preflight\Console\Concerns\InteractsWithTerminal;
 
 class Stubs
 {
-    use InteractsWithTerminal;
-
     public static function copyAppConfigurations()
     {
         copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
@@ -70,70 +66,7 @@ class Stubs
             app_path('Providers/PreflightServiceProvider.php')
         );
 
-        static::installServiceProviderAfter('RouteServiceProvider', 'CitadelServiceProvider');
-        static::installServiceProviderAfter('CitadelServiceProvider', 'PreflightServiceProvider');
-    }
-
-    /**
-     * Install Inertia and Preflight middleware.
-     *
-     * @return void
-     */
-    public static function installMiddleware(): void
-    {
-        // Middleware...
-        (new self())->runProcess(['php', 'artisan', 'inertia:middleware', 'HandleInertiaRequests', '--force'], base_path());
-
-        static::installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
-    }
-
-    /**
-     * Install the middleware to a group in the application Http Kernel.
-     *
-     * @param string $after
-     * @param string $name
-     * @param string $group
-     *
-     * @return void
-     */
-    protected static function installMiddlewareAfter(string $after, string $name, string $group = 'web'): void
-    {
-        $httpKernel = file_get_contents(app_path('Http/Kernel.php'));
-
-        $middlewareGroups = Str::before(Str::after($httpKernel, '$middlewareGroups = ['), '];');
-        $middlewareGroup = Str::before(Str::after($middlewareGroups, "'$group' => ["), '],');
-
-        if (! Str::contains($middlewareGroup, $name)) {
-            $modifiedMiddlewareGroup = str_replace(
-                $after . ',',
-                $after . ',' . \PHP_EOL . '            ' . $name . ',',
-                $middlewareGroup,
-            );
-
-            file_put_contents(app_path('Http/Kernel.php'), str_replace(
-                $middlewareGroups,
-                str_replace($middlewareGroup, $modifiedMiddlewareGroup, $middlewareGroups),
-                $httpKernel
-            ));
-        }
-    }
-
-    /**
-     * Install the service provider in the application configuration file.
-     *
-     * @param string $after
-     * @param string $name
-     *
-     * @return void
-     */
-    protected static function installServiceProviderAfter(string $after, string $name): void
-    {
-        if (! Str::contains($appConfig = file_get_contents(config_path('app.php')), 'App\\Providers\\' . $name . '::class')) {
-            file_put_contents(config_path('app.php'), str_replace(
-                'App\\Providers\\' . $after . '::class,',
-                'App\\Providers\\' . $after . '::class,' . \PHP_EOL . '        App\\Providers\\' . $name . '::class,',
-                $appConfig
-            ));
-        }
+        Util::installServiceProviderAfter('RouteServiceProvider', 'CitadelServiceProvider');
+        Util::installServiceProviderAfter('CitadelServiceProvider', 'PreflightServiceProvider');
     }
 }

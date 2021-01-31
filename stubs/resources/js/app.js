@@ -12,14 +12,14 @@ const app = document.getElementById('app');
 
 new Vue({
     metaInfo: {
-        titleTemplate: title => title ? `${title} - Preflight` : 'Preflight'
+        titleTemplate: (title) => (title ? `${title} - Castle` : 'Castle'),
     },
 
-    render: h => h(App, {
-        props: {
-            initialPage: JSON.parse(app.dataset.page),
-            resolveComponent: name => require(`./Views/${name}`).default,
-        },
-    }),
+    render: (h) =>
+        h(App, {
+            props: {
+                initialPage: JSON.parse(app.dataset.page),
+                resolveComponent: (name) => require(`./Views/${name}`).default,
+            },
+        }),
 }).$mount(app);
-

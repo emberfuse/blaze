@@ -4,15 +4,16 @@ namespace Cratespace\Preflight\Console;
 
 use Throwable;
 use Illuminate\Console\Command;
+use Cratespace\Preflight\Installer\Util;
 use Cratespace\Preflight\Installer\Stubs;
 use Cratespace\Preflight\Installer\NpmPackages;
 use Cratespace\Preflight\Installer\ComposerPackages;
 use Cratespace\Preflight\Installer\ProjectStructure;
-use Cratespace\Preflight\Console\Concerns\InteractsWithTerminal;
+use Cratespace\Preflight\Console\Traits\InteractsWithConsole;
 
 class InstallCommand extends Command
 {
-    use InteractsWithTerminal;
+    use InteractsWithConsole;
 
     /**
      * The name and signature of the console command.
@@ -31,7 +32,7 @@ class InstallCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
     public function handle()
     {
@@ -46,13 +47,15 @@ class InstallCommand extends Command
 
         // Inertia Stack...
         $this->installInertiaStack();
+
+        return 0;
     }
 
     /**
      * Publish preflight replacements.
      *
      * @return void
-     */
+     */ 
     protected function publishVendor(): void
     {
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-config', '--force' => true]);
@@ -90,9 +93,9 @@ class InstallCommand extends Command
             }
         }
 
-        ProjectStructure::replaceInFile("'SESSION_DRIVER', 'file'", "'SESSION_DRIVER', 'database'", config_path('session.php'));
-        ProjectStructure::replaceInFile('SESSION_DRIVER=file', 'SESSION_DRIVER=database', base_path('.env'));
-        ProjectStructure::replaceInFile('SESSION_DRIVER=file', 'SESSION_DRIVER=database', base_path('.env.example'));
+        Util::replaceInFile("'SESSION_DRIVER', 'file'", "'SESSION_DRIVER', 'database'", config_path('session.php'));
+        Util::replaceInFile('SESSION_DRIVER=file', 'SESSION_DRIVER=database', base_path('.env'));
+        Util::replaceInFile('SESSION_DRIVER=file', 'SESSION_DRIVER=database', base_path('.env.example'));
     }
 
     /**
@@ -118,8 +121,15 @@ class InstallCommand extends Command
         // Inertia Views...
         Stubs::copyInertiaViews();
 
+        // Install Inertial Middleware...
+        $this->runProcess(['php', 'artisan', 'inertia:middleware', 'HandleInertiaRequests', '--force'], base_path());
+        Util::installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
+
         // Restructure Project Directory...
         ProjectStructure::restructureProjectDirectory();
+
+        // Install Sanctum...
+        $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
 
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
