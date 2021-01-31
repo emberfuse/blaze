@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc9cd52dcb7779a01702478aef11811e",
+    "content-hash": "babb239fda5b4d0f00ce89cbb6d5cc03",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -117,16 +117,16 @@
         },
         {
             "name": "cratespace/citadel",
-            "version": "dev-main",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cratespace/citadel.git",
-                "reference": "28c00252a7c9f173698fd4cb58303444dec86bc0"
+                "reference": "7c77d2e248beec329f96109658365efd4d9c37e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cratespace/citadel/zipball/28c00252a7c9f173698fd4cb58303444dec86bc0",
-                "reference": "28c00252a7c9f173698fd4cb58303444dec86bc0",
+                "url": "https://api.github.com/repos/cratespace/citadel/zipball/7c77d2e248beec329f96109658365efd4d9c37e5",
+                "reference": "7c77d2e248beec329f96109658365efd4d9c37e5",
                 "shasum": ""
             },
             "require": {
@@ -145,7 +145,6 @@
                 "phpunit/phpunit": "^9.5",
                 "symfony/var-dumper": "^5.2.1"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -163,7 +162,16 @@
                     "App\\": "stubs/app/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Cratespace\\Citadel\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit --colors=always"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -175,16 +183,16 @@
             ],
             "description": "A frontend agnostic authentication backend for Laravel applications.",
             "keywords": [
-                "Authentication",
+                "authentication",
                 "citadel",
                 "cratespace",
                 "php"
             ],
             "support": {
-                "issues": "https://github.com/cratespace/citadel/issues",
-                "source": "https://github.com/cratespace/citadel/tree/main"
+                "source": "https://github.com/cratespace/citadel/tree/development",
+                "issues": "https://github.com/cratespace/citadel/issues"
             },
-            "time": "2021-01-31T16:02:57+00:00"
+            "time": "2021-01-31T19:58:25+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -7731,7 +7739,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "cratespace/citadel": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
