@@ -62,7 +62,6 @@ class NpmPackages extends Packages
      *
      * @param \Closure $callback
      * @param string   $configurationKey
-     * @param bool     $dev
      *
      * @return void
      */

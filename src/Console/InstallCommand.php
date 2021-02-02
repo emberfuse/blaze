@@ -121,7 +121,7 @@ class InstallCommand extends Command
         // Inertia Views...
         Stubs::copyInertiaViews();
 
-        // Install Inertial Middleware...
+        // Install Inertia Middleware...
         $this->runProcess(['php', 'artisan', 'inertia:middleware', 'HandleInertiaRequests', '--force'], base_path());
         Util::installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
 
@@ -135,12 +135,13 @@ class InstallCommand extends Command
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
         // $this->runProcess(['bin/setup.sh'], base_path());
 
-        // Generate Application Key.
+        // Generate Application Key...
         $this->callSilent('key:generate');
 
         // Completion Message...
         $this->line('');
         $this->info('Preflight scaffolding installed successfully.');
+        $this->comment('Please make sure the application key is set, if not generate a new one using "php artisan key:generate".');
         $this->comment('Please execute "npm install && npm run dev" to build your assets.');
     }
 }

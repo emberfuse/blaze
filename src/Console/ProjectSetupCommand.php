@@ -38,14 +38,14 @@ class ProjectSetupCommand extends Command
      */
     public function handle()
     {
-        $this->welcome();
+        $this->info('Welcome to the Cratespace automated installation process!');
 
         $this->createEnvFile();
 
         if (0 === strlen(config('app.key'))) {
             $this->call('key:generate');
 
-            $this->line('~ Secret key properly generated.');
+            $this->line('Secret key properly generated.');
         }
 
         $credentials = $this->requestDatabaseCredentials();
@@ -55,20 +55,24 @@ class ProjectSetupCommand extends Command
         if ($this->confirm('Do you want to migrate the database?', false)) {
             $this->migrateDatabaseWithFreshCredentials($credentials);
 
-            $this->line('~ Database successfully migrated.');
+            $this->line('Database successfully migrated.');
         }
 
         $this->call('storage:link');
 
         $this->call('cache:clear');
 
-        $this->goodbye();
+        $this->info('The installation process has successfully completed.');
 
         return 0;
     }
 
     /**
      * Update the .env file from an array of $key => $value pairs.
+     *
+     * @param array $updatedValues
+     *
+     * @return void
      */
     protected function updateEnvironmentFile(array $updatedValues): void
     {
@@ -84,27 +88,11 @@ class ProjectSetupCommand extends Command
     }
 
     /**
-     * Display the welcome message.
-     */
-    protected function welcome()
-    {
-        $this->info('>> Welcome to the Cratespace automated installation process! <<');
-    }
-
-    /**
-     * Display the completion message.
-     */
-    protected function goodbye()
-    {
-        $this->info('>> The installation process has successfully completed. <<');
-    }
-
-    /**
      * Request the local database details from the user.
      *
      * @return array
      */
-    protected function requestDatabaseCredentials()
+    protected function requestDatabaseCredentials(): array
     {
         return [
             'DB_DATABASE' => $this->ask('Database name'),
@@ -116,8 +104,10 @@ class ProjectSetupCommand extends Command
 
     /**
      * Create the initial .env file.
+     *
+     * @return void
      */
-    protected function createEnvFile()
+    protected function createEnvFile(): void
     {
         if (! file_exists('.env')) {
             copy('.env.example', '.env');
@@ -133,7 +123,7 @@ class ProjectSetupCommand extends Command
      *
      * @return void
      */
-    protected function migrateDatabaseWithFreshCredentials($credentials)
+    protected function migrateDatabaseWithFreshCredentials(array $credentials): void
     {
         $seed = $this->confirm('Do you want to seed the database with default user and dummy data?', false);
 
@@ -149,7 +139,7 @@ class ProjectSetupCommand extends Command
             config(["database.connections.mysql.{$configKey}" => $value]);
         }
 
-        $seed ? $this->call('migrate:fresh', ['--seed' => 'default']) : $this->call('migrate:fresh');
+        $seed ? $this->call('preflight:user') : $this->call('migrate:fresh');
     }
 
     /**
@@ -160,7 +150,7 @@ class ProjectSetupCommand extends Command
      *
      * @return string
      */
-    public function askHiddenWithDefault($question, $fallback = true)
+    public function askHiddenWithDefault(string $question, bool $fallback = true): string
     {
         $question = new Question($question, 'null');
 

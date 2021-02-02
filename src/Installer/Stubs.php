@@ -6,7 +6,12 @@ use Illuminate\Filesystem\Filesystem;
 
 class Stubs
 {
-    public static function copyAppConfigurations()
+    /**
+     * Copy over app development and js configuration files.
+     *
+     * @return void
+     */
+    public static function copyAppConfigurations(): void
     {
         copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__ . '/../../stubs/webpack.mix.js', base_path('webpack.mix.js'));
@@ -20,6 +25,11 @@ class Stubs
         copy(__DIR__ . '/../../stubs/resources/js/app.js', resource_path('js/app.js'));
     }
 
+    /**
+     * Ensure listed directories exist or else create them.
+     *
+     * @return void
+     */
     public static function ensureDirectoriesExists(): void
     {
         (new Filesystem())->ensureDirectoryExists(app_path('Actions/Citadel'));
@@ -28,18 +38,24 @@ class Stubs
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Tests'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Config'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Plugins'));
+        (new Filesystem())->ensureDirectoryExists(resource_path('js/Views'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Layouts'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Components'));
-        (new Filesystem())->ensureDirectoryExists(resource_path('js/Views'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/API'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Auth'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Profile'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Business'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Marketing'));
+        (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/General'));
         (new Filesystem())->ensureDirectoryExists(resource_path('views'));
         (new Filesystem())->ensureDirectoryExists(resource_path('markdown'));
     }
 
+    /**
+     * Copy over inertial vue js templates for views.
+     *
+     * @return void
+     */
     public static function copyInertiaViews(): void
     {
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Components', resource_path('js/Views/Components'));
@@ -59,6 +75,11 @@ class Stubs
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
     }
 
+    /**
+     * Copy over service provider stubs.
+     *
+     * @return void
+     */
     public static function copyServiceProviders(): void
     {
         copy(
