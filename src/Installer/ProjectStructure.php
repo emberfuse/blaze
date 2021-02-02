@@ -55,5 +55,6 @@ class ProjectStructure
         Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
 
         (new Filesystem())->deleteDirectory(resource_path('sass'));
+        (new Filesystem())->delete(resource_path('bootstrap.js'));
     }
 }

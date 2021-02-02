@@ -55,7 +55,7 @@ class InstallCommand extends Command
      * Publish preflight replacements.
      *
      * @return void
-     */ 
+     */
     protected function publishVendor(): void
     {
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-config', '--force' => true]);
@@ -79,7 +79,7 @@ class InstallCommand extends Command
     }
 
     /**
-     * Configure the session driver for Jetstream.
+     * Configure the session driver for Preflight.
      *
      * @return void
      */

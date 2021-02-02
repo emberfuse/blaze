@@ -4,17 +4,13 @@
 
 ## Supported Versions
 
-| Version   | Security Fixes Until |
-| --------- | -------------------- |
-| 6 (LTS)   | September 3rd, 2022  |
-| 5.8       | February 26th, 2020  |
-| 5.7       | September 4th, 2019  |
-| 5.6       | February 7th, 2019   |
-| 5.5 (LTS) | August 30th, 2020    |
+| Version | Security Fixes Until |
+| ------- | -------------------- |
+| 1.0.2   | March 31st, 2021     |
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within Laravel, please send an email to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Preflight, please send an email to <Thavarshan Thayananthajothy> (tjthavarshan@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ### Public PGP Key
 

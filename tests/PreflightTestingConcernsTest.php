@@ -4,6 +4,7 @@ namespace Cratespace\Preflight;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Cratespace\Preflight\Tests\TestCase;
 use Cratespace\Preflight\Tests\Fixtures\User;
 use Cratespace\Preflight\Testing\Concerns\CreatesNewUser;
@@ -18,7 +19,13 @@ class PreflightTestingConcernsTest extends TestCase
 
     public function testDetermineNetworkConnectionStatus()
     {
-        $this->assertTrue($this->isConnected());
+        $response = Http::get('www.example.com');
+
+        if ($response->ok()) {
+            $this->assertTrue($this->isConnected());
+        } else {
+            $this->assertFalse($this->isConnected());
+        }
     }
 
     public function testAccessProtectedQualities()

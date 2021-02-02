@@ -25,15 +25,15 @@ class ActionMakeCommandTest extends TestCase
         parent::setUp();
 
         $this->testAction = app_path("Actions/{$this->name}.php");
+
+        $this->deleteFile($this->testAction);
     }
 
     public function tearDown(): void
     {
         parent::tearDown();
 
-        if (file_exists($this->testAction)) {
-            unlink($this->testAction);
-        }
+        $this->deleteFile($this->testAction);
     }
 
     public function testCreateActionClass()

@@ -17,12 +17,6 @@ trait ReturnsResponse
      */
     protected function response($content = '', $status = 200, array $headers = [])
     {
-        $factory = app(ResponseFactory::class);
-
-        if (func_num_args() === 0) {
-            return $factory;
-        }
-
-        return $factory->make($content, $status, $headers);
+        $response = app(SimpleResponse::class);
     }
 }

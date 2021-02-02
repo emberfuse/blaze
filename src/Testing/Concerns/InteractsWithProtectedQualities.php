@@ -26,9 +26,9 @@ trait InteractsWithProtectedQualities
     /**
      * Grant access to protected/private class methods.
      *
-     * @param object $object
-     * @param string $method
-     * @param array  $parameters
+     * @param object  $object
+     * @param string  $method
+     * @param array[] $parameters
      *
      * @return mixed
      */

@@ -3,6 +3,9 @@
 use Illuminate\Support\Str;
 
 return [
+    /*
+     * Default User Related Settings and Details...
+     */
     'users' => [
         'credentials' => [
             'name' => 'Thavarshan Thayananthajothy',
@@ -19,6 +22,9 @@ return [
         ],
     ],
 
+    /*
+     * Default API Related Details...
+     */
     'api' => [
         'permissions' => [
             'create',

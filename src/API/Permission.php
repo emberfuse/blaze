@@ -26,7 +26,7 @@ class Permission
     public static $defaultPermissions = [];
 
     /**
-     * Determine if Jetstream has registered roles.
+     * Determine if Preflight has registered roles.
      *
      * @return bool
      */
@@ -70,7 +70,7 @@ class Permission
     }
 
     /**
-     * Determine if any permissions have been registered with Jetstream.
+     * Determine if any permissions have been registered with Preflight.
      *
      * @return bool
      */
