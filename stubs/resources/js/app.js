@@ -12,7 +12,7 @@ const app = document.getElementById('app');
 
 new Vue({
     metaInfo: {
-        titleTemplate: (title) => (title ? `${title} - Preflight` : 'Preflight'),
+        titleTemplate: (title) => (title ? `${title} - Castle` : 'Castle'),
     },
 
     render: (h) =>
