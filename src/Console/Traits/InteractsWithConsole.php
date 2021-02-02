@@ -14,9 +14,11 @@ trait InteractsWithConsole
      * @param array|null     $env
      * @param int|float|null $timeout
      *
+     * @return void
+     *
      * @throws \LogicException
      */
-    public function runProcess(array $command, ?string $cwd = null, ?array $env = null, ?float $timeout = null)
+    public function runProcess(array $command, ?string $cwd = null, ?array $env = null, ?float $timeout = null): void
     {
         (new Process($command, $cwd, $env))
             ->setTimeout($timeout)

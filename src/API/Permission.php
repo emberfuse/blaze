@@ -30,7 +30,7 @@ class Permission
      *
      * @return bool
      */
-    public static function hasRoles()
+    public static function hasRoles(): bool
     {
         return count(static::$roles) > 0;
     }
