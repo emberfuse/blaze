@@ -18,18 +18,12 @@
             "email": "tjthavarshan@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/cratespace/citadel"
-        }
-    ],
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
         "illuminate/support": "^8.0",
         "league/commonmark": "^1.3",
-        "cratespace/citadel": "dev-development"
+        "cratespace/citadel": "^1.3.2"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.2",
