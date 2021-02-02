@@ -2,7 +2,7 @@
 
 namespace Cratespace\Preflight\Http\Controllers\Concerns;
 
-use Illuminate\Routing\ResponseFactory;
+use Cratespace\Preflight\Http\Responses\SimpleResponse;
 
 trait ReturnsResponse
 {
@@ -15,14 +15,14 @@ trait ReturnsResponse
      *
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    protected function response($content = '', $status = 200, array $headers = [])
+    protected function response($content = '', ?int $status = 200, ?array $headers = [])
     {
-        $factory = app(ResponseFactory::class);
+        $response = app(SimpleResponse::class);
 
         if (func_num_args() === 0) {
-            return $factory;
+            return $response;
         }
 
-        return $factory->make($content, $status, $headers);
+        return $response->make($content, $status, $headers);
     }
 }

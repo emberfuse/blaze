@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-class {{ class }} implements {{ class }}
+class {{ class }}
 {
     /**
      * Preform certain action using the gievn data.

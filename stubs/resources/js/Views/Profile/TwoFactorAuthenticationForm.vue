@@ -58,6 +58,26 @@
                         </app-button>
                     </confirm-password-modal>
                 </div>
+
+                <div v-else>
+                    <confirm-password-modal @confirmed="regenerateRecoveryCodes">
+                        <app-button mode="secondary" class="mr-3" v-if="recoveryCodes.length > 0">
+                            Regenerate recovery codes
+                        </app-button>
+                    </confirm-password-modal>
+
+                    <confirm-password-modal @confirmed="showRecoveryCodes">
+                        <app-button mode="secondary" class="mr-3" v-if="recoveryCodes.length === 0">
+                            Show Recovery Codes
+                        </app-button>
+                    </confirm-password-modal>
+
+                    <confirm-password-modal @confirmed="disableTwoFactorAuthentication">
+                        <app-button mode="danger" :class="{ 'opacity-25': disabling }" :loading="disabling">
+                            Disable
+                        </app-button>
+                    </confirm-password-modal>
+                </div>
             </div>
         </template>
     </action-section>

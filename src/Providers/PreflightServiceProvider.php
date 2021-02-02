@@ -8,12 +8,12 @@ use Cratespace\Citadel\Citadel\View;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
-use Cratespace\Citadel\Citadel\Config;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\HandleInertiaRequests;
 use Cratespace\Preflight\Console\InstallCommand;
 use Cratespace\Preflight\Console\ActionMakeCommand;
 use Cratespace\Preflight\Console\ProjectSetupCommand;
+use Cratespace\Citadel\Citadel\Config as CitadelConfig;
 use Cratespace\Preflight\Console\PublishConfigJsCommand;
 use Cratespace\Preflight\Console\SeedDefaultUserCommand;
 use Cratespace\Preflight\Http\Middleware\ShareInertiaData;
@@ -106,9 +106,9 @@ class PreflightServiceProvider extends ServiceProvider
     {
         Route::group([
             'namespace' => 'Cratespace\Preflight\Http\Controllers',
-            'domain' => Config::domain(),
-            'prefix' => Config::prefix(),
-        ], function () {
+            'domain' => CitadelConfig::domain(),
+            'prefix' => CitadelConfig::prefix(),
+        ], function (): void {
             $this->loadRoutesFrom(__DIR__ . '/../../routes/routes.php');
         });
     }
@@ -159,22 +159,22 @@ class PreflightServiceProvider extends ServiceProvider
      */
     protected function configureCitadelViews(): void
     {
-        View::login(function () {
+        View::login(function (Request $request) {
             return Inertia::render('Auth/Login', [
                 'canResetPassword' => Route::has('password.request'),
-                'status' => session('status'),
+                'status' => $request->session()->get('status'),
             ]);
         });
 
-        View::twoFactorChallenge(function () {
-            return Inertia::render('Auth/VerifyEmail', [
-                'status' => session('status'),
+        View::twoFactorChallenge(function (Request $request) {
+            return Inertia::render('Auth/TwoFactorChallenge', [
+                'status' => $request->session()->get('status'),
             ]);
         });
 
-        View::requestPasswordResetLink(function () {
+        View::requestPasswordResetLink(function (Request $request) {
             return Inertia::render('Auth/ForgotPassword', [
-                'status' => session('status'),
+                'status' => $request->session()->get('status'),
             ]);
         });
 
@@ -189,15 +189,15 @@ class PreflightServiceProvider extends ServiceProvider
             return Inertia::render('Auth/Register');
         });
 
-        View::verifyEmail(function () {
+        View::verifyEmail(function (Request $request) {
             return Inertia::render('Auth/VerifyEmail', [
-                'status' => session('status'),
+                'status' => $request->session()->get('status'),
             ]);
         });
 
-        View::userProfile(function () {
+        View::userProfile(function (Request $request) {
             return Inertia::render('Profile/Show', [
-                'user' => request()->user(),
+                'user' => $request->user(),
             ]);
         });
     }

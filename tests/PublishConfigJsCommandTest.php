@@ -19,9 +19,7 @@ class PublishConfigJsCommandTest extends TestCase
 
         $this->items = resource_path('js/Config/items.json');
 
-        if (file_exists($this->items)) {
-            \unlink($this->items);
-        }
+        $this->deleteFile($this->items);
     }
 
     public function testPublishConfigAsJsonFile()

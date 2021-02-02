@@ -54,4 +54,18 @@ abstract class TestCase extends BaseTestCase
 
         $this->artisan('migrate:fresh', ['--database' => 'testbench'])->run();
     }
+
+    /**
+     * Check for given files' existance and delete if found.
+     *
+     * @param string $file
+     *
+     * @return void
+     */
+    protected function deleteFile(string $file): void
+    {
+        if (file_exists($file)) {
+            unlink($file);
+        }
+    }
 }

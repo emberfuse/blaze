@@ -1,10 +1,16 @@
 <template>
     <app-layout>
-        <div>
-            <p>
-                <span class="font-semibold">You</span> are now logged in.
-            </p>
-        </div>
+        <template #title>
+            Home
+        </template>
+
+        <template #content>
+            <div>
+                <p>
+                    <span class="font-semibold">You</span> are now logged in.
+                </p>
+            </div>
+        </template>
     </app-layout>
 </template>
 

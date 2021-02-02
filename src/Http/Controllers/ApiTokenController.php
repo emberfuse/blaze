@@ -4,7 +4,6 @@ namespace Cratespace\Preflight\Http\Controllers;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\RedirectResponse;
 use Cratespace\Preflight\API\Permission;
 use Inertia\Response as InertiaResponse;
@@ -48,7 +47,7 @@ class ApiTokenController extends Controller
             Permission::validPermissions($request->input('permissions', []))
         );
 
-        return back(303)->with('flash', [
+        return $this->response()->back(303)->with('flash', [
             'token' => explode('|', $token->plainTextToken, 2)[1],
         ]);
     }
@@ -69,7 +68,7 @@ class ApiTokenController extends Controller
             'abilities' => Permission::validPermissions($request->input('permissions', [])),
         ])->save();
 
-        return back(303);
+        return $this->response()->back(303);
     }
 
     /**
@@ -84,6 +83,6 @@ class ApiTokenController extends Controller
     {
         $request->user()->tokens()->where('id', $tokenId)->delete();
 
-        return back(303);
+        return $this->response()->back(303);
     }
 }

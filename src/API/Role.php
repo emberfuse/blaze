@@ -55,9 +55,9 @@ class Role implements JsonSerializable
      *
      * @param string $description
      *
-     * @return $this
+     * @return \Cratespace\Preflight\API\Role
      */
-    public function description(string $description)
+    public function description(string $description): Role
     {
         $this->description = $description;
 

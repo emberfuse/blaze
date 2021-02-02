@@ -14,7 +14,7 @@
                     </p>
 
                     <p v-else>
-                        Please confirm access to your account by entering one of your emergency recovery codes.
+                        Please confirm access to your account by entering one of your emergency recovery codes provided to you when enabling Two Factor Authentication.
                     </p>
                 </div>
             </div>
@@ -22,30 +22,28 @@
 
         <template #form>
             <form @submit.prevent="login" class="w-full">
-                <div class="block">
-                    <app-input type="email" v-model="form.email" :error="form.errors.email" label="Email address" placeholder="john.doe@example.com" required autofocus></app-input>
+                <div v-if="! recovery" class="block">
+                    <app-input type="text" v-model="form.code" ref="code" id="code" inputmode="numeric" :error="form.errors.code" label="Code" required autofocus autocomplete="one-time-code"></app-input>
                 </div>
 
-                <div class="mt-6 block">
-                    <app-button type="button" @click.prevent="toggleRecovery" mode="primary" :class="{ 'opacity-25': form.processing }" :loading="form.processing">
+                <div v-else class="block">
+                    <app-input type="text" v-model="form.recovery_code" inputmode="numeric" :error="form.errors.recovery_code" label="Recovery code" ref="recovery_code" id="recovery_code" required autocomplete="one-time-code"></app-input>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between">
+                    <app-button type="button" @clicked="toggleRecovery" mode="secondary">
                         <template v-if="! recovery">
                             Use a recovery code
                         </template>
 
                         <template v-else>
-                            Use an authentication code
+                            Use authentication code
                         </template>
                     </app-button>
 
                     <app-button class="ml-4" type="submit" mode="primary" :class="{ 'opacity-25': form.processing }" :loading="form.processing">
                         Confirm it's me <span class="ml-1">&rarr;</span>
                     </app-button>
-                </div>
-
-                <div class="mt-6">
-                    <p>
-                        Don't have an account yet? <app-link :href="route('register')">join {{ config('app.name') }}</app-link>
-                    </p>
                 </div>
             </form>
         </template>
@@ -58,6 +56,7 @@ import Logo from '@/Views/Components/Logos/Logo';
 import AppLink from '@/Views/Components/Base/Link';
 import AppInput from '@/Views/Components/Inputs/Input';
 import AppButton from '@/Views/Components/Buttons/Button';
+import Checkbox from '@/Views/Components/Inputs/Checkbox';
 
 export default {
     components: {
@@ -82,7 +81,7 @@ export default {
 
     methods: {
         toggleRecovery() {
-            this.recovery ^= true
+            this.recovery ^= true;
 
             this.$nextTick(() => {
                 if (this.recovery) {

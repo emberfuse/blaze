@@ -29,9 +29,7 @@ class ShareInertiaData extends Middleware
                     return;
                 }
 
-                return array_merge($request->user()->toArray(), [
-                    'two_factor_enabled' => ! is_null($request->user()->two_factor_secret),
-                ]);
+                return $request->user()->toArray();
             },
 
             'errorBags' => function () {

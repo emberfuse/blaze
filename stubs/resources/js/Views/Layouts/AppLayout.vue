@@ -87,9 +87,9 @@ export default {
     },
 
     methods: {
-        async logout() {
-            await this.$http.post(route('logout'))
-                .then(() => window.location = route('welcome'));
+        logout() {
+            this.$http.post(this.route('logout'))
+                .then(() => window.location = this.route('welcome'));
         }
     }
 }
