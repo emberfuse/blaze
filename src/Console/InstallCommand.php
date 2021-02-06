@@ -133,7 +133,7 @@ class InstallCommand extends Command
 
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
-        // $this->runProcess(['bin/setup.sh'], base_path());
+        $this->runProcess(['bin/setup.sh'], base_path());
 
         // Generate Application Key...
         $this->callSilent('key:generate');
