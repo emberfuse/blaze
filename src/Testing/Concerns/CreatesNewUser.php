@@ -4,7 +4,7 @@ namespace Cratespace\Preflight\Testing\Concerns;
 
 use Closure;
 use PHPUnit\Framework\TestCase;
-use Illuminate\Foundation\Auth\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 trait CreatesNewUser
 {
@@ -22,7 +22,7 @@ trait CreatesNewUser
      *
      * @return \PHPUnit\Framework\TestCase
      */
-    public function signIn(?User $user = null): TestCase
+    public function signIn(?Authenticatable $user = null): TestCase
     {
         $user = $user ?: create(User::class);
 
