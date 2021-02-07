@@ -155,7 +155,7 @@
         },
         "prefix": "castle_cache"
     },
-    "citadel": {
+    "sentinel": {
         "guard": "web",
         "middleware": ["web"],
         "prefix": "",

@@ -75,7 +75,7 @@ class InstallCommand extends Command
      */
     protected function installSentinel(): void
     {
-        $this->callSilent('citadel:install');
+        $this->callSilent('sentinel:install');
     }
 
     /**
