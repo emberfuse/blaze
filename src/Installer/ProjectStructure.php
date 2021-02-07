@@ -19,18 +19,6 @@ class ProjectStructure
             rename(__DIR__ . '/../../stubs/phpunitconfig.xml', $phpunit);
         }
 
-        if (file_exists($envExample = base_path('.env.example'))) {
-            unlink($envExample);
-
-            copy(__DIR__ . '/../../stubs/.env.example', $envExample);
-        }
-
-        if (file_exists($envFile = base_path('.env'))) {
-            unlink($envFile);
-
-            copy($envExample, $envFile);
-        }
-
         if (file_exists($styleCi = base_path('.styleci.yml'))) {
             unlink($styleCi);
         }
