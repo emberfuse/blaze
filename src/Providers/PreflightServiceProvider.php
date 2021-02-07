@@ -4,19 +4,19 @@ namespace Cratespace\Preflight\Providers;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Cratespace\Sentinel\Sentinel\View;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
+use Cratespace\Sentinel\Sentinel\View;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\HandleInertiaRequests;
 use Cratespace\Preflight\Console\InstallCommand;
 use Cratespace\Preflight\Console\ActionMakeCommand;
 use Cratespace\Preflight\Console\ProjectSetupCommand;
-use Cratespace\Sentinel\Sentinel\Config as SentinelConfig;
 use Cratespace\Preflight\Console\PublishConfigJsCommand;
 use Cratespace\Preflight\Console\SeedDefaultUserCommand;
 use Cratespace\Preflight\Http\Middleware\ShareInertiaData;
+use Cratespace\Sentinel\Sentinel\Config as SentinelConfig;
 
 class PreflightServiceProvider extends ServiceProvider
 {
@@ -25,7 +25,7 @@ class PreflightServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->configurePublishing();
         $this->configureRoutes();
