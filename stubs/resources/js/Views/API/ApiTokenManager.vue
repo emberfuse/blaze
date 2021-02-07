@@ -162,13 +162,13 @@
 </template>
 
 <script>
-import ActionSection from '@/Views/Components/Sections/ActionSection';
 import AppInput from '@/Views/Components/Inputs/Input';
-import Checkbox from '@/Views/Components/Inputs/Checkbox';
 import AppButton from '@/Views/Components/Buttons/Button';
-import ActionMessage from '@/Views/Components/Alerts/ActionMessage';
-import SectionBorder from '@/Views/Components/Sections/ActionSectionBorder';
+import Checkbox from '@/Views/Components/Inputs/Checkbox';
 import DialogModal from '@/Views/Components/Modals/DialogModal';
+import ActionMessage from '@/Views/Components/Alerts/ActionMessage';
+import ActionSection from '@/Views/Components/Sections/ActionSection';
+import SectionBorder from '@/Views/Components/Sections/SectionBorder';
 
 export default {
     components: {
