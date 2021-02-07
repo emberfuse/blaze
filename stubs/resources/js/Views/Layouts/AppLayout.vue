@@ -60,7 +60,6 @@ import Navbar from '@/Views/Components/Navbars/Navbar';
 import NavbarLink from '@/Views/Components/Navbars/NavbarLink';
 import Dropdown from '@/Views/Components/Dropdowns/Dropdown';
 import DropdownLink from '@/Views/Components/Dropdowns/DropdownLink';
-import SectionBorder from '@/Views/Components/Sections/ActionSectionBorder';
 
 export default {
     components: {
