@@ -9,7 +9,7 @@
 
                 <template #linksleft>
                     <navbar-link :href="route('home')" :active="route().current('home')" class="text-white bg-blue-900 hover:bg-blue-900 focus:bg-blue-900">
-                        Dashboard
+                        Home
                     </navbar-link>
                 </template>
 
@@ -34,15 +34,7 @@
         <!-- Main Content Area -->
         <main class="py-8" role="main">
             <div class="container mx-auto px-4 sm:px-6">
-                <h4 class="font-semibold text-xl text-gray-800">
-                    <slot name="title"></slot>
-                </h4>
-
-                <section-border></section-border>
-
-                <section>
-                    <slot name="content"></slot>
-                </section>
+                <slot></slot>
             </div>
         </main>
 

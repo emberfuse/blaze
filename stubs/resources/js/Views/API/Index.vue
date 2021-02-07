@@ -1,10 +1,6 @@
 <template>
     <app-layout>
-        <template #title>
-            API Tokens
-        </template>
-
-        <template #content>
+        <template>
             <api-token-manager :tokens="tokens" :available-permissions="availablePermissions" :default-permissions="defaultPermissions" />
         </template>
     </app-layout>

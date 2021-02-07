@@ -1,10 +1,6 @@
 <template>
     <app-layout>
-        <template #title>
-            Profile
-        </template>
-
-        <template #content>
+        <template>
             <div>
                 <update-profile-information-form :user.sync="$page.props.user"></update-profile-information-form>
 
@@ -30,7 +26,7 @@
 
 <script>
 import AppLayout from '@/Views/Layouts/AppLayout';
-import SectionBorder from '@/Views/Components/Sections/ActionSectionBorder';
+import SectionBorder from '@/Views/Components/Sections/SectionBorder';
 import UpdateProfileInformationForm from './UpdateProfileInformationForm';
 import UpdatePasswordForm from './UpdatePasswordForm';
 import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm';

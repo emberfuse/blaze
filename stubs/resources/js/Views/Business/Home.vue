@@ -1,10 +1,6 @@
 <template>
     <app-layout>
-        <template #title>
-            Home
-        </template>
-
-        <template #content>
+        <template>
             <div>
                 <p>
                     <span class="font-semibold">You</span> are now logged in.
