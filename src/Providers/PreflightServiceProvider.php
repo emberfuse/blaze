@@ -106,8 +106,6 @@ class PreflightServiceProvider extends ServiceProvider
      */
     protected function configureRoutes(): void
     {
-        Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
-
         Route::group([
             'namespace' => 'Cratespace\Preflight\Http\Controllers',
             'domain' => SentinelConfig::domain(),
@@ -144,12 +142,6 @@ class PreflightServiceProvider extends ServiceProvider
      */
     protected function bootInertia(): void
     {
-        Util::replaceInFile(
-            '// \Illuminate\Session\Middleware\AuthenticateSession::class',
-            '\Cratespace\Preflight\Http\Middleware\AuthenticateSession::class',
-            app_path('Http/Kernel.php')
-        );
-
         $kernel = $this->app->make(Kernel::class);
 
         $kernel->appendMiddlewareToGroup('web', ShareInertiaData::class);

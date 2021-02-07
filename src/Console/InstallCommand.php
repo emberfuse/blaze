@@ -123,12 +123,18 @@ class InstallCommand extends Command
         // Install Inertia Middleware...
         $this->runProcess(['php', 'artisan', 'inertia:middleware', 'HandleInertiaRequests', '--force'], base_path());
         Util::installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
+        Util::replaceInFile(
+            '// \Illuminate\Session\Middleware\AuthenticateSession::class',
+            '\Cratespace\Preflight\Http\Middleware\AuthenticateSession::class',
+            app_path('Http/Kernel.php')
+        );
 
         // Restructure Project Directory...
         Stubs::removeRedundancies();
 
         // Install Sanctum...
         $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
+        Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
 
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
