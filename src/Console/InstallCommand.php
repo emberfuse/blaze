@@ -8,7 +8,6 @@ use Cratespace\Preflight\Installer\Util;
 use Cratespace\Preflight\Installer\Stubs;
 use Cratespace\Preflight\Installer\NpmPackages;
 use Cratespace\Preflight\Installer\ComposerPackages;
-use Cratespace\Preflight\Installer\ProjectStructure;
 use Cratespace\Preflight\Console\Traits\InteractsWithConsole;
 
 class InstallCommand extends Command
@@ -126,14 +125,14 @@ class InstallCommand extends Command
         Util::installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
 
         // Restructure Project Directory...
-        ProjectStructure::restructureProjectDirectory();
+        Stubs::removeRedundancies();
 
         // Install Sanctum...
         $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
 
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
-        $this->runProcess(['bin/setup.sh'], base_path());
+        // $this->runProcess(['bin/setup.sh'], base_path());
 
         // Generate Application Key...
         $this->callSilent('key:generate');

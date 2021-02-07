@@ -26,6 +26,38 @@ class Stubs
     }
 
     /**
+     * Remove uneccessary files.
+     *
+     * @return void
+     */
+    public static function removeRedundancies(): void
+    {
+        if (file_exists($phpunit = base_path('phpunit.xml'))) {
+            unlink($phpunit);
+
+            rename(__DIR__ . '/../../stubs/phpunitconfig.xml', $phpunit);
+        }
+
+        if (file_exists($styleCi = base_path('.styleci.yml'))) {
+            unlink($styleCi);
+        }
+
+        if (file_exists(resource_path('views/welcome.blade.php'))) {
+            chmod(resource_path('views/welcome.blade.php'), 0644);
+
+            unlink(resource_path('views/welcome.blade.php'));
+        }
+
+        if (file_exists(base_path('README.md'))) {
+            unlink(base_path('README.md'));
+        }
+
+        (new Filesystem())->deleteDirectory(resource_path('sass'));
+
+        unlink(resource_path('bootstrap.js'));
+    }
+
+    /**
      * Ensure listed directories exist or else create them.
      *
      * @return void

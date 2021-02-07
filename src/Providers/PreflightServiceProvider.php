@@ -3,12 +3,14 @@
 namespace Cratespace\Preflight\Providers;
 
 use Inertia\Inertia;
+use Inertia\Response;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Cratespace\Sentinel\Sentinel\View;
 use Illuminate\Support\ServiceProvider;
+use Cratespace\Preflight\Installer\Util;
 use App\Http\Middleware\HandleInertiaRequests;
 use Cratespace\Preflight\Console\InstallCommand;
 use Cratespace\Preflight\Console\ActionMakeCommand;
@@ -104,6 +106,8 @@ class PreflightServiceProvider extends ServiceProvider
      */
     protected function configureRoutes(): void
     {
+        Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
+
         Route::group([
             'namespace' => 'Cratespace\Preflight\Http\Controllers',
             'domain' => SentinelConfig::domain(),
@@ -140,6 +144,12 @@ class PreflightServiceProvider extends ServiceProvider
      */
     protected function bootInertia(): void
     {
+        Util::replaceInFile(
+            '// \Illuminate\Session\Middleware\AuthenticateSession::class',
+            '\Cratespace\Preflight\Http\Middleware\AuthenticateSession::class',
+            app_path('Http/Kernel.php')
+        );
+
         $kernel = $this->app->make(Kernel::class);
 
         $kernel->appendMiddlewareToGroup('web', ShareInertiaData::class);
@@ -159,43 +169,43 @@ class PreflightServiceProvider extends ServiceProvider
      */
     protected function configureSentinelViews(): void
     {
-        View::login(function (Request $request) {
+        View::login(function (Request $request): Response {
             return Inertia::render('Auth/Login', [
                 'canResetPassword' => Route::has('password.request'),
                 'status' => $request->session()->get('status'),
             ]);
         });
 
-        View::twoFactorChallenge(function (Request $request) {
+        View::twoFactorChallenge(function (Request $request): Response {
             return Inertia::render('Auth/TwoFactorChallenge', [
                 'status' => $request->session()->get('status'),
             ]);
         });
 
-        View::requestPasswordResetLink(function (Request $request) {
+        View::requestPasswordResetLink(function (Request $request): Response {
             return Inertia::render('Auth/ForgotPassword', [
                 'status' => $request->session()->get('status'),
             ]);
         });
 
-        View::resetPassword(function (Request $request) {
+        View::resetPassword(function (Request $request): Response {
             return Inertia::render('Auth/ResetPassword', [
                 'email' => $request->input('email'),
                 'token' => $request->route('token'),
             ]);
         });
 
-        View::register(function () {
+        View::register(function (): Response {
             return Inertia::render('Auth/Register');
         });
 
-        View::verifyEmail(function (Request $request) {
+        View::verifyEmail(function (Request $request): Response {
             return Inertia::render('Auth/VerifyEmail', [
                 'status' => $request->session()->get('status'),
             ]);
         });
 
-        View::userProfile(function (Request $request) {
+        View::userProfile(function (Request $request): Response {
             return Inertia::render('Profile/Show', [
                 'user' => $request->user(),
             ]);
