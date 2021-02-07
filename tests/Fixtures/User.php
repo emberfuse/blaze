@@ -3,7 +3,7 @@
 namespace Cratespace\Preflight\Tests\Fixtures;
 
 use Laravel\Sanctum\HasApiTokens;
-use Cratespace\Citadel\Models\Traits\HasProfilePhoto;
+use Cratespace\Sentinel\Models\Traits\HasProfilePhoto;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable

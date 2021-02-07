@@ -32,7 +32,7 @@ class Stubs
      */
     public static function ensureDirectoriesExists(): void
     {
-        (new Filesystem())->ensureDirectoryExists(app_path('Actions/Citadel'));
+        (new Filesystem())->ensureDirectoryExists(app_path('Actions/Sentinel'));
         (new Filesystem())->ensureDirectoryExists(public_path('css'));
         (new Filesystem())->ensureDirectoryExists(resource_path('css'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Tests'));
@@ -87,7 +87,7 @@ class Stubs
             app_path('Providers/PreflightServiceProvider.php')
         );
 
-        Util::installServiceProviderAfter('RouteServiceProvider', 'CitadelServiceProvider');
-        Util::installServiceProviderAfter('CitadelServiceProvider', 'PreflightServiceProvider');
+        Util::installServiceProviderAfter('RouteServiceProvider', 'SentinelServiceProvider');
+        Util::installServiceProviderAfter('SentinelServiceProvider', 'PreflightServiceProvider');
     }
 }

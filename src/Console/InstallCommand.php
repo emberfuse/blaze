@@ -39,8 +39,8 @@ class InstallCommand extends Command
         // Publish...
         $this->publishVendor();
 
-        // Install Citadel...
-        $this->installCitadel();
+        // Install Sentinel...
+        $this->installSentinel();
 
         // Configure Session...
         $this->configureSession();
@@ -69,11 +69,11 @@ class InstallCommand extends Command
     }
 
     /**
-     * Install and publish Citadel resources.
+     * Install and publish Sentinel resources.
      *
      * @return void
      */
-    protected function installCitadel(): void
+    protected function installSentinel(): void
     {
         $this->callSilent('citadel:install');
     }

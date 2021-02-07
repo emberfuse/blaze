@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Cratespace\Citadel\Citadel\Config;
+use Cratespace\Sentinel\Sentinel\Config;
 use Cratespace\Preflight\Http\Controllers\ApiTokenController;
 
 Route::group(['middleware' => Config::middleware([['web']])], function (): void {

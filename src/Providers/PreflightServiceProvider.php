@@ -4,7 +4,7 @@ namespace Cratespace\Preflight\Providers;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Cratespace\Citadel\Citadel\View;
+use Cratespace\Sentinel\Sentinel\View;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +13,7 @@ use App\Http\Middleware\HandleInertiaRequests;
 use Cratespace\Preflight\Console\InstallCommand;
 use Cratespace\Preflight\Console\ActionMakeCommand;
 use Cratespace\Preflight\Console\ProjectSetupCommand;
-use Cratespace\Citadel\Citadel\Config as CitadelConfig;
+use Cratespace\Sentinel\Sentinel\Config as SentinelConfig;
 use Cratespace\Preflight\Console\PublishConfigJsCommand;
 use Cratespace\Preflight\Console\SeedDefaultUserCommand;
 use Cratespace\Preflight\Http\Middleware\ShareInertiaData;
@@ -106,8 +106,8 @@ class PreflightServiceProvider extends ServiceProvider
     {
         Route::group([
             'namespace' => 'Cratespace\Preflight\Http\Controllers',
-            'domain' => CitadelConfig::domain(),
-            'prefix' => CitadelConfig::prefix(),
+            'domain' => SentinelConfig::domain(),
+            'prefix' => SentinelConfig::prefix(),
         ], function (): void {
             $this->loadRoutesFrom(__DIR__ . '/../../routes/routes.php');
         });
@@ -149,7 +149,7 @@ class PreflightServiceProvider extends ServiceProvider
             $kernel->appendToMiddlewarePriority(HandleInertiaRequests::class);
         }
 
-        $this->configureCitadelViews();
+        $this->configureSentinelViews();
     }
 
     /**
@@ -157,7 +157,7 @@ class PreflightServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function configureCitadelViews(): void
+    protected function configureSentinelViews(): void
     {
         View::login(function (Request $request) {
             return Inertia::render('Auth/Login', [

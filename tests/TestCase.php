@@ -5,7 +5,7 @@ namespace Cratespace\Preflight\Tests;
 use Mockery as m;
 use Cratespace\Preflight\Tests\Fixtures\User;
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Cratespace\Citadel\Providers\CitadelServiceProvider;
+use Cratespace\Sentinel\Providers\SentinelServiceProvider;
 use Cratespace\Preflight\Providers\PreflightServiceProvider;
 
 abstract class TestCase extends BaseTestCase
@@ -24,7 +24,7 @@ abstract class TestCase extends BaseTestCase
     {
         return [
             PreflightServiceProvider::class,
-            CitadelServiceProvider::class,
+            SentinelServiceProvider::class,
         ];
     }
 

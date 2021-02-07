@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\Factory as ViewFactory;
 use Illuminate\Contracts\Support\Responsable;
-use Cratespace\Citadel\Http\Responses\Response;
+use Cratespace\Sentinel\Http\Responses\Response;
 
 class SimpleResponse extends Response implements Responsable
 {

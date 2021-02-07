@@ -3,7 +3,7 @@
 namespace Cratespace\Preflight\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Cratespace\Citadel\Http\Requests\Concerns\AuthorizesRequests;
+use Cratespace\Sentinel\Http\Requests\Concerns\AuthorizesRequests;
 
 class CreateApiTokenRequest extends FormRequest
 {
