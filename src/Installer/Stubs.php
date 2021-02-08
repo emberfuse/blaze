@@ -32,12 +32,6 @@ class Stubs
      */
     public static function removeRedundancies(): void
     {
-        if (file_exists($phpunit = base_path('phpunit.xml'))) {
-            unlink($phpunit);
-
-            rename(__DIR__ . '/../../stubs/phpunitconfig.xml', $phpunit);
-        }
-
         if (file_exists($styleCi = base_path('.styleci.yml'))) {
             unlink($styleCi);
         }
