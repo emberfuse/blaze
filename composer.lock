@@ -121,12 +121,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cratespace/sentinel.git",
-                "reference": "5758d09737d617615f9f479aa91f53889d2c0816"
+                "reference": "253de816559d7dfe2aad890d31bbbb755f42d0b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/5758d09737d617615f9f479aa91f53889d2c0816",
-                "reference": "5758d09737d617615f9f479aa91f53889d2c0816",
+                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/253de816559d7dfe2aad890d31bbbb755f42d0b4",
+                "reference": "253de816559d7dfe2aad890d31bbbb755f42d0b4",
                 "shasum": ""
             },
             "require": {
@@ -192,7 +192,7 @@
                 "source": "https://github.com/cratespace/sentinel/tree/development",
                 "issues": "https://github.com/cratespace/sentinel/issues"
             },
-            "time": "2021-02-08T01:57:23+00:00"
+            "time": "2021-02-08T02:42:43+00:00"
         },
         {
             "name": "dasprid/enum",
