@@ -48,7 +48,7 @@ class Stubs
 
         (new Filesystem())->deleteDirectory(resource_path('sass'));
 
-        unlink(resource_path('bootstrap.js'));
+        unlink(resource_path('js/bootstrap.js'));
     }
 
     /**
