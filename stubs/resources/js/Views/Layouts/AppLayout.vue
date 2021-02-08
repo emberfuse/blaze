@@ -68,7 +68,6 @@ export default {
         NavbarLink,
         Dropdown,
         DropdownLink,
-        SectionBorder,
     },
 
     data() {
