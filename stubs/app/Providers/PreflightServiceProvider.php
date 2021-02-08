@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Providers\Traits\HasActions;
 
 class PreflightServiceProvider extends ServiceProvider
 {
