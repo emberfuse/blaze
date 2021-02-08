@@ -1,4 +1,4 @@
-name: Preflight Checks ✈️
+name: Preflight Checks
 
 on:
   push:
