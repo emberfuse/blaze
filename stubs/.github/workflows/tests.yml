@@ -1,4 +1,4 @@
-name: Preflight Checks ✈️
+name: Preflight Checks
 
 on:
   push:
@@ -86,13 +86,6 @@ jobs:
           npm install
           npm run test
 
-      - name: 🦺 Run security checks
-        run: |
-          test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
-          cd security-checker
-          composer install && composer update
-          php security-checker security:check ../composer.lock
-
       - name: 📚 Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
@@ -160,13 +153,6 @@ jobs:
         run: |
           npm install
           npm run test
-
-      - name: 🦺 Run security checks
-        run: |
-          test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
-          cd security-checker
-          composer install && composer update
-          php security-checker security:check ../composer.lock
 
       - name: 📚 Upload artifacts
         uses: actions/upload-artifact@master

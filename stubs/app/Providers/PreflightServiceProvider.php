@@ -4,21 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Providers\Traits\HasActions;
+use Cratespace\Sentinel\Providers\Traits\HasActions;
 
 class PreflightServiceProvider extends ServiceProvider
 {
     use HasActions;
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register(): void
-    {
-        $this->registerActions();
-    }
 
     /**
      * Bootstrap any application services.
@@ -27,6 +17,8 @@ class PreflightServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->registerActions();
+
         $this->configurePermissions();
     }
 

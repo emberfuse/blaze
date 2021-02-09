@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c06309ae9b110a52d6049a2b0694fbe",
+    "content-hash": "a5fd8d7aeda7dc54dd2c8a358ef89b8c",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -117,16 +117,16 @@
         },
         {
             "name": "cratespace/sentinel",
-            "version": "v1.0.1",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cratespace/sentinel.git",
-                "reference": "ff33e9e141b1ecb47983c7aa83de220e78758c90"
+                "reference": "253de816559d7dfe2aad890d31bbbb755f42d0b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/ff33e9e141b1ecb47983c7aa83de220e78758c90",
-                "reference": "ff33e9e141b1ecb47983c7aa83de220e78758c90",
+                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/253de816559d7dfe2aad890d31bbbb755f42d0b4",
+                "reference": "253de816559d7dfe2aad890d31bbbb755f42d0b4",
                 "shasum": ""
             },
             "require": {
@@ -162,7 +162,16 @@
                     "App\\": "stubs/app/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Cratespace\\Sentinel\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit --colors=always"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -172,18 +181,18 @@
                     "email": "tjthavarshan@gmail.com"
                 }
             ],
-            "description": "A frontend agnostic authentication backend for Laravel applications.",
+            "description": "A back-end only authentication for Laravel applications.",
             "keywords": [
-                "Authentication",
+                "authentication",
                 "cratespace",
                 "php",
                 "sentinel"
             ],
             "support": {
-                "issues": "https://github.com/cratespace/sentinel/issues",
-                "source": "https://github.com/cratespace/sentinel/tree/v1.0.1"
+                "source": "https://github.com/cratespace/sentinel/tree/development",
+                "issues": "https://github.com/cratespace/sentinel/issues"
             },
-            "time": "2021-02-07T11:40:28+00:00"
+            "time": "2021-02-08T02:42:43+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -5321,16 +5330,16 @@
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v6.13.0",
+            "version": "v6.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "fa99d30b435caa0a6f8d0a92bb1ec6cafbf6409a"
+                "reference": "1c2eb8c21e0be762adcc4b8ca5d70b4b349c092c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/fa99d30b435caa0a6f8d0a92bb1ec6cafbf6409a",
-                "reference": "fa99d30b435caa0a6f8d0a92bb1ec6cafbf6409a",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/1c2eb8c21e0be762adcc4b8ca5d70b4b349c092c",
+                "reference": "1c2eb8c21e0be762adcc4b8ca5d70b4b349c092c",
                 "shasum": ""
             },
             "require": {
@@ -5407,7 +5416,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2021-01-30T02:23:53+00:00"
+            "time": "2021-02-07T12:27:34+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7343,16 +7352,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.12.1",
+            "version": "1.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "c0afa2e2b0748d0e8e7828939a651cf6cfc0e790"
+                "reference": "1d524800de40b82739163221f531d52c9a6f84f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/c0afa2e2b0748d0e8e7828939a651cf6cfc0e790",
-                "reference": "c0afa2e2b0748d0e8e7828939a651cf6cfc0e790",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/1d524800de40b82739163221f531d52c9a6f84f2",
+                "reference": "1d524800de40b82739163221f531d52c9a6f84f2",
                 "shasum": ""
             },
             "require": {
@@ -7407,7 +7416,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.12.1"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.12.2"
             },
             "funding": [
                 {
@@ -7419,7 +7428,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-02-05T07:37:03+00:00"
+            "time": "2021-02-07T13:22:56+00:00"
         },
         {
             "name": "spatie/macroable",
@@ -7939,7 +7948,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "cratespace/sentinel": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

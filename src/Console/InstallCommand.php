@@ -8,7 +8,6 @@ use Cratespace\Preflight\Installer\Util;
 use Cratespace\Preflight\Installer\Stubs;
 use Cratespace\Preflight\Installer\NpmPackages;
 use Cratespace\Preflight\Installer\ComposerPackages;
-use Cratespace\Preflight\Installer\ProjectStructure;
 use Cratespace\Preflight\Console\Traits\InteractsWithConsole;
 
 class InstallCommand extends Command
@@ -124,16 +123,22 @@ class InstallCommand extends Command
         // Install Inertia Middleware...
         $this->runProcess(['php', 'artisan', 'inertia:middleware', 'HandleInertiaRequests', '--force'], base_path());
         Util::installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
+        Util::replaceInFile(
+            '// \Illuminate\Session\Middleware\AuthenticateSession::class',
+            '\Cratespace\Preflight\Http\Middleware\AuthenticateSession::class',
+            app_path('Http/Kernel.php')
+        );
 
         // Restructure Project Directory...
-        ProjectStructure::restructureProjectDirectory();
+        Stubs::removeRedundancies();
 
         // Install Sanctum...
         $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
+        Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
 
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
-        $this->runProcess(['bin/setup.sh'], base_path());
+        // $this->runProcess(['bin/setup.sh'], base_path());
 
         // Generate Application Key...
         $this->callSilent('key:generate');
