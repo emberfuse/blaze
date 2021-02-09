@@ -18,16 +18,21 @@
             "email": "tjthavarshan@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/cratespace/sentinel"
+        }
+    ],
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
         "illuminate/support": "^8.0",
-        "cratespace/sentinel": "^1.0.1"
+        "cratespace/sentinel": "dev-main"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.3.5",
-        "laravel/sanctum": "^2.8",
         "mockery/mockery": "^1.4.2",
         "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.5"
