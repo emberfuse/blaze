@@ -18,17 +18,11 @@
             "email": "tjthavarshan@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/cratespace/sentinel"
-        }
-    ],
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
         "illuminate/support": "^8.0",
-        "cratespace/sentinel": "dev-main"
+        "cratespace/sentinel": "^1.0.1"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.2",
