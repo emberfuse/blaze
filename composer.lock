@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5fd8d7aeda7dc54dd2c8a358ef89b8c",
+    "content-hash": "8b88dc2b4fbe2f7eedc747d32ba935c3",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -117,21 +117,23 @@
         },
         {
             "name": "cratespace/sentinel",
-            "version": "dev-development",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cratespace/sentinel.git",
-                "reference": "253de816559d7dfe2aad890d31bbbb755f42d0b4"
+                "reference": "4dc4db44519700c9e45f5b6990f1df213a2307ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/253de816559d7dfe2aad890d31bbbb755f42d0b4",
-                "reference": "253de816559d7dfe2aad890d31bbbb755f42d0b4",
+                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/4dc4db44519700c9e45f5b6990f1df213a2307ad",
+                "reference": "4dc4db44519700c9e45f5b6990f1df213a2307ad",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
                 "ext-json": "*",
+                "illuminate/contracts": "^8.0",
+                "illuminate/database": "^8.0",
                 "illuminate/support": "^8.0",
                 "jenssegers/agent": "^2.6",
                 "php": "^7.4|^8.0",
@@ -139,7 +141,6 @@
             },
             "require-dev": {
                 "fakerphp/faker": "^1.9.1",
-                "laravel/sanctum": "^2.8",
                 "mockery/mockery": "^1.4.2",
                 "orchestra/testbench": "^6.7",
                 "phpunit/phpunit": "^9.5",
@@ -162,16 +163,7 @@
                     "App\\": "stubs/app/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Cratespace\\Sentinel\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit --colors=always"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -183,16 +175,16 @@
             ],
             "description": "A back-end only authentication for Laravel applications.",
             "keywords": [
-                "authentication",
+                "Authentication",
                 "cratespace",
                 "php",
                 "sentinel"
             ],
             "support": {
-                "source": "https://github.com/cratespace/sentinel/tree/development",
-                "issues": "https://github.com/cratespace/sentinel/issues"
+                "issues": "https://github.com/cratespace/sentinel/issues",
+                "source": "https://github.com/cratespace/sentinel"
             },
-            "time": "2021-02-08T02:42:43+00:00"
+            "time": "2021-02-09T17:27:25+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -748,16 +740,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.26.1",
+            "version": "v8.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "275c78c97e007e4a9d771d4d1caa1c77ebfdcf94"
+                "reference": "a6680d98f9dadaa363aa7d5218517a08706cee64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/275c78c97e007e4a9d771d4d1caa1c77ebfdcf94",
-                "reference": "275c78c97e007e4a9d771d4d1caa1c77ebfdcf94",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a6680d98f9dadaa363aa7d5218517a08706cee64",
+                "reference": "a6680d98f9dadaa363aa7d5218517a08706cee64",
                 "shasum": ""
             },
             "require": {
@@ -912,7 +904,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-02-02T14:07:24+00:00"
+            "time": "2021-02-09T15:14:54+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1320,16 +1312,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.44.0",
+            "version": "2.45.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd"
+                "reference": "e2ba3174ce869da1713c38340dbb36572dfacd5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
-                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e2ba3174ce869da1713c38340dbb36572dfacd5a",
+                "reference": "e2ba3174ce869da1713c38340dbb36572dfacd5a",
                 "shasum": ""
             },
             "require": {
@@ -1409,7 +1401,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-26T20:46:41+00:00"
+            "time": "2021-02-07T21:35:59+00:00"
         },
         {
             "name": "opis/closure",
@@ -5014,70 +5006,6 @@
             "time": "2021-01-08T13:16:40+00:00"
         },
         {
-            "name": "laravel/sanctum",
-            "version": "v2.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/sanctum.git",
-                "reference": "eb191ddfc3ec04bbead33593bf982e871095f25c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/eb191ddfc3ec04bbead33593bf982e871095f25c",
-                "reference": "eb191ddfc3ec04bbead33593bf982e871095f25c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "illuminate/contracts": "^6.9|^7.0|^8.0",
-                "illuminate/database": "^6.9|^7.0|^8.0",
-                "illuminate/support": "^6.9|^7.0|^8.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Sanctum\\SanctumServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Sanctum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
-            "keywords": [
-                "auth",
-                "laravel",
-                "sanctum"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/sanctum/issues",
-                "source": "https://github.com/laravel/sanctum"
-            },
-            "time": "2021-01-26T19:47:38+00:00"
-        },
-        {
             "name": "mockery/mockery",
             "version": "1.4.2",
             "source": {
@@ -5265,22 +5193,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v6.11.0",
+            "version": "v6.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "c6acd7bcf2c2fe10802bac678d9a020fab4e761b"
+                "reference": "3c52215b9c23b36dc91ac803976f62a2931a3fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/c6acd7bcf2c2fe10802bac678d9a020fab4e761b",
-                "reference": "c6acd7bcf2c2fe10802bac678d9a020fab4e761b",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/3c52215b9c23b36dc91ac803976f62a2931a3fc4",
+                "reference": "3c52215b9c23b36dc91ac803976f62a2931a3fc4",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.25",
                 "mockery/mockery": "^1.4.2",
-                "orchestra/testbench-core": "^6.13",
+                "orchestra/testbench-core": "^6.15.1",
                 "php": "^7.3 || ^8.0",
                 "phpunit/phpunit": "^8.4 || ^9.3",
                 "spatie/laravel-ray": "^1.9.3"
@@ -5314,7 +5242,7 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v6.11.0"
+                "source": "https://github.com/orchestral/testbench/tree/v6.12.0"
             },
             "funding": [
                 {
@@ -5326,20 +5254,20 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2021-01-30T04:14:29+00:00"
+            "time": "2021-02-09T13:57:42+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v6.14.0",
+            "version": "v6.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "1c2eb8c21e0be762adcc4b8ca5d70b4b349c092c"
+                "reference": "3126b3f6ff4338f588c02ea5bd30398444dcb817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/1c2eb8c21e0be762adcc4b8ca5d70b4b349c092c",
-                "reference": "1c2eb8c21e0be762adcc4b8ca5d70b4b349c092c",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/3126b3f6ff4338f588c02ea5bd30398444dcb817",
+                "reference": "3126b3f6ff4338f588c02ea5bd30398444dcb817",
                 "shasum": ""
             },
             "require": {
@@ -5416,7 +5344,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2021-02-07T12:27:34+00:00"
+            "time": "2021-02-09T13:59:12+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7352,16 +7280,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.12.2",
+            "version": "1.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "1d524800de40b82739163221f531d52c9a6f84f2"
+                "reference": "d92c6beee765a7b1d41daa5ea69a2b175d3745de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/1d524800de40b82739163221f531d52c9a6f84f2",
-                "reference": "1d524800de40b82739163221f531d52c9a6f84f2",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/d92c6beee765a7b1d41daa5ea69a2b175d3745de",
+                "reference": "d92c6beee765a7b1d41daa5ea69a2b175d3745de",
                 "shasum": ""
             },
             "require": {
@@ -7416,7 +7344,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.12.2"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.12.3"
             },
             "funding": [
                 {
@@ -7428,7 +7356,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-02-07T13:22:56+00:00"
+            "time": "2021-02-08T14:21:24+00:00"
         },
         {
             "name": "spatie/macroable",
@@ -7482,16 +7410,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.19.0",
+            "version": "1.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "b518a25a59443ee0ddc8b3ed77ff4139c1f1273a"
+                "reference": "932ba405337bbe530da1d3b1c5746a16192be2ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/b518a25a59443ee0ddc8b3ed77ff4139c1f1273a",
-                "reference": "b518a25a59443ee0ddc8b3ed77ff4139c1f1273a",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/932ba405337bbe530da1d3b1c5746a16192be2ed",
+                "reference": "932ba405337bbe530da1d3b1c5746a16192be2ed",
                 "shasum": ""
             },
             "require": {
@@ -7501,7 +7429,7 @@
                 "ramsey/uuid": "^3.0|^4.1",
                 "spatie/backtrace": "^1.0",
                 "spatie/macroable": "^1.0",
-                "symfony/stopwatch": "^5.1",
+                "symfony/stopwatch": "^4.0|^5.1",
                 "symfony/var-dumper": "^4.2|^5.1"
             },
             "require-dev": {
@@ -7541,7 +7469,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.19.0"
+                "source": "https://github.com/spatie/ray/tree/1.19.3"
             },
             "funding": [
                 {
@@ -7553,7 +7481,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-02-03T13:31:41+00:00"
+            "time": "2021-02-09T12:35:00+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -7948,9 +7876,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "cratespace/sentinel": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
