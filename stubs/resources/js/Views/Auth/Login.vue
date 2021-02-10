@@ -42,7 +42,7 @@
 
                 <div class="mt-6">
                     <p>
-                        Don't have an account yet? <app-link :href="route('register')">join {{ config('app.name') }}</app-link>
+                        Don't have an account yet? <app-link :href="route('register')">create account</app-link>.
                     </p>
                 </div>
             </form>
