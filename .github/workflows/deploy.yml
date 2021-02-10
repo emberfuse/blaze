@@ -1,15 +1,24 @@
-name: Tests
+name: Deploy
 
 on:
   push:
   pull_request:
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
-  tests:
+  test_deploy:
 
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: preflight
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     strategy:
       fail-fast: true
       matrix:
@@ -30,13 +39,15 @@ jobs:
           tools: composer:v2
           coverage: none
 
-      - name: Install dependencies
+      - name: Install Preflight
         run: |
-           composer require "illuminate/contracts=${{ matrix.laravel }}" --no-update
-           composer update --prefer-dist --no-interaction --no-progress
-
-      - name: Execute tests
-        run: vendor/bin/phpunit --verbose
+          composer create-project laravel/laravel preflight
+          cd preflight
+          composer require cratespace/preflight
+          php artisan preflight:install
+          php artisan key:generate
+          npm i && npm run dev && npm run test
+          php artisan migrate:fresh --seed
 
       - name: Upload artifacts
         uses: actions/upload-artifact@master
