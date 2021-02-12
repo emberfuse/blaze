@@ -118,7 +118,7 @@ class InstallCommand extends Command
         Stubs::copyServiceProviders();
 
         // Inertia Views...
-        Stubs::copyInertiaViews();
+        Stubs::copyInertiaStubs();
 
         // Install Inertia Middleware...
         $this->runProcess(['php', 'artisan', 'inertia:middleware', 'HandleInertiaRequests', '--force'], base_path());
