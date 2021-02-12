@@ -132,10 +132,6 @@ class InstallCommand extends Command
         // Restructure Project Directory...
         Stubs::removeRedundancies();
 
-        // Install Sanctum...
-        $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
-        Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
-
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());
         // $this->runProcess(['bin/setup.sh'], base_path());

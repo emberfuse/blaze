@@ -13,7 +13,7 @@ class ComposerPackages extends Packages
      */
     protected $packages = [
         'inertiajs/inertia-laravel:^0.3.5',
-        'laravel/sanctum:^2.8',
+        'cratespace/sentinel:^1.0',
         'tightenco/ziggy:^1.0',
     ];
 
