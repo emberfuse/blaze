@@ -29,14 +29,24 @@ jobs:
           tools: composer:v2
           coverage: none
 
-      - name: Install Preflight
+      - name: Navigate to home directory
+        run: cd
+
+      - name: Create Laravel project
         run: |
           composer create-project laravel/laravel preflight
           cd preflight
+
+      - name: Install Preflight
+        run: |
           composer require cratespace/preflight
           php artisan preflight:install
           php artisan key:generate
-          npm i && npm run dev && npm run test
+          npm i && npm run dev
+
+      - name: Run JS and PHP tests
+        run: |
+          npm run test
           php artisan test
 
       - name: Upload artifacts
