@@ -58,11 +58,9 @@ class Permission
      */
     public static function role(string $key, string $name, array $permissions): Role
     {
-        static::$permissions = collect(array_merge(static::$permissions, $permissions))
-            ->unique()
-            ->sort()
-            ->values()
-            ->all();
+        static::$permissions = collect(
+            array_merge(static::$permissions, $permissions)
+        )->unique()->sort()->values()->all();
 
         return tap(new Role($key, $name, $permissions), function ($role) use ($key) {
             static::$roles[$key] = $role;
@@ -74,7 +72,7 @@ class Permission
      *
      * @return bool
      */
-    public static function hasPermissions()
+    public static function hasPermissions(): bool
     {
         return count(static::$permissions) > 0;
     }
@@ -84,9 +82,9 @@ class Permission
      *
      * @param array $permissions
      *
-     * @return static
+     * @return \Cratespace\Preflight\API\Permission
      */
-    public static function permissions(array $permissions)
+    public static function permissions(array $permissions): Permission
     {
         static::$permissions = $permissions;
 
@@ -98,9 +96,9 @@ class Permission
      *
      * @param array $permissions
      *
-     * @return static
+     * @return \Cratespace\Preflight\API\Permission
      */
-    public static function defaultApiTokenPermissions(array $permissions)
+    public static function defaultApiTokenPermissions(array $permissions): Permission
     {
         static::$defaultPermissions = $permissions;
 
@@ -114,7 +112,7 @@ class Permission
      *
      * @return array
      */
-    public static function validPermissions(array $permissions)
+    public static function validPermissions(array $permissions): array
     {
         return array_values(array_intersect($permissions, static::$permissions));
     }

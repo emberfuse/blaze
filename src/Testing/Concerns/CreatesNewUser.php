@@ -4,6 +4,7 @@ namespace Cratespace\Preflight\Testing\Concerns;
 
 use Closure;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 trait CreatesNewUser
