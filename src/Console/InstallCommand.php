@@ -118,7 +118,7 @@ class InstallCommand extends Command
         Stubs::copyServiceProviders();
 
         // Inertia Views...
-        Stubs::copyInertiaViews();
+        Stubs::copyInertiaStubs();
 
         // Install Inertia Middleware...
         $this->runProcess(['php', 'artisan', 'inertia:middleware', 'HandleInertiaRequests', '--force'], base_path());
@@ -131,10 +131,6 @@ class InstallCommand extends Command
 
         // Restructure Project Directory...
         Stubs::removeRedundancies();
-
-        // Install Sanctum...
-        $this->runProcess(['php', 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path());
-        Util::replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
 
         // Run Project Setup Procedures...
         $this->runProcess(['chmod', '+x', 'bin/setup.sh'], base_path());

@@ -1,15 +1,14 @@
-name: Tests
+name: Deploy
 
 on:
   push:
   pull_request:
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
-  tests:
+  test_deploy:
 
     runs-on: ubuntu-latest
+
     strategy:
       fail-fast: true
       matrix:
@@ -30,17 +29,19 @@ jobs:
           tools: composer:v2
           coverage: none
 
-      - name: Install dependencies
+      - name: Install Preflight
         run: |
-           composer require "illuminate/contracts=${{ matrix.laravel }}" --no-update
-           composer update --prefer-dist --no-interaction --no-progress
-
-      - name: Execute tests
-        run: vendor/bin/phpunit --verbose
+          composer create-project laravel/laravel preflight
+          cd preflight
+          composer require cratespace/preflight
+          php artisan preflight:install
+          php artisan key:generate
+          npm i && npm run dev && npm run test
+          php artisan test
 
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
         with:
           name: Logs
-          path: ./storage/logs
+          path: ./preflight/storage/logs

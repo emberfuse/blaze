@@ -22,7 +22,7 @@
         "php": "^7.4|^8.0",
         "ext-json": "*",
         "illuminate/support": "^8.0",
-        "cratespace/sentinel": "^1.0.1"
+        "cratespace/sentinel": "^2.0.1"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.2",
