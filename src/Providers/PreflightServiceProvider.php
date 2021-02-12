@@ -10,7 +10,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Cratespace\Sentinel\Sentinel\View;
 use Illuminate\Support\ServiceProvider;
-use Cratespace\Preflight\Installer\Util;
 use App\Http\Middleware\HandleInertiaRequests;
 use Cratespace\Preflight\Console\InstallCommand;
 use Cratespace\Preflight\Console\ActionMakeCommand;
@@ -195,6 +194,10 @@ class PreflightServiceProvider extends ServiceProvider
             return Inertia::render('Auth/VerifyEmail', [
                 'status' => $request->session()->get('status'),
             ]);
+        });
+
+        View::confirmPasswordView(function () {
+            return Inertia::render('Auth/ConfirmPassword');
         });
 
         View::userProfile(function (Request $request): Response {

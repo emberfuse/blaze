@@ -20,7 +20,7 @@ class EmailVerificationTest extends TestCase
             'email_verified_at' => null,
         ]);
 
-        $response = $this->signIn($user)->get('/verify-email');
+        $response = $this->signIn($user)->get('/email/verify');
 
         $response->assertStatus(200);
     }
