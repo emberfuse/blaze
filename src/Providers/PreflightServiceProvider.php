@@ -196,7 +196,7 @@ class PreflightServiceProvider extends ServiceProvider
             ]);
         });
 
-        View::confirmPasswordView(function () {
+        View::confirmPassword(function () {
             return Inertia::render('Auth/ConfirmPassword');
         });
 
