@@ -36,10 +36,6 @@ class Stubs
             unlink($styleCi);
         }
 
-        if (file_exists(base_path('phpunit.xml'))) {
-            unlink(base_path('phpunit.xml'));
-        }
-
         if (file_exists(resource_path('views/welcome.blade.php'))) {
             chmod(resource_path('views/welcome.blade.php'), 0644);
 
@@ -104,7 +100,7 @@ class Stubs
         copy(__DIR__ . '/../../stubs/resources/markdown/terms.md', resource_path('markdown/terms.md'));
         copy(__DIR__ . '/../../stubs/resources/markdown/policy.md', resource_path('markdown/policy.md'));
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
-        copy(__DIR__ . '/../../stubs/phpunitconfig.xml', base_path('phpunit.xml'));
+        rename(__DIR__ . '/../../stubs/phpunitconfig.xml', base_path('phpunit.xml'));
     }
 
     /**
