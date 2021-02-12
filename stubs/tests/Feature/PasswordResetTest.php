@@ -60,6 +60,7 @@ class PasswordResetTest extends TestCase
                 'token' => $notification->token,
                 'email' => $user->email,
                 'password' => 'password',
+                'password_confirmation' => 'password',
             ]);
 
             $response->assertSessionHasNoErrors();
