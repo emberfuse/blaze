@@ -14,7 +14,7 @@ class DeleteAccountTest extends TestCase
     {
         $this->signIn($user = create(User::class));
 
-        $response = $this->delete('/user', [
+        $response = $this->delete('/user/profile', [
             'password' => 'password',
         ]);
 
@@ -25,7 +25,7 @@ class DeleteAccountTest extends TestCase
     {
         $this->signIn($user = create(User::class));
 
-        $response = $this->delete('/user', [
+        $response = $this->delete('/user/profile', [
             'password' => 'wrong-password',
         ]);
 
