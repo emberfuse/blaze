@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+use Cratespace\Preflight\Presenters\Presenter;
+
+class {{ class }} extends Presenter
+{
+    /**
+     * Get mutated model attribute.
+     *
+     * @return string
+     */
+    public function foobar(): string
+    {
+        return $this->model->foobar;
+    }
+}

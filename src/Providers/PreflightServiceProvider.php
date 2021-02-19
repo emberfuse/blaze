@@ -12,8 +12,11 @@ use Cratespace\Sentinel\Sentinel\View;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\HandleInertiaRequests;
 use Cratespace\Preflight\Console\InstallCommand;
+use Cratespace\Preflight\Console\QueryMakeCommand;
 use Cratespace\Preflight\Console\ActionMakeCommand;
+use Cratespace\Preflight\Console\FilterMakeCommand;
 use Cratespace\Preflight\Console\ProjectSetupCommand;
+use Cratespace\Preflight\Console\PresenterMakeCommand;
 use Cratespace\Preflight\Console\PublishConfigJsCommand;
 use Cratespace\Preflight\Console\SeedDefaultUserCommand;
 use Cratespace\Preflight\Http\Middleware\ShareInertiaData;
@@ -131,6 +134,9 @@ class PreflightServiceProvider extends ServiceProvider
             PublishConfigJsCommand::class,
             SeedDefaultUserCommand::class,
             ActionMakeCommand::class,
+            FilterMakeCommand::class,
+            PresenterMakeCommand::class,
+            QueryMakeCommand::class,
         ]);
     }
 

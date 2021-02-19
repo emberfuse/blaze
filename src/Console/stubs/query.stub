@@ -1,0 +1,9 @@
+<?php
+
+namespace {{ namespace }};
+
+use Cratespace\Preflight\Queries\Query;
+
+class {{ class }} extends Query
+{
+}

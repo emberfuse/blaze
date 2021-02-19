@@ -5,7 +5,7 @@ namespace {{ namespace }};
 class {{ class }}
 {
     /**
-     * Preform certain action using the gievn data.
+     * Preform certain action using the given data.
      *
      * @param array[] $data
      *
