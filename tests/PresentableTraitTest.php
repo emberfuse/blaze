@@ -8,7 +8,7 @@ class PresentableTraitTest extends TestCase
 {
     public function testModelCanGetMutatedModelAttribute()
     {
-        $this->expectErrorMessage('Class "App\Presenters\MockModelPresenter" not found');
+        $this->expectErrorMessage("Class \"App\Presenters\MockModelPresenter\" not found");
 
         $model = new MockModel();
         $model->foo = 'bar';
