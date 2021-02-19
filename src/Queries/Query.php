@@ -2,7 +2,7 @@
 
 namespace Cratespace\Preflight\Queries;
 
-use InteractsWithModel;
+use Cratespace\Preflight\Support\InteractsWithModel;
 
 abstract class Query
 {
