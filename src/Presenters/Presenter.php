@@ -2,9 +2,9 @@
 
 namespace Cratespace\Preflight\Presenters;
 
-use InteractsWithModel;
 use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Model;
+use Cratespace\Preflight\Support\InteractsWithModel;
 
 abstract class Presenter
 {

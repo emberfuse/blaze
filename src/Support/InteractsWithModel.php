@@ -1,5 +1,7 @@
 <?php
 
+namespace Cratespace\Preflight\Support;
+
 use Illuminate\Database\Eloquent\Model;
 
 trait InteractsWithModel
