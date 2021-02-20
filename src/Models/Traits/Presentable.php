@@ -25,6 +25,8 @@ trait Presentable
      */
     protected function constructPresenter(): string
     {
-        return 'App\\Presenters\\' . class_basename($this) . 'Presenter';
+        $class = class_basename($this);
+
+        return "App\\Presenters\\{$class}Presenter";
     }
 }
