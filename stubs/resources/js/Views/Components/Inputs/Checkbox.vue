@@ -10,10 +10,7 @@
 
 <script>
     export default {
-        model: {
-            prop: 'checked',
-            event: 'change',
-        },
+        emits: ['update:checked'],
 
         props: {
             id: String,
@@ -36,7 +33,7 @@
                 },
 
                 set(value) {
-                    this.$emit('change', value);
+                    this.$emit('update:checked', value);
                 },
             },
         },

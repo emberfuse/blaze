@@ -17,7 +17,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
-            }
+            },
         },
     },
 
@@ -29,6 +29,6 @@ module.exports = {
 
     plugins: [
         require('@tailwindcss/forms'),
-        require('@tailwindcss/typography')
+        require('@tailwindcss/typography'),
     ],
-}
+};

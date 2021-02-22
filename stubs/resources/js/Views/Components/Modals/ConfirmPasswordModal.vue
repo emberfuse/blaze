@@ -38,12 +38,13 @@
 
 <script>
     import Modal from '@/Views/Components/Modals/Modal';
-    import Card from '@/Views/Components/Cards/Card';
     import AppInput from '@/Views/Components/Inputs/Input';
     import AppButton from '@/Views/Components/Buttons/Button';
     import FormCard from '@/Views/Components/Cards/FormCard';
 
     export default {
+        emits: ['confirmed'],
+
         props: {
             title: {
                 default: 'Confirm Password',
