@@ -8,10 +8,10 @@
 
         <transition
             enter-active-class="transition ease-out duration-200"
-            enter-class="transform opacity-0 scale-95"
+            enter-from-class="transform opacity-0 scale-95"
             enter-to-class="transform opacity-100 scale-100"
             leave-active-class="transition ease-in duration-75"
-            leave-class="transform opacity-100 scale-100"
+            leave-from-class="transform opacity-100 scale-100"
             leave-to-class="transform opacity-0 scale-95">
             <div v-show="open" class="absolute z-50 mt-2 rounded-xl shadow-xl overflow-hidden w-44" :class="alignmentClasses" style="display: none;" @click="open = false">
                 <div class="p-2 bg-white">
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { onMounted, onUnmounted, ref } from "vue";
+
 export default {
     props: {
         align: {
@@ -36,18 +38,19 @@ export default {
         };
     },
 
-    created() {
-        const closeOnEscape = e => {
-            if (this.open && e.keyCode === 27) {
-                this.open = false;
+    setup() {
+        let open = ref(false);
+
+        const closeOnEscape = (e) => {
+            if (open.value && e.keyCode === 27) {
+                open.value = false;
             }
-        };
+        }
 
-        this.$once("hook:destroyed", () => {
-            document.removeEventListener("keydown", closeOnEscape);
-        });
+        onMounted(() => document.addEventListener('keydown', closeOnEscape));
+        onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
-        document.addEventListener("keydown", closeOnEscape);
+        return { open };
     },
 
     computed: {

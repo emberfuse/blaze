@@ -25,6 +25,8 @@
     import Card from '@/Views/Components/Cards/Card';
 
     export default {
+        emits: ['close'],
+        
         props: {
             show: {
                 default: false

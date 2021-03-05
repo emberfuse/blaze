@@ -21,7 +21,7 @@
 
                             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div v-for="permission in availablePermissions" :key="permission">
-                                    <checkbox :label="permission" :value="permission" :id="permission" v-model="createApiTokenForm.permissions"/>
+                                    <checkbox :label="permission" :value="permission" :id="permission" v-model:checked="createApiTokenForm.permissions"/>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
             <template #content>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div v-for="permission in availablePermissions" :key="permission">
-                        <checkbox :label="permission" :value="permission" :id="permission + 'Update'" v-model="updateApiTokenForm.permissions"/>
+                        <checkbox :label="permission" :value="permission" :id="permission + 'Update'" v-model:checked="updateApiTokenForm.permissions"/>
                     </div>
                 </div>
             </template>

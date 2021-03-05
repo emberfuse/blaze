@@ -9,6 +9,8 @@
 
 <script>
     export default {
+        emits: ['clicked'],
+
         props: ['href', 'active'],
 
         computed: {

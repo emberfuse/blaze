@@ -48,13 +48,11 @@
                 </div>
             </div>
         </footer>
-
-        <!-- Modal Portal -->
-        <portal-target name="modal" multiple></portal-target>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
 import Logo from '@/Views/Components/Logos/Logo';
 import Navbar from '@/Views/Components/Navbars/Navbar';
 import NavbarLink from '@/Views/Components/Navbars/NavbarLink';
@@ -78,7 +76,7 @@ export default {
 
     methods: {
         logout() {
-            this.$http.post(this.route('logout'))
+            this.http.post(this.route('logout'))
                 .then(() => window.location = this.route('welcome'));
         }
     }

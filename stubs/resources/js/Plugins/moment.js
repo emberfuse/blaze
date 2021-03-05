@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import moment from 'moment';
 
 /**
@@ -8,8 +7,6 @@ import moment from 'moment';
  *
  * @return {String}
  */
-function diffForHumans(timestamp) {
+export default function diffForHumans(timestamp) {
     return moment(timestamp).fromNow();
 }
-
-Vue.mixin({ methods: { diffForHumans } });

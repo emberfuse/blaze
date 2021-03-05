@@ -1,29 +1,43 @@
-import '@/Plugins';
-
+import axios from 'axios';
 import { createApp, h } from 'vue';
 import {
     App as InertiaApp,
     plugin as InertiaPlugin,
 } from '@inertiajs/inertia-vue3';
-import config from '@/Config';
 
-Vue.config.productionTip = false;
+import Config from '@cratespace/config-js';
+import diffForHumans from './Plugins/moment';
+import { InertiaProgress } from '@inertiajs/progress';
 
-Vue.mixin({ methods: { route, config } });
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 const app = document.getElementById('app');
 
 createApp({
     metaInfo: {
-        titleTemplate: (title) => (title ? `${title} - Castle` : 'Castle'),
+        titleTemplate: (title) =>
+            title ? `${title} - Preflight` : 'Preflight',
     },
 
     render: () =>
         h(InertiaApp, {
             initialPage: JSON.parse(app.dataset.page),
-            resolveComponent: (name) => require(`./Pages/${name}`).default,
+            resolveComponent: (name) => require(`./Views/${name}`).default,
         }),
 })
-    .mixin({ methods: { route, config } })
+    .mixin({
+        data() {
+            return { http: axios };
+        },
+        methods: { route, diffForHumans },
+    })
     .use(InertiaPlugin)
+    .use(Config, require('./Config/items.json'))
     .mount(app);
+
+InertiaProgress.init({
+    delay: 250,
+    color: '#3B82F6',
+    includeCSS: true,
+    showSpinner: false,
+});

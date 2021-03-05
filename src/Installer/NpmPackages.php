@@ -18,20 +18,16 @@ class NpmPackages extends Packages
         '@inertiajs/progress' => '^0.2.4',
         '@tailwindcss/forms' => '^0.2.1',
         '@tailwindcss/typography' => '^0.3.0',
+        '@cratespace/config-js' => '^1.0.3',
         'postcss-import' => '^12.0.1',
         'tailwindcss' => '^2.0.3',
-        '@vue/test-utils' => '^1.1.3',
         'autoprefixer' => '^10.0.2',
         'moment' => '^2.29.1',
-        'babel-core' => '7.0.0-bridge.0',
-        'babel-jest' => '^26.6.3',
         'browser-sync' => '^2.23.7',
         'browser-sync-webpack-plugin' => '^2.0.1',
-        'jest' => '^26.6.3',
         'vue' => '^3.0.5',
         '@vue/compiler-sfc' => '^3.0.5',
         'vue-loader' => '^16.1.2',
-        'vue-jest' => '^3.0.7',
     ];
 
     /**

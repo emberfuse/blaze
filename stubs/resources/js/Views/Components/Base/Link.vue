@@ -4,6 +4,8 @@
 
 <script>
     export default {
+        emits: ['clicked'],
+
         props: ['href']
     }
 </script>

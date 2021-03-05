@@ -26,7 +26,7 @@
 
                 <div class="mt-6 flex items-center justify-between">
                     <div>
-                        <checkbox id="remember" v-model="form.remember" label="Stay signed in"></checkbox>
+                        <checkbox id="remember" v-model:checked="form.remember" label="Stay signed in"></checkbox>
                     </div>
 
                     <div class="text-sm leading-5">

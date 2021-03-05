@@ -6,7 +6,6 @@ on:
 
 jobs:
   test_deploy:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,7 +35,7 @@ jobs:
           composer require cratespace/preflight
           php artisan preflight:install
           php artisan key:generate
-          npm i && npm run dev && npm run test
+          npm i && npm run dev
           php artisan test
 
       - name: Upload artifacts

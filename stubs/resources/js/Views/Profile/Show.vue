@@ -1,26 +1,24 @@
 <template>
     <app-layout>
-        <template>
-            <div>
-                <update-profile-information-form :user.sync="$page.props.user"></update-profile-information-form>
+        <div>
+            <update-profile-information-form :user="$page.props.user"></update-profile-information-form>
 
-                <section-border></section-border>
+            <section-border></section-border>
 
-                <update-password-form></update-password-form>
+            <update-password-form></update-password-form>
 
-                <section-border></section-border>
+            <section-border></section-border>
 
-                <two-factor-authentication-form></two-factor-authentication-form>
+            <two-factor-authentication-form></two-factor-authentication-form>
 
-                <section-border></section-border>
+            <section-border></section-border>
 
-                <logout-other-browser-sessions-form :sessions.sync="$page.props.user.sessions"></logout-other-browser-sessions-form>
+            <logout-other-browser-sessions-form :sessions="$page.props.user.sessions"></logout-other-browser-sessions-form>
 
-                <section-border></section-border>
+            <section-border></section-border>
 
-                <delete-user-form></delete-user-form>
-            </div>
-        </template>
+            <delete-user-form></delete-user-form>
+        </div>
     </app-layout>
 </template>
 
