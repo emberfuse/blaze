@@ -76,7 +76,7 @@ export default {
 
     methods: {
         logout() {
-            this.http.post(this.route('logout'))
+            axios.post(this.route('logout'))
                 .then(() => window.location = this.route('welcome'));
         }
     }
