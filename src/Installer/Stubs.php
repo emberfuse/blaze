@@ -101,7 +101,6 @@ class Stubs
         copy(__DIR__ . '/../../stubs/resources/markdown/policy.md', resource_path('markdown/policy.md'));
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
         rename(__DIR__ . '/../../stubs/phpunitconfig.xml', base_path('phpunit.xml'));
-        touch(resource_path('js/Config/items.json'));
     }
 
     /**
