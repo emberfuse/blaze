@@ -1,8 +1,6 @@
 <template>
     <app-layout>
-        <template>
-            <api-token-manager :tokens="tokens" :available-permissions="availablePermissions" :default-permissions="defaultPermissions" />
-        </template>
+        <api-token-manager :tokens="tokens" :available-permissions="availablePermissions" :default-permissions="defaultPermissions" />
     </app-layout>
 </template>
 

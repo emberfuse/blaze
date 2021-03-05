@@ -65,7 +65,7 @@
                     </p>
 
                     <div class="mt-4">
-                        <app-input type="password" v-model="form.password" :error="form.errors.password" ref="password" label="Password" placeholder="cattleFarmer1576@!" @keyup.enter.native="deleteUser"></app-input>
+                        <app-input type="password" v-model="form.password" :error="form.errors.password" ref="password" label="Password" placeholder="cattleFarmer1576@!" @keyup.enter="logoutOtherBrowserSessions"></app-input>
                     </div>
                 </template>
 

@@ -1,25 +1,43 @@
-import '@/Plugins';
+import axios from 'axios';
+import { createApp, h } from 'vue';
+import {
+    App as InertiaApp,
+    plugin as InertiaPlugin,
+} from '@inertiajs/inertia-vue3';
 
-import Vue from 'vue';
-import { App } from '@inertiajs/inertia-vue';
-import config from '@/Config';
+import Config from '@cratespace/config-js';
+import diffForHumans from './Plugins/moment';
+import { InertiaProgress } from '@inertiajs/progress';
 
-Vue.config.productionTip = false;
-
-Vue.mixin({ methods: { route, config } });
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 const app = document.getElementById('app');
 
-new Vue({
+createApp({
     metaInfo: {
-        titleTemplate: (title) => (title ? `${title} - Castle` : 'Castle'),
+        titleTemplate: (title) =>
+            title ? `${title} - Preflight` : 'Preflight',
     },
 
-    render: (h) =>
-        h(App, {
-            props: {
-                initialPage: JSON.parse(app.dataset.page),
-                resolveComponent: (name) => require(`./Views/${name}`).default,
-            },
+    render: () =>
+        h(InertiaApp, {
+            initialPage: JSON.parse(app.dataset.page),
+            resolveComponent: (name) => require(`./Views/${name}`).default,
         }),
-}).$mount(app);
+})
+    .mixin({
+        data() {
+            return { http: axios };
+        },
+        methods: { route, diffForHumans },
+    })
+    .use(InertiaPlugin)
+    .use(Config, require('./Config/items.json'))
+    .mount(app);
+
+InertiaProgress.init({
+    delay: 250,
+    color: '#3B82F6',
+    includeCSS: true,
+    showSpinner: false,
+});

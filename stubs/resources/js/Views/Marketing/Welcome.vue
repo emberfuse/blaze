@@ -2,7 +2,7 @@
     <guest-layout>
         <div>
             <p>
-                <span class="font-semibold">Preflight</span> checks complete!
+                <span class="font-semibold">{{ config('app.name') }}</span> checks complete!
             </p>
 
             <div class="mt-6">

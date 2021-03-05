@@ -17,7 +17,7 @@
         <template #form>
             <form @submit.prevent="updatePassword" class="w-full">
                 <div class="mt-6 block">
-                    <app-input type="email" v-model="form.email" autofocus :error="form.errors.email" label="Email address" placeholder="john.doe@example.com" required autofocus></app-input>
+                    <app-input type="email" v-model="form.email" autofocus :error="form.errors.email" label="Email address" placeholder="john.doe@example.com" required></app-input>
                 </div>
 
                 <div class="mt-6 block">

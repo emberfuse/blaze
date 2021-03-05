@@ -1,5 +1,5 @@
 <template>
-    <portal to="modal">
+    <teleport to="body">
         <transition leave-active-class="duration-200">
             <div v-show="show" class="fixed top-0 inset-x-0 px-4 pt-8 sm:pt-16 sm:px-0 sm:flex sm:items-top sm:justify-center">
                 <transition enter-active-class="ease-out duration-300" enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="ease-in duration-200" leave-class="opacity-100" leave-to-class="opacity-0">
@@ -15,13 +15,16 @@
                 </transition>
             </div>
         </transition>
-    </portal>
+    </teleport>
 </template>
 
 <script>
+    import { onMounted, onUnmounted } from "vue";
     import Card from '@/Views/Components/Cards/Card';
 
     export default {
+        emits: ['close'],
+
         props: {
             show: {
                 default: false
@@ -43,35 +46,31 @@
         watch: {
             show: {
                 immediate: true,
+
                 handler: (show) => {
-                    if (show) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = null;
-                    }
+                    document.body.style.overflow = show ? 'hidden' : null;
                 }
             }
         },
 
-        created() {
-            const closeOnEscape = (event) => {
-                if (event.key === 'Escape' && this.show) {
-                    this.close();
+        setup(props, {emit}) {
+            const close = () => {
+                if (props.closeable) {
+                    emit('close');
                 }
             }
 
-            document.addEventListener('keydown', closeOnEscape);
-
-            this.$once('hook:destroyed', () => {
-                document.removeEventListener('keydown', closeOnEscape);
-            });
-        },
-
-        methods: {
-            close() {
-                if (this.closeable) {
-                    this.$emit('close');
+            const closeOnEscape = (e) => {
+                if (e.key === 'Escape' && props.show) {
+                    close();
                 }
+            }
+
+            onMounted(() => document.addEventListener('keydown', closeOnEscape));
+            onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
+
+            return {
+                close,
             }
         },
     }

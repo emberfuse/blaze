@@ -27,11 +27,11 @@
 
                             <div class="ml-4">
                                 <div class="flex items-center">
-                                    <app-button type="button" mode="secondary" @click.native.prevent="selectNewPhoto">
+                                    <app-button type="button" mode="secondary" @click.prevent="selectNewPhoto">
                                         Change
                                     </app-button>
 
-                                    <app-button class="ml-4" type="button" mode="secondary" @click.native.prevent="deletePhoto" v-if="user.profile_photo_path">
+                                    <app-button class="ml-4" type="button" mode="secondary" @click.prevent="deletePhoto" v-if="user.profile_photo_path">
                                         Remove
                                     </app-button>
                                 </div>
@@ -84,10 +84,6 @@ export default {
         AppInputError,
         AppButton,
         ActionMessage
-    },
-
-    created() {
-        console.log(this.sessions);
     },
 
     data() {

@@ -19,6 +19,8 @@
 
 <script>
     export default {
+        emits: ['clicked'],
+
         props: ['mode', 'loading', 'link', 'href'],
 
         computed: {
