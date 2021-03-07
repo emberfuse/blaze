@@ -8,17 +8,24 @@
 </template>
 
 <script>
-    export default {
-        emits: ['clicked'],
+export default {
+    emits: ['clicked'],
 
-        props: ['href', 'active'],
+    props: {
+        href: Srting,
 
-        computed: {
-            classes() {
-                return this.active
-                    ? 'opacity-100 bg-opacity-100'
-                    : 'opacity-75 bg-opacity-0'
-            }
+        active: {
+            type: Boolean,
+            default: false
+        }
+    },
+
+    computed: {
+        classes() {
+            return this.active
+                ? 'opacity-100 bg-opacity-100'
+                : 'opacity-75 bg-opacity-0'
         }
     }
+}
 </script>

@@ -37,77 +37,77 @@
 </template>
 
 <script>
-    import Modal from '@/Views/Components/Modals/Modal';
-    import AppInput from '@/Views/Components/Inputs/Input';
-    import AppButton from '@/Views/Components/Buttons/Button';
-    import FormCard from '@/Views/Components/Cards/FormCard';
+import Modal from '@/Views/Components/Modals/Modal';
+import AppInput from '@/Views/Components/Inputs/Input';
+import AppButton from '@/Views/Components/Buttons/Button';
+import FormCard from '@/Views/Components/Cards/FormCard';
 
-    export default {
-        emits: ['confirmed'],
+export default {
+    emits: ['confirmed'],
 
-        props: {
-            title: {
-                default: 'Confirm Password',
-            },
-
-            content: {
-                default: 'For your security purposes, please confirm your password to continue.',
-            },
+    props: {
+        title: {
+            default: 'Confirm Password',
         },
 
-        components: {
-            Modal,
-            AppButton,
-            AppInput,
-            FormCard,
+        content: {
+            default: 'For your security purposes, please confirm your password to continue.',
         },
+    },
 
-        data() {
-            return {
-                confirmingPassword: false,
+    components: {
+        Modal,
+        AppButton,
+        AppInput,
+        FormCard,
+    },
 
-                form: {
-                    password: '',
-                    error: '',
-                },
-            }
-        },
+    data() {
+        return {
+            confirmingPassword: false,
 
-        methods: {
-            startConfirmingPassword() {
-                this.$http.get(this.route('password.confirmation')).then(response => {
-                    if (response.data.confirmed) {
-                        this.$emit('confirmed');
-                    } else {
-                        this.confirmingPassword = true;
-
-                        setTimeout(() => this.$refs.password.focus(), 250)
-                    }
-                })
-            },
-
-            confirmPassword() {
-                this.form.processing = true;
-
-                this.$http.post(this.route('password.confirm'), {
-                    password: this.form.password,
-                }).then(() => {
-                    this.form.processing = false;
-                    this.closeModal();
-                    this.$nextTick(() => this.$emit('confirmed'));
-                }).catch(error => {
-                    this.form.processing = false;
-                    this.form.error = error.response.data.errors.password[0];
-                    this.$refs.password.focus();
-                });
-            },
-
-            closeModal() {
-                this.confirmingPassword = false;
-                this.form.password = '';
-                this.form.error = '';
+            form: {
+                password: '',
+                error: '',
             },
         }
+    },
+
+    methods: {
+        startConfirmingPassword() {
+            this.$http.get(this.route('password.confirmation')).then(response => {
+                if (response.data.confirmed) {
+                    this.$emit('confirmed');
+                } else {
+                    this.confirmingPassword = true;
+
+                    setTimeout(() => this.$refs.password.focus(), 250)
+                }
+            })
+        },
+
+        confirmPassword() {
+            this.form.processing = true;
+
+            this.$http.post(this.route('password.confirm'), {
+                password: this.form.password,
+            }).then(() => {
+                this.form.processing = false;
+                this.closeModal();
+                this.$nextTick(() => this.$emit('confirmed'));
+            }).catch(error => {
+                this.form.processing = false;
+                this.form.error = error.response.data.errors.password[0];
+                this.$refs.password.focus();
+            });
+        },
+
+        closeModal() {
+            this.confirmingPassword = false;
+            this.form.password = '';
+            this.form.error = '';
+        },
     }
+}
 </script>
 

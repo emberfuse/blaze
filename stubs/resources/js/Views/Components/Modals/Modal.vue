@@ -19,59 +19,55 @@
 </template>
 
 <script>
-    import { onMounted, onUnmounted } from "vue";
-    import Card from '@/Views/Components/Cards/Card';
+import { onMounted, onUnmounted } from "vue";
+import Card from '@/Views/Components/Cards/Card';
 
-    export default {
-        emits: ['close'],
+export default {
+    emits: ['close'],
 
-        props: {
-            show: {
-                default: false
-            },
-
-            closeable: {
-                default: true
-            },
-
-            hasActions: {
-                default: false
-            }
+    props: {
+        show: {
+            default: false
         },
 
-        components: {
-            Card,
+        closeable: {
+            default: true
         },
 
-        watch: {
-            show: {
-                immediate: true,
+        hasActions: {
+            default: false
+        }
+    },
 
-                handler: (show) => {
-                    document.body.style.overflow = show ? 'hidden' : null;
-                }
+    components: {
+        Card,
+    },
+
+    watch: {
+        show: {
+            immediate: true,
+
+            handler: (show) => document.body.style.overflow = show ? 'hidden' : null
+        }
+    },
+
+    setup(props, { emit }) {
+        const close = () => {
+            if (props.closeable) {
+                this.$emit('close');
             }
-        },
+        }
 
-        setup(props, {emit}) {
-            const close = () => {
-                if (props.closeable) {
-                    emit('close');
-                }
+        const closeOnEscape = (e) => {
+            if (e.key === 'Escape' && props.show) {
+                close();
             }
+        }
 
-            const closeOnEscape = (e) => {
-                if (e.key === 'Escape' && props.show) {
-                    close();
-                }
-            }
+        onMounted(() => document.addEventListener('keydown', closeOnEscape));
+        onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
-            onMounted(() => document.addEventListener('keydown', closeOnEscape));
-            onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
-
-            return {
-                close,
-            }
-        },
-    }
+        return { close }
+    },
+}
 </script>

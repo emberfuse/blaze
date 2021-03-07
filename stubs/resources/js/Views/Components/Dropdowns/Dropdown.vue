@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from 'vue';
 
 export default {
     props: {
         align: {
-            default: "right"
+            default: 'right'
         }
     },
 
@@ -55,12 +55,12 @@ export default {
 
     computed: {
         alignmentClasses() {
-            if (this.align == "left") {
-                return "origin-top-left left-0";
-            } else if (this.align == "right") {
-                return "origin-top-right right-0";
+            if (this.align == 'left') {
+                return 'origin-top-left left-0';
+            } else if (this.align == 'right') {
+                return 'origin-top-right right-0';
             } else {
-                return "origin-top";
+                return 'origin-top';
             }
         }
     }

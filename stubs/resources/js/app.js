@@ -30,6 +30,8 @@ createApp({
     .use(Config, require('./Config/items.json'))
     .mount(app);
 
+app.config.globalProperties.$http = axios;
+
 InertiaProgress.init({
     delay: 250,
     color: '#3B82F6',

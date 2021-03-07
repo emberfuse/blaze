@@ -9,30 +9,35 @@
 </template>
 
 <script>
-    import InputLabel from './InputLabel';
-    import InputError from './InputError';
+import InputLabel from './InputLabel';
+import InputError from './InputError';
 
-    export default {
-        emits: ['update:modelValue'],
+export default {
+    emits: ['update:modelValue'],
 
-        props: [
-            'error',
-            'modelValue',
-            'type',
-            'label',
-            'placeholder'
-        ],
+    props: {
+        error: String,
+        modelValue: String,
 
-        components: {
-            InputLabel,
-            InputError,
+        type: {
+            type: String,
+            default: 'text'
         },
 
-        methods: {
-            focus() {
-                this.$refs.input.focus();
-            }
+        label: String,
+        placeholder: String,
+    },
+
+    components: {
+        InputLabel,
+        InputError,
+    },
+
+    methods: {
+        focus() {
+            this.$refs.input.focus();
         }
     }
+}
 </script>
 
