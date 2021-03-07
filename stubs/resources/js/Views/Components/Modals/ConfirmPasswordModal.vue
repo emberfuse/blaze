@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Modal from '@/Views/Components/Modals/Modal';
 import AppInput from '@/Views/Components/Inputs/Input';
 import AppButton from '@/Views/Components/Buttons/Button';
@@ -75,7 +76,7 @@ export default {
 
     methods: {
         startConfirmingPassword() {
-            this.$http.get(this.route('password.confirmation')).then(response => {
+            axios.get(this.route('password.confirmation')).then(response => {
                 if (response.data.confirmed) {
                     this.$emit('confirmed');
                 } else {
@@ -89,7 +90,7 @@ export default {
         confirmPassword() {
             this.form.processing = true;
 
-            this.$http.post(this.route('password.confirm'), {
+            axios.post(this.route('password.confirm'), {
                 password: this.form.password,
             }).then(() => {
                 this.form.processing = false;
