@@ -1,17 +1,16 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
+use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Jetstream\Features;
-use Tests\TestCase;
 
 class CreateApiTokenTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_api_tokens_can_be_created()
+    public function testApiTokensCanBeCreated()
     {
         $this->signIn($user = create(User::class));
 

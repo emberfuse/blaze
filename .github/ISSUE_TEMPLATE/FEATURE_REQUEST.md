@@ -14,7 +14,6 @@ about: "Request a new and or additional feature."
 
 <!-- Please describe the now requesting feature to the best of your abilities. -->
 
-
 #### Additional Information
 
 <!-- Please describe the now requesting feature to the best of your abilities. -->

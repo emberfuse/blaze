@@ -81,11 +81,6 @@ jobs:
           DB_USERNAME: root
         run: ./vendor/bin/phpunit --verbose
 
-      - name: ⚗️ Run JavaScript tests
-        run: |
-          npm install
-          npm run test
-
       - name: 📚 Upload artifacts
         uses: actions/upload-artifact@master
         if: failure()
@@ -148,11 +143,6 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: ':memory:'
         run: vendor/bin/phpunit --verbose
-
-      - name: ⚗️ Run JavaScript tests
-        run: |
-          npm install
-          npm run test
 
       - name: 📚 Upload artifacts
         uses: actions/upload-artifact@master
