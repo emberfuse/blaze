@@ -3,9 +3,14 @@
 </template>
 
 <script>
-    export default {
-        emits: ['clicked'],
+export default {
+    emits: ['clicked'],
 
-        props: ['href']
+    props: {
+        href: {
+            required: true,
+            type: String
+        }
     }
+}
 </script>

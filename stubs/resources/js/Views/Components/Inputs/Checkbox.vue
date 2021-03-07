@@ -9,33 +9,33 @@
 </template>
 
 <script>
-    export default {
-        emits: ['update:checked'],
+export default {
+    emits: ['update:checked'],
 
-        props: {
-            id: String,
-            label: String,
+    props: {
+        id: String,
+        label: String,
 
-            value: {
-                default: null,
-            },
-
-            checked: {
-                type: [Array, Boolean],
-                default: false,
-            },
+        value: {
+            default: null,
         },
 
-        computed: {
-            proxyChecked: {
-                get() {
-                    return this.checked;
-                },
+        checked: {
+            type: [Array, Boolean],
+            default: false,
+        },
+    },
 
-                set(value) {
-                    this.$emit('update:checked', value);
-                },
+    computed: {
+        proxyChecked: {
+            get() {
+                return this.checked;
+            },
+
+            set(value) {
+                this.$emit('update:checked', value);
             },
         },
-    }
+    },
+}
 </script>

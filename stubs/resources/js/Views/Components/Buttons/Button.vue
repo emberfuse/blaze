@@ -18,21 +18,39 @@
 </template>
 
 <script>
-    export default {
-        emits: ['clicked'],
+export default {
+    emits: ['clicked'],
 
-        props: ['mode', 'loading', 'link', 'href'],
+    props: {
+        mode: {
+            type: String,
+            required: true,
+            default: 'primary',
+        },
 
-        computed: {
-            colors() {
-                if (this.mode === 'primary') {
-                    return 'text-white hover:text-white focus:text-white active:text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-600';
-                } else if (this.mode === 'danger') {
-                    return 'text-white hover:text-white focus:text-white active:text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 active:bg-red-600';
-                } else {
-                    return 'text-gray-600 hover:text-gray-600 focus:text-gray-600 active:text-gray-600 bg-white hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100 border border-gray-100';
-                }
+        loading: {
+            type: Boolean,
+            default: false
+        },
+
+        link: {
+            type: Boolean,
+            default: false
+        },
+
+        href: String
+    },
+
+    computed: {
+        colors() {
+            if (this.mode === 'primary') {
+                return 'text-white hover:text-white focus:text-white active:text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-600';
+            } else if (this.mode === 'danger') {
+                return 'text-white hover:text-white focus:text-white active:text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 active:bg-red-600';
+            } else {
+                return 'text-gray-600 hover:text-gray-600 focus:text-gray-600 active:text-gray-600 bg-white hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100 border border-gray-100';
             }
         }
     }
+}
 </script>

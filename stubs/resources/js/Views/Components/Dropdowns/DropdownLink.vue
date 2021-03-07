@@ -8,6 +8,11 @@
 export default {
     emits: ['clicked'],
 
-    props: ['href']
+    props: {
+        href: {
+            type: String,
+            required: true
+        }
+    }
 };
 </script>

@@ -21,36 +21,36 @@
 </template>
 
 <script>
-    import Modal from '@/Views/Components/Modals/Modal';
-    import Card from '@/Views/Components/Cards/Card';
+import Modal from '@/Views/Components/Modals/Modal';
+import Card from '@/Views/Components/Cards/Card';
 
-    export default {
-        emits: ['close'],
-        
-        props: {
-            show: {
-                default: false
-            },
+export default {
+    emits: ['close'],
 
-            closeable: {
-                default: true
-            },
-
-            hasActions: {
-                default: false
-            }
+    props: {
+        show: {
+            default: false
         },
 
-        components: {
-            Card,
-            Modal,
+        closeable: {
+            default: true
         },
 
-        methods: {
-            close() {
-                this.$emit('close');
-            },
+        hasActions: {
+            default: false
         }
+    },
+
+    components: {
+        Card,
+        Modal,
+    },
+
+    methods: {
+        close() {
+            this.$emit('close');
+        },
     }
+}
 </script>
 

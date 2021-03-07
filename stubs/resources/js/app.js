@@ -25,15 +25,12 @@ createApp({
             resolveComponent: (name) => require(`./Views/${name}`).default,
         }),
 })
-    .mixin({
-        data() {
-            return { http: axios };
-        },
-        methods: { route, diffForHumans },
-    })
+    .mixin({ methods: { route, diffForHumans } })
     .use(InertiaPlugin)
     .use(Config, require('./Config/items.json'))
     .mount(app);
+
+app.config.globalProperties.$http = axios;
 
 InertiaProgress.init({
     delay: 250,

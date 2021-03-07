@@ -11,12 +11,13 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            hasActions: {
-                default: false
-            }
+export default {
+    props: {
+        hasActions: {
+            type: Boolean,
+            default: false
         }
     }
+}
 </script>
 
