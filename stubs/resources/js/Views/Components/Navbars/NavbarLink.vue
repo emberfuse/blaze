@@ -12,7 +12,7 @@ export default {
     emits: ['clicked'],
 
     props: {
-        href: Srting,
+        href: String,
 
         active: {
             type: Boolean,
