@@ -61,7 +61,6 @@ class Stubs
         (new Filesystem())->ensureDirectoryExists(app_path('Actions/Auth'));
         (new Filesystem())->ensureDirectoryExists(public_path('css'));
         (new Filesystem())->ensureDirectoryExists(resource_path('css'));
-        (new Filesystem())->ensureDirectoryExists(resource_path('js/Tests'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Config'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Plugins'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views'));
@@ -92,7 +91,6 @@ class Stubs
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Auth', resource_path('js/Views/Auth'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Profile', resource_path('js/Views/Profile'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Business', resource_path('js/Views/Business'));
-        (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Tests', resource_path('js/Tests'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Config', resource_path('js/Config'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Plugins', resource_path('js/Plugins'));
         (new Filesystem())->moveDirectory(__DIR__ . '/../../stubs/tests/Feature', base_path('tests/Feature'), true);
