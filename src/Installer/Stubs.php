@@ -16,10 +16,7 @@ class Stubs
         copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__ . '/../../stubs/webpack.mix.js', base_path('webpack.mix.js'));
         copy(__DIR__ . '/../../stubs/postcss.config.js', base_path('postcss.config.js'));
-        copy(__DIR__ . '/../../stubs/jest.config.js', base_path('jest.config.js'));
         copy(__DIR__ . '/../../stubs/jsconfig.json', base_path('jsconfig.json'));
-        copy(__DIR__ . '/../../stubs/.babelrc', base_path('.babelrc'));
-        copy(__DIR__ . '/../../stubs/.npmignore', base_path('.npmignore'));
         copy(__DIR__ . '/../../stubs/.eslintrc.js', base_path('.eslintrc.js'));
         copy(__DIR__ . '/../../stubs/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/resources/js/app.js', resource_path('js/app.js'));
