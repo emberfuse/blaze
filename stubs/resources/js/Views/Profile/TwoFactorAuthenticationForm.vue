@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import ConfirmPasswordModal from '@/Views/Components/Modals/ConfirmPasswordModal';
 import ActionSection from '@/Views/Components/Sections/ActionSection';
 import AppButton from '@/Views/Components/Buttons/Button';
@@ -126,17 +127,17 @@ export default {
         },
 
         showQrCode() {
-            return this.$http.get('/user/two-factor-qr-code')
+            return axios.get('/user/two-factor-qr-code')
                 .then(response => this.qrCode = response.data.svg);
         },
 
         showRecoveryCodes() {
-            return this.$http.get('/user/two-factor-recovery-codes')
+            return axios.get('/user/two-factor-recovery-codes')
                 .then(response => this.recoveryCodes = response.data);
         },
 
         regenerateRecoveryCodes() {
-            this.$http.post('/user/two-factor-recovery-codes')
+            axios.post('/user/two-factor-recovery-codes')
                 .then(response => this.showRecoveryCodes());
         },
 

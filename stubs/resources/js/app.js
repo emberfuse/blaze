@@ -15,22 +15,18 @@ const app = document.getElementById('app');
 
 createApp({
     metaInfo: {
-        titleTemplate: (title) =>
-            title ? `${title} - Preflight` : 'Preflight',
+        titleTemplate: (title) => title ? `${title} - Preflight` : 'Preflight',
     },
 
-    render: () =>
-        h(InertiaApp, {
-            initialPage: JSON.parse(app.dataset.page),
-            resolveComponent: (name) => require(`./Views/${name}`).default,
-        }),
+    render: () => h(InertiaApp, {
+        initialPage: JSON.parse(app.dataset.page),
+        resolveComponent: (name) => require(`./Views/${name}`).default,
+    }),
 })
     .mixin({ methods: { route, diffForHumans } })
     .use(InertiaPlugin)
     .use(Config, require('./Config/items.json'))
     .mount(app);
-
-app.config.globalProperties.$http = axios;
 
 InertiaProgress.init({
     delay: 250,
