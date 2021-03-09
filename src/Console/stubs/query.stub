@@ -3,7 +3,14 @@
 namespace {{ namespace }};
 
 use Cratespace\Preflight\Queries\Query;
+use Illuminate\Database\Eloquent\Model;
 
 class {{ class }} extends Query
 {
+    /**
+     * Instance of model being queried.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Model::class;
 }

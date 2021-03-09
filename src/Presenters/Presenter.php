@@ -19,7 +19,7 @@ abstract class Presenter
      */
     public function __construct(Model $model)
     {
-        static::$model = $model;
+        $this->model = $model;
     }
 
     /**

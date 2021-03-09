@@ -11,15 +11,15 @@ trait InteractsWithModel
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
-    protected static $model;
+    protected $model;
 
     /**
      * Instantiate the model to be queried.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    protected static function model(): Model
+    protected function model(): Model
     {
-        return app()->make(static::$model);
+        return app()->make($this->model);
     }
 }
