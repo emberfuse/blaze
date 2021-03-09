@@ -8,6 +8,6 @@ class MockPresenter extends Presenter
 {
     public function foobar(): string
     {
-        return ucfirst(static::$model->foo);
+        return ucfirst($this->model->foo);
     }
 }
