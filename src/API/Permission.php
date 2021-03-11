@@ -2,15 +2,10 @@
 
 namespace Cratespace\Preflight\API;
 
-class Permission
-{
-    /**
-     * The roles that are available to assign to users.
-     *
-     * @var array
-     */
-    public static $roles = [];
+use Cratespace\Preflight\Contracts\Permission as PermissionContract;
 
+class Permission implements PermissionContract
+{
     /**
      * The permissions that exist within the application.
      *
@@ -24,48 +19,6 @@ class Permission
      * @var array
      */
     public static $defaultPermissions = [];
-
-    /**
-     * Determine if Preflight has registered roles.
-     *
-     * @return bool
-     */
-    public static function hasRoles(): bool
-    {
-        return count(static::$roles) > 0;
-    }
-
-    /**
-     * Find the role with the given key.
-     *
-     * @param string $key
-     *
-     * @return \Cratespace\Preflight\API\Role
-     */
-    public static function findRole(string $key): Role
-    {
-        return static::$roles[$key] ?? null;
-    }
-
-    /**
-     * Define a role.
-     *
-     * @param string $key
-     * @param string $name
-     * @param array  $permissions
-     *
-     * @return \Cratespace\Preflight\API\Role
-     */
-    public static function role(string $key, string $name, array $permissions): Role
-    {
-        static::$permissions = collect(
-            array_merge(static::$permissions, $permissions)
-        )->unique()->sort()->values()->all();
-
-        return tap(new Role($key, $name, $permissions), function ($role) use ($key) {
-            static::$roles[$key] = $role;
-        });
-    }
 
     /**
      * Determine if any permissions have been registered with Preflight.
