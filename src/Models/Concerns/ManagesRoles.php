@@ -24,7 +24,7 @@ trait ManagesRoles
             return false;
         }
 
-        return $this->role->is($role);
+        return $this->roles->contains($role);
     }
 
     /**
@@ -40,18 +40,22 @@ trait ManagesRoles
             $role = $this->findRole($role);
         }
 
-        $this->update(['role_id' => $role->id]);
+        $this->roles()->save($role);
     }
 
     /**
      * Find given role in database.
      *
-     * @param string $role
+     * @param string|null $role
      *
-     * @return \App\Models\Role|null $role
+     * @return \App\Models\Role|\Illuminate\Database\Eloquent\Collection|null $role
      */
-    public function findRole(string $role): ?Role
+    public function findRole(?string $role = null)
     {
+        if (is_null($role)) {
+            return $this->roles;
+        }
+
         return Role::whereName($role)->first();
     }
 
@@ -60,7 +64,7 @@ trait ManagesRoles
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function role(): BelongsToMany
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }

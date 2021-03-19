@@ -29,7 +29,7 @@ class Role extends Model
     public function allowTo($permission): void
     {
         if (is_string($permission)) {
-            $permission = $this->permissions->whereLabel($permission)->first();
+            $permission = Permission::whereLabel($permission)->first();
         }
 
         $this->permissions()->save($permission);
