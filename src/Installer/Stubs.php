@@ -67,7 +67,7 @@ class Stubs
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Auth'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Profile'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Business'));
-        (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Marketing'));
+        (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Welcome'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/General'));
         (new Filesystem())->ensureDirectoryExists(resource_path('views'));
         (new Filesystem())->ensureDirectoryExists(resource_path('markdown'));
@@ -82,7 +82,7 @@ class Stubs
     {
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Components', resource_path('js/Views/Components'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Layouts', resource_path('js/Views/Layouts'));
-        (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Marketing', resource_path('js/Views/Marketing'));
+        (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Welcome', resource_path('js/Views/Welcome'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/General', resource_path('js/Views/General'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/API', resource_path('js/Views/API'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Views/Auth', resource_path('js/Views/Auth'));
