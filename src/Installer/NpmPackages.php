@@ -18,7 +18,6 @@ class NpmPackages extends Packages
         '@inertiajs/progress' => '^0.2.4',
         '@tailwindcss/forms' => '^0.2.1',
         '@tailwindcss/typography' => '^0.3.0',
-        '@cratespace/config-js' => '^1.0.3',
         'postcss-import' => '^12.0.1',
         'tailwindcss' => '^2.0.3',
         'autoprefixer' => '^10.0.2',
