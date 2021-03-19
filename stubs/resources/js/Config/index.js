@@ -1,15 +1,16 @@
 import Repository from './Repository';
+import items from './items.json';
 
-export default {
-    install(app, options = {}) {
-        app.mixin({
-            methods: {
-                config(key, defaultValue) {
-                    const repository = new Repository(options);
+/**
+ * Get config value of given key.
+ *
+ * @param   {Any}  key
+ * @param   {Any}  defaultValue
+ *
+ * @return  {Any}
+ */
+export default function config(key, defaultValue = null) {
+    const repository = new Repository(items);
 
-                    return repository.get(key, defaultValue);
-                },
-            },
-        });
-    },
-};
+    return repository.get(key, defaultValue);
+}
