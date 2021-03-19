@@ -65,6 +65,7 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-ci', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-seeders', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-factories', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-migrations', '--force' => true]);
     }
 
     /**
