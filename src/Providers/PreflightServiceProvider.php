@@ -93,6 +93,10 @@ class PreflightServiceProvider extends ServiceProvider
         ], 'preflight-ci');
 
         $this->publishes([
+            __DIR__ . '/../../database/migrations' => database_path('migrations'),
+        ], 'preflight-migrations');
+
+        $this->publishes([
             __DIR__ . '/../../database/factories' => database_path('factories'),
         ], 'preflight-factories');
 
@@ -192,8 +196,10 @@ class PreflightServiceProvider extends ServiceProvider
             ]);
         });
 
-        View::register(function (): Response {
-            return Inertia::render('Auth/Register');
+        View::register(function ($request): Response {
+            return Inertia::render('Auth/Register', [
+                'query' => $request->query(),
+            ]);
         });
 
         View::verifyEmail(function (Request $request): Response {
