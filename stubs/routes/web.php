@@ -3,7 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => Inertia::render('Marketing/Welcome'))->name('welcome');
+Route::get('/', fn () => Inertia::render('Welcome/Show'))->name('welcome');
 
 Route::group([
     'middleware' => ['auth:sentinel', 'verified'],

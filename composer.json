@@ -21,8 +21,9 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
-        "illuminate/support": "^8.0",
-        "cratespace/sentinel": "^2.6.1"
+        "cratespace/sentinel": "^2.7.1",
+        "hashids/hashids": "^4.1",
+        "illuminate/support": "^8.0"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.2",

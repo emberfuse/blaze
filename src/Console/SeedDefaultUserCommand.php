@@ -39,6 +39,7 @@ class SeedDefaultUserCommand extends Command
         try {
             User::create($credentials);
         } catch (Throwable $e) {
+            throw $e;
             $this->error($e->getMessage());
         }
 
@@ -54,6 +55,7 @@ class SeedDefaultUserCommand extends Command
     {
         return [
             'name' => $this->ask('Full name'),
+            'username' => $this->ask('Username'),
             'email' => $this->ask('Email address'),
             'password' => $this->ask('Password'),
             'email_verified_at' => now(),

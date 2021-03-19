@@ -27,6 +27,7 @@ class ApiTokenPermissionsTest extends TestCase
 
         $this->actingAs($user = User::create([
             'name' => 'Thavarshan Thayananthajothy',
+            'username' => 'Thavarshan',
             'email' => 'thavarshan@cratespace.biz',
             'password' => Hash::make('secret-password'),
         ]));
