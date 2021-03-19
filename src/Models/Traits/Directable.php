@@ -13,9 +13,7 @@ trait Directable
      */
     public function getPathAttribute(): string
     {
-        $index = property_exists($this, 'index')
-            ? $this->index
-            : $this->getIndex();
+        $index = $this->index ?? $this->getIndex();
 
         return route("{$index}.show", $this);
     }
