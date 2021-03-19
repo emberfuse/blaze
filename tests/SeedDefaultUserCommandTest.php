@@ -14,6 +14,7 @@ class SeedDefaultUserCommandTest extends TestCase
         config()->set('auth.providers.users.model', User::class);
         config()->set('defaults.users.credentials', [
             'name' => 'James Silverman',
+            'username' => 'JKAMonster',
             'email' => 'silver.james@gmail.com',
             'password' => Hash::make('cthuluEmployee'),
         ]);
@@ -27,11 +28,14 @@ class SeedDefaultUserCommandTest extends TestCase
 
     public function testSeedCustomUserDetails()
     {
+        $this->withoutExceptionHandling();
+
         $this->migrate();
 
         $this->artisan('preflight:user')
             ->expectsConfirmation('Do you want to create a default user from preset data?', 'no')
             ->expectsQuestion('Full name', 'James Silverman')
+            ->expectsQuestion('Username', 'JamesSilverman')
             ->expectsQuestion('Email address', 'silver.james@monster.com')
             ->expectsQuestion('Password', 'cthuluEmployee')
             ->assertExitCode(0);

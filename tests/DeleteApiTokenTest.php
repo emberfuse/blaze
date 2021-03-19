@@ -28,6 +28,7 @@ class DeleteApiTokenTest extends TestCase
 
         $this->actingAs($user = User::forceCreate([
             'name' => 'Thavarshan Thayananthajothy',
+            'username' => 'Thavarshan',
             'email' => 'thavarshan@cratespace.biz',
             'password' => Hash::make('secret-password'),
         ]));
