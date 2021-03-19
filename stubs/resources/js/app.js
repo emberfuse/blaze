@@ -1,3 +1,4 @@
+import config from './Config';
 import axios from 'axios';
 import { createApp, h } from 'vue';
 import {
@@ -5,7 +6,6 @@ import {
     plugin as InertiaPlugin,
 } from '@inertiajs/inertia-vue3';
 
-import Config from '@cratespace/config-js';
 import diffForHumans from './Plugins/moment';
 import { InertiaProgress } from '@inertiajs/progress';
 
@@ -15,17 +15,18 @@ const app = document.getElementById('app');
 
 createApp({
     metaInfo: {
-        titleTemplate: (title) => title ? `${title} - Preflight` : 'Preflight',
+        titleTemplate: (title) =>
+            title ? `${title} - Preflight` : 'Preflight',
     },
 
-    render: () => h(InertiaApp, {
-        initialPage: JSON.parse(app.dataset.page),
-        resolveComponent: (name) => require(`./Views/${name}`).default,
-    }),
+    render: () =>
+        h(InertiaApp, {
+            initialPage: JSON.parse(app.dataset.page),
+            resolveComponent: (name) => require(`./Views/${name}`).default,
+        }),
 })
-    .mixin({ methods: { route, diffForHumans } })
+    .mixin({ methods: { route, config, diffForHumans } })
     .use(InertiaPlugin)
-    .use(Config, require('./Config/items.json'))
     .mount(app);
 
 InertiaProgress.init({
