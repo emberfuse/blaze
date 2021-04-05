@@ -15,7 +15,9 @@ trait Hashable
     protected static function bootHashable(): void
     {
         static::created(function (Model $model): void {
-            $model->update(['code' => HashId::generate($model->id)]);
+            $model->forceFill([
+                'code' => HashId::generate($model->id),
+            ])->saveQuietly();
         });
     }
 }
