@@ -2,6 +2,7 @@
 
 namespace Cratespace\Preflight\Filters;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -50,6 +51,8 @@ abstract class Filter
         $this->builder = $builder;
 
         foreach ($this->getFilters() as $filter => $value) {
+            $filter = Str::camel($filter);
+
             if (method_exists($this, $filter)) {
                 $this->$filter($value);
             }
