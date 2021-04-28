@@ -3,25 +3,10 @@
 namespace Cratespace\Preflight\Presenters;
 
 use InvalidArgumentException;
-use Illuminate\Database\Eloquent\Model;
-use Cratespace\Preflight\Support\InteractsWithModel;
+use Cratespace\Preflight\Support\AbstractEloquent;
 
-abstract class Presenter
+class Presenter extends AbstractEloquent
 {
-    use InteractsWithModel;
-
-    /**
-     * Create new view presenter instance.
-     *
-     * @param \Illuminate\Database\Eloquent\Model $model
-     *
-     * @return void
-     */
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
-
     /**
      * Show method as property if property does not exist.
      *

@@ -2,9 +2,8 @@
 
 namespace Cratespace\Preflight\Queries;
 
-use Cratespace\Preflight\Support\InteractsWithModel;
+use Cratespace\Preflight\Support\AbstractEloquent;
 
-abstract class Query
+class Query extends AbstractEloquent
 {
-    use InteractsWithModel;
 }

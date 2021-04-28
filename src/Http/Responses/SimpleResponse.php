@@ -3,36 +3,11 @@
 namespace Cratespace\Preflight\Http\Responses;
 
 use Closure;
-use Illuminate\Routing\Redirector;
-use Illuminate\View\Factory as ViewFactory;
 use Illuminate\Contracts\Support\Responsable;
 use Cratespace\Sentinel\Http\Responses\Response;
 
 class SimpleResponse extends Response implements Responsable
 {
-    /**
-     * Content to be returned by the response.
-     *
-     * @var \Closure|string|null
-     */
-    protected $content;
-
-    /**
-     * Create a new response factory instance.
-     *
-     * @param \Illuminate\Contracts\View\Factory $view
-     * @param \Illuminate\Routing\Redirector     $redirector
-     * @param mixed|null                         $content
-     *
-     * @return void
-     */
-    public function __construct(ViewFactory $view, Redirector $redirector, $content = null)
-    {
-        parent::__construct($view, $redirector);
-
-        $this->content = $content;
-    }
-
     /**
      * Create an HTTP response that represents the object.
      *

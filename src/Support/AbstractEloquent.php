@@ -4,7 +4,7 @@ namespace Cratespace\Preflight\Support;
 
 use Illuminate\Database\Eloquent\Model;
 
-trait InteractsWithModel
+class AbstractEloquent
 {
     /**
      * Instance of model being queried.
@@ -14,12 +14,14 @@ trait InteractsWithModel
     protected $model;
 
     /**
-     * Instantiate the model to be queried.
+     * Create new AbstractEloquent instance.
      *
-     * @return \Illuminate\Database\Eloquent\Model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
+     * @return void
      */
-    protected function model(): Model
+    public function __construct(Model $model)
     {
-        return app()->make($this->model);
+        $this->model = $model;
     }
 }

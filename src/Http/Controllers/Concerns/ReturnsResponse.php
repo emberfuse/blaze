@@ -3,9 +3,12 @@
 namespace Cratespace\Preflight\Http\Controllers\Concerns;
 
 use Cratespace\Preflight\Http\Responses\SimpleResponse;
+use Cratespace\Sentinel\Http\Controllers\Concerns\InteractsWithContainer;
 
 trait ReturnsResponse
 {
+    use InteractsWithContainer;
+
     /**
      * Return a new response from the application.
      *
@@ -15,14 +18,12 @@ trait ReturnsResponse
      *
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    protected function response($content = '', ?int $status = 200, ?array $headers = [])
+    protected function response($content = null)
     {
-        $response = app(SimpleResponse::class);
-
-        if (func_num_args() === 0) {
-            return $response;
+        if (is_null($content)) {
+            return $this->resolve(SimpleResponse::class);
         }
 
-        return $response->make($content, $status, $headers);
+        return SimpleResponse::dispatch($content);
     }
 }
