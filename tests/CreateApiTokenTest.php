@@ -22,6 +22,8 @@ class CreateApiTokenTest extends TestCase
 
     public function testApiTokensCanBeCreated()
     {
+        $this->withoutExceptionHandling();
+
         $this->migrate();
 
         $this->actingAs($user = User::forceCreate([
