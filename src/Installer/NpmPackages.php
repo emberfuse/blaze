@@ -13,20 +13,20 @@ class NpmPackages extends Packages
      * @var array
      */
     protected $nodeModules = [
-        '@inertiajs/inertia' => '^0.8.4',
-        '@inertiajs/inertia-vue3' => '^0.3.5',
+        '@inertiajs/inertia' => '^0.8.7',
+        '@inertiajs/inertia-vue3' => '^0.3.14',
         '@inertiajs/progress' => '^0.2.4',
-        '@tailwindcss/forms' => '^0.2.1',
-        '@tailwindcss/typography' => '^0.3.0',
-        'postcss-import' => '^12.0.1',
-        'tailwindcss' => '^2.0.3',
-        'autoprefixer' => '^10.0.2',
+        '@tailwindcss/forms' => '^0.3.2',
+        '@tailwindcss/typography' => '^0.4.0',
+        'postcss-import' => '^14.0.1',
+        'tailwindcss' => '^2.1.2',
+        'autoprefixer' => '^10.2.5',
         'moment' => '^2.29.1',
-        'browser-sync' => '^2.23.7',
-        'browser-sync-webpack-plugin' => '^2.0.1',
-        'vue' => '^3.0.5',
-        '@vue/compiler-sfc' => '^3.0.5',
-        'vue-loader' => '^16.1.2',
+        'browser-sync' => '^2.26.14',
+        'browser-sync-webpack-plugin' => '^2.3.0',
+        'vue' => '^3.0.11',
+        '@vue/compiler-sfc' => '^3.0.11',
+        'vue-loader' => '^16.2.0',
     ];
 
     /**

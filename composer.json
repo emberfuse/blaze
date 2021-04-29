@@ -21,7 +21,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
-        "cratespace/sentinel": "^2.7.1",
+        "cratespace/sentinel": "^3.0.1",
         "hashids/hashids": "^4.1",
         "illuminate/support": "^8.0"
     },

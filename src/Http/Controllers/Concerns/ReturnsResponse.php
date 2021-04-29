@@ -3,7 +3,7 @@
 namespace Cratespace\Preflight\Http\Controllers\Concerns;
 
 use Cratespace\Preflight\Http\Responses\SimpleResponse;
-use Cratespace\Sentinel\Http\Controllers\Concerns\InteractsWithContainer;
+use Cratespace\Sentinel\Support\Concerns\InteractsWithContainer;
 
 trait ReturnsResponse
 {

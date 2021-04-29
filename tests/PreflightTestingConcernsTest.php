@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Cratespace\Preflight\Tests\TestCase;
 use Cratespace\Preflight\Tests\Fixtures\User;
-use Cratespace\Preflight\Testing\Concerns\CreatesNewUser;
+use Cratespace\Preflight\Testing\Concerns\AuthenticatesUser;
 use Cratespace\Preflight\Testing\Concerns\InteractsWithNetwork;
 use Cratespace\Preflight\Testing\Concerns\InteractsWithProtectedQualities;
 
 class PreflightTestingConcernsTest extends TestCase
 {
-    use CreatesNewUser;
+    use AuthenticatesUser;
     use InteractsWithNetwork;
     use InteractsWithProtectedQualities;
 
