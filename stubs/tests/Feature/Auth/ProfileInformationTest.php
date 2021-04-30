@@ -18,6 +18,7 @@ class ProfileInformationTest extends TestCase
             'name' => 'Test Name',
             'username' => 'TestUserName',
             'email' => 'test@example.com',
+            'phone' => '0712345678',
         ]);
 
         $this->assertEquals('Test Name', $user->fresh()->name);
