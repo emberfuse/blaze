@@ -4,7 +4,6 @@ namespace Cratespace\Preflight\Http\Controllers;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use Cratespace\Preflight\API\Permission;
 use Inertia\Response as InertiaResponse;
 use Cratespace\Preflight\Http\Requests\CreateApiTokenRequest;
@@ -38,9 +37,9 @@ class ApiTokenController extends Controller
      *
      * @param \Cratespace\Preflight\Http\Requests\CreateApiTokenRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return mixed
      */
-    public function store(CreateApiTokenRequest $request): RedirectResponse
+    public function store(CreateApiTokenRequest $request)
     {
         $token = $request->user()->createToken(
             $request->name,
@@ -58,9 +57,9 @@ class ApiTokenController extends Controller
      * @param \Cratespace\Preflight\Http\Requests\UpdateApiTokenRequest $request
      * @param string                                                    $tokenId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return mixed
      */
-    public function update(UpdateApiTokenRequest $request, string $tokenId): RedirectResponse
+    public function update(UpdateApiTokenRequest $request, string $tokenId)
     {
         $token = $request->user()->tokens()->where('id', $tokenId)->firstOrFail();
 
@@ -77,9 +76,9 @@ class ApiTokenController extends Controller
      * @param \Cratespace\Preflight\Http\Requests\DeleteApiTokenRequest $request
      * @param string                                                    $tokenId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return mixed
      */
-    public function destroy(DeleteApiTokenRequest $request, string $tokenId): RedirectResponse
+    public function destroy(DeleteApiTokenRequest $request, string $tokenId)
     {
         $request->user()->tokens()->where('id', $tokenId)->delete();
 
