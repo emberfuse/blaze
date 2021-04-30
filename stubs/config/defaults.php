@@ -27,6 +27,8 @@ return [
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
         ],
+
+        'settings' => [],
     ],
 
     /*
