@@ -58,7 +58,7 @@ class AuthenticationTest extends TestCase implements Postable
         ]));
 
         $this->assertGuest();
-        $response->assertStatue(302);
+        $response->assertStatus(302);
         $response->assertSessionHasErrors('email');
     }
 
