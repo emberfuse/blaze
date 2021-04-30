@@ -21,8 +21,8 @@ class CreateApiTokenTest extends TestCase implements Postable
         $response->assertSessionHasNoErrors();
         $this->assertCount(1, $user->fresh()->tokens);
         $this->assertEquals('Test Token', $user->fresh()->tokens->first()->name);
-        $this->assertTrue($user->fresh()->tokens->first()->can('read'));
-        $this->assertFalse($user->fresh()->tokens->first()->can('delete'));
+        $this->assertFalse($user->fresh()->tokens->first()->can('read'));
+        $this->assertTrue($user->fresh()->tokens->first()->can('delete'));
     }
 
     public function testValidNameIsRequired()

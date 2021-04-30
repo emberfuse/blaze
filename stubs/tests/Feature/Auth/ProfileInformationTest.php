@@ -38,7 +38,7 @@ class ProfileInformationTest extends TestCase implements Postable
     {
         $this->signIn(create(User::class));
 
-        $response = $this->putJson('/user/profile', $this->validParameters([
+        $response = $this->put('/user/profile', $this->validParameters([
             'name' => '',
         ]));
 
@@ -50,7 +50,7 @@ class ProfileInformationTest extends TestCase implements Postable
     {
         $this->signIn(create(User::class));
 
-        $response = $this->putJson('/user/profile', $this->validParameters([
+        $response = $this->put('/user/profile', $this->validParameters([
             'username' => '',
         ]));
 
@@ -62,7 +62,7 @@ class ProfileInformationTest extends TestCase implements Postable
     {
         $this->signIn(create(User::class));
 
-        $response = $this->putJson('/user/profile', $this->validParameters([
+        $response = $this->put('/user/profile', $this->validParameters([
             'email' => '',
         ]));
 
@@ -74,7 +74,7 @@ class ProfileInformationTest extends TestCase implements Postable
     {
         $this->signIn(create(User::class));
 
-        $response = $this->putJson('/user/profile', $this->validParameters([
+        $response = $this->put('/user/profile', $this->validParameters([
             'phone' => '',
         ]));
 

@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Cratespace\Preflight\Testing\Contracts\Postable;
@@ -21,7 +22,10 @@ class AuthenticationTest extends TestCase implements Postable
 
     public function testUsersCanAuthenticateUsingTheLoginScreen()
     {
-        $user = create(User::class, $this->validParameters());
+        $user = create(User::class, [
+            'email' => 'test.user@example.com',
+            'password' => Hash::make('secretpassword'),
+        ]);
 
         $response = $this->from('/login')->post('/login', $this->validParameters());
 
@@ -31,7 +35,10 @@ class AuthenticationTest extends TestCase implements Postable
 
     public function testUsersCanAuthenticateThroughJsonRequest()
     {
-        $user = create(User::class, $this->validParameters());
+        $user = create(User::class, [
+            'email' => 'test.user@example.com',
+            'password' => Hash::make('secretpassword'),
+        ]);
 
         $response = $this->postJson('/login', $this->validParameters());
 
@@ -41,7 +48,10 @@ class AuthenticationTest extends TestCase implements Postable
 
     public function testValidEmailIsRequired()
     {
-        create(User::class, $this->validParameters());
+        create(User::class, [
+            'email' => 'test.user@example.com',
+            'password' => Hash::make('secretpassword'),
+        ]);
 
         $response = $this->post('/login', $this->validParameters([
             'email' => '',

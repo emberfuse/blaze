@@ -92,6 +92,7 @@ class RegistrationTest extends TestCase implements Postable
             'email' => 'test@example.com',
             'phone' => '0712345678',
             'password' => 'password',
+            'password_confirmation' => 'password',
         ], $overrides);
     }
 }
