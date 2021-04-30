@@ -1,18 +1,18 @@
 <template>
     <action-section>
         <template #title>
-            Profile Information
+            Address Information
         </template>
 
         <template #description>
-            Update your account's profile information and email address.
+            Update your address and location information to match your business.
         </template>
 
         <template #content>
             <form @submit.prevent="updateAddressInformation">
                 <div class="lg:grid lg:grid-cols-12 gap-6">
                     <div class="lg:mt-0 md:col-span-8">
-                        <app-input type="text" v-model="form.line_1" :error="form.errors.line_1" label="Street" placeholder="2975 Driftwood Road"></app-input>
+                        <app-input type="text" v-model="form.line1" :error="form.errors.line1" label="Street" placeholder="2975 Driftwood Road"></app-input>
                     </div>
 
                     <div class="mt-6 lg:mt-0 md:col-span-6">
@@ -68,7 +68,7 @@ export default {
         return {
             form: this.$inertia.form({
                 _method: 'PUT',
-                line_1: this.address.line_1,
+                line1: this.address.line1,
                 city: this.address.city,
                 state: this.address.state,
                 country: this.address.country,

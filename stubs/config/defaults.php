@@ -15,6 +15,13 @@ return [
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'settings' => [],
+            'address' => [
+                'line1' => '4431 Birch Street',
+                'city' => 'Greenwood',
+                'state' => 'Indiana',
+                'country' => 'United States',
+                'postal_code' => '46142',
+            ],
             'locked' => false,
             'profile_photo_path' => null,
             'two_factor_secret' => null,
