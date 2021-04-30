@@ -20,12 +20,16 @@ export default {
     props: {
         error: String,
         modelValue: String,
-        options: Object,
         label: String,
         placeholder: String,
         id: {
             type: String,
             required: true
+        },
+        options: {
+            type: Object,
+            requried: false,
+            default: {}
         },
     },
 
