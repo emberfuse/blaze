@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d95e17456cf29b2adef4752c84a0967",
+    "content-hash": "010c26f009409d70c0e412f851699263",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -117,16 +117,16 @@
         },
         {
             "name": "cratespace/sentinel",
-            "version": "v3.0.1",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cratespace/sentinel.git",
-                "reference": "935fa97bf493c355a414c821ced3614f5e14104f"
+                "reference": "fa126bab449d8b2f0b3f8c9e50c2bc24e198a2e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/935fa97bf493c355a414c821ced3614f5e14104f",
-                "reference": "935fa97bf493c355a414c821ced3614f5e14104f",
+                "url": "https://api.github.com/repos/cratespace/sentinel/zipball/fa126bab449d8b2f0b3f8c9e50c2bc24e198a2e3",
+                "reference": "fa126bab449d8b2f0b3f8c9e50c2bc24e198a2e3",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +184,7 @@
                 "issues": "https://github.com/cratespace/sentinel/issues",
                 "source": "https://github.com/cratespace/sentinel"
             },
-            "time": "2021-04-29T18:30:51+00:00"
+            "time": "2021-04-30T17:08:44+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -7371,16 +7371,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.17.3",
+            "version": "1.17.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "fc5d715f4dfdb6f4bfa42046b4d2ced0de326add"
+                "reference": "e48be16da1952ffca868c77f509a767d3fc632bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/fc5d715f4dfdb6f4bfa42046b4d2ced0de326add",
-                "reference": "fc5d715f4dfdb6f4bfa42046b4d2ced0de326add",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/e48be16da1952ffca868c77f509a767d3fc632bc",
+                "reference": "e48be16da1952ffca868c77f509a767d3fc632bc",
                 "shasum": ""
             },
             "require": {
@@ -7435,7 +7435,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.17.3"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.17.4"
             },
             "funding": [
                 {
@@ -7447,7 +7447,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-04-29T12:29:14+00:00"
+            "time": "2021-04-30T08:20:24+00:00"
         },
         {
             "name": "spatie/macroable",
