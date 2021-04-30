@@ -24,7 +24,7 @@ export default {
     props: {
         mode: {
             type: String,
-            required: true,
+            required: false,
             default: 'primary',
         },
 

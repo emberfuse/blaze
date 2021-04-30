@@ -1,6 +1,6 @@
 ---
 name: "Questions"
-about: "Ask questions regarding Sentinel."
+about: "Ask questions regarding Preflight."
 ---
 
 ### Question
