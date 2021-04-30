@@ -24,7 +24,7 @@
                         <template #items>
                             <dropdown-link :href="route('user.show')">Profile</dropdown-link>
                             <dropdown-link :href="route('api-tokens.index')">API token</dropdown-link>
-                            <dropdown-link href="#" @clicked.prevent="logout">Sign out</dropdown-link>
+                            <dropdown-link href="#" @clicked="logout">Sign out</dropdown-link>
                         </template>
                     </dropdown>
                 </template>
