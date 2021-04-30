@@ -5,7 +5,7 @@
 
             <section-border></section-border>
 
-            <update-address-information-form :user="$page.props.user.address"></update-address-information-form>
+            <update-address-information-form :address="$page.props.user.address || []"></update-address-information-form>
 
             <section-border></section-border>
 
