@@ -20,7 +20,7 @@ if (! function_exists('create')) {
         $factory = $class::factory();
 
         if (! is_null($condition)) {
-            $factory = $factory->{$condition};
+            $factory = $factory->{$condition}();
         }
 
         return $factory->count($times)->create($attributes);
@@ -47,7 +47,7 @@ if (! function_exists('make')) {
         $factory = $class::factory();
 
         if (! is_null($condition)) {
-            $factory = $factory->{$condition};
+            $factory = $factory->{$condition}();
         }
 
         return $factory->count($times)->make($attributes);
