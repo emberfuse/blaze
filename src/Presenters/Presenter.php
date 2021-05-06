@@ -3,10 +3,30 @@
 namespace Cratespace\Preflight\Presenters;
 
 use InvalidArgumentException;
+use Illuminate\Database\Eloquent\Model;
 use Cratespace\Preflight\Support\AbstractEloquent;
 
-class Presenter extends AbstractEloquent
+abstract class Presenter
 {
+    /**
+     * Instance of model being queried.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model;
+
+    /**
+     * Create new AbstractEloquent instance.
+     *
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
+     * @return void
+     */
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
     /**
      * Show method as property if property does not exist.
      *
