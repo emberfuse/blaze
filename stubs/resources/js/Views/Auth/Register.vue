@@ -12,7 +12,7 @@
                     </div>
 
                     <div>
-                        <h4 class="font-semibold text-xl text-gray-800">Create your Cratespace account</h4>
+                        <h4 class="font-semibold text-xl text-gray-800">Create your {{ config('app.name') }} account</h4>
 
                         <p class="mt-3 font-normal text-base text-gray-500 max-w-md">
                             If you are a business and wish to sell your freight spaces on Cratespace, you will have to request for an invite and cannot create an account directly.
