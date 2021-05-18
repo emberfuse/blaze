@@ -2,6 +2,7 @@
 
 namespace Cratespace\Preflight\Models\Values;
 
+use Illuminate\Support\Arr;
 use InvalidArgumentException;
 
 abstract class Value
@@ -41,12 +42,16 @@ abstract class Value
      */
     public function __get(string $value)
     {
-        if (! empty($this->values)) {
+        if (filled($this->values)) {
             return $this->getWithConstraints($value);
         }
 
-        if (isset($this->details[$value])) {
-            return $this->details[$value];
+        if (Arr::exists($this->details, $value)) {
+            $result = Arr::get($this->details, $value);
+        }
+
+        if (! is_null($result)) {
+            return $result;
         }
 
         $this->throwPropertyDoesNotExist($value);

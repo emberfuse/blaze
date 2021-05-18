@@ -12,8 +12,8 @@ class ComposerPackages extends Packages
      * @var array
      */
     protected $packages = [
-        'inertiajs/inertia-laravel:^0.4.1',
-        'cratespace/sentinel:^3.1.1',
+        'inertiajs/inertia-laravel:^0.4.2',
+        'cratespace/sentinel:^3.1.3',
         'tightenco/ziggy:^1.1.0',
     ];
 
