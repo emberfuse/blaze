@@ -58,6 +58,7 @@ class InstallCommand extends Command
     protected function publishVendor(): void
     {
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-config', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'preflight-support', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-resources', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-routes', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'preflight-tests', '--force' => true]);
@@ -114,6 +115,9 @@ class InstallCommand extends Command
 
         // Directories...
         Stubs::ensureDirectoriesExists();
+
+        // Actions...
+        Stubs::copyActions();
 
         // Service Providers...
         Stubs::copyServiceProviders();

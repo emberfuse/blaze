@@ -2,10 +2,12 @@
 
 namespace Cratespace\Preflight\Tests;
 
+use App\Models\User;
 use Illuminate\Support\Str;
+use App\Actions\API\UpdateApiToken;
 use Illuminate\Support\Facades\Hash;
 use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Tests\Fixtures\User;
+use Cratespace\Preflight\Contracts\API\UpdatesApiTokens;
 
 class ApiTokenPermissionsTest extends TestCase
 {
@@ -23,7 +25,10 @@ class ApiTokenPermissionsTest extends TestCase
 
     public function testApiTokenPermissionsCanBeUpdated()
     {
+        $this->withoutExceptionHandling();
         $this->migrate();
+
+        $this->app->singleton(UpdatesApiTokens::class, UpdateApiToken::class);
 
         $this->actingAs($user = User::create([
             'name' => 'Thavarshan Thayananthajothy',

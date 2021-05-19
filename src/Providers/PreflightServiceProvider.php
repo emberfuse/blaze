@@ -73,6 +73,11 @@ class PreflightServiceProvider extends ServiceProvider
         ], 'preflight-config');
 
         $this->publishes([
+            __DIR__ . '/../../stubs/app/Actions/API/CreateNewApiToken.php' => app_path('Actions/API/CreateNewApiToken.php'),
+            __DIR__ . '/../../stubs/app/Actions/API/UpdateApiToken.php' => app_path('Actions/API/UpdateApiToken.php'),
+        ], 'preflight-support');
+
+        $this->publishes([
             __DIR__ . '/../../stubs/resources' => base_path('resources'),
         ], 'preflight-resources');
 

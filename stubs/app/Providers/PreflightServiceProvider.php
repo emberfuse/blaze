@@ -2,13 +2,27 @@
 
 namespace App\Providers;
 
+use App\Actions\API\UpdateApiToken;
+use App\Actions\API\CreateNewApiToken;
 use Illuminate\Support\ServiceProvider;
 use Cratespace\Preflight\API\Permission;
 use Cratespace\Sentinel\Providers\Traits\HasActions;
+use Cratespace\Preflight\Contracts\API\UpdatesApiTokens;
+use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
 
 class PreflightServiceProvider extends ServiceProvider
 {
     use HasActions;
+
+    /**
+     * The sentinel action classes.
+     *
+     * @var array
+     */
+    protected $actions = [
+        CreatesNewApiTokens::class => CreateNewApiToken::class,
+        UpdatesApiTokens::class => UpdateApiToken::class,
+    ];
 
     /**
      * Bootstrap any application services.

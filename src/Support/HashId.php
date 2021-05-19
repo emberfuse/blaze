@@ -31,6 +31,13 @@ class HashId
         return static::createHasher()->encode($arguments);
     }
 
+    /**
+     * Create Hashids instance.
+     *
+     * @param string|null $key
+     *
+     * @return \Hashids\HashidsInterface
+     */
     public static function createHasher(?string $key = null): HashidsInterface
     {
         return new Hashids(

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Cratespace\Preflight\Tests\TestCase;
 use Cratespace\Preflight\Tests\Fixtures\User;
+use Illuminate\Http\Client\ConnectionException;
 use Cratespace\Preflight\Testing\Concerns\AuthenticatesUser;
 use Cratespace\Preflight\Testing\Concerns\InteractsWithNetwork;
 use Cratespace\Preflight\Testing\Concerns\InteractsWithProtectedQualities;
@@ -19,7 +20,11 @@ class PreflightTestingConcernsTest extends TestCase
 
     public function testDetermineNetworkConnectionStatus()
     {
-        $response = Http::get('www.example.com');
+        try {
+            $response = Http::get('www.example.com');
+        } catch (ConnectionException $e) {
+            $this->markTestSkipped($e->getMessage());
+        }
 
         if ($response->ok()) {
             $this->assertTrue($this->isConnected());

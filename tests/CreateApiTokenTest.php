@@ -3,8 +3,10 @@
 namespace Cratespace\Preflight\Tests;
 
 use Illuminate\Support\Facades\Hash;
+use App\Actions\API\CreateNewApiToken;
 use Cratespace\Preflight\API\Permission;
 use Cratespace\Preflight\Tests\Fixtures\User;
+use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
 
 class CreateApiTokenTest extends TestCase
 {
@@ -25,6 +27,8 @@ class CreateApiTokenTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->migrate();
+
+        $this->app->singleton(CreatesNewApiTokens::class, CreateNewApiToken::class);
 
         $this->actingAs($user = User::forceCreate([
             'name' => 'Thavarshan Thayananthajothy',

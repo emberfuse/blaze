@@ -39,7 +39,6 @@ class SeedDefaultUserCommand extends Command
         try {
             User::create($credentials);
         } catch (Throwable $e) {
-            throw $e;
             $this->error($e->getMessage());
         }
 
@@ -50,6 +49,8 @@ class SeedDefaultUserCommand extends Command
 
     /**
      * Request the local database details from the user.
+     *
+     * @return array
      */
     protected function requestUserCredentials(): array
     {
@@ -57,6 +58,7 @@ class SeedDefaultUserCommand extends Command
             'name' => $this->ask('Full name'),
             'username' => $this->ask('Username'),
             'email' => $this->ask('Email address'),
+            'phone' => $this->ask('Phone number', '0112345678'),
             'password' => $this->ask('Password'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

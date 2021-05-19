@@ -56,6 +56,7 @@ class Stubs
     public static function ensureDirectoriesExists(): void
     {
         (new Filesystem())->ensureDirectoryExists(app_path('Actions/Auth'));
+        (new Filesystem())->ensureDirectoryExists(app_path('Actions/API'));
         (new Filesystem())->ensureDirectoryExists(public_path('css'));
         (new Filesystem())->ensureDirectoryExists(resource_path('css'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Config'));
@@ -112,5 +113,23 @@ class Stubs
 
         Util::installServiceProviderAfter('RouteServiceProvider', 'SentinelServiceProvider');
         Util::installServiceProviderAfter('SentinelServiceProvider', 'PreflightServiceProvider');
+    }
+
+    /**
+     * Copy over service provider stubs.
+     *
+     * @return void
+     */
+    public static function copyActions(): void
+    {
+        copy(
+            __DIR__ . '/../../stubs/app/Actions/API/CreateNewApiToken.php',
+            app_path('Actions/API/CreateNewApiToken.php')
+        );
+
+        copy(
+            __DIR__ . '/../../stubs/app/Actions/API/UpdateApiToken.php',
+            app_path('Actions/API/UpdateApiToken.php')
+        );
     }
 }

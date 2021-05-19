@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Contracts;
+namespace Cratespace\Preflight\Contracts\Support;
 
 interface Permission
 {

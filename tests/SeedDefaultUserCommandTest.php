@@ -37,6 +37,7 @@ class SeedDefaultUserCommandTest extends TestCase
             ->expectsQuestion('Full name', 'James Silverman')
             ->expectsQuestion('Username', 'JamesSilverman')
             ->expectsQuestion('Email address', 'silver.james@monster.com')
+            ->expectsQuestion('Phone number', '0112345678')
             ->expectsQuestion('Password', 'cthuluEmployee')
             ->assertExitCode(0);
 
