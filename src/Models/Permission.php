@@ -5,7 +5,7 @@ namespace Cratespace\Preflight\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Cratespace\Preflight\Contracts\Permission as PermissionContract;
+use Cratespace\Preflight\Contracts\Support\Permission as PermissionContract;
 
 class Permission extends Model implements PermissionContract
 {

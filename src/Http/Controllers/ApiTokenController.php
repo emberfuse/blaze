@@ -6,6 +6,8 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Cratespace\Preflight\API\Permission;
 use Inertia\Response as InertiaResponse;
+use Cratespace\Preflight\Contracts\API\UpdatesApiTokens;
+use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
 use Cratespace\Preflight\Http\Requests\CreateApiTokenRequest;
 use Cratespace\Preflight\Http\Requests\DeleteApiTokenRequest;
 use Cratespace\Preflight\Http\Requests\UpdateApiTokenRequest;
@@ -36,36 +38,38 @@ class ApiTokenController extends Controller
      * Create a new API token.
      *
      * @param \Cratespace\Preflight\Http\Requests\CreateApiTokenRequest $request
+     * @param \Cratespace\Preflight\Contracts\API\CreatesNewApiTokens   $creator
      *
      * @return mixed
      */
-    public function store(CreateApiTokenRequest $request)
+    public function store(CreateApiTokenRequest $request, CreatesNewApiTokens $creator)
     {
-        $token = $request->user()->createToken(
-            $request->name,
-            Permission::validPermissions($request->input('permissions', []))
-        );
+        $token = $creator->create($request->validated(), ['user' => $request->user()]);
 
-        return $this->response()->back(303)->with('flash', [
-            'token' => explode('|', $token->plainTextToken, 2)[1],
-        ]);
+        return $this->response()
+            ->back(303)
+            ->with('flash', [
+                'token' => explode('|', $token->plainTextToken, 2)[1],
+            ]);
     }
 
     /**
      * Update the given API token's permissions.
      *
      * @param \Cratespace\Preflight\Http\Requests\UpdateApiTokenRequest $request
+     * @param \Cratespace\Preflight\Contracts\API\UpdatesApiTokens      $updater
      * @param string                                                    $tokenId
      *
      * @return mixed
      */
-    public function update(UpdateApiTokenRequest $request, string $tokenId)
-    {
-        $token = $request->user()->tokens()->where('id', $tokenId)->firstOrFail();
-
-        $token->forceFill([
-            'abilities' => Permission::validPermissions($request->input('permissions', [])),
-        ])->save();
+    public function update(
+        UpdateApiTokenRequest $request,
+        UpdatesApiTokens $updater,
+        string $tokenId
+    ) {
+        $updater->update($request->user(), $request->merge([
+            'token_id' => $tokenId,
+        ])->all());
 
         return $this->response()->back(303);
     }
@@ -80,7 +84,10 @@ class ApiTokenController extends Controller
      */
     public function destroy(DeleteApiTokenRequest $request, string $tokenId)
     {
-        $request->user()->tokens()->where('id', $tokenId)->delete();
+        $request->user()
+            ->tokens()
+            ->where('id', $tokenId)
+            ->delete();
 
         return $this->response()->back(303);
     }
