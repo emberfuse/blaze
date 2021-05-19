@@ -7,7 +7,7 @@ about: "Report something that's broken."
 <!-- Fill out the FULL versions with patch versions -->
 
 - App Version: 1.0.0
-- PHP Version: 7.4.13 / 8.0.2
+- PHP Version: 7.4.13 / 8.0.6
 - Database Driver & Version: MySQL 5.7
 
 ### Description

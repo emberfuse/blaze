@@ -17,7 +17,7 @@ function installProject() {
 # Install new Composer dependencies to package.json.
 function installDependencies() {
     printf "Installing dependencies\n"
-    COMPOSER_MEMORY_LIMIT=-1 composer install
+    COMPOSER_MEMORY_LIMIT=-1 composer update
 }
 
 # Create .env file, generate app key and set permission to artisan file.

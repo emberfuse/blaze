@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 return [
@@ -8,13 +9,16 @@ return [
      */
     'users' => [
         'credentials' => [
-            'name' => 'Thavarshan Thayananthajothy',
-            'username' => 'Thavarshan',
-            'email' => 'tjthavarshan@gmail.com',
+            'name' => 'Administrator',
+            'username' => 'administrator',
+            'email' => 'admin@preflight.test',
+            'phone' => '0112345678',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'email_verified_at' => now(),
+            'email_verified_at' => Carbon::now(),
             'remember_token' => Str::random(10),
-            'settings' => [],
+            'settings' => [
+                'notifications' => ['mail', 'database', 'sms'],
+            ],
             'address' => [
                 'line1' => '4431 Birch Street',
                 'city' => 'Greenwood',
@@ -28,7 +32,9 @@ return [
             'two_factor_recovery_codes' => null,
         ],
 
-        'settings' => [],
+        'settings' => [
+            'notifications' => ['mail', 'database', 'sms'],
+        ],
     ],
 
     /*
