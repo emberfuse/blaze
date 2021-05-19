@@ -16,7 +16,7 @@ class UpdateApiToken implements UpdatesApiTokens
      *
      * @return void
      */
-    public function update(User $user, array $data): void
+    public function update(User $user, array $data, ?array $options = null): void
     {
         $token = $user->tokens()
             ->where('id', $data['token_id'])
