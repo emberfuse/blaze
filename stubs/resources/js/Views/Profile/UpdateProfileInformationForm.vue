@@ -52,6 +52,10 @@
                     <div class="mt-6 lg:mt-0 md:col-span-6">
                         <app-input type="email" v-model="form.email" :error="form.errors.email" label="Email address" placeholder="john.doe@example.com"></app-input>
                     </div>
+
+                    <div class="mt-6 lg:mt-0 md:col-span-6">
+                        <app-input type="tel" v-model="form.phone" :error="form.errors.phone" label="Phone number" placeholder="07xxxxxxxx"></app-input>
+                    </div>
                 </div>
 
                 <div class="flex items-center justify-end mt-6">
@@ -93,6 +97,7 @@ export default {
                 name: this.user.name,
                 username: this.user.username,
                 email: this.user.email,
+                phone: this.user.phone,
                 photo: null
             }),
 
@@ -109,6 +114,7 @@ export default {
             this.form.post(this.route('user.update'), {
                 errorBag: 'updateProfileInformation',
                 preserveScroll: true,
+                onSuccess: () => (this.clearPhotoFileInput()),
             });
         },
 
@@ -117,18 +123,31 @@ export default {
         },
 
         updatePhotoPreview() {
+            const photo = this.$refs.photo.files[0];
+
+            if (! photo) return;
+
             const reader = new FileReader();
 
             reader.onload = event => this.photoPreview = event.target.result;
 
-            reader.readAsDataURL(this.$refs.photo.files[0]);
+            reader.readAsDataURL(photo);
         },
 
         deletePhoto() {
             this.$inertia.delete(this.route('user-photo.destroy'), {
                 preserveScroll: true,
-                onSuccess: () => this.photoPreview = null
+                onSuccess: () => {
+                    this.photoPreview = null;
+                    this.clearPhotoFileInput();
+                }
             });
+        },
+
+        clearPhotoFileInput() {
+            if (this.$refs.photo?.value) {
+                this.$refs.photo.value = null;
+            }
         },
     }
 }

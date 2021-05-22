@@ -3,6 +3,7 @@
 namespace Cratespace\Preflight\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use Cratespace\Preflight\Support\HashId;
 
 trait Responsible
 {
@@ -22,7 +23,9 @@ trait Responsible
      */
     public function setResponsibility(Model $resource): void
     {
-        $this->responsibility = $resource;
+        $hashId = HashId::generate($resource->id);
+
+        cache()->set("responsibility.{$hashId}", $resource->toJson());
     }
 
     /**
@@ -34,6 +37,16 @@ trait Responsible
      */
     public function isResponsibleFor(Model $resource): bool
     {
-        return (bool) optional($this->responsibility)->is($resource);
+        $isResponsible = false;
+
+        $hashId = HashId::generate($resource->id);
+
+        if (cache()->has($id = "responsibility.{$hashId}")) {
+            $isResponsible = $resource->toArray() == json_decode(cache()->get($id), true);
+
+            cache()->forget($id);
+        }
+
+        return $isResponsible;
     }
 }
