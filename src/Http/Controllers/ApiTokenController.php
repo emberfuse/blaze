@@ -87,6 +87,7 @@ class ApiTokenController extends Controller
         $request->user()
             ->tokens()
             ->where('id', $tokenId)
+            ->first()
             ->delete();
 
         return $this->response()->back(303);
