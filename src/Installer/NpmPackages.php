@@ -24,6 +24,7 @@ class NpmPackages extends Packages
         'moment' => '^2.29.1',
         'browser-sync' => '^2.26.14',
         'browser-sync-webpack-plugin' => '^2.3.0',
+        'simplebar' => '^5.3.3',
         'vue' => '^3.0.11',
         '@vue/compiler-sfc' => '^3.0.11',
         'vue-loader' => '^16.2.0',
