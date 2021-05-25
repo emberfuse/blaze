@@ -7,8 +7,8 @@ use App\Actions\API\CreateNewApiToken;
 use Illuminate\Support\ServiceProvider;
 use Cratespace\Preflight\API\Permission;
 use Cratespace\Sentinel\Providers\Traits\HasActions;
-use Cratespace\Preflight\Contracts\API\UpdatesApiTokens;
-use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
+use Cratespace\Preflight\Contracts\Actions\UpdatesApiTokens;
+use Cratespace\Preflight\Contracts\Actions\CreatesNewApiTokens;
 
 class PreflightServiceProvider extends ServiceProvider
 {
