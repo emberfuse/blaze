@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use App\Actions\API\UpdateApiToken;
 use Illuminate\Support\Facades\Hash;
 use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Contracts\API\UpdatesApiTokens;
+use Cratespace\Preflight\Contracts\Actions\UpdatesApiTokens;
 
 class ApiTokenPermissionsTest extends TestCase
 {

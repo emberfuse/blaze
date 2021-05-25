@@ -4,7 +4,7 @@ namespace App\Actions\API;
 
 use InvalidArgumentException;
 use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
+use Cratespace\Preflight\Contracts\Actions\CreatesNewApiTokens;
 
 class CreateNewApiToken implements CreatesNewApiTokens
 {

@@ -2,7 +2,7 @@
 
 namespace Cratespace\Preflight\API;
 
-use Cratespace\Preflight\Contracts\Support\Permission as PermissionContract;
+use Cratespace\Contracts\Auth\Permission as PermissionContract;
 
 class Permission implements PermissionContract
 {

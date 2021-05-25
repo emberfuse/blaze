@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Actions\API\CreateNewApiToken;
 use Cratespace\Preflight\API\Permission;
 use Cratespace\Preflight\Tests\Fixtures\User;
-use Cratespace\Preflight\Contracts\API\CreatesNewApiTokens;
+use Cratespace\Preflight\Contracts\Actions\CreatesNewApiTokens;
 
 class CreateApiTokenTest extends TestCase
 {
