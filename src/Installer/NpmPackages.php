@@ -13,14 +13,14 @@ class NpmPackages extends Packages
      * @var array
      */
     protected $nodeModules = [
-        '@inertiajs/inertia' => '^0.8.7',
-        '@inertiajs/inertia-vue3' => '^0.3.14',
-        '@inertiajs/progress' => '^0.2.4',
+        '@inertiajs/inertia' => '^0.9',
+        '@inertiajs/inertia-vue3' => '^0.4',
+        '@inertiajs/progress' => '^0.2.5',
         '@tailwindcss/forms' => '^0.3.2',
-        '@tailwindcss/typography' => '^0.4.0',
+        '@tailwindcss/typography' => '^0.4.1',
         'postcss-import' => '^14.0.1',
         'tailwindcss' => '^2.1.2',
-        'autoprefixer' => '^10.2.5',
+        'autoprefixer' => '^10.2.6',
         'moment' => '^2.29.1',
         'browser-sync' => '^2.26.14',
         'browser-sync-webpack-plugin' => '^2.3.0',

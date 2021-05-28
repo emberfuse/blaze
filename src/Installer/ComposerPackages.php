@@ -15,7 +15,7 @@ class ComposerPackages extends Packages
         'inertiajs/inertia-laravel:^0.4.2',
         'cratespace/contracts:^1.1',
         'cratespace/sentinel:^3.1',
-        'tightenco/ziggy:^1.1.0',
+        'tightenco/ziggy:^1.2',
     ];
 
     /**
