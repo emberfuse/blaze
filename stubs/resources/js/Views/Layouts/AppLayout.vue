@@ -1,5 +1,7 @@
 <template>
     <div class="min-h-screen min-w-full overflow-x-hidden">
+        <banner></banner>
+
         <!-- Main Header Area -->
         <header>
             <navbar class="bg-gray-800">
@@ -72,6 +74,7 @@ import Navbar from '@/Views/Components/Navbars/Navbar';
 import NavbarLink from '@/Views/Components/Navbars/NavbarLink';
 import Dropdown from '@/Views/Components/Dropdowns/Dropdown';
 import DropdownLink from '@/Views/Components/Dropdowns/DropdownLink';
+import Banner from '@/Views/Components/Banners/Banner';
 
 export default {
     components: {
@@ -80,6 +83,7 @@ export default {
         NavbarLink,
         Dropdown,
         DropdownLink,
+        Banner,
     },
 
     data() {
