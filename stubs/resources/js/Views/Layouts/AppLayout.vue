@@ -14,6 +14,20 @@
                 </template>
 
                 <template #linksright>
+                    <dropdown align="right" class="block md:hidden">
+                        <template #trigger>
+                            <button class="flex text-sm text-gray-500 focus:text-gray-400 active:text-gray-300 border-2 border-transparent rounded-xl focus:outline-none focus:border-transparent transition duration-150 ease-in-out">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                </svg>
+                            </button>
+                        </template>
+
+                        <template #items>
+                            <dropdown-link :href="route('home')" :active="route().current('home')">Home</dropdown-link>
+                        </template>
+                    </dropdown>
+
                     <dropdown align="right">
                         <template #trigger>
                             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300  transition duration-150 ease-in-out">
@@ -22,8 +36,8 @@
                         </template>
 
                         <template #items>
-                            <dropdown-link :href="route('user.show')">Profile</dropdown-link>
-                            <dropdown-link :href="route('api-tokens.index')">API token</dropdown-link>
+                            <dropdown-link :href="route('user.show')" :active="route().current('user.show')">Profile</dropdown-link>
+                            <dropdown-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">API token</dropdown-link>
                             <dropdown-link href="#" @clicked="logout">Sign out</dropdown-link>
                         </template>
                     </dropdown>
