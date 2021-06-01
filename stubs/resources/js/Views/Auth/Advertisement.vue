@@ -1,10 +1,10 @@
 <template>
-    <div class="bg-gradient-to-br from-blue-700 to-blue-500 h-full p-10">
+    <div class="bg-gradient-to-br from-gray-900 to-gray-800 h-full p-10">
         <div>
-            <logo :title="config('app.name')" classes="h-16 w-16 text-blue-500"></logo>
+            <logo :title="config('app.name')" classes="h-20 w-20 text-orange-50"></logo>
         </div>
 
-        <div class="mt-6 max-w-xs">
+        <div class="mt-10 max-w-xs">
             <div>
                 <h6 class="text-white font-bold">Get started quickly</h6>
 

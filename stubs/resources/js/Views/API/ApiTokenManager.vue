@@ -13,7 +13,7 @@
                 <form @submit.prevent="createApiToken">
                     <div class="lg:grid lg:grid-cols-12 gap-6">
                         <div class="md:col-span-8">
-                            <app-input type="text" v-model="createApiTokenForm.name" :error="createApiTokenForm.errors.name" label="Full name" placeholder="Johnathan Doeford"></app-input>
+                            <app-input type="text" v-model="createApiTokenForm.name" :error="createApiTokenForm.errors.name" label="Token name" placeholder="Mobile App"></app-input>
                         </div>
 
                         <div class="mt-6 lg:mt-0 col-span-6" v-if="availablePermissions.length > 0">
@@ -56,7 +56,7 @@
 
                     <template #content>
                         <div class="space-y-4">
-                            <div class="rounded-lg bg-blue-50 px-4 py-5 px-6" v-for="token in tokens" :key="token.id">
+                            <div class="rounded-lg bg-gray-50 px-4 py-5 px-6" v-for="token in tokens" :key="token.id">
                                 <div class="flex items-center justify-between">
                                     <div class="leading-none">
                                         <div>
@@ -71,11 +71,11 @@
                                     </div>
 
                                     <div class="flex items-center">
-                                        <button class="cursor-pointer ml-6 text-sm text-blue-500" @click="manageApiTokenPermissions(token)" v-if="availablePermissions.length > 0">
+                                        <button class="cursor-pointer ml-6 text-sm text-gray-500 underline hover:text-gray-600 hover:underline focus:text-gray-600 focus:underline active:text-gray-700 active:underline transition ease-in-out duration-150" @click="manageApiTokenPermissions(token)" v-if="availablePermissions.length > 0">
                                             Permissions
                                         </button>
 
-                                        <button class="cursor-pointer ml-6 text-sm text-red-500" @click="confirmApiTokenDeletion(token)">
+                                        <button class="cursor-pointer ml-6 text-sm text-red-600 hover:text-red-500 focus:text-red-500 active:text-red-700 transition ease-in-out duration-150" @click="confirmApiTokenDeletion(token)">
                                             Delete
                                         </button>
                                     </div>
