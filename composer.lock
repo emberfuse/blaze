@@ -472,12 +472,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/emberfuse/scorch.git",
-                "reference": "ecfca41653da87981e7586637be18dfaf2aacd8c"
+                "reference": "d303284afe29cb14f824ac1b84cdf66d53f2ad41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/emberfuse/scorch/zipball/ecfca41653da87981e7586637be18dfaf2aacd8c",
-                "reference": "ecfca41653da87981e7586637be18dfaf2aacd8c",
+                "url": "https://api.github.com/repos/emberfuse/scorch/zipball/d303284afe29cb14f824ac1b84cdf66d53f2ad41",
+                "reference": "d303284afe29cb14f824ac1b84cdf66d53f2ad41",
                 "shasum": ""
             },
             "require": {
@@ -535,7 +535,7 @@
                 "issues": "https://github.com/emberfuse/scorch/issues",
                 "source": "https://github.com/emberfuse/scorch"
             },
-            "time": "2021-06-01T16:10:10+00:00"
+            "time": "2021-06-01T16:14:59+00:00"
         },
         {
             "name": "graham-campbell/result-type",
