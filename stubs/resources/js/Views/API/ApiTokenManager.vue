@@ -98,9 +98,9 @@
                     Please copy your new API token. For your security, it won't be shown again.
                 </p>
 
-                <div class="mt-4 bg-gray-100 px-4 py-2 rounded-lg" v-if="$page.props.preflight.flash.token">
+                <div class="mt-4 bg-gray-100 px-4 py-2 rounded-lg" v-if="$page.props.blaze.flash.token">
                     <span class="font-mono font-medium text-sm text-gray-500">
-                        {{ $page.props.preflight.flash.token }}
+                        {{ $page.props.blaze.flash.token }}
                     </span>
                 </div>
             </template>

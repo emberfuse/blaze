@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Cratespace\Preflight\Queries\Query;
+use Emberfuse\Blaze\Queries\Query;
 use Illuminate\Database\Eloquent\Model;
 
 class {{ class }} extends Query

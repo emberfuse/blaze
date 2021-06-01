@@ -1,18 +1,18 @@
 <?php
 
-namespace Cratespace\Preflight;
+namespace Emberfuse\Blaze;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use Cratespace\Preflight\Tests\TestCase;
-use Cratespace\Preflight\Tests\Fixtures\User;
+use Emberfuse\Blaze\Tests\TestCase;
+use Emberfuse\Blaze\Tests\Fixtures\User;
 use Illuminate\Http\Client\ConnectionException;
-use Cratespace\Preflight\Testing\Concerns\AuthenticatesUser;
-use Cratespace\Preflight\Testing\Concerns\InteractsWithNetwork;
-use Cratespace\Preflight\Testing\Concerns\InteractsWithProtectedQualities;
+use Emberfuse\Blaze\Testing\Concerns\AuthenticatesUser;
+use Emberfuse\Blaze\Testing\Concerns\InteractsWithNetwork;
+use Emberfuse\Blaze\Testing\Concerns\InteractsWithProtectedQualities;
 
-class PreflightTestingConcernsTest extends TestCase
+class BlazeTestingConcernsTest extends TestCase
 {
     use AuthenticatesUser;
     use InteractsWithNetwork;
@@ -49,7 +49,7 @@ class PreflightTestingConcernsTest extends TestCase
         $this->signIn($user = User::create([
             'name' => 'Thavarshan Thayananthajothy',
             'username' => 'Thavarshan',
-            'email' => 'thavarshan@cratespace.biz',
+            'email' => 'thavarshan@emberfuse.biz',
             'password' => Hash::make('secret-password'),
         ]));
 

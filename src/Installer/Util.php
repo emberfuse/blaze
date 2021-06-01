@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Installer;
+namespace Emberfuse\Blaze\Installer;
 
 use Illuminate\Support\Str;
 

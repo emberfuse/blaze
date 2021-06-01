@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Testing\Contracts;
+namespace Emberfuse\Blaze\Testing\Contracts;
 
 interface Postable
 {

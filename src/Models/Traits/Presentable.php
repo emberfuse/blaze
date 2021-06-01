@@ -1,15 +1,15 @@
 <?php
 
-namespace Cratespace\Preflight\Models\Traits;
+namespace Emberfuse\Blaze\Models\Traits;
 
-use Cratespace\Preflight\Presenters\Presenter;
+use Emberfuse\Blaze\Presenters\Presenter;
 
 trait Presentable
 {
     /**
      * Get relevant view presenter.
      *
-     * @return \Cratespace\Preflight\Presenters\Presenter
+     * @return \Emberfuse\Blaze\Presenters\Presenter
      */
     public function present(): Presenter
     {

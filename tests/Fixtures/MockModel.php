@@ -1,10 +1,10 @@
 <?php
 
-namespace Cratespace\Preflight\Tests\Fixtures;
+namespace Emberfuse\Blaze\Tests\Fixtures;
 
 use Illuminate\Database\Eloquent\Model;
-use Cratespace\Preflight\Models\Traits\Directable;
-use Cratespace\Preflight\Models\Traits\Presentable;
+use Emberfuse\Blaze\Models\Traits\Directable;
+use Emberfuse\Blaze\Models\Traits\Presentable;
 
 class MockModel extends Model
 {

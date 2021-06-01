@@ -1,16 +1,16 @@
 <?php
 
-namespace Cratespace\Preflight\Http\Controllers;
+namespace Emberfuse\Blaze\Http\Controllers;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Cratespace\Preflight\API\Permission;
+use Emberfuse\Blaze\API\Permission;
 use Inertia\Response as InertiaResponse;
-use Cratespace\Preflight\Contracts\Actions\UpdatesApiTokens;
-use Cratespace\Preflight\Contracts\Actions\CreatesNewApiTokens;
-use Cratespace\Preflight\Http\Requests\CreateApiTokenRequest;
-use Cratespace\Preflight\Http\Requests\DeleteApiTokenRequest;
-use Cratespace\Preflight\Http\Requests\UpdateApiTokenRequest;
+use Emberfuse\Blaze\Contracts\Actions\UpdatesApiTokens;
+use Emberfuse\Blaze\Contracts\Actions\CreatesNewApiTokens;
+use Emberfuse\Blaze\Http\Requests\CreateApiTokenRequest;
+use Emberfuse\Blaze\Http\Requests\DeleteApiTokenRequest;
+use Emberfuse\Blaze\Http\Requests\UpdateApiTokenRequest;
 
 class ApiTokenController extends Controller
 {
@@ -37,8 +37,8 @@ class ApiTokenController extends Controller
     /**
      * Create a new API token.
      *
-     * @param \Cratespace\Preflight\Http\Requests\CreateApiTokenRequest $request
-     * @param \Cratespace\Preflight\Contracts\API\CreatesNewApiTokens   $creator
+     * @param \Emberfuse\Blaze\Http\Requests\CreateApiTokenRequest $request
+     * @param \Emberfuse\Blaze\Contracts\API\CreatesNewApiTokens   $creator
      *
      * @return mixed
      */
@@ -56,8 +56,8 @@ class ApiTokenController extends Controller
     /**
      * Update the given API token's permissions.
      *
-     * @param \Cratespace\Preflight\Http\Requests\UpdateApiTokenRequest $request
-     * @param \Cratespace\Preflight\Contracts\API\UpdatesApiTokens      $updater
+     * @param \Emberfuse\Blaze\Http\Requests\UpdateApiTokenRequest $request
+     * @param \Emberfuse\Blaze\Contracts\API\UpdatesApiTokens      $updater
      * @param string                                                    $tokenId
      *
      * @return mixed
@@ -77,7 +77,7 @@ class ApiTokenController extends Controller
     /**
      * Delete the given API token.
      *
-     * @param \Cratespace\Preflight\Http\Requests\DeleteApiTokenRequest $request
+     * @param \Emberfuse\Blaze\Http\Requests\DeleteApiTokenRequest $request
      * @param string                                                    $tokenId
      *
      * @return mixed

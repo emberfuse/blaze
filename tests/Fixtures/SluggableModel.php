@@ -1,9 +1,9 @@
 <?php
 
-namespace Cratespace\Preflight\Tests\Fixtures;
+namespace Emberfuse\Blaze\Tests\Fixtures;
 
 use Illuminate\Database\Eloquent\Model;
-use Cratespace\Preflight\Models\Traits\Sluggable;
+use Emberfuse\Blaze\Models\Traits\Sluggable;
 
 class SluggableModel extends Model
 {

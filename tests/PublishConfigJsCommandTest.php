@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight;
+namespace Emberfuse\Blaze;
 
-use Cratespace\Preflight\Tests\TestCase;
+use Emberfuse\Blaze\Tests\TestCase;
 
 class PublishConfigJsCommandTest extends TestCase
 {
@@ -24,7 +24,7 @@ class PublishConfigJsCommandTest extends TestCase
 
     public function testPublishConfigAsJsonFile()
     {
-        $this->artisan('preflight:configjs')
+        $this->artisan('blaze:configjs')
             ->expectsOutput('Config items published to json file [items.json].')
             ->assertExitCode(0);
 

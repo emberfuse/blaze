@@ -1,16 +1,16 @@
 {
-    "name": "cratespace/preflight",
+    "name": "emberfuse/blaze",
     "type": "library",
-    "description": "Tailwind and Inertia scaffolding for the Cratespace framework.",
+    "description": "Tailwind and Inertia scaffolding for Laravel.",
     "keywords": [
-        "cratespace",
+        "emberfuse",
         "tailwind",
         "auth"
     ],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/cratespace/preflight/issues",
-        "source": "https://github.com/cratespace/preflight"
+        "issues": "https://github.com/emberfuse/blaze/issues",
+        "source": "https://github.com/emberfuse/blaze"
     },
     "authors": [
         {
@@ -21,8 +21,9 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
-        "cratespace/contracts": "^1.1.1",
-        "cratespace/sentinel": "^3.1.6",
+        "ext-gmp": "*",
+        "ext-bcmath": "*",
+        "emberfuse/scorch": "^1.0",
         "hashids/hashids": "^4.1",
         "illuminate/support": "^8.0"
     },
@@ -35,7 +36,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cratespace\\Preflight\\": "src/"
+            "Emberfuse\\Blaze\\": "src/"
         },
         "files": [
             "src/Testing/Support/helpers.php"
@@ -43,17 +44,17 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Cratespace\\Preflight\\Tests\\": "tests/",
+            "Emberfuse\\Blaze\\Tests\\": "tests/",
             "App\\": "stubs/app/"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "4.x-dev"
+            "dev-main": "1.x-dev"
         },
         "laravel": {
             "providers": [
-                "Cratespace\\Preflight\\Providers\\PreflightServiceProvider"
+                "Emberfuse\\Blaze\\Providers\\BlazeServiceProvider"
             ]
         }
     },

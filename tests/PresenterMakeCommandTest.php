@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Emberfuse\Blaze\Tests;
 
 class PresenterMakeCommandTest extends TestCase
 {

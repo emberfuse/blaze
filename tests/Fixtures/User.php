@@ -1,10 +1,10 @@
 <?php
 
-namespace Cratespace\Preflight\Tests\Fixtures;
+namespace Emberfuse\Blaze\Tests\Fixtures;
 
-use Cratespace\Preflight\Models\Concerns\ManagesRoles;
-use Cratespace\Sentinel\Models\Traits\HasApiTokens;
-use Cratespace\Sentinel\Models\Traits\HasProfilePhoto;
+use Emberfuse\Blaze\Models\Concerns\ManagesRoles;
+use Emberfuse\Scorch\Models\Traits\HasApiTokens;
+use Emberfuse\Scorch\Models\Traits\HasProfilePhoto;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable

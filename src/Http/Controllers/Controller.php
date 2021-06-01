@@ -1,11 +1,11 @@
 <?php
 
-namespace Cratespace\Preflight\Http\Controllers;
+namespace Emberfuse\Blaze\Http\Controllers;
 
-use Cratespace\Preflight\Http\Controllers\Concerns\ReturnsResponse;
-use Cratespace\Sentinel\Http\Controllers\Controller as SentinelController;
+use Emberfuse\Blaze\Http\Controllers\Concerns\ReturnsResponse;
+use Emberfuse\Scorch\Http\Controllers\Controller as ScorchController;
 
-class Controller extends SentinelController
+class Controller extends ScorchController
 {
     use ReturnsResponse;
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Cratespace\Preflight\Console;
+namespace Emberfuse\Blaze\Console;
 
 use Throwable;
 use Illuminate\Console\Command;
-use Cratespace\Preflight\Installer\Util;
-use Cratespace\Preflight\Installer\Stubs;
-use Cratespace\Preflight\Installer\NpmPackages;
-use Cratespace\Preflight\Installer\ComposerPackages;
-use Cratespace\Preflight\Console\Traits\InteractsWithConsole;
+use Emberfuse\Blaze\Installer\Util;
+use Emberfuse\Blaze\Installer\Stubs;
+use Emberfuse\Blaze\Installer\NpmPackages;
+use Emberfuse\Blaze\Installer\ComposerPackages;
+use Emberfuse\Blaze\Console\Traits\InteractsWithConsole;
 
 class InstallCommand extends Command
 {
@@ -19,14 +19,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'preflight:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
+    protected $signature = 'blaze:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install the Preflight components and resources';
+    protected $description = 'Install the Blaze components and resources';
 
     /**
      * Execute the console command.
@@ -38,8 +38,8 @@ class InstallCommand extends Command
         // Publish...
         $this->publishVendor();
 
-        // Install Sentinel...
-        $this->installSentinel();
+        // Install Scorch...
+        $this->installScorch();
 
         // Configure Session...
         $this->configureSession();
@@ -51,36 +51,36 @@ class InstallCommand extends Command
     }
 
     /**
-     * Publish preflight replacements.
+     * Publish blaze replacements.
      *
      * @return void
      */
     protected function publishVendor(): void
     {
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-config', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-support', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-resources', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-routes', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-tests', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-shell', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-ci', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-seeders', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-factories', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'preflight-migrations', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-config', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-support', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-resources', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-routes', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-tests', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-shell', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-ci', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-seeders', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-factories', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'blaze-migrations', '--force' => true]);
     }
 
     /**
-     * Install and publish Sentinel resources.
+     * Install and publish Scorch resources.
      *
      * @return void
      */
-    protected function installSentinel(): void
+    protected function installScorch(): void
     {
-        $this->callSilent('sentinel:install');
+        $this->callSilent('scorch:install');
     }
 
     /**
-     * Configure the session driver for Preflight.
+     * Configure the session driver for Blaze.
      *
      * @return void
      */
@@ -130,7 +130,7 @@ class InstallCommand extends Command
         Util::installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
         Util::replaceInFile(
             '// \Illuminate\Session\Middleware\AuthenticateSession::class',
-            '\Cratespace\Preflight\Http\Middleware\AuthenticateSession::class',
+            '\Emberfuse\Blaze\Http\Middleware\AuthenticateSession::class',
             app_path('Http/Kernel.php')
         );
 
@@ -146,7 +146,7 @@ class InstallCommand extends Command
 
         // Completion Message...
         $this->line('');
-        $this->info('Preflight scaffolding installed successfully.');
+        $this->info('Blaze scaffolding installed successfully.');
         $this->comment('Please make sure the application key is set, if not generate a new one using "php artisan key:generate".');
         $this->comment('Please execute "npm install && npm run dev" to build your assets.');
     }

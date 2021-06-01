@@ -1,10 +1,10 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Emberfuse\Blaze\Tests;
 
 use InvalidArgumentException;
-use Cratespace\Preflight\Tests\Fixtures\MockModel;
-use Cratespace\Preflight\Tests\Fixtures\MockPresenter;
+use Emberfuse\Blaze\Tests\Fixtures\MockModel;
+use Emberfuse\Blaze\Tests\Fixtures\MockPresenter;
 
 class PresenterTest extends TestCase
 {
@@ -28,7 +28,7 @@ class PresenterTest extends TestCase
     public function testThrowsExceptionIfPresenterMethodUndefined()
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Cratespace\Preflight\Tests\Fixtures\MockPresenter does not respond to the property or method "barbaz"');
+        $this->expectExceptionMessage('Emberfuse\Blaze\Tests\Fixtures\MockPresenter does not respond to the property or method "barbaz"');
 
         $this->presenter->barbaz;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Support;
+namespace Emberfuse\Blaze\Support;
 
 use Hashids\Hashids;
 use Hashids\HashidsInterface;

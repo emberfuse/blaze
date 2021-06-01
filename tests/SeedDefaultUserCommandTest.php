@@ -1,9 +1,9 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Emberfuse\Blaze\Tests;
 
 use Illuminate\Support\Facades\Hash;
-use Cratespace\Preflight\Tests\Fixtures\User;
+use Emberfuse\Blaze\Tests\Fixtures\User;
 
 class SeedDefaultUserCommandTest extends TestCase
 {
@@ -19,7 +19,7 @@ class SeedDefaultUserCommandTest extends TestCase
             'password' => Hash::make('cthuluEmployee'),
         ]);
 
-        $this->artisan('preflight:user')
+        $this->artisan('blaze:user')
             ->expectsConfirmation('Do you want to create a default user from preset data?', 'yes')
             ->assertExitCode(0);
 
@@ -32,7 +32,7 @@ class SeedDefaultUserCommandTest extends TestCase
 
         $this->migrate();
 
-        $this->artisan('preflight:user')
+        $this->artisan('blaze:user')
             ->expectsConfirmation('Do you want to create a default user from preset data?', 'no')
             ->expectsQuestion('Full name', 'James Silverman')
             ->expectsQuestion('Username', 'JamesSilverman')

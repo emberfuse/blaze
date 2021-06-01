@@ -1,9 +1,9 @@
 <?php
 
-namespace Cratespace\Preflight\Models\Traits;
+namespace Emberfuse\Blaze\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Cratespace\Preflight\Support\HashId;
+use Emberfuse\Blaze\Support\HashId;
 
 trait Hashable
 {

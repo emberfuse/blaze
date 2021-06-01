@@ -1,10 +1,10 @@
 <?php
 
-namespace Cratespace\Preflight\Presenters;
+namespace Emberfuse\Blaze\Presenters;
 
 use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Model;
-use Cratespace\Preflight\Support\AbstractEloquent;
+use Emberfuse\Blaze\Support\AbstractEloquent;
 
 abstract class Presenter
 {

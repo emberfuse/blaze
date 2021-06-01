@@ -1,10 +1,10 @@
 <?php
 
-namespace Cratespace\Preflight\Http\Responses;
+namespace Emberfuse\Blaze\Http\Responses;
 
 use Closure;
 use Illuminate\Contracts\Support\Responsable;
-use Cratespace\Sentinel\Http\Responses\Response;
+use Emberfuse\Scorch\Http\Responses\Response;
 
 class SimpleResponse extends Response implements Responsable
 {

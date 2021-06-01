@@ -1,4 +1,4 @@
-name: Preflight Checks
+name: Blaze Checks
 
 on:
   push:

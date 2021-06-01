@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight\Contracts\Actions;
+namespace Emberfuse\Blaze\Contracts\Actions;
 
-use Cratespace\Sentinel\Contracts\Actions\CreatesNewResources;
+use Emberfuse\Scorch\Contracts\Actions\CreatesNewResources;
 
 interface CreatesNewApiTokens extends CreatesNewResources
 {

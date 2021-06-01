@@ -1,9 +1,9 @@
 <?php
 
-namespace Cratespace\Preflight\Http\Controllers\Concerns;
+namespace Emberfuse\Blaze\Http\Controllers\Concerns;
 
-use Cratespace\Preflight\Http\Responses\SimpleResponse;
-use Cratespace\Sentinel\Support\Concerns\InteractsWithContainer;
+use Emberfuse\Blaze\Http\Responses\SimpleResponse;
+use Emberfuse\Scorch\Support\Concerns\InteractsWithContainer;
 
 trait ReturnsResponse
 {

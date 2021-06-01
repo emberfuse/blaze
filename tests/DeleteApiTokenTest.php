@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Tests\TestCase;
-use Cratespace\Preflight\Tests\Fixtures\User;
+use Emberfuse\Blaze\API\Permission;
+use Emberfuse\Blaze\Tests\TestCase;
+use Emberfuse\Blaze\Tests\Fixtures\User;
 
 class DeleteApiTokenTest extends TestCase
 {
@@ -29,7 +29,7 @@ class DeleteApiTokenTest extends TestCase
         $this->actingAs($user = User::forceCreate([
             'name' => 'Thavarshan Thayananthajothy',
             'username' => 'Thavarshan',
-            'email' => 'thavarshan@cratespace.biz',
+            'email' => 'thavarshan@emberfuse.biz',
             'password' => Hash::make('secret-password'),
         ]));
 

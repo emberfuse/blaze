@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight\Models\Concerns;
+namespace Emberfuse\Blaze\Models\Concerns;
 
-use Cratespace\Preflight\Models\Role;
+use Emberfuse\Blaze\Models\Role;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait ManagesRoles

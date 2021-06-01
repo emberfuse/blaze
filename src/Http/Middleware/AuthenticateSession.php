@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Http\Middleware;
+namespace Emberfuse\Blaze\Http\Middleware;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Session\Middleware\AuthenticateSession as BaseAuthenticateSession;

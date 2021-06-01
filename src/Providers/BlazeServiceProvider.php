@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Providers;
+namespace Emberfuse\Blaze\Providers;
 
 use Inertia\Inertia;
 use Inertia\Response;
@@ -8,21 +8,21 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
-use Cratespace\Sentinel\Sentinel\View;
+use Emberfuse\Scorch\Scorch\View;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\HandleInertiaRequests;
-use Cratespace\Preflight\Console\InstallCommand;
-use Cratespace\Preflight\Console\QueryMakeCommand;
-use Cratespace\Preflight\Console\ActionMakeCommand;
-use Cratespace\Preflight\Console\FilterMakeCommand;
-use Cratespace\Preflight\Console\ProjectSetupCommand;
-use Cratespace\Preflight\Console\PresenterMakeCommand;
-use Cratespace\Preflight\Console\PublishConfigJsCommand;
-use Cratespace\Preflight\Console\SeedDefaultUserCommand;
-use Cratespace\Preflight\Http\Middleware\ShareInertiaData;
-use Cratespace\Sentinel\Sentinel\Config as SentinelConfig;
+use Emberfuse\Blaze\Console\InstallCommand;
+use Emberfuse\Blaze\Console\QueryMakeCommand;
+use Emberfuse\Blaze\Console\ActionMakeCommand;
+use Emberfuse\Blaze\Console\FilterMakeCommand;
+use Emberfuse\Blaze\Console\ProjectSetupCommand;
+use Emberfuse\Blaze\Console\PresenterMakeCommand;
+use Emberfuse\Blaze\Console\PublishConfigJsCommand;
+use Emberfuse\Blaze\Console\SeedDefaultUserCommand;
+use Emberfuse\Blaze\Http\Middleware\ShareInertiaData;
+use Emberfuse\Scorch\Scorch\Config as ScorchConfig;
 
-class PreflightServiceProvider extends ServiceProvider
+class BlazeServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -70,44 +70,44 @@ class PreflightServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../../stubs/config/defaults.php' => config_path('defaults.php'),
-        ], 'preflight-config');
+        ], 'blaze-config');
 
         $this->publishes([
             __DIR__ . '/../../stubs/app/Actions/API/CreateNewApiToken.php' => app_path('Actions/API/CreateNewApiToken.php'),
             __DIR__ . '/../../stubs/app/Actions/API/UpdateApiToken.php' => app_path('Actions/API/UpdateApiToken.php'),
-        ], 'preflight-support');
+        ], 'blaze-support');
 
         $this->publishes([
             __DIR__ . '/../../stubs/resources' => base_path('resources'),
-        ], 'preflight-resources');
+        ], 'blaze-resources');
 
         $this->publishes([
             __DIR__ . '/../../stubs/routes/web.php' => base_path('routes/web.php'),
-        ], 'preflight-routes');
+        ], 'blaze-routes');
 
         $this->publishes([
             __DIR__ . '/../../stubs/tests' => base_path('tests'),
-        ], 'preflight-tests');
+        ], 'blaze-tests');
 
         $this->publishes([
             __DIR__ . '/../../stubs/bin' => base_path('bin'),
-        ], 'preflight-shell');
+        ], 'blaze-shell');
 
         $this->publishes([
             __DIR__ . '/../../stubs/.github' => base_path('.github'),
-        ], 'preflight-ci');
+        ], 'blaze-ci');
 
         $this->publishes([
             __DIR__ . '/../../database/migrations' => database_path('migrations'),
-        ], 'preflight-migrations');
+        ], 'blaze-migrations');
 
         $this->publishes([
             __DIR__ . '/../../database/factories' => database_path('factories'),
-        ], 'preflight-factories');
+        ], 'blaze-factories');
 
         $this->publishes([
             __DIR__ . '/../../database/seeders' => database_path('seeders'),
-        ], 'preflight-seeders');
+        ], 'blaze-seeders');
     }
 
     /**
@@ -118,9 +118,9 @@ class PreflightServiceProvider extends ServiceProvider
     protected function configureRoutes(): void
     {
         Route::group([
-            'namespace' => 'Cratespace\Preflight\Http\Controllers',
-            'domain' => SentinelConfig::domain(),
-            'prefix' => SentinelConfig::prefix(),
+            'namespace' => 'Emberfuse\Blaze\Http\Controllers',
+            'domain' => ScorchConfig::domain(),
+            'prefix' => ScorchConfig::prefix(),
         ], function (): void {
             $this->loadRoutesFrom(__DIR__ . '/../../routes/routes.php');
         });
@@ -165,7 +165,7 @@ class PreflightServiceProvider extends ServiceProvider
             $kernel->appendToMiddlewarePriority(HandleInertiaRequests::class);
         }
 
-        $this->configureSentinelViews();
+        $this->configureScorchViews();
     }
 
     /**
@@ -173,7 +173,7 @@ class PreflightServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function configureSentinelViews(): void
+    protected function configureScorchViews(): void
     {
         View::login(function (Request $request): Response {
             return Inertia::render('Auth/Login', [

@@ -1,9 +1,9 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Emberfuse\Blaze\Tests;
 
 use Error;
-use Cratespace\Preflight\Tests\Fixtures\MockModel;
+use Emberfuse\Blaze\Tests\Fixtures\MockModel;
 
 class PresentableTraitTest extends TestCase
 {

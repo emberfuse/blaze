@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Support\Traits;
+namespace Emberfuse\Blaze\Support\Traits;
 
 use Illuminate\Log\LogManager;
 

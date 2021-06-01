@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Console;
+namespace Emberfuse\Blaze\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Question\Question;
@@ -12,7 +12,7 @@ class ProjectSetupCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'preflight:project';
+    protected $signature = 'blaze:project';
 
     /**
      * The console command description.
@@ -38,7 +38,7 @@ class ProjectSetupCommand extends Command
      */
     public function handle()
     {
-        $this->info('Welcome to the Cratespace automated installation process!');
+        $this->info('Welcome to the Emberfuse automated installation process!');
 
         $this->createEnvFile();
 
@@ -139,7 +139,7 @@ class ProjectSetupCommand extends Command
             config(["database.connections.mysql.{$configKey}" => $value]);
         }
 
-        $seed ? $this->call('preflight:user') : $this->call('migrate:fresh');
+        $seed ? $this->call('blaze:user') : $this->call('migrate:fresh');
     }
 
     /**

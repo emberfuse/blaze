@@ -1,9 +1,9 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Emberfuse\Blaze\Tests;
 
 use Illuminate\Http\Request;
-use Cratespace\Preflight\Tests\Fixtures\MockFilter;
+use Emberfuse\Blaze\Tests\Fixtures\MockFilter;
 
 class FilterTest extends TestCase
 {

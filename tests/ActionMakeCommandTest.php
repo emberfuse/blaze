@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight;
+namespace Emberfuse\Blaze;
 
-use Cratespace\Preflight\Tests\TestCase;
+use Emberfuse\Blaze\Tests\TestCase;
 
 class ActionMakeCommandTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Cratespace\Preflight\Models;
+namespace Emberfuse\Blaze\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Cratespace\Contracts\Auth\Permission as PermissionContract;
+use Emberfuse\Blaze\Contracts\Auth\Permission as PermissionContract;
 
 class Permission extends Model implements PermissionContract
 {
@@ -19,7 +19,7 @@ class Permission extends Model implements PermissionContract
     protected $guarded = [];
 
     /**
-     * Determine if any permissions have been registered with Cratespace.
+     * Determine if any permissions have been registered with Emberfuse.
      *
      * @return bool
      */

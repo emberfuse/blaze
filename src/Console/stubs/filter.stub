@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Cratespace\Preflight\Filters\Filter;
+use Emberfuse\Blaze\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 
 class {{ class }} extends Filter

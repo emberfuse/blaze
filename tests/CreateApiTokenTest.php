@@ -1,12 +1,12 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Emberfuse\Blaze\Tests;
 
 use Illuminate\Support\Facades\Hash;
 use App\Actions\API\CreateNewApiToken;
-use Cratespace\Preflight\API\Permission;
-use Cratespace\Preflight\Tests\Fixtures\User;
-use Cratespace\Preflight\Contracts\Actions\CreatesNewApiTokens;
+use Emberfuse\Blaze\API\Permission;
+use Emberfuse\Blaze\Tests\Fixtures\User;
+use Emberfuse\Blaze\Contracts\Actions\CreatesNewApiTokens;
 
 class CreateApiTokenTest extends TestCase
 {
@@ -33,7 +33,7 @@ class CreateApiTokenTest extends TestCase
         $this->actingAs($user = User::forceCreate([
             'name' => 'Thavarshan Thayananthajothy',
             'username' => 'Thavarshan',
-            'email' => 'thavarshan@cratespace.biz',
+            'email' => 'thavarshan@emberfuse.biz',
             'password' => Hash::make('secret-password'),
         ]));
 

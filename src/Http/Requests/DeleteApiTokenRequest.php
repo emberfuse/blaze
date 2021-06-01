@@ -1,9 +1,9 @@
 <?php
 
-namespace Cratespace\Preflight\Http\Requests;
+namespace Emberfuse\Blaze\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Cratespace\Sentinel\Http\Requests\Concerns\AuthorizesRequests;
+use Emberfuse\Scorch\Http\Requests\Concerns\AuthorizesRequests;
 
 class DeleteApiTokenRequest extends FormRequest
 {

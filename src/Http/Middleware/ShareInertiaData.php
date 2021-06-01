@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Http\Middleware;
+namespace Emberfuse\Blaze\Http\Middleware;
 
 use Inertia\Inertia;
 use Inertia\Middleware;
@@ -20,7 +20,7 @@ class ShareInertiaData extends Middleware
     public function handle($request, $next)
     {
         Inertia::share(array_filter([
-            'preflight' => function () use ($request) {
+            'blaze' => function () use ($request) {
                 return ['flash' => $request->session()->get('flash', [])];
             },
 

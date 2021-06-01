@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Console\Traits;
+namespace Emberfuse\Blaze\Console\Traits;
 
 use Symfony\Component\Process\Process;
 

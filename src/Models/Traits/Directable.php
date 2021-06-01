@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Models\Traits;
+namespace Emberfuse\Blaze\Models\Traits;
 
 use Illuminate\Support\Str;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Installer;
+namespace Emberfuse\Blaze\Installer;
 
 use Illuminate\Filesystem\Filesystem;
 
@@ -107,12 +107,12 @@ class Stubs
     public static function copyServiceProviders(): void
     {
         copy(
-            __DIR__ . '/../../stubs/app/Providers/PreflightServiceProvider.php',
-            app_path('Providers/PreflightServiceProvider.php')
+            __DIR__ . '/../../stubs/app/Providers/BlazeServiceProvider.php',
+            app_path('Providers/BlazeServiceProvider.php')
         );
 
-        Util::installServiceProviderAfter('RouteServiceProvider', 'SentinelServiceProvider');
-        Util::installServiceProviderAfter('SentinelServiceProvider', 'PreflightServiceProvider');
+        Util::installServiceProviderAfter('RouteServiceProvider', 'ScorchServiceProvider');
+        Util::installServiceProviderAfter('ScorchServiceProvider', 'BlazeServiceProvider');
     }
 
     /**

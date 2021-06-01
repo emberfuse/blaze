@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight\API;
+namespace Emberfuse\Blaze\API;
 
-use Cratespace\Contracts\Auth\Permission as PermissionContract;
+use Emberfuse\Blaze\Contracts\Auth\Permission as PermissionContract;
 
 class Permission implements PermissionContract
 {
@@ -21,7 +21,7 @@ class Permission implements PermissionContract
     public static $defaultPermissions = [];
 
     /**
-     * Determine if any permissions have been registered with Preflight.
+     * Determine if any permissions have been registered with Blaze.
      *
      * @return bool
      */
@@ -35,7 +35,7 @@ class Permission implements PermissionContract
      *
      * @param array $permissions
      *
-     * @return \Cratespace\Preflight\API\Permission
+     * @return \Emberfuse\Blaze\API\Permission
      */
     public static function permissions(array $permissions): Permission
     {
@@ -49,7 +49,7 @@ class Permission implements PermissionContract
      *
      * @param array $permissions
      *
-     * @return \Cratespace\Preflight\API\Permission
+     * @return \Emberfuse\Blaze\API\Permission
      */
     public static function defaultApiTokenPermissions(array $permissions): Permission
     {

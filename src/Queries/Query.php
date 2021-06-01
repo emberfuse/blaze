@@ -1,10 +1,10 @@
 <?php
 
-namespace Cratespace\Preflight\Queries;
+namespace Emberfuse\Blaze\Queries;
 
 use RuntimeException;
 use Illuminate\Database\Eloquent\Builder;
-use Cratespace\Sentinel\Support\Concerns\InteractsWithContainer;
+use Emberfuse\Scorch\Support\Concerns\InteractsWithContainer;
 
 abstract class Query
 {

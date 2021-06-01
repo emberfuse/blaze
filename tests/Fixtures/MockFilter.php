@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight\Tests\Fixtures;
+namespace Emberfuse\Blaze\Tests\Fixtures;
 
-use Cratespace\Preflight\Filters\Filter;
+use Emberfuse\Blaze\Filters\Filter;
 
 class MockFilter extends Filter
 {

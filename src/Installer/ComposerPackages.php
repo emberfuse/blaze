@@ -1,20 +1,19 @@
 <?php
 
-namespace Cratespace\Preflight\Installer;
+namespace Emberfuse\Blaze\Installer;
 
 use Symfony\Component\Process\Process;
 
 class ComposerPackages extends Packages
 {
     /**
-     * List of preflight specific composer packages.
+     * List of blaze specific composer packages.
      *
      * @var array
      */
     protected $packages = [
         'inertiajs/inertia-laravel:^0.4.2',
-        'cratespace/contracts:^1.1',
-        'cratespace/sentinel:^3.1',
+        'emberfuse/scorch:^3.1',
         'tightenco/ziggy:^1.2',
     ];
 

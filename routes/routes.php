@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Cratespace\Sentinel\Sentinel\Config as SentinelConfig;
-use Cratespace\Preflight\Http\Controllers\ApiTokenController;
+use Emberfuse\Scorch\Scorch\Config as ScorchConfig;
+use Emberfuse\Blaze\Http\Controllers\ApiTokenController;
 
-Route::group(['middleware' => SentinelConfig::middleware(['web'])], function (): void {
+Route::group(['middleware' => ScorchConfig::middleware(['web'])], function (): void {
     Route::group([
         'prefix' => 'user',
         'middleware' => ['auth'],

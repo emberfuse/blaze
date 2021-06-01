@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Installer;
+namespace Emberfuse\Blaze\Installer;
 
 use Closure;
 use Illuminate\Filesystem\Filesystem;
@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 class NpmPackages extends Packages
 {
     /**
-     * Preflight specific node modules.
+     * Blaze specific node modules.
      *
      * @var array
      */

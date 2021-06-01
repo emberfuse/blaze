@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Filters;
+namespace Emberfuse\Blaze\Filters;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;

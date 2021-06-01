@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight\Models\Traits;
+namespace Emberfuse\Blaze\Models\Traits;
 
-use Cratespace\Preflight\Filters\Filter;
+use Emberfuse\Blaze\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 
 trait Filterable
@@ -11,7 +11,7 @@ trait Filterable
      * Apply all relevant space filters.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cratespace\Preflight\Filters\Filter  $filters
+     * @param \Emberfuse\Blaze\Filters\Filter  $filters
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

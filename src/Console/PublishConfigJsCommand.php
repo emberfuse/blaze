@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Console;
+namespace Emberfuse\Blaze\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -12,7 +12,7 @@ class PublishConfigJsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'preflight:configjs';
+    protected $signature = 'blaze:configjs';
 
     /**
      * The console command description.

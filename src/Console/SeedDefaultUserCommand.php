@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Console;
+namespace Emberfuse\Blaze\Console;
 
 use Throwable;
 use App\Models\User;
@@ -14,7 +14,7 @@ class SeedDefaultUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'preflight:user';
+    protected $signature = 'blaze:user';
 
     /**
      * The console command description.

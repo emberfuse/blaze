@@ -1,12 +1,12 @@
 <?php
 
-namespace Cratespace\Preflight\Tests;
+namespace Emberfuse\Blaze\Tests;
 
 use Mockery as m;
-use Cratespace\Preflight\Tests\Fixtures\User;
+use Emberfuse\Blaze\Tests\Fixtures\User;
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Cratespace\Sentinel\Providers\SentinelServiceProvider;
-use Cratespace\Preflight\Providers\PreflightServiceProvider;
+use Emberfuse\Scorch\Providers\ScorchServiceProvider;
+use Emberfuse\Blaze\Providers\BlazeServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -23,8 +23,8 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
-            PreflightServiceProvider::class,
-            SentinelServiceProvider::class,
+            BlazeServiceProvider::class,
+            ScorchServiceProvider::class,
         ];
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Testing\Concerns;
+namespace Emberfuse\Blaze\Testing\Concerns;
 
 trait InteractsWithNetwork
 {

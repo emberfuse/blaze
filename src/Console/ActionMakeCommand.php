@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Console;
+namespace Emberfuse\Blaze\Console;
 
 use Illuminate\Console\GeneratorCommand;
 

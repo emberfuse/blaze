@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Models\Values;
+namespace Emberfuse\Blaze\Models\Values;
 
 use Illuminate\Support\Arr;
 use InvalidArgumentException;

@@ -1,12 +1,12 @@
 <?php
 
-namespace Cratespace\Preflight;
+namespace Emberfuse\Blaze;
 
 use Illuminate\Support\Facades\Hash;
-use Cratespace\Preflight\Models\Role;
-use Cratespace\Preflight\Tests\TestCase;
-use Cratespace\Preflight\Models\Permission;
-use Cratespace\Preflight\Tests\Fixtures\User;
+use Emberfuse\Blaze\Models\Role;
+use Emberfuse\Blaze\Tests\TestCase;
+use Emberfuse\Blaze\Models\Permission;
+use Emberfuse\Blaze\Tests\Fixtures\User;
 
 class UserPermissionTest extends TestCase
 {

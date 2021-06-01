@@ -1,6 +1,6 @@
 <?php
 
-namespace Cratespace\Preflight\Models;
+namespace Emberfuse\Blaze\Models;
 
 use Throwable;
 use App\Models\User;
@@ -22,7 +22,7 @@ class Role extends Model
     /**
      * Allow role to have given permission.
      *
-     * @param \Cratespace\Preflight\Models\Permission|string $permission
+     * @param \Emberfuse\Blaze\Models\Permission|string $permission
      *
      * @return void
      */
@@ -38,7 +38,7 @@ class Role extends Model
     /**
      * Determine if the role has the given permission.
      *
-     * @param \Cratespace\Preflight\Models\Permission|string $permission
+     * @param \Emberfuse\Blaze\Models\Permission|string $permission
      *
      * @return bool
      */

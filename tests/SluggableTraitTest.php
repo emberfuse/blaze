@@ -1,11 +1,11 @@
 <?php
 
-namespace Cratespace\Preflight;
+namespace Emberfuse\Blaze;
 
 use Illuminate\Support\Facades\Schema;
-use Cratespace\Preflight\Tests\TestCase;
+use Emberfuse\Blaze\Tests\TestCase;
 use Illuminate\Database\Schema\Blueprint;
-use Cratespace\Preflight\Tests\Fixtures\SluggableModel;
+use Emberfuse\Blaze\Tests\Fixtures\SluggableModel;
 
 class SluggableTraitTest extends TestCase
 {

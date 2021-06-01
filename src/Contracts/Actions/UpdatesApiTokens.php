@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight\Contracts\Actions;
+namespace Emberfuse\Blaze\Contracts\Actions;
 
-use Cratespace\Sentinel\Contracts\Actions\UpdateUserInformation;
+use Emberfuse\Scorch\Contracts\Actions\UpdateUserInformation;
 
 interface UpdatesApiTokens extends UpdateUserInformation
 {

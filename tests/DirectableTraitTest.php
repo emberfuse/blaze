@@ -1,10 +1,10 @@
 <?php
 
-namespace Cratespace\Preflight;
+namespace Emberfuse\Blaze;
 
 use Illuminate\Support\Facades\Route;
-use Cratespace\Preflight\Tests\TestCase;
-use Cratespace\Preflight\Tests\Fixtures\MockModel;
+use Emberfuse\Blaze\Tests\TestCase;
+use Emberfuse\Blaze\Tests\Fixtures\MockModel;
 
 class DirectableTraitTest extends TestCase
 {

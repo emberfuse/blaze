@@ -1,8 +1,8 @@
 <?php
 
-namespace Cratespace\Preflight\Tests\Fixtures;
+namespace Emberfuse\Blaze\Tests\Fixtures;
 
-use Cratespace\Preflight\Presenters\Presenter;
+use Emberfuse\Blaze\Presenters\Presenter;
 
 class MockPresenter extends Presenter
 {
