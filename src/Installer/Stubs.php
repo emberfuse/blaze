@@ -92,6 +92,7 @@ class Stubs
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Config', resource_path('js/Config'));
         (new Filesystem())->copyDirectory(__DIR__ . '/../../stubs/resources/js/Plugins', resource_path('js/Plugins'));
         (new Filesystem())->moveDirectory(__DIR__ . '/../../stubs/tests/Feature', base_path('tests/Feature'), true);
+        (new Filesystem())->moveDirectory(__DIR__ . '/../../stubs/app/Http/Controllers', app_path('Http/Controllers'), true);
 
         copy(__DIR__ . '/../../stubs/resources/markdown/terms.md', resource_path('markdown/terms.md'));
         copy(__DIR__ . '/../../stubs/resources/markdown/policy.md', resource_path('markdown/policy.md'));
