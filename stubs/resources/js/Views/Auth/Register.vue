@@ -7,8 +7,8 @@
         <template #right>
             <div>
                 <div>
-                    <div class="mb-6 block md:hidden">
-                        <logo :title="config('app.name')" classes="h-16 w-16 text-blue-500"></logo>
+                    <div class="mb-6 block lg:hidden">
+                        <logo :title="config('app.name')" classes="h-20 w-20"></logo>
                     </div>
 
                     <div>
@@ -51,10 +51,6 @@
                         <div class="mt-6 lg:mt-0 col-span-12 flex items-center justify-start">
                             <app-button type="submit" mode="primary" :class="{ 'opacity-25': form.processing }" :loading="form.processing">
                                 Create account <span class="ml-1">&rarr;</span>
-                            </app-button>
-
-                            <app-button href="#" :link="true" mode="secondary" class="ml-3">
-                                Request invite
                             </app-button>
                         </div>
 
