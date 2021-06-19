@@ -67,9 +67,7 @@ class Stubs
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/API'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Auth'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Profile'));
-        (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Business'));
         (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/Welcome'));
-        (new Filesystem())->ensureDirectoryExists(resource_path('js/Views/General'));
         (new Filesystem())->ensureDirectoryExists(resource_path('views'));
         (new Filesystem())->ensureDirectoryExists(resource_path('markdown'));
     }
