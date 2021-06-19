@@ -23,7 +23,7 @@
         "ext-json": "*",
         "ext-gmp": "*",
         "ext-bcmath": "*",
-        "emberfuse/scorch": "^1.0",
+        "emberfuse/scorch": "^1.1",
         "hashids/hashids": "^4.1",
         "illuminate/support": "^8.0"
     },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22a08c2953915467beea8fedad79f69c",
+    "content-hash": "18c1b98ced9dc2d5fe159f96c454470b",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -468,16 +468,16 @@
         },
         {
             "name": "emberfuse/scorch",
-            "version": "v1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/emberfuse/scorch.git",
-                "reference": "d303284afe29cb14f824ac1b84cdf66d53f2ad41"
+                "reference": "8fa0ff3dd39cd0d8937f97b03c989166ff9c8075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/emberfuse/scorch/zipball/d303284afe29cb14f824ac1b84cdf66d53f2ad41",
-                "reference": "d303284afe29cb14f824ac1b84cdf66d53f2ad41",
+                "url": "https://api.github.com/repos/emberfuse/scorch/zipball/8fa0ff3dd39cd0d8937f97b03c989166ff9c8075",
+                "reference": "8fa0ff3dd39cd0d8937f97b03c989166ff9c8075",
                 "shasum": ""
             },
             "require": {
@@ -535,7 +535,7 @@
                 "issues": "https://github.com/emberfuse/scorch/issues",
                 "source": "https://github.com/emberfuse/scorch"
             },
-            "time": "2021-06-01T16:14:59+00:00"
+            "time": "2021-06-19T21:05:21+00:00"
         },
         {
             "name": "graham-campbell/result-type",
